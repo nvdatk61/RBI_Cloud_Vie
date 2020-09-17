@@ -1,0 +1,908 @@
+{% extends 'BaseUI/BaseFacility/baseFacility.html' %}
+
+{% load staticfiles %}
+{% load static %}
+{% block library %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://www.grapecity.com/spreadjs/demos/en/purejs/node_modules/@grapecity/spread-sheets/styles/gc.spread.sheets.excel2013white.css">
+    <script src="https://www.grapecity.com/spreadjs/demos/en/purejs/node_modules/@grapecity/spread-sheets/dist/gc.spread.sheets.all.min.js" type="text/javascript"></script>
+    <script src="https://www.grapecity.com/spreadjs/demos/spread/source/js/FileSaver.js" type="text/javascript"></script>
+    <!--<script src="https://www.grapecity.com/spreadjs/demos/en/purejs/node_modules/@grapecity/spread-excelio/dist/gc.spread.excelio.min.js" type="text/javascript"></script>-->
+    <script src="https://www.grapecity.com/spreadjs/demos/en/purejs/node_modules/@grapecity/spread-sheets-charts/dist/gc.spread.sheets.charts.min.js" type="text/javascript"></script>
+    <!--<script src="https://www.grapecity.com/spreadjs/demos/spread/source/js/license.js" type="text/javascript"></script>-->
+    <script src="https://www.grapecity.com/spreadjs/demos/spread/source/data/excel_data.js" type="text/javascript"></script>
+    <script src="{% static 'js/app.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+<!------------ BLOCK MENU--------->
+{% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
+{% block newfaci %}{% url 'facilitiesNew' siteID %}{% endblock %}
+{% block design %}{% url 'designcodeDisplay' siteID %}{% endblock %}
+{% block manu %}{% url 'manufactureDisplay' siteID %}{% endblock %}
+{% block uploadInsp %}{% url 'upload' siteID %}{% endblock %}
+{% block uploadPlant %}{% url 'uploadPlan' siteID %}{% endblock %}
+{% block inspecPlan %}{% url 'inspectionPlan' siteID %}{% endblock %}
+<!-----------END BLOCK------------>
+
+{% block data-content %}
+    <style>
+    div.a {
+      white-space: nowrap;
+      width: 90px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    div.a:hover {
+      overflow: visible;
+    }
+    #searchs{
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+    }
+    .city{
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+    }
+    #search3{
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+    }
+    #proposal
+    {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+    }
+    #search2{
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+    }
+    #searchs td,#searchs th {
+      border: 1px solid #ddd;
+      padding: 0px;
+      text-align: center;
+    }
+    .city td, .city th{
+      border: 1px solid #ddd;
+      padding: 0px;
+      text-align: center;
+    }
+    #search2 th,#search2 td{
+      border: 1px solid #ddd;
+      padding: 0px;
+      text-align: center;
+    }
+    #search3 th,#search3 td{
+      border: 1px solid #ddd;
+      padding: 0px;
+      text-align: center;
+    }
+    #proposal th,#proposal td{
+      border: 1px solid #ddd;
+      padding: 0px;
+      text-align: center;
+    }
+    #searchs tr:nth-child(even){background-color: #f2f2f2;}
+    .city tr:nth-child(even){background-color: white;}
+    #search2 tr:nth-child(even){background-color: #f2f2f2;}
+    #search3 tr:nth-child(even){background-color: #f2f2f2;}
+    #proposal tr:nth-child(even){background-color: #f2f2f2;}
+    #searchs tr:hover {background-color: #ddd;}
+    .city tr:hover {background-color: #ddd;}
+    #search2 tr:hover {background-color: #f2f2f2;}
+    #search3 tr:hover {background-color: #f2f2f2;}
+    #proposal tr:hover {background-color: #f2f2f2;}
+
+    #searchs th {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #305680;
+      color: white;
+    }
+    .city th {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #305680;
+      color: white;
+    }
+    #search2 th{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #305680;
+      color: white;
+    }
+    #search3 th{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color :#305680;
+      color: white;
+    }
+    #proposal th{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #305680;
+      color: white;
+    }
+
+    .containerflex {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
+
+        padding: 2px;
+        background: white;
+        min-width: 1250px;
+        height: 230px;
+        margin: auto;
+    }
+
+    .flexitem {
+        width: 530px;
+        height: 220px;
+        padding: 0px;
+        background: #0AA6DB;
+        margin: 1px;
+        font-weight: bold;
+    }
+    </style>
+    <form method="post" id="fileUpload" enctype="multipart/form-data" style="width: 100%;height: 130%">
+    {% csrf_token %}
+    {%if dataSheet1%}
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="#menu0" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;">Equipment</a></li>
+            <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu1">Component</a></li>
+            <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu2">Operating Condition</a></li>
+            <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu3">Stream</a></li>
+            <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu4">Material</a></li>
+            <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu5">Coating Cladding Lining Insulation</a></li>
+            <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu6">Fully CoF</a></li>
+        </ul>
+        <div class="city">
+            <div class="tab-content">
+            <!-------------- Bảng1 ---------------->
+            <div id="menu0" class="tab-pane fade in active" >
+                <div class="city" style="font-size: 13px; color: #444444;background-color:white">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table width=100% id="testing">
+                                <tr>
+                                    <th>Equipment Number</th>
+                                    <th>Equipment Type</th>
+                                    <th>Equipment Name</th>
+                                    <th>Design Code</th>
+                                    <th>Site</th>
+                                    <th>Facility</th>
+                                    <th>Manufacturer</th>
+                                    <th>Commission Date</th>
+                                    <th>PFD. No</th>
+                                    <th>Process Description</th>
+                                    <th>Description</th>
+                                    <th>PWHT</th>
+                                    <th>Online Monitoring</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Equipment<br>Volume</th>
+                                    <th style="overflow: auto; white-space: nowrap;">System Management<br>Factor</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Administrative Control<br>for Upset Management</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Liner Online<br>Monitoring</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Adjustment for<br>Settlement</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>is Welded</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Tank is Maintained in<br>Accordance with API 653</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Material is Exposed to Fluids, Mists <br>or Solids Containing Chloride Externally</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Interface at<br>Soil or Water</th>
+                                    <th >External Environment</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Downtime<br>Protection Used</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Steamed Out Prior<br>to Water Flushing</th>
+                                    <th>Heat Traced</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Presence of Sulphides, Moisture<br>and Oxygen During Operation</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Presence of Sulphides, Moisture<br>and Oxygen During Shutdown</th>
+                                    <th>Thermal History</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Pressurisarion<br>Controlled by Admin</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Min. Required Temperature Before<br>Pressurisation Allowed by Admin</th>
+                                    <th>Type of Soil</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Envionmental<br>Sensitivity</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Distance to<br>Ground Water</th>
+                                </tr>
+                                <tbody>
+                                {% for a in dataSheet1 %}
+                                    <tr>
+                                        <td><div class="a">{{a.0}}</div></td>
+                                        <td><div class="a">{{a.1}}</div></td>
+                                        <td><div class="a">{{a.2}}</div></td>
+                                        <td><div class="a">{{a.3}}</div></td>
+                                        <td><div class="a">{{a.4}}</div></td>
+                                        <td><div class="a">{{a.5}}</div></td>
+                                        <td><div class="a">{{a.6}}</div></td>
+                                        <td><div class="a">{{a.7}}</div></td>
+                                        <td><div class="a">{{a.8}}</div></td>
+                                        <td><div class="a">{{a.9}}</div></td>
+                                        <td><div class="a">{{a.10}}</div></td>
+                                        <td><div class="a">{{a.11}}</div></td>
+                                        <td><div class="a">{{a.12}}</div></td>
+                                        <td><div class="a">{{a.13}}</div></td>
+                                        <td><div class="a">{{a.14}}</div></td>
+                                        <td><div class="a">{{a.15}}</div></td>
+                                        <td><div class="a">{{a.16}}</div></td>
+                                        <td><div class="a">{{a.17}}</div></td>
+                                        <td><div class="a">{{a.18}}</div></td>
+
+                                        <td><div class="a">{{a.19}}</div></td>
+                                        <td><div class="a">{{a.20}}</div></td>
+                                        <td><div class="a">{{a.21}}</div></td>
+                                        <td><div class="a">{{a.22}}</div></td>
+                                        <td><div class="a">{{a.23}}</div></td>
+                                        <td><div class="a">{{a.24}}</div></td>
+                                        <td><div class="a">{{a.25}}</div></td>
+                                        <td><div class="a">{{a.26}}</div></td>
+                                        <td><div class="a">{{a.27}}</div></td>
+                                        <td><div class="a">{{a.28}}</div></td>
+                                        <td><div class="a">{{a.29}}</div></td>
+                                        <td><div class="a">{{a.30}}</div></td>
+                                        <td><div class="a">{{a.31}}</div></td>
+                                        <td><div class="a">{{a.32}}</div></td>
+                                        <td><div class="a">{{a.33}}</div></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Equipment Number</th>
+                                        <th>Equipment Type</th>
+                                        <th>Equipment Name</th>
+                                        <th>Design Code</th>
+                                        <th>Site</th>
+                                        <th>Facility</th>
+                                        <th>Manufacturer</th>
+                                        <th>Commission Date</th>
+                                        <th>PFD. No</th>
+                                        <th>Process Description</th>
+                                        <th>Description</th>
+                                        <th>PWHT</th>
+                                        <th>Online Monitoring</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Equipment<br>Volume</th>
+                                        <th style="overflow: auto; white-space: nowrap;">System Management<br>Factor</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Administrative Control<br>for Upset Management</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Liner Online<br>Monitoring</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Adjustment for<br>Settlement</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>is Welded</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Tank is Maintained in<br>Accordance with API 653</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Material is Exposed to Fluids, Mists <br>or Solids Containing Chloride Externally</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Interface at<br>Soil or Water</th>
+                                        <th >External Environment</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Downtime<br>Protection Used</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Steamed Out Prior<br>to Water Flushing</th>
+                                        <th>Heat Traced</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Presence of Sulphides, Moisture<br>and Oxygen During Operation</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Presence of Sulphides, Moisture<br>and Oxygen During Shutdown</th>
+                                        <th>Thermal History</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Pressurisarion<br>Controlled by Admin</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Min. Required Temperature Before<br>Pressurisation Allowed by Admin</th>
+                                        <th>Type of Soil</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Envionmental<br>Sensitivity</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Distance to<br>Ground Water</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------- Bảng2 ---------------->
+            <div id="menu1" class="tab-pane fade">
+               <div style="font-size: 13px; color: #444444;background-color:white">
+                     <div class="container">
+                        <div class="table-responsive">
+                            <table width=100% id="testing">
+                                <tr>
+                                    <th style="overflow: auto; white-space: nowrap;">Equipment<br>Number</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Type</th>
+                                    <th style="overflow: auto; white-space: nowrap;">API Component<br>Type</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Name</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Component Risk Links<br>to Equipment Risk</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Description</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Assessment<br>Date</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Risk Analysis<br>Period</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Tank Diameter</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Nominal Thickness</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Minimum Measured<br>Thickness</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Current<br>Corrosion Rate</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Min. Required<br>Thickness</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Presence of<br>Cracks</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Weld Joint<br>Efficiency</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Allowable Stress at<br>Assessment Temperature</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Level Of Confidence In<br>Corrosion Rate Sources</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Minimum Structural<br>Thickness Governs</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Structural<br>Thickness</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Component Volume<br>(only for Fully-Quantitative CoF)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Complexity of<br>Protrusions</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Maximum Brinnell<br>Hardness of Weld</th>
+                                    <th style="overflow: auto; white-space: nowrap;">It is fabricated from P-1 and P-3 steels where the design<br>temperature is less than or equal to 343°C (650°F)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">The equipment satisfied all requirements of a recognized code<br>or standard at the time of fabrication</th>
+                                    <th style="overflow: auto; white-space: nowrap;">The nominal operating conditions have been essentially the same and consistent with the specified <br>design conditions for a significant period of time, and more severe conditions (i.e., lower temperature and/or higher stress) are not expected in the future.</th>
+                                    <th style="overflow: auto; white-space: nowrap;">The CET at the MAWP is greater than or equal to -29°C (-20°F) if it is a pressure vessel<br>or -104°C (-155°F) if it is a piping circuit.</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Cyclic service, fatigue or vibration service is<br>not a design requirement per design code</th>
+                                    <th style="overflow: auto; white-space: nowrap;">The equipment or circuit is not<br>subject to shock chilling</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Severity of<br>Vibration</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Release Prevention<br>Barrier</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Height of each<br>Shell Course</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Concrete or Asphalt<br>Foundation</th>
+                                    </tr>
+                                <tbody>
+                                {% for a in dataSheet2 %}
+                                    <tr>
+                                        <td><div class="a">{{a.0}}</div></td>
+                                        <td><div class="a">{{a.1}}</div></td>
+                                        <td><div class="a">{{a.2}}</div></td>
+                                        <td><div class="a">{{a.3}}</div></td>
+                                        <td><div class="a">{{a.4}}</div></td>
+                                        <td><div class="a">{{a.5}}</div></td>
+                                        <td><div class="a">{{a.6}}</div></td>
+                                        <td><div class="a">{{a.7}}</div></td>
+                                        <td><div class="a">{{a.8}}</div></td>
+                                        <td><div class="a">{{a.9}}</div></td>
+                                        <td><div class="a">{{a.10}}</div></td>
+                                        <td><div class="a">{{a.11}}</div></td>
+                                        <td><div class="a">{{a.12}}</div></td>
+                                        <td><div class="a">{{a.13}}</div></td>
+                                        <td><div class="a">{{a.14}}</div></td>
+                                        <td><div class="a">{{a.15}}</div></td>
+                                        <td><div class="a">{{a.16}}</div></td>
+                                        <td><div class="a">{{a.17}}</div></td>
+                                        <td><div class="a">{{a.18}}</div></td>
+                                        <td><div class="a">{{a.19}}</div></td>
+                                        <td><div class="a">{{a.20}}</div></td>
+                                        <td><div class="a">{{a.21}}</div></td>
+                                        <td><div class="a">{{a.22}}</div></td>
+                                        <td><div class="a">{{a.23}}</div></td>
+                                        <td><div class="a">{{a.24}}</div></td>
+                                        <td><div class="a">{{a.25}}</div></td>
+                                        <td><div class="a">{{a.26}}</div></td>
+                                        <td><div class="a">{{a.27}}</div></td>
+                                        <td><div class="a">{{a.28}}</div></td>
+                                        <td><div class="a">{{a.29}}</div></td>
+                                        <td><div class="a">{{a.30}}</div></td>
+                                        <td><div class="a">{{a.31}}</div></td>
+                                        <td><div class="a">{{a.32}}</div></td>
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th style="overflow: auto; white-space: nowrap;">Equipment<br>Number</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>Type</th>
+                                        <th style="overflow: auto; white-space: nowrap;">API Component<br>Type</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>Name</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Component Risk Links<br>to Equipment Risk</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Description</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Assessment<br>Date</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Risk Analysis<br>Period</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Tank Diameter</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Nominal Thickness</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Minimum Measured<br>Thickness</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Current<br>Corrosion Rate</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Min. Required<br>Thickness</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Presence of<br>Cracks</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Weld Joint<br>Efficiency</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Allowable Stress at<br>Assessment Temperature</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Level Of Confidence In<br>Corrosion Rate Sources</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Minimum Structural<br>Thickness Governs</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Structural<br>Thickness</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Component Volume<br>(only for Fully-Quantitative CoF)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Complexity of<br>Protrusions</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Maximum Brinnell<br>Hardness of Weld</th>
+                                        <th style="overflow: auto; white-space: nowrap;">It is fabricated from P-1 and P-3 steels where the design<br>temperature is less than or equal to 343°C (650°F)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">The equipment satisfied all requirements of a recognized code<br>or standard at the time of fabrication</th>
+                                        <th style="overflow: auto; white-space: nowrap;">The nominal operating conditions have been essentially the same and consistent with the specified <br>design conditions for a significant period of time, and more severe conditions (i.e., lower temperature and/or higher stress) are not expected in the future.</th>
+                                        <th style="overflow: auto; white-space: nowrap;">The CET at the MAWP is greater than or equal to -29°C (-20°F) if it is a pressure vessel<br>or -104°C (-155°F) if it is a piping circuit.</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Cyclic service, fatigue or vibration service is<br>not a design requirement per design code</th>
+                                        <th style="overflow: auto; white-space: nowrap;">The equipment or circuit is not<br>subject to shock chilling</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Severity of<br>Vibration</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Release Prevention<br>Barrier</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Height of each<br>Shell Course</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Concrete or Asphalt<br>Foundation</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-------------- Bảng3 ---------------->
+            <div id="menu2" class="tab-pane fade">
+               <div style="font-size: 13px; color: #444444;background-color:white">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table width=100% id="testing">
+                                <tr>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Maximum Operating<br>Temperature</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Minimum Operating<br>Temperature</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Critical Exposure<br>Temperature</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Maximum Operating<br>Pressure</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Minimum Operating<br>Pressure</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Flow Rate</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>-12 °Cto -8 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>-8 °C to 6 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>6 °C to 32 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>32 °C to 71 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>71 °C to 107°C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>107 °C to 121 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>121 °C to 135 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>135 °C to 162 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>162 °C to 176 °C</th>
+                                    <th style="overflow: auto; white-space: nowrap;">% Operating at<br>176 °C or above</th>
+                                    </tr>
+                                <tbody>
+                                {% for a in dataSheet3 %}
+                                    <tr>
+                                        <td><div class="a">{{a.0}}</div></td>
+                                        <td><div class="a">{{a.1}}</div></td>
+                                        <td><div class="a">{{a.2}}</div></td>
+                                        <td><div class="a">{{a.3}}</div></td>
+                                        <td><div class="a">{{a.4}}</div></td>
+                                        <td><div class="a">{{a.5}}</div></td>
+                                        <td><div class="a">{{a.6}}</div></td>
+                                        <td><div class="a">{{a.7}}</div></td>
+                                        <td><div class="a">{{a.8}}</div></td>
+                                        <td><div class="a">{{a.9}}</div></td>
+                                        <td><div class="a">{{a.10}}</div></td>
+                                        <td><div class="a">{{a.11}}</div></td>
+                                        <td><div class="a">{{a.12}}</div></td>
+                                        <td><div class="a">{{a.13}}</div></td>
+                                        <td><div class="a">{{a.14}}</div></td>
+                                        <td><div class="a">{{a.15}}</div></td>
+                                        <td><div class="a">{{a.16}}</div></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Maximum Operating<br>Temperature</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Minimum Operating<br>Temperature</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Critical Exposure<br>Temperature</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Maximum Operating<br>Pressure</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Minimum Operating<br>Pressure</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Flow Rate</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>-12 °Cto -8 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>-8 °C to 6 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>6 °C to 32 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>32 °C to 71 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>71 °C to 107°C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>107 °C to 121 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>121 °C to 135 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>135 °C to 162 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>162 °C to 176 °C</th>
+                                        <th style="overflow: auto; white-space: nowrap;">% Operating at<br>176 °C or above</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------- Bảng4 ---------------->
+            <div id="menu3" class="tab-pane fade">
+               <div style="font-size: 13px; color: #444444;background-color:white">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table width=100% id="testing">
+                                <tr>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Fluid</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Fluid Height</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Percentage of Fluid<br>Leaving the Dike (%)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Percentage of Fluid Leaving the Dike<br>but Remains on Site (%)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Percentage of Fluid<br>going Offsite (%)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Primary Fluid (only for<br>Semi-Quantitative CoF)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Most Volatile Fluid (only for<br>Semi-Quantitative CoF)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Release Fluid Percent Toxic (%)<br>(only for Semi-Quantitative CoF)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Toxic Constituents (only for<br>Semi-Quantitative CoF)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">pH of<br>Water</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Exposed To Acid Gas<br>Treating Amine</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Aqueous Phase<br>During Operation</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Aqueous Phase<br>During Shut Down</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Environment<br>Contains H2S</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Presence of<br>Hydrofluoric Acid</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Environment Contains Caustic<br>in Any Concentration</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Exposed to<br>Sulphur-Bearing Compounds</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Material is Exposed to Fluids,Mists, or<br>Solids Containing Chlorine Internally</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Presence of<br>Cyanides</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Exposure to<br>Amine</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Amine Solution<br>Composition</th>
+                                    <th style="overflow: auto; white-space: nowrap;">NaOH<br>Concentration (%)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Chloride<br>Ion (ppm)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">CO3 Concentration<br>in Water (ppm)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">H2S Content<br>in Water (ppm)</th>
+
+
+                                    </tr>
+                                <tbody>
+                                {% for a in dataSheet4 %}
+                                    <tr>
+                                        <td><div class="a">{{a.0}}</div></td>
+                                        <td><div class="a">{{a.1}}</div></td>
+                                        <td><div class="a">{{a.2}}</div></td>
+                                        <td><div class="a">{{a.3}}</div></td>
+                                        <td><div class="a">{{a.4}}</div></td>
+                                        <td><div class="a">{{a.5}}</div></td>
+                                        <td><div class="a">{{a.6}}</div></td>
+                                        <td><div class="a">{{a.7}}</div></td>
+                                        <td><div class="a">{{a.8}}</div></td>
+                                        <td><div class="a">{{a.9}}</div></td>
+                                        <td><div class="a">{{a.10}}</div></td>
+                                        <td><div class="a">{{a.11}}</div></td>
+                                        <td><div class="a">{{a.12}}</div></td>
+                                        <td><div class="a">{{a.13}}</div></td>
+                                        <td><div class="a">{{a.14}}</div></td>
+                                        <td><div class="a">{{a.15}}</div></td>
+                                        <td><div class="a">{{a.16}}</div></td>
+                                        <td><div class="a">{{a.17}}</div></td>
+                                        <td><div class="a">{{a.18}}</div></td>
+                                        <td><div class="a">{{a.19}}</div></td>
+                                        <td><div class="a">{{a.20}}</div></td>
+                                        <td><div class="a">{{a.21}}</div></td>
+                                        <td><div class="a">{{a.22}}</div></td>
+                                        <td><div class="a">{{a.23}}</div></td>
+                                        <td><div class="a">{{a.24}}</div></td>
+                                        <td><div class="a">{{a.25}}</div></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Fluid</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Fluid Height</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Percentage of Fluid<br>Leaving the Dike (%)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Percentage of Fluid Leaving the Dike<br>but Remains on Site (%)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Percentage of Fluid<br>going Offsite (%)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Primary Fluid (only for<br>Semi-Quantitative CoF)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Most Volatile Fluid (only for<br>Semi-Quantitative CoF)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Release Fluid Percent Toxic (%)<br>(only for Semi-Quantitative CoF)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Toxic Constituents (only for<br>Semi-Quantitative CoF)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">pH of<br>Water</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Exposed To Acid Gas<br>Treating Amine</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Aqueous Phase<br>During Operation</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Aqueous Phase<br>During Shut Down</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Environment<br>Contains H2S</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Presence of<br>Hydrofluoric Acid</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Environment Contains Caustic<br>in Any Concentration</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Exposed to<br>Sulphur-Bearing Compounds</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Material is Exposed to Fluids,Mists, or<br>Solids Containing Chlorine Internally</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Presence of<br>Cyanides</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Exposure to<br>Amine</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Amine Solution<br>Composition</th>
+                                        <th style="overflow: auto; white-space: nowrap;">NaOH<br>Concentration (%)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Chloride<br>Ion (ppm)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">CO3 Concentration<br>in Water (ppm)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">H2S Content<br>in Water (ppm)</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------- Bảng5 ---------------->
+            <div id="menu4" class="tab-pane fade">
+               <div style="font-size: 13px; color: #444444;background-color:white">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table width=100% id="testing">
+                                <tr>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Material</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Carbon or Low<br>Alloy Steel</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Austenitic<br>Steel</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Design<br>Pressure</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Max. Design<br>Temperature</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Yield<br>Strength</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Tensile<br>Strength</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Material Cost<br>Factor</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Corrosion<br>Allowance</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Nickel-based<br>Alloy</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Sulfur<br>Content</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Material is<br>Susceptible to PTA</th>
+                                    <th style="overflow: auto; white-space: nowrap;">PTA Material<br>Grade</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Min. Design<br>Temperature</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Chromium ≥ 12%</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Reference<br>Temperature</th>
+
+                                    </tr>
+                                <tbody>
+                                {% for a in dataSheet5 %}
+                                    <tr>
+                                        <td><div class="a">{{a.0}}</div></td>
+                                        <td><div class="a">{{a.1}}</div></td>
+                                        <td><div class="a">{{a.2}}</div></td>
+                                        <td><div class="a">{{a.3}}</div></td>
+                                        <td><div class="a">{{a.4}}</div></td>
+                                        <td><div class="a">{{a.5}}</div></td>
+                                        <td><div class="a">{{a.6}}</div></td>
+                                        <td><div class="a">{{a.7}}</div></td>
+                                        <td><div class="a">{{a.8}}</div></td>
+                                        <td><div class="a">{{a.9}}</div></td>
+                                        <td><div class="a">{{a.10}}</div></td>
+                                        <td><div class="a">{{a.11}}</div></td>
+                                        <td><div class="a">{{a.12}}</div></td>
+                                        <td><div class="a">{{a.13}}</div></td>
+                                        <td><div class="a">{{a.14}}</div></td>
+                                        <td><div class="a">{{a.15}}</div></td>
+                                        <td><div class="a">{{a.16}}</div></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Material</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Carbon or Low<br>Alloy Steel</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Austenitic<br>Steel</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Design<br>Pressure</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Max. Design<br>Temperature</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Yield<br>Strength</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Tensile<br>Strength</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Material Cost<br>Factor</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Corrosion<br>Allowance</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Nickel-based<br>Alloy</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Sulfur<br>Content</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Material is<br>Susceptible to PTA</th>
+                                        <th style="overflow: auto; white-space: nowrap;">PTA Material<br>Grade</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Min. Design<br>Temperature</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Chromium ≥ 12%</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Reference<br>Temperature</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------- Bảng6 ---------------->
+            <div id="menu5" class="tab-pane fade">
+               <div style="font-size: 13px; color: #444444;background-color:white">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table width=100% id="testing">
+                                <tr>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Internal<br>Cladding</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Cladding<br>Corrosion Rate</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Cladding<br>Thickness</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Internal<br>Lining</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Internal<br>Liner Type</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Internal Liner<br>Condition</th>
+                                    <th style="overflow: auto; white-space: nowrap;">External<br>Coating</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Internal<br>Coating</th>
+                                    <th style="overflow: auto; white-space: nowrap;">External Coating<br>Installation Date</th>
+                                    <th style="overflow: auto; white-space: nowrap;">External Coating<br>Quality</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Support Configuration Which Does Not<br>Allow Coating Maintenance</th>
+                                    <th style="overflow: auto; white-space: nowrap;">External<br>Insulation</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Insulation Contains<br>Chlorides</th>
+                                    <th style="overflow: auto; white-space: nowrap;">External Insulation<br>Type</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Insulation<br>Condition</th>
+                                </tr>
+                                <tbody>
+                                {% for a in dataSheet6 %}
+                                    <tr>
+                                        <td><div class="a">{{a.0}}</div></td>
+                                        <td><div class="a">{{a.1}}</div></td>
+                                        <td><div class="a">{{a.2}}</div></td>
+                                        <td><div class="a">{{a.3}}</div></td>
+                                        <td><div class="a">{{a.4}}</div></td>
+                                        <td><div class="a">{{a.5}}</div></td>
+                                        <td><div class="a">{{a.6}}</div></td>
+                                        <td><div class="a">{{a.7}}</div></td>
+                                        <td><div class="a">{{a.8}}</div></td>
+                                        <td><div class="a">{{a.9}}</div></td>
+                                        <td><div class="a">{{a.10}}</div></td>
+                                        <td><div class="a">{{a.11}}</div></td>
+                                        <td><div class="a">{{a.12}}</div></td>
+                                        <td><div class="a">{{a.13}}</div></td>
+                                        <td><div class="a">{{a.14}}</div></td>
+                                        <td><div class="a">{{a.15}}</div></td>
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Internal<br>Cladding</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Cladding<br>Corrosion Rate</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Cladding<br>Thickness</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Internal<br>Lining</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Internal<br>Liner Type</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Internal Liner<br>Condition</th>
+                                        <th style="overflow: auto; white-space: nowrap;">External<br>Coating</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Internal<br>Coating</th>
+                                        <th style="overflow: auto; white-space: nowrap;">External Coating<br>Installation Date</th>
+                                        <th style="overflow: auto; white-space: nowrap;">External Coating<br>Quality</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Support Configuration Which Does Not<br>Allow Coating Maintenance</th>
+                                        <th style="overflow: auto; white-space: nowrap;">External<br>Insulation</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Insulation Contains<br>Chlorides</th>
+                                        <th style="overflow: auto; white-space: nowrap;">External Insulation<br>Type</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Insulation<br>Condition</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------- Bảng7 ---------------->
+            <div id="menu6" class="tab-pane fade">
+               <div style="font-size: 13px; color: #444444;background-color:white">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table width=100% id="testing">
+                                <tr>
+                                    <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Process unit replacement<br>costs for component</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Equipment Outage<br>Multiplier</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Cost of Lost<br>Production</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Population Density of<br>Personnel (personnel/m2)</th>
+                                    <th style="overflow: auto; white-space: nowrap;">Cost associated with serious<br>injury of fatality of personnel</th>
+                                </tr>
+                                <tbody>
+                                {% for a in dataSheet7 %}
+                                    <tr>
+                                        <td><div class="a">{{a.0}}</div></td>
+                                        <td><div class="a">{{a.1}}</div></td>
+                                        <td><div class="a">{{a.2}}</div></td>
+                                        <td><div class="a">{{a.3}}</div></td>
+                                        <td><div class="a">{{a.4}}</div></td>
+                                        <td><div class="a">{{a.5}}</div></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                       <th style="overflow: auto; white-space: nowrap;">Component<br>Number</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Process unit replacement<br>costs for component</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Equipment Outage<br>Multiplier</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Cost of Lost<br>Production</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Population Density of<br>Personnel (personnel/m2)</th>
+                                        <th style="overflow: auto; white-space: nowrap;">Cost associated with serious<br>injury of fatality of personnel</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+        </div>
+    {% endif %}
+    <!-------------- End Excel---------------->
+    <div id="parent" style="text-align: center; margin-top: 2%">
+    </div>
+    <div style="text-align: center; margin-top: 1%;">
+        <div class="row">
+        <div class="col-md-12" style="text-align: center">
+            {% if not dataSheet1 %}
+            <img src="{% static 'image/logo/cloudv1.png' %}"style="width:150px">
+            {% endif %}
+            <p>Yêu cầu nhập đúng Site và Facility</p>
+            <p>File History yêu cầu nhập đúng Component và Equipment </p>
+            <p>Lưu ý: Sau khi Upload file PlanProcess cần tiến hành Recalculate lại</p>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="text-align: center">
+                <!--<label for="myexcelFile" class="btn btn-primary btn-block btn-outlined">{{ showcontent }}</label>-->
+                <label for="fileDemo" class="btn btn-primary btn-block btn-outlined">{{ showcontent }}</label>
+                <input type="file" id="fileDemo" name="myexcelFile" accept="text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display: none">
+                <!--<input type="file" id="myexcelFile" name="myexcelFile" accept="text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display: none" >-->
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                {% if not dataSheet1 %}
+                <span id="filestatus" style="font-family: 'Times New Roman'; font-size: 16px;">None file selected...</span>
+                {% else %}
+                <span style="font-family: 'Times New Roman'; font-size: 16px;">File selected: {{filename}}</span>
+                {% endif %}
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <!--<button type="submit" id="submitFile" name="submitFile" class="btn btn-primary" onclick="btnSubmitClick()" disabled>Submit</button>-->
+                <button type="submit" id="import" name="import" class="btn btn-primary" onclick="" disabled>Import</button>
+                {% if not dataSheet1 %}
+                <!--<button type="submit" id="import" name="import" class="btn btn-primary" onclick="" disabled>Import</button>-->
+                <button type="submit" id="submitFile" name="submitFile" class="btn btn-primary" onclick="btnSubmitClick()" disabled>Submit</button>
+                {% else %}
+                <button type="submit" id="" name="submitFile" class="btn btn-primary" onclick="btnSubmitClick()" >Submit</button>
+                {% endif %}
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+
+    <!--<div class="sample-tutorial">-->
+    <!--<div id="ss" class="sample-spreadsheets"></div>-->
+    <!--<div class="options-container">-->
+        <!--<div class="option-row">-->
+            <!--<div class="inputContainer">-->
+                <!--<label for="fileDemo" class="btn btn-primary btn-block btn-outlined">{{ showcontent }}</label>-->
+                <!--<input type="file" id="fileDemo" name="myexcelFile" accept="text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display: none">-->
+                <!--<span id="filestatus" style="font-family: 'Times New Roman'; font-size: 16px;">None file selected...</span><br>-->
+                <!--<input type="button" id="loadExcel" value="import" class="btn btn-primary">-->
+                <!--<button type="button" name="savedata" id="submitFile" class="btn btn-primary" onclick="btnSubmitClick()" disabled>Submit</button>-->
+            <!--</div>-->
+            <!--<div class="inputContainer">-->
+                <!--<input id="exportFileName" value="rbi.xlsx" class="input">-->
+                <!--<input type="button" id="saveExcel" value="export" class="btn btn-primary">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="option-row">-->
+            <!--<div class="group">-->
+<!--{#                <label>Password:#}-->
+                    <!--<input type="password" id="password" style="display: none">-->
+<!--{#                </label>#}-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    </div>
+    </form>
+    <script>
+        $("input[id='fileDemo']").change(function (e) {
+            var $this = $(this);
+            var filename = $this.val().split('\\').pop();
+            if(filename.endsWith(".csv") || filename.endsWith(".xls") || filename.endsWith(".xlsx")){
+                $("#filestatus").text("File selected: " +filename);
+                $("#filestatus").css("color", "green");
+                <!--$("#submitFile").prop("disabled",false);-->
+                $("#import").prop("disabled",false);
+            }
+            else {
+                $("#filestatus").text("File isn't supported! Please select *.xls | *.xlsx | *.csv file");
+                $("#filestatus").css("color", "red");
+                <!--$("#submitFile").prop("disabled",true);-->
+                $("#import").prop("disabled",true);
+            }
+        });
+
+        function btnSubmitClick() {
+            document.getElementById("fileUpload").submit();
+            ShowLoading();
+            return false;
+        }
+        function ShowLoading() {
+            var parrent = document.getElementById('parent');
+            var div = document.createElement('div');
+            var img = document.createElement('img');
+            img.src = '{% static "image/loading/Pacman-1s-100px.gif" %}';
+            div.style.cssText = "class=row;";
+            div.appendChild(img);
+            parrent.appendChild(div);
+            $("#submitFile").attr('disabled',true);
+            return true;
+        }
+    </script>
+{% endblock %}

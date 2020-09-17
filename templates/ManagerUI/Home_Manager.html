@@ -1,0 +1,75 @@
+{% extends 'BaseUI/BaseManager/ManagerHome.html' %}
+
+<!-------------- BLOCK MENU ---------------->
+{% block homedetail %}{% url 'managerhomedetail' siteID%}{% endblock %}
+{% block listmana %}{% url 'manager' siteID %}{% endblock %}
+{% block calculate %}{% url 'calculatefunctionmanager' siteID %}{% endblock %}
+{% block toolmanage %}{% url 'toolmanager' siteID %}{% endblock %}
+<!----------------- END BLOCK----------------->
+{% block data-content %}
+<style>
+fieldset {
+  background-color: White;
+}
+
+legend {
+  background-color: gray;
+  color: white;
+  padding: 5px 10px;
+}
+</style>
+<form method="post" id="homemanage" enctype="multipart/form-data" style="width: 100%;height: 130%">
+    {% csrf_token %}
+    <div class="column">
+        <a style="color:white;">
+            <div class="card">
+                <p><i class="fa fa-building" style="font-size:70px;" ></i></p>
+                <a href="{% url 'manager' siteID %}" style="color:white"><h3 align="center">Danh mục nhà máy</h3></a>
+            </div>
+        </a>
+    </div>
+    <div class="column">
+        <a style="color:white;">
+            <div class="card">
+                <p><i class="fa fa-edit" style="font-size:70px;" ></i></p>
+                <a href="{% url 'calculatefunctionmanager' siteID %}" style="color:white"><h3 align="center">Chức năng tính toán</h3></a>
+            </div>
+        </a>
+    </div>
+    <div class="position-fixed border bg-info" style="bottom:40px;right:35px;top: 100px;left:150px;" >
+        <h2 style="font-size:30px;">&emsp;Công cụ tiện ích</h2>
+        <div class="columnafter">
+            <a href="{% url 'forum' %}" style="color:white">
+                <div class="carda" >
+                    <p title="Diễn đàn hỏi đáp"><i class="fa fa-dedent" style="font-size:70px;" ></i></p>
+                    <h3 align="center">Diễn đàn hỏi đáp</h3>
+                </div>
+            </a>
+        </div>
+        <div class="columnafter">
+            <a href="{% url 'messagesInbox' %}" style="color:white">
+                <div class="carda">
+                    <p title="Message"><i class="fa fa-wechat" style="font-size:70px;" ></i></p>
+                    <h3 align="center">Message</h3>
+                </div>
+            </a>
+        </div>
+        <div class="columnafter">
+            <a href="{% url 'help' %}" style="color:white">
+                <div class="carda">
+                    <p title="Trợ giúp"><i class="fa fa-question" style="font-size:70px;" ></i></p>
+                    <h3 align="center">Trợ giúp</h3>
+                </div>
+            </a>
+        </div>
+        <div class="columnafter">
+            <a href="{% url 'mitigation' siteID%}" style="color:white">
+                <div class="carda">
+                    <p title="Phương pháp giảm nhẹ"><i class="fa fa-question" style="font-size:70px;" ></i></p>
+                    <h3 align="center">Phương pháp giảm nhẹ</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</form>
+{% endblock %}

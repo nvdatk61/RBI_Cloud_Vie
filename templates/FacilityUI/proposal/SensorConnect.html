@@ -1,0 +1,68 @@
+{% extends 'BaseUI/BaseFacility/baseProposal.html' %}
+{% load staticfiles %}
+
+{% block library %}
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+<!----------BLOCK MENU----------->
+{% block listProposal %}{% url 'proposalDisplay' componentID %}{% endblock %}
+{% block newsensor %}{% url 'newsensor' componentID %}{% endblock %}
+{% block backComp %}{% url 'componentDisplay' equipmentID %}{% endblock %}
+<!----------END BLOCK----------->
+
+{% block data-content %}
+    <form method="post" id="listProposal">
+    {% csrf_token %}
+    <div>
+        <table>
+            <tr style="width: 500px;height: 20px">
+                <td style="text-align: center"><h4>Cảm biến: {{ sensorName }}</h4></td>
+                <td></td>
+                <td style="text-align: center"><h4>Thành phần: {{ comp.componentname }}</h4></td>
+            </tr>
+            <tr style="width: 10%;height: 10%;">
+                <td>
+                    <img src={% static '/image/Sensor/sensor.png' %} alt="Flowers" style="width:200px;height: 200px">
+                </td>
+                <td>
+                    <img src={% static '/image/Sensor/connect_logo.PNG' %} alt="Flowers" style="width:150px;height: 50px">
+                    <br>
+                    <img src={% static '/image/Sensor/connect.png' %} alt="Flowers" style="width:150px;height: 100px">
+                </td>
+                <td>
+                    <img src={% static '/image/Sensor/facility.PNG' %} alt="Flowers" style="width:200px;height: 200px">
+                </td>
+            </tr>
+        </table>
+
+        <div class="container">
+            <h2>Danh sách các gói</h2>
+            <p>Lớp bảng thêm kiểu cơ bản (đệm nhẹ và các ngăn chia ngang) vào bảng:</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="50px" style="text-align: center"><input type="checkbox" id="chkHeader"></th>
+                    <th style="text-align: center">Họ đệm</th>
+                    <th>Tên</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for pac in packagedata %}
+                <tr>
+                    <td style="text-align: center"><input type="checkbox" name="{{ pac.idpackage }}"></td>
+                    <td style="text-align: center;width: 70%">{{ pac.package }}</td>
+                    <td>{{ pac.created }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div style="text-align: center">
+                <button name="_new" class="btn btn-primary" type="submit"><i class="fa fa-pencil">&emsp;&emsp;Cập nhật&emsp;&emsp;</i></button>
+                <button name="_delete" type="submit" class="btn btn-warning" id="sub" onclick="Sub()" ><i class="fa fa-trash-o">&emsp;Xóa mục đã chọn</i></button>
+                <button type="submit" name="_edit" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Xem biểu đồ</i></button>
+            </div>
+        </div>
+    </div>
+    </form>
+{% endblock %}

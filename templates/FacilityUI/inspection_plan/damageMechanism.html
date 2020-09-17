@@ -1,0 +1,124 @@
+{% extends 'BaseUI/BaseFacility/baseFacility.html' %}
+
+<!-------------- BLOCK MENU ---------------->
+{% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
+{% block newfaci %}{% url 'facilitiesNew' siteID %}{% endblock %}
+{% block design %}{% url 'designcodeDisplay' siteID %}{% endblock %}
+{% block manu %}{% url 'manufactureDisplay' siteID %}{% endblock %}
+{% block uploadInsp %}{% url 'upload' siteID %}{% endblock %}
+{% block uploadPlant %}{% url 'uploadPlan' siteID %}{% endblock %}
+{% block inspecPlan %}{% url 'inspectionPlan' siteID %}{% endblock %}
+<!----------------- END BLOCK----------------->
+{% block data-content %}
+<style>
+div.a {
+  white-space: nowrap;
+  width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.a:hover {
+  overflow: visible;
+}
+.city{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+.city td, .city th{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+
+.city tr:nth-child(even){background-color: white;}
+.city tr:hover {background-color: #ddd;}
+
+.city th {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background-color: #305680;
+  color: white;
+}
+
+
+</style>
+<form id="damageMechanism" method="post" >
+    {% csrf_token %}
+    <div class="container">
+        <div class="city">
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#process" style="padding-top: 2px;padding-bottom: 2px;background-color: #DB812D;color: white;">Cơ chế thiệt hại</a></li>
+                <li><a data-toggle="pill" style="padding-top: 2px;padding-bottom: 2px;background-color: #DB812D;color: White;" href="#tank">Kết quả kiểm định / Mô tả</a></li>
+            </ul>
+            <div class="tab-content">
+                <!---------------- Process Plant------------------>
+                <div id="process" class="tab-pane fade in active">
+                    <div class="city" style="font-size: 13px; color: #305680;background-color:white">
+                        <div class="container">
+                            <div class="table-responsive">
+                            <table width=90% id="testing">
+                                <thead>
+                                    <tr>
+                                        <!------- Proposal-------->
+                                        <th width="100px" style="text-align: center"><input type="checkbox" id="check"></th>
+                                         <th >Số thiết bị</th>
+                                        <th>Số thành phần</th>
+                                        <th>Cơ chế thiệt hại</th>
+                                        <th>Tóm tắt kiểm định</th>
+                                        <th>Hiệu quả kiểm định</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for a in dataSumary %}
+                                        <tr >
+                                            <td><div class="a"><input type="checkbox" name="{{ a.CoverageDetailID }}"></div></td>
+                                            <td align="center">{{a.EquipmentName}}</td>
+                                            <td align="center">{{a.ComponenttName}}</td>
+                                            <td align="center">{{a.DMITemName}}</td>
+                                            <td align="center" width="250px">{{a.Summary}}</td>
+                                            <td align="center">
+                                                <select class="form-control" name="EEF{{a.CoverageDetailID}}" >
+                                                    <option>A</option>
+                                                    <option>B</option>
+                                                    <option>C</option>
+                                                    <option>D</option>
+                                                    <option selected >E</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th width="100px" style="text-align: center"><input type="checkbox" id=""></th>
+                                        <th >Số thiết bị</th>
+                                        <th>Số thành phần</th>
+                                        <th>Cơ chế thiệt hại</th>
+                                        <th>Tóm tắt kiểm định</th>
+                                        <th>Hiệu quả kiểm định</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---------------- Tank------------------>
+                <div id="tank" class="tab-pane fade in active">
+                    <div class="city" style="font-size: 13px; color: #444444;background-color:white">
+                    </div>
+                </div>
+                <!----------------Save-------------------->
+                <br>
+                <div>
+                    <button type="submit" name="_ok" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Lưu</i></button>
+                    <button type="submit" name="_cancel" class="btn btn-warning" id="cancel" onclick="Sub()"><i class="fa fa-trash-o">&emsp;Hủy</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

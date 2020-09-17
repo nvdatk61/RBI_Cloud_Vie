@@ -1,0 +1,11 @@
+{% extends 'BaseUI/BaseManager/baseManager.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}Nhà sản xuất{% endblock %}
+
+{% block vertical %}
+    <a class="active">Quản lí nhà sản xuất</a>
+    <a href="{% block listmanu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Danh sách nhà sản xuất</i></a>
+    <a href="{% block backfaci %}{% endblock %}"><i class="fa fa-arrow-left">&emsp;Quay lại mục quản lí</i></a>
+{% endblock %}

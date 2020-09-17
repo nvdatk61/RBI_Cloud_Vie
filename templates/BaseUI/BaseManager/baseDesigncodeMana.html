@@ -1,0 +1,11 @@
+{% extends 'BaseUI/BaseManager/baseManager.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}Code thiết kế{% endblock %}
+
+{% block vertical %}
+    <a class="active">Quản lí Code thiết kế</a>
+    <a href="{% block listdesign %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Danh sách Code thiết kế</i></a>
+    <a href="{% block backfaci %}{% endblock %}"><i class="fa fa-arrow-left">&emsp;Quay lại mục quản lý</i></a>
+{% endblock %}

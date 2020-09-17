@@ -1,0 +1,9 @@
+{% extends 'BaseUI/BaseFacility/baseBusiness.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}Bản ghi{% endblock %}
+{% block vertical %}
+    <a class="activeLink">BIỂU ĐỒ DỮ LIỆU</a>
+    <a href="{% block backComp %}{% endblock %}" ><i class="fa fa-arrow-left">&emsp;Quay lại</i></a>
+{% endblock %}

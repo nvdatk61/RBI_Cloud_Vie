@@ -1,0 +1,338 @@
+{% extends 'BaseUI/BaseFacility/baseRiskSummary.html' %}
+
+{% load staticfiles %}
+<!----------------BLOCK MENU--------------->
+{% block pof %}{% url 'damgeFactor' proposalID %}{% endblock %}
+{% block fcof%}{% url 'fullyConsequence' proposalID %}{% endblock %}
+{% block acof%}{% url 'areaBasedCoF' proposalID %}{% endblock %}
+{% block matrix %}{% url 'riskMatrix' proposalID %}{% endblock %}
+{% block chart %}{% url 'riskChart' proposalID %}{% endblock %}
+{% block corri %}{% url 'corrision' proposalID %}{% endblock %}
+{% block backProposal %}{% url 'damgeFactor' proposalID%}{% endblock %}
+<!---------------END BLOCK--------------->
+
+{% block data-content %}
+    <style>
+      .card {
+          background: #ffffff;
+      }
+
+    .scheduler-border {
+        border: none;
+        padding: 0 1.4em 1.4em 1.4em;
+        margin: 0 0 1.5em 0;
+        font-size: 1.1em ;
+        text-align: left ;
+        text-decoration-color: #444444;
+    }
+    .row{
+        text-align: left;
+    }
+    </style>
+    <!--suppress ALL -->
+    <form id="inspectionplan" method="post" class="card" >
+    {% csrf_token %}
+       <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Governing Thinning Damage Factor</b></caption></div>
+        {% for a in data %}x
+                <!-----------BlOCK FULLY QUANTITIVE FCOF AND CATEGORY--------->
+        <fieldset class="scheduler-border">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Assessment General Information</b></legend>
+                    <div class="row">
+                        <div class="col-md-4">Equipment Number</div>
+                        <div class="col-md-6"><form><input  type="text" size="70px" value="EQUP1"></form></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Component Number</div>
+                        <div class="col-md-6"><form><input  type="text" size="70px" value="COM1"> </form></div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-4">Assessment Name</div>
+                        <div class="col-md-6"><form><input  type="text" size="70px" value="New Proposal"> </form></div>
+                    </div>
+                </fieldset>
+
+                <!-----------BLOCK INFLUENCING INPUT------------>
+            <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Assessment Data Input</b></legend>
+
+           <details >
+               <summary style="text-align: center"></summary>
+                    <div class="row">
+                        <div class="col-md-3">Assessment Date</div>
+                        <div class="col-md-3"><form><input type="text" name="assessmentdate"  id="assessmentdate" placeholder="yyyy-mm-dd" value="{{ a.assessmentDate }}">
+                        <script>
+                            $( "#assessmentdate" ).datepicker({
+                            dateFormat: 'yy-mm-dd'
+                        });
+                        $("#assessmentdate").datepicker('setDate', new Date());
+                        </script></form>
+                        </div>
+                        <div class="col-md-3">Commission Date</div>
+                        <div class="col-md-3"><form><input  type="text" value=""> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Risk Analysis Period</div>
+                        <div class="col-md-3"><form><input  type="text" value="36"> </form></div>
+                        <div class="col-md-3">Last Inspection Date</div>
+                        <div class="col-md-3"><form><input  type="text" name="lastInspection"  id="lastInspection" placeholder="yyyy-mm-dd" value="{{a.LastInspectionDate}}">
+                        <script>
+                            $( "#lastInspection" ).datepicker({
+                            dateFormat: 'yy-mm-dd'
+                        });
+                        $("#lastInspection").datepicker('setDate', new Date());
+                        </script></form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Number of A Effectiveness Inspections</div>
+                        <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
+                        <div class="col-md-3">Number of B Effectiveness Inspections</div>
+                        <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Number of C Effectiveness Inspections</div>
+                        <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
+                        <div class="col-md-3">Number of D Effectiveness Inspections</div>
+                        <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Nominal Thickness</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{a.NominalThickness }}"> </form></div>
+                        <div class="col-md-3">Minimun Measured Thickness</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.CurentThickness }}"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Current Corosion Rate</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.CorrosionRate }}"> </form></div>
+                        <div class="col-md-3">Minimun Required Thickness</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{a.MinimunRequiredThickness  }}"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">InternalCladding</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.InternalCladding }}"> </form></div>
+                        <div class="col-md-3">Cladding Corosion Rate</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.CladdingCorrosionRate }}"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Design Pressure</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.DesignPressure }}"> </form></div>
+                        <div class="col-md-3">Diameter</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.Diameter }}"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Chemical Injection</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.ChemicalInjection }}"> </form></div>
+                        <div class="col-md-3">Highly Effective Inspection for Chemical Injection </div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.HighlyEffectiveInspectionforChemicalInjection }}"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Dead legs</div>
+                        <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
+                        <div class="col-md-3">Highly Effective Inspection for Dead legs</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.HighEffectiveDeadlegs }}"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Level of Confidence in Cororion Sources</div>
+                        <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
+                        <div class="col-md-3">Weld Joint Efficiency</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.WeltJointEfficiency }}"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">Yield Strength</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.YeildStrength }}"> </form></div>
+                        <div class="col-md-3">Tensile Strength</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.TensileStrength }}"> </form></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Allowable Stress Assessment</div>
+                        <div class="col-md-3"><form><input  type="text" value="{{ a.AllowableStress }}"> </form></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Online Monitoring</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.Onlinemonitoring }}"> </form></div>
+                    </div>
+            </details>
+            </fieldset>
+               {#      Khối Intermediate Results       #}
+
+            <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Intermediate Results </b></legend>
+                <details>
+                    <summary style="text-align: center"></summary>
+                    <div class="row">
+                        <div class="col-md-4">Base Metal Thickness</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="12"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Shape</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="Cylindrical"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Shape Factor</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="2"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Flow Stress</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="9.625"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Srength Ratio- Internal Pressure/Hoop Stress</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value=""> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Srength Ratio- Minimum Structural Thickness Governs</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="2.17052"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Damage Factor Adjustment for Injection Points</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="1"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Damage Factor Adjustment for Dead Legs</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="1"> </form></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Damage Factor Adjustment for Online Monitoring</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="10"> </form></div>
+                    </div>
+                    </details>
+            </fieldset>
+{#            Khối Structral Realiability Theory Parameters#}
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border"><b>Structral Realiability Theory Parameters </b></legend>
+                <details>
+                    <summary style="text-align: center"> </summary>
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-1"><form><input  type="text" size="51px" style="background-color: #0C5BED" value="0 months                        36 months                         72 months"> </form></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Prior Probability of Corrosion Rate Data Confidence</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
+                            <div class="col-md-2"><form><input  type="text"size="9px"value="0.2"> </form></div>
+                            <div class="col-md-2"><form><input  type="text"size="9px" value="0.1"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Inspection Effectiveness Factors</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.2"> </form></div>
+                            <div class="col-md-2"><form><input  type="text"size="9px"  value="0.1"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Posterior Probability</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.2"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.1"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">The Beta Reliability Indices at 0AP</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-5.41935"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-5.70238"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-6.28780"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">The Beta Reliability Indices at 1AP</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-4.37833"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.94713"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.73879"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">The Beta Reliability Indices at 2AP</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.94866"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.73954"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.63689"> </form></div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-1"><form><input  type="text" style="background-color: #0C5BED" size="51px"  value="0 months                        36 months                         72 months"> </form></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Years in Service, Age</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.02"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="3.02"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="6.02"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Years Since Last Inspection, age, tk</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.02"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="3.02"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="6.02"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Remaining Life of Cladding Material, Age_rc</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.32"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Wall Loss Fraction With Cladding Material</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Wall Loss Fraction With Cladding Material(Age_tk< Age_rc) </div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.03240"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Wall Loss Fraction With Cladding Material(Age_tk>= Age_rc) </div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="7.35771"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="14.66206"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Wall Loss Fraction</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.03240"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="7.35771"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="14.66206"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Base Damage Factor</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="6410.25626"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="6410.11961"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="6409.87347"> </form></div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-6">Thinning Damage Factor</div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="641.02562"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="641.01196"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="640.98734"> </form></div>
+                        </div>
+                </details>
+            </fieldset>
+        </fieldset>
+     {% endfor %}
+    </form>
+{% endblock %}

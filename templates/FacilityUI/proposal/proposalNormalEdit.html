@@ -1,0 +1,1939 @@
+{% extends 'BaseUI/BaseFacility/baseProposal.html' %}
+
+{% load staticfiles %}
+
+<!----------BLOCK MENU----------->
+{% block listProposal %}{% url 'proposalDisplay' componentID %}{% endblock %}
+{% block newProposal %}{% url 'tankNew' componentID %}{% endblock %}
+{% block backComp %}{% url 'componentDisplay' equipmentID %}{% endblock %}
+<!----------END BLOCK------------>
+
+{% block data-content %}
+    <form id="normal" method="post" onsubmit="ShowLoading();">
+    {% csrf_token %}
+        <div class="input-data">
+            <div class="tab">
+{#                <-------TAB1----->#}
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Đánh giá</b></legend>
+                    <div class="row">
+                        <div class="col-md-4">Tên mục đánh giá:<span style="color: red">*</span></div>
+                        <div class="col-md-8"><input type="text" class="form-control" name="AssessmentName" placeholder="Viết tên đánh giá đầu vào!" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Ngày đánh giá:<span style="color: red">*</span></div>
+                        <div class="col-md-8"><input type="text" name="assessmentdate" class="form-control" id="assessmentdate" placeholder="yyyy-mm-dd" required></div>
+                        <script>
+                            $( "#assessmentdate" ).datepicker({
+                            dateFormat: 'yy-mm-dd'
+                        });
+                        $("#assessmentdate").datepicker('setDate', new Date());
+                        </script>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Phương pháp đánh giá:<span style="color: red">*</span></div>
+                        <div class="col-md-8"><select class="form-control" name="AssessmentMethod">
+                            <option> POF bán định lượng và  COF bán định lượng</option>
+                            <option> POF bán định lượng và  COF định lượng</option>
+                            <option> POF định lượng và  COF bán định lượng</option>
+                            <option> POF định lượng và  COF định lượng</option>
+                         </select> </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Thời gian phân tích rủi ro (tháng):</div>
+                        <div class="col-md-8"><input type="text" class="form-control" name="RiskAnalysisPeriod" value="36" readonly></div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="tab">
+{#                <-------TAB2------>#}
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Thiết bị </b></legend>
+{#                    <------1------>#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính chung</b></legend>
+                        <div class="row">
+                            <div class="col-md-5">Xử lí nhiệt sau hàn</div>
+                            <div class="col-md-1"><input type="checkbox" name="PWHT" id="PWHT" /></div>
+                            <script>
+                                if({{ rwEq.pwht }})
+                                    $("#PWHT").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Theo dõi trực tuyến</div>
+                            <div class="col-md-6"><select class="form-control" id="OnlineMonitoring" name="OnlineMonitoring">
+                                <option value="" disabled selected>Chọn phương pháp theo dõi trực tuyến..</option>
+                                <option>Ăn mòn amin với tốc độ cao - Corrosion coupons</option>
+                                <option>Ăn mòn amin với tốc độ cao - Đầu rò điện trở</option>
+                                <option>Ăn mòn amin với tốc độ cao - Thay đổi quy trình chính</option>
+                                <option>Ăn mòn amin với tốc độ thấp - Corrosion coupons</option>
+                                <option>Ăn mòn amin với tốc độ thấp - Đầu rò điện trở</option>
+                                <option>Ăn mòn amin với tốc độ thấp - Thay đổi quy trình chính</option>
+                                <option>Ăn mòn HCL - Corrosion coupons</option>
+                                <option>Ăn mòn HCL - Thay đổi quy trình chính</option>
+                                <option>Ăn mòn HCL - Thay đổi quy trình chính</option>
+                                <option>Ăn mòn HCL -  Thay đổi quy trình chính & Đầu dò điện trở</option>
+                                <option>Ăn mòn HF - Corrosion coupons</option>
+                                <option>Ăn mòn HF - Đầu dò điện trở</option>
+                                <option>Ăn mòn HF - Thay đổi quá trình chính</option>
+                                <option>Ăn mòn H2S / H2 ở nhiệt độ cao - Corrosion coupons</option>
+                                <option>Ăn mòn H2S / H2 ở nhiệt độ cao - Đầu dò điện trở</option>
+                                <option>Ăn mòn H2S / H2 ở nhiệt độ cao - Các thông số quy trình chính</option>
+                                <option>Nhiệt độ cao ăn mòn axit sunfuaic / axit naphten - Corrosion coupons</option>
+                                <option>Nhiệt độ cao ăn mòn axit sunfuaic / axit naphten - Đầu dò điện trở</option>
+                                <option>Nhiệt độ cao ăn mòn axit sulfidic / axit naphten - Thay đổi quá trình chính</option>
+                                <option>Không theo dõi trực tuyến</option>
+                                <option>Ăn mòn khác - Corrosion coupons</option>
+                                <option>Ăn mòn khác - Đầu dò điện trở</option>
+                                <option>Ăn mòn khác - Đầu dò hydro</option>
+                                <option>Ăn mòn khác - Thay đổi quá trình chính</option>
+                                <option>Ăn mòn khác - Thay đổi quá trình chính và đầu dò Hydro</option>
+                                <option>Nước chua ăn mòn tốc độ cao - Corrosion coupons</option>
+                                <option>Nước chua ăn mòn tốc độ cao - Đầu dò điện trở</option>
+                                <option>Nước chua ăn mòn tốc độ cao - Thay đổi quá trình chính</option>
+                                <option>Nước chua ăn mòn tốc độ thấp - Corrosion coupons</option>
+                                <option>Nước chua ăn mòn tốc độ thấp - Đầu dò điện trở</option>
+                                <option>Nước chua ăn mòn tốc độ thấp - Thay đổi quá trình chính</option>
+                                <option>Ăn mòn axit sulfuric (H2S / H2) tốc độ cao - Phiếu ăn mòn</option>
+                                <option>Ăn mòn axit sulfuric (H2S / H2) tốc độ cao - Đầu dò điện trở</option>
+                                <option>Ăn mòn axit sulfuric (H2S / H2) tốc độ cao - Các thông số chính của quá trình</option>
+                                <option>Tốc độ cao ăn mòn axit sulfuric (H2S / H2) - Các thông số chính của quá trình và đầu dò điện trở</option>
+                                <option>Ăn mòn axit sulfuric (H2S / H2) tốc độ thấp - Corrosion coupons</option>
+                                <option>Ăn mòn axit sulfuric (H2S / H2) tốc độ thấp - Đầu dò điện trở</option>
+                                <option>Ăn mòn axit sulfuric (H2S / H2) tốc độ thấp - Các thông số chính của quá trình</option>
+                            </select></div>
+                            <script>
+                                {% if rwEq.onlinemonitoring %}
+                                    $("#OnlineMonitoring").val("{{ rwEq.onlinemonitoring }}");
+                                {% else %}
+                                    $("#OnlineMonitoring").prop("selectedIndex", 0);
+                                {% endif %}
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Thể tích thiết bị, m<sup>3</sup>:<span style="color: red">*</span></div>
+                            <div class="col-md-6"><input type="number" min="0" max="10000000" step="0.01" name="EquipmentVolume" class="form-control" value="0" placeholder="Input equipment volume here!" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">Kiểm soát hành chính đối với Quản lý khi gặp sự cố</div>
+                            <div class="col-md-1"><input type="checkbox" name="adminControlUpset" /></div>
+                        </div>
+                    </fieldset>
+{#                    <----------2--------->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng tại các vị trí suy giảm chiều dày</b></legend>
+                        <div class="row">
+                            <div class="col-md-5">Theo dõi trực tuyến lớp sơn lót</div>
+                            <div class="col-md-1"><input  type="checkbox" id="LOM" name="LOM" /></div>
+                            <div class="col-md-5">Contains Deadlegs</div>
+                            <div class="col-md-1"><input  type="checkbox" name="ContainsDeadlegs" id="ContainsDeadlegs"/></div>
+                            <script>
+                                if({{ rwEq.lineronlinemonitoring }})
+                                    $("#LOM").attr('checked', 'checked');
+                                if({{ rwEq.containsdeadlegs }})
+                                    $("#ContainsDeadlegs").attr('checked', 'checked');
+                            </script>
+                        </div>
+                    </fieldset>
+{#                    <----------3-------->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tác nhân hư hỏng bên ngoài</b></legend>
+                        <div class="row">
+                            <div class="col-md-5" style="color: red">Vật liệu phơi nhiễm bên ngoài với tác nhân  chứa Clo dạng lỏng, sương hoặc rắn</div>
+                            <div class="col-md-1"><input type="checkbox" name="MEFMSCC" id="MEFMSCC"/></div>
+                            <div class="col-md-5">Tiếp xúc với đất hoặc nước</div>
+                            <div class="col-md-1"><input type="checkbox"  name="InterfaceSoilWater" id="InterfaceSoilWater" /></div>
+                            <script>
+                                if({{ rwStream.materialexposedtoclint }})
+                                    $("#MEFMSCC").attr('checked', 'checked');
+                                if({{ rwEq.interfacesoilwater }})
+                                    $("#interfaceSoilWater").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Môi trường bên ngoài</div>
+                            <div class="col-md-6"><select class="form-control" name="ExternalEnvironment">
+                                <option value="" disabled selected>Chọn môi trường bên ngoài..</option>
+                                <option>Khô</option>
+                                <option>Nước</option>
+                                <option>Khí hậu khắc nghiệt</option>
+                                <option>Khí hậu ôn hòa</option>
+                            </select></div>
+                            <script>
+                                {% if rwEq.externalenvironment %}
+                                    $("#ExternalEnvironment").val("{{ rwEq.externalenvironment }}");
+                                {% else %}
+                                    $("#ExternalEnvironment").prop("selectedIndex", 0);
+                                {% endif %}
+                            </script>
+                        </div>
+                    </fieldset>
+{#                    <---------------4--------------------->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng của ăn mòn nứt do ứng suất</b></legend>
+                        <div class="row">
+                            <div class="col-md-5">Biện pháp bảo vệ trong thời gian thiết bị ngừng hoạt động</div>
+                            <div class="col-md-1"><input  type="checkbox" name="Downtime" id="Downtime" /></div>
+                            <div class="col-md-5">Dòng hơi ra trước khi rửa nước</div>
+                            <div class="col-md-1"><input type="checkbox" name="SteamedOut" id="SteamedOut" /></div>
+                            <script>
+                                if({{ rwEq.downtimeprotectionused }})
+                                    $("#Downtime").attr('checked', 'checked');
+                                if({{ rwEq.steamoutwaterflush }})
+                                    $("#SteamedOut").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">Vết nhiệt</div>
+                            <div class="col-md-1"><input type="checkbox" name="HeatTraced" id="HeatTraced" /></div>
+                            <script>
+                            if({{ rwEq.heattraced }})
+                                $("#HeatTraced").attr('checked', 'checked');
+                        </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">Highly Effective Inspection for Deadlegs</div>
+                            <div class="col-md-1"><input type="checkbox"  name="Highly" id="Highly"/></div>
+                            <div class="col-md-5">Chu kì vận hành</div>
+                            <div class="col-md-1"><input type="checkbox" name="CylicOper" id="CylicOper" /></div>
+                            <script>
+                                if({{ rwEq.highlydeadleginsp }})
+                                    $("#Highly").attr('checked','checked');
+                                if({{ rwEq.cyclicoperation }})
+                                    $("#CylicOper").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">Sự có mặt của Lưu huỳnh, Độ ẩm và Oxy trong quá trình vận hành</div>
+                            <div class="col-md-1"><input type="checkbox" name="PresenceofSulphides" id="PresenceofSulphides"/></div>
+                            <div class="col-md-5">Sự có mặt của Lưu huỳnh, Độ ẩm và Oxy trong quá trình ngừng hoạt động</div>
+                            <div class="col-md-1"><input type="checkbox" name="PresenceofSulphidesShutdow" id="PresenceofSulphidesShutdow"/></div>
+                            <script>
+                                if({{ rwEq.presencesulphideso2shutdown }})
+                                    $("#PresenceofSulphidesShutdow").attr('checked', 'checked');
+                                if({{ rwEq.presencesulphideso2 }})
+                                    $("#PresenceofSulphides").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Lịch sử nhiệt</div>
+                            <div class="col-md-6"><select  class="form-control" name="ThermalHistory" id="ThermalHistory">
+                                <option value="" selected disabled>Chọn lịch sử nhiệt..</option>
+                                <option>Không có</option>
+                                <option>Giải pháp ủ</option>
+                                <option>Ổn định sau khi hàn</option>
+                                <option>Ổn định trước khi hàn</option>
+                            </select></div>
+                            <script>
+                                {% if rwEq.thermalhistory %}
+                                    $("#ThermalHistory").val("{{ rwEq.thermalhistory }}");
+                                {% else %}
+                                    $("#ThermalHistory").prop("selectedIndex", 0);
+                                {% endif %}
+                            </script>
+                        </div>
+                    </fieldset>
+{#                    <-------5------>#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng tại các vị trí suy giảm chiều dày</b></legend>
+                        <div class="row">
+                            <div class="col-md-5">Kiểm soát áp suất bởi Quản trị viên</div>
+                            <div class="col-md-1"><input type="checkbox" name="PressurisationControlled" id="PressurisationControlled"/></div>
+                            <script>
+                                if({{ rwEq.pressurisationcontrolled }})
+                                    $("#PressurisationControlled").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Nhiệt độ yêu cầu tối thiểu trước khi nâng áp suất, &deg;C:<span style="color: red">*</span></div>
+                            <div class="col-md-6"><input type="number"step="0.01" class="form-control" name="Min" value="{{ rwEq.minreqtemperaturepressurisation }}" max="100000" placeholder="Input min req temp here!" required/></div>
+                        </div>
+                    </fieldset>
+{#                    <div class="row">#}
+{#                        <div class="col-md-5">Equipment is Operating for Many Years at Lowest Expected Temperature</div>#}
+{#                        <div class="col-md-1"><input type="checkbox" name="EquOper" /></div>#}
+{#                    </div>#}
+
+{#                    <div class="row">#}
+{#                        <div class="col-md-5" style="color: red">Material is Exposed to Fluids, Mists or Solids Containing Chlorine Externally</div>#}
+{#                        <div class="col-md-1"><input type="checkbox" name="MFTF"/></div>#}
+{#                    </div>#}
+
+{#                    <br>#}
+                </fieldset>
+            </div>
+
+            <div class="tab">
+{#                <-------TAB3----------->#}
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Thành phần</b></legend>
+{#                    <-------3.1----->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính chung</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">Đường kính danh định, in:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="100000" value="{{ rwComp.nominaldiameter }}" name="NominalDiameter" placeholder="Normal diameter!" required/></div>
+                            <div class="col-md-3">Chiều dày danh định, mm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input onkeyup="NominalThick()" type="number" class="form-control" step="0.01" min="0" max="100000" name="NominalThickness" id="NominalThickness" value="{{ rwComp.nominalthickness }}" placeholder="Normal thickness" required/></div>
+                            <script>
+                                function Thickness(){
+                                    var min = document.getElementById("CladdingThickness").value;
+                                    var max= document.getElementById("NominalThickness").value;
+                                    if(min>max) {
+                                        alert("Cladding thickness must be lesser than nominal thickness. " + min + " > " + max );
+                                    }
+                                }
+                                function NominalThick(){
+                                    var min = parseInt(document.getElementById("CladdingThickness").value);
+                                    var max = parseInt(document.getElementById("NominalThickness").value);
+                                    if(max<min) {
+                                        alert("Nominal Thickness must be greater than or equal to the cladding thickness."  + min + " > " + max );
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Chiều dày hiện tại, mm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="100000" value="{{ rwComp.currentthickness }}" placeholder="Current thickness" name="CurrentThickness" required/></div>
+                            <div class="col-md-3">Chiều dày yêu cầu tối thiểu, mm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="100000" value="{{ rwComp.minreqthickness }}" placeholder="Req thickness" name="tmin" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Hiệu quả mối hàn</div>
+                            <div class="col-md-3"><input id="maxN" onkeyup="MaximumN()" type="number" maxlength="10" class="form-control" step="0.01" min="0" value="{{ rwComp.weldjointefficiency }}" max="1" placeholder="WeldJointEff" name="WeldJointEff" required/></div>
+                            <div class="col-md-3">Tốc độ ăn mòn hiện hữu, mm/yr:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" value="{{ rwComp.currentcorrosionrate }}" max="1000" placeholder="Current rate" name="CurrentRate" required/></div>
+                        </div>
+                        <script>
+                            function MaximumN(){
+                                var max = document.getElementById("maxN").value;
+                                if(max>1.00) {
+                                    alert("the value must be equal or lesser than 1");
+                                }
+                            }
+                        </script>
+                        <div class="row">
+                            <div class="col-md-3">Chiều dày cấu trúc, mm:</div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" value="{{ rwComp.structuralthickness }}" max="1000" placeholder="StructuralThickness" name="StructuralThickness" required/></div>
+                            <div class="col-md-3">Thể tích thiết bị, m<sup>3</sup>:</div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" value="{{ rwComp.componentvolume }}" max="1000" placeholder="CompVolume" name="CompVolume" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">Ứng suất cho phép tại nhiệt độ đánh giá, MPa:</div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" value="{{ rwComp.allowablestress }}" max="1000" placeholder="AllowableStress" name="AllowableStress" required/> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">Chiều dày cấu trúc tối thiểu</div>
+                            <div class="col-md-1"><input type="checkbox" name="MinStructural" id="MinStructural"></div>
+                            <div class="col-md-5">Sự có mặt của vết nứt</div>
+                            <div class="col-md-1"><input  type="checkbox" name="PresenceCracks" id="PresenceCracks"/></div>
+                            <script>
+                                if({{ rwComp.minstructuralthickness }})
+                                    $("#MinStructural").attr('checked', 'checked');
+                                if({{ rwComp.crackspresent }})
+                                    $("#PresenceCracks").attr('checked','checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Mức độ tin cậy trong việc xác định tốc độ ăn mòn</div>
+                            <div class="col-md-6"><select class="form-control" name="ConfidenceCR" id="ConfidenceCR">
+                                <option value="" selected disabled>Chọn mức độ tin cậy..</option>
+                                <option>Thấp</option>
+                                <option>Trung bình</option>
+                                <option>Cao</option>
+                            </select> </div>
+                            <script>
+                                {% if rwComp.confidencecorrosionrate %}
+                                    $("#ConfidenceCR").val("{{ rwComp.confidencecorrosionrate }}");
+                                {% else %}
+                                    $("#ConfidenceCR").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng tại các vị trí suy giảm chiều dày</b></legend>
+                        <div class="row">
+                            <div class="col-md-5">Kiểm định hiệu năng cao đối với Ăn mòn tại điểm phối trộn</div>
+                            <div class="col-md-1"><input type="checkbox" id="HFICI" name="HFICI"/></div>
+                            <div class="col-md-5">Bơm hóa chất</div>
+                            <div class="col-md-1"><input type="checkbox" id="ChemicalInjection" name="ChemicalInjection"></div>
+                            <script>
+                                if({{ rwComp.highlyinjectioninsp }})
+                                    $("#HFICI").attr('checked', 'checked');
+                                if({{ rwComp.chemicalinjection }})
+                                    $("#chemicalInjection").attr('checked', 'checked');
+                            </script>
+                        </div>
+                    </fieldset>
+{#                    <--------3.2------->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng do tác nhân bên ngoài</b></legend>
+                        <div class="row">
+                            <div class="col-md-6">Độ phức tạp của phần xâm nhập lồi:</div>
+                            <div class="col-md-6"><select class="form-control" id="ComplexityProtrusions" name="ComplexityProtrusions">
+                               <option value="" selected disabled>Chọn độ phức tạp của phần xâm nhập nồi..</option>
+                                <option>Trên mức trung bình</option>
+                                <option>Trung bình</option>
+                                <option>Dưới trung bình</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.complexityprotrusion %}
+                                    $("#ComplexityProtrusions").val("{{ rwComp.complexityprotrusion }}");
+                                {% else %}
+                                    $("#ComplexityProtrusions").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+                    </fieldset>
+{#                    <--------3.3------->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính của tham số hư hỏng do nứt do ứng suất</b></legend>
+                        <div class="row">
+                            <div class="col-md-6">Độ cứng Brinnel cực đại của mối hàn:</div>
+                            <div class="col-md-6"><select class="form-control" name="MBHW" id="MBHW">
+                                <option value="" selected disabled>Chọn độ cứng của mối hàn..</option>
+                                <option>Dưới 200</option>
+                                <option>Giữa 200 và 237</option>
+                                <option>Lớn hơn 237</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.brinnelhardness %}
+                                    $("#MBHW").val("{{ rwComp.brinnelhardness }}");
+                                {% else %}
+                                    $("#MBHW").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+                    </fieldset>
+{#                    <-------3.4------->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính của tham số hư hỏng do giòn hydro ở nhiệt độ cao</b></legend>
+                        <div class="row">
+                            <div class="col-md-5">Hư hỏng do giòn hydro ở nhiệt độ cao quan sát được</div>
+                            <div class="col-md-1"><input type="checkbox" name="HTHADamage" id="HTHADamage"></div>
+                        </div>
+                        <script>
+                            if({{ rwComp.hthadamage }})
+                                $("#HTHADamage").attr('checked','checked');
+                        </script>
+                    </fieldset>
+{#                    <-------------3.5------------------->#}
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính của tham số hư hỏng do nứt gãy</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">Hệ số delta của giá trị nhiệt độ xuất hiện nứt gãy:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" value="{{ rwComp.deltafatt }}" max="100000" placeholder="Delta FATT" name="DeltaFATT" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">Thiết bị được chế tạo từ thép P-1 và P-3 với nhiệt độ thiết kế ≤ 343 °C (650° F).</div>
+                            <div class="col-md-2"><input type="checkbox" name="P1AndP3" id="P1AndP3"></div>
+                            <script>
+                                if({{ rwComp.fabricatedsteel }})
+                                    $("#P1AndP3").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">Thiết bị thỏa mãn các yêu cầu theo đúng tiêu chuẩn thiết kế.</div>
+                            <div class="col-md-2"><input type="checkbox" name="EquipmentRequirements" id="EquipmentRequirements"></div>
+                            <script>
+                                if({{ rwComp.equipmentsatisfied }})
+                                    $("#EquipmentRequirements").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">Các điều kiện vận hành danh định có giá trị tương tự với điều kiện vận hành theo thiết kế trong một khoảng thời gian nhất định, các điều kiện khắc nghiệt hơn
+                                (như tại nhiệt độ thấp hơn hoặc ứng suất cao hơn) không có khả năng xảy ra trong tương lai.</div>
+                            <div class="col-md-2"><input type="checkbox" id="OperatingConditions" name="OperatingConditions"></div>
+                            <script>
+                                if({{ rwComp.nominaloperatingconditions }})
+                                    $("#OperatingConditions").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">Nhiệt độ thấp nhất và áp suất làm việc cho phép lớn nhất ≥ -29°C (-20°F.</div>
+                            <div class="col-md-2"><input type="checkbox" id="CETtheMAWP" name="CETtheMAWP"></div>
+                            <script>
+                                if({{ rwComp.cetgreaterorequal }})
+                                    $("#CETtheMAWP").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">Các hoạt động gây rung, mỏi, tuần hoàn đều không được tính trong
+                                yêu cầu thiết kế theo tiêu chuẩn thiết kế.</div>
+                            <div class="col-md-2"><input type="checkbox" name="CyclicService" id="CyclicService"></div>
+                            <script>
+                                if({{ rwComp.cyclicservice }})
+                                    $("#CyclicService").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">Thiết bị hoặc nhóm thiết bị không bị ảnh hưởng bởi sốc lạnh.</div>
+                            <div class="col-md-2"><input type="checkbox" name="EquipmentorCircuit" id="EquipmentorCircuit"></div>
+                            <script>
+                                if({{ rwComp.equipmentcircuitshock }})
+                                    $("#EquipmentorCircuit").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Chiều dày vết nứt gãy, mm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" value="{{ rwComp.brittlefracturethickness }}" max="10000" min="0" name="BFGT" placeholder="Brittle thickness" required/></div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính của tham số hư hỏng do mỏi</b></legend>
+{#                        <div class="row">#}
+{#                            <div class="col-md-5">Damage Found During Inspection</div>#}
+{#                            <div class="col-md-1"><input type="checkbox" list="DFDI" name="DFDI"></div>#}
+{#                        </div>#}
+                        <div class="row">
+    {#                        <div class="col-md-5">Presence of Injection Mix Point</div>#}
+    {#                        <div class="col-md-1"><input type="checkbox" name="Mixpoint"/></div>#}
+                            <div class="col-md-6" style="color: red">Sự rung nhìn thấy được hoặc nghe thấy được</div>
+                            <div class="col-md-6"><input  type="checkbox" id="VASD" name="VASD"/></div>
+                            <script>
+                                if({{ rwComp.shakingdetected }})
+                                    $("#VASD").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6" style="color: red">Tải tuần hoàn trong phạm vi 15,25m:</div>
+                            <div class="col-md-6"><select class="form-control" id="CLC" name="CLC">
+                                <option value="" selected disabled>Chọn tải theo chu kỳ..</option>
+                                <option>Không có</option>
+                                <option>PRV chatter</option>
+                                <option>Reciprocating machinery</option>
+                                <option>Van giảm áp suất cao</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.cyclicloadingwitin15_25m %}
+                                    $("#CLC").val("{{ rwComp.cyclicloadingwitin15_25m }}");
+                                {% else %}
+                                    $("#CLC").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Đường kính nhánh:</div>
+                            <div class="col-md-6"><select class="form-control" id="BranchDiameter" name="BranchDiameter">
+                                <option value="" selected disabled>Chọn đường kính nhánh..</option>
+                                <option>Bất kỳ nhánh nào nhỏ hơn hoặc bằng 2 "OD danh định</option>
+                                <option>Tất cả các nhánh lớn hơn 2 "OD danh định</option>
+                            </select></div>
+                            <script>
+                                if (({{ rwComp.branchdiameter }}) == "Any branch less than or equal to 2&quot; Nominal OD") {
+                                    $("#BranchDiameter").prop("selectedIndex", 1);
+                                }
+                                else if (({{ rwComp.branchdiameter }}) == "All branches greater than 2&quot; Nominal OD"){
+                                    $("#BranchDiameter").prop("selectedIndex",2);
+                                }
+                                else{
+                                    $("#BranchDiameter").prop("selectedIndex",0);
+                                }
+                            </script>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Dạng mối nối hoặc nhánh:</div>
+                            <div class="col-md-6"><select class="form-control" id="JTB" name="JTB" >
+                                <option value="" selected disabled>Chọn loại mối nối..</option>
+                                <option>Không có</option>
+                                <option>Piping tee weldolets</option>
+                                <option>Saddle in fittings</option>
+                                <option>Sweepolets</option>
+                                <option>Threaded, welded socket or upper saddle</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.branchjointtype %}
+                                    $("#JTB").val("{{ rwComp.branchjointtype }}");
+                                {% else %}
+                                    $("#JTB").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Số lượng các phụ kiện đường ống:</div>
+                            <div class="col-md-6"><select class="form-control" id="NFP" name="NFP">
+                                <option value="" disabled selected>Chọn số lượng đường ống..</option>
+                                <option>Nhiều hơn 10</option>
+                                <option>6 đến 10</option>
+                                <option>Lên đến 5</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.numberpipefittings %}
+                                    $("#NFP").val("{{ rwComp.numberpipefittings }}");
+                                {% else %}
+                                    $("#NFP").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Điều kiện đường ống:</div>
+                            <div class="col-md-6"><select class="form-control" id="PipeCondition" name="PipeCondition">
+                               <option value="" selected disabled>Chọn điệu kiện đường ống..</option>
+                                <option>Tấm nối bị hỏng hoặc tấm nối hàn trực tiếp vào đường ống</option>
+                                <option>Điều kiện tốt</option>
+                                <option>Thiếu hoặc làm hỏng bệ đỡ, bệ đỡ không thích hợp</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.pipecondition %}
+                                    $("#PipeCondition").val("{{ rwComp.pipecondition }}");
+                                {% else %}
+                                    $("#PipeCondition").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6" style="color: red">Các hư hỏng đã xảy ra trước đó:</div>
+                            <div class="col-md-6"><select class="form-control" id="PreviousFailures" name="PreviousFailures">
+                                <option value="" selected disabled>Chọn các hư hỏng đã xảy ra trước đó..</option>
+                                <option>Lớn hơn 1</option>
+                                <option>1</option>
+                                <option>Không có</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.previousfailures %}
+                                    $("#PreviousFailures").val("{{ rwComp.previousfailures }}");
+                                {% else %}
+                                    $("#PreviousFailures").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Số lần rung của đường ống:</div>
+                            <div class="col-md-6"><select class="form-control" name="ASP">
+                                <option value="" selected disabled>Chọn số lượng rung của đường ống..</option>
+                                <option>Yếu</option>
+                                <option>Trung bình</option>
+                                <option>Mạnh</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.shakingamount %}
+                                    $("#ASP").val("{{ rwComp.shakingamount }}");
+                                {% else %}
+                                    $("#ASP").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+
+                       <div class="row">
+                            <div class="col-md-6">Thời gian rung lũy kế của đường ống:</div>
+                            <div class="col-md-6"><select class="form-control" name="ATSP">
+                                <option value="" disabled selected>Chọn thời gian rung lũy kế của đường ống..</option>
+                                <option>Từ 13 đến 52 tuần</option>
+                                <option>Từ 2 đến 3 tuần</option>
+                                <option>Ít hơn 2 tuần</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.shakingtime %}
+                                    $("#ATSP").val("{{ rwComp.shakingtime }}");
+                                {% else %}
+                                    $("#ATSP").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Hành động khắc phục để giảm sự rung:</div>
+                            <div class="col-md-6"><select class="form-control" name="CAMV">
+                                <option value="" selected disabled>Chọn hành động khắc phục để giảm sự rung..</option>
+                                <option>Phân tích kỹ thuật</option>
+                                <option>Thử nghiệm</option>
+                                <option>Không có</option>
+                            </select></div>
+                            <script>
+                                {% if rwComp.correctiveaction %}
+                                    $("#CAMV").val("{{ rwComp.correctiveaction }}");
+                                {% else %}
+                                    $("#CAMV").prop("selectedIndex",0);
+                                {% endif %}
+                            </script>
+                        </div>
+                    </fieldset>
+                </fieldset>
+            </div>
+{#<---------------------TAB5 ---------------->#}
+            <div class="tab">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Điều kiện vận hành</b></legend>
+                    <div class="row">
+                        <div class="col-md-3" style="color: red">, &deg;C:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input onkeyup="MaximumOT()" type="number" class="form-control" step="0.01" max="100000" value="{{ rwStream.maxoperatingtemperature }}" name="MaxOT" id="MaxOT" placeholder="Maximum operator temp" required/></div>
+                        <div class="col-md-3" style="color: red">Nhiệt độ vận hành tối thiểu, &deg;C:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input onkeyup="MinimumOT()" type="number" value="{{ rwStream.minoperatingtemperature }}" max="100000" class="form-control" step="0.01" name="MinOT" placeholder="Minimum operator temp" id="MinOT" required/></div>
+                        <script>
+                            function MaximumOT(){
+                                var min = parseInt(document.getElementById("MinOT").value);
+                                var max = parseInt(document.getElementById("MaxOT").value);
+                                if(min > max) {
+                                    alert("Minimum value must be lesser than maximum value. " + min + " > " + max );
+                                }
+                            }
+                            function MinimumOT(){
+                                var min = parseInt(document.getElementById("MinOT").value);
+                                var max = parseInt(document.getElementById("MaxOT").value);
+                                if(max<min) {
+                                    alert("Maximum value must be greater than minimum value."  + min + " > " + max );
+                                }
+                            }
+                        </script>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Áp suất vận hành tối đa, psi:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input onkeyup="Maximum()" type="number" step="0.01" class="form-control" max="100000" value="{{ rwStream.maxoperatingpressure }}" name="MaxOP" id="MaxOP" placeholder="Maximum operator pressure" required/></div>
+                        <div class="col-md-3">Áp suất vận hành tối thiểu, psi:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input onkeyup="Minimum()" type="number" value="{{ rwStream.minoperatingpressure }}" max="100000" class="form-control" step="0.01" name="MinOP" placeholder="Minimum operator pressure" id="MinOP" required/></div>
+                        <script>
+                            function Maximum(){
+                                var min = parseInt(document.getElementById("MinOP").value);
+                                var max = parseInt(document.getElementById("MaxOP").value);
+                                if(min > max) {
+                                    alert("Minimum value must be lesser than maximum value. " + min + " > " + max );
+                                }
+                            }
+                            function Minimum(){
+                                var min = parseInt(document.getElementById("MinOP").value);
+                                var max = parseInt(document.getElementById("MaxOP").value);
+                                if(max<min) {
+                                    alert("Maximum value must be greater than minimum value."  + min + " > " + max );
+                                }
+                            }
+                        </script>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3" style="color: red">Áp suất vận hành riêng phần của hydro, psi:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input type="number" class="form-control" step="0.01" max="1000000000" value="{{ rwStream.h2spartialpressure }}" name="OHPP" placeholder="Operator hydrogen pressure" required/></div>
+                        <div class="col-md-3" style="color: red">Nhiệt độ cận giới hạn, &deg;C:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input type="number" max="100000" value="{{ rwStream.criticalexposuretemperature }}" class="form-control" step="0.01" name="CET" placeholder="Critical temp" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Lưu lượng dòng chảy, m<sup>3</sup>/hr:</div>
+                        <div class="col-md-3"><input  type="number" value="0" class="form-control" step="0.01" max="100000" name="FlowRate" placeholder="FlowRate" required/></div>
+                    </div>
+                    <script>
+                        $("#MaxOP").change(function () {
+                            $maxOP = $("#MaxOP").val();
+                            $("#MinOP").prop('max', $maxOP);
+                        })
+                        $("#MinOP").change(function () {
+                            $minOP = $("#MinOP").val();
+                            $("#MaxOP").prop('min', $minOP);
+                        })
+                        $("#MaxOT").change(function () {
+                            $maxOT = $("#MaxOT").val();
+                            $("#MinOT").prop('max', $maxOT);
+                        })
+                        $("#MinOT").change(function () {
+                            $minOT = $("#MinOT").val();
+                            $("#MaxOT").prop('min',$minOT)
+                        })
+                    </script>
+
+                     <fieldset class="scheduler-border" >
+                        <legend class="scheduler-border"><b>Nhiệt độ vận hành trong phạm vi nhiệt độ khác nhau</b></legend>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ -12&deg;C đến -8&deg;C:</div>
+                            <div class="col-md-4"><input type="number" step="0.01" min="0" max="100" value="0" class="form-control" name="Operating1" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ -8&deg;C đến 6&deg;C:</div>
+                            <div class="col-md-4"><input type="number" step="0.01" min="0" max="100" value="0" class="form-control" name="Operating2" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ 6&deg;C đến 32&deg;C:</div>
+                            <div class="col-md-4"><input type="number" step="0.01"  min="0" max="100" value="0" class="form-control" name="Operating3" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ 32&deg;C đến 71&deg;C:</div>
+                            <div class="col-md-4"><input type="number" step="0.01" min="0" max="100" value="0" class="form-control" name="Operating4" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ 71&deg;C đến 107&deg;C:</div>
+                            <div class="col-md-4"><input type="number"  min="0" max="100" class="form-control" value="0" step="0.01" name="Operating5" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ 107&deg;C đến 121&deg;C:</div>
+                            <div class="col-md-4"><input type="number" step="0.01" min="0" max="100" value="0" class="form-control" name="Operating6" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ 121&deg;C đến 135&deg;C:</div>
+                            <div class="col-md-4"><input type="number" step="0.01" min="0" max="100" value="0" class="form-control" name="Operating7" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ 135&deg;C đến 162&deg;C:</div>
+                            <div class="col-md-4"><input type="number"  min="0" max="100" class="form-control" step="0.01" value="0" name="Operating8" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động từ 162&deg;C đến 176&deg;C:</div>
+                            <div class="col-md-4"><input type="number"  min="0" max="100" step="0.01" value="0" class="form-control" name="Operating9" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">% Hoạt động ở 176&deg;C hoặc hơn:</div>
+                            <div class="col-md-4"><input type="number"  min="0" max="100" value="0" step="0.01" class="form-control" name="Operating10" required/></div>
+                        </div>
+                    </fieldset>
+                </fieldset>
+            </div>
+{#            <-----------TAB5----------->#}
+            <div class="tab">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Chất liệu</b></legend>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính chung</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">Chất liệu:<span style="color: red">*</span></div>
+                            <div class="col-md-9"><input type="text" class="form-control" placeholder="Viết chất liệu đầu vào tại đây!" name="Material" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Áp suất thiết kế, MPa:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" value="0" max="100000" name="DesignPressure" placeholder="Design pressure" required/></div>
+                            <div class="col-md-3">Nhiệt độ thiết kế tối thiểu, &deg;C:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" value="0" max="100000" name="MaxDesignTemp" id="MaxDesignTemp" placeholder="Maximum design temp" required/></div>
+                            <script>
+                                $("#MaxDesignTemp").change(function () {
+                                    $maxDesignTemp = $("#MaxDesignTemp").val();
+                                    $("#MinDesignTemp").prop('max', $maxDesignTemp);
+                                })
+                            </script>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-5" style="color: red">Carbon hoặc thép hợp kim thấp</div>
+                            <div class="col-md-1"><input type="checkbox" name="CoLAS"/></div>
+                            <div class="col-md-5" style="color: red">Thép không gỉ</div>
+                            <div class="col-md-1"><input type="checkbox" id="AusteniticSteel" name="AusteniticSteel"/></div>
+                            <script>
+                                if({{ rwMaterial.carbonlowalloy }})
+                                    $("#CoLAS").attr('checked', 'checked');
+                                if({{ rwMaterial.austenitic }})
+                                    $("#AusteniticSteel").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Giới hạn chảy, MPa</div>
+                            <div class="col-md-3"><input type="number" step="0.01" min="0" max="100" value="0" class="form-control" name="YieldStrength" placeholder="Yield Strength" required/></div>
+                            <div class="col-md-3">Độ bền kéo, MPa</div>
+                            <div class="col-md-3"><input type="number" step="0.01" min="0" max="100"  class="form-control" value="{{ rwMaterial.tensilestrength }}" class="form-control" name="TensileStrength" placeholder="Tensile Strength" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Hệ số chi phí vật liệu:<span style="color: red">*</span></div>
+                            <div class="col-md-6"><input type="number" class="form-control" step="0.01" min="0" value="0" max="1000" name="MaterialCostFactor" placeholder="Material cost factor" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Xử lí nhiệt:</div>
+                            <div class="col-md-6"><select class="form-control" name="heatTreatment">
+                                <option value="" selected disabled>Chọn cách xử lí nhiệt..</option>
+                                <option>Ủ</option>
+                                <option>Không có</option>
+                                <option>Nhiệt độ chuẩn</option>
+                                <option>Nhiệt độ nguội</option>
+                                <option>Giảm áp lực</option>
+                                <option>Sub Critical PWHT</option>
+                            </select></div>
+                            <script>
+                                {% if rwMaterial.heattreatment %}
+                                $("#heatTreatment").val("{{ rwMaterial.heattreatment }}");
+                                {% else %}
+                                $("#heatTreatment").prop("selectedIndex", 0);
+                                {% endif %}
+                            </script>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng tại các vị trí suy giảm chiều dày</b></legend>
+                        <div class="row">
+                            <div class="col-md-9">Mức độ ăn mòn cho phép, mm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" step="0.01" class="form-control" value="0" min="0" max="10000" name="CorrosionAllowance" placeholder="Corrosion allow" required/></div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính của tham số hư hỏng do ăn mòn ứng suất</b></legend>
+                        <div class="row">
+                            <div class="col-md-5" style="color: red">Ảnh hưởng bởi nhiệt độ</div>
+                            <div class="col-md-1"><input type="checkbox" name="SusceptibleTemper"/></div>
+                            <div class="col-md-5" style="color: red">Hợp kim niken</div>
+                            <div class="col-md-1"><input type="checkbox" name="NickelAlloy"/></div>
+                            <script>
+                                if({{ rwMaterial.temper }})
+                                    $("#SusceptibleTemper").attr('checked', 'checked');
+                                if({{ rwMaterial.nickelbased }})
+                                    $("#NickelAlloy").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Hàm lượng lưu huỳnh:</div>
+                            <div class="col-md-6"><select class="form-control" name="SulfurContent">
+                                <option value="" selected disabled>Chọn hàm lượng lưu huỳnh..</option>
+                                <option>Cao hơn 0.01%</option>
+                                <option>Nhỏ hơn hoặc bằng 0.01%</option>
+                                <option>Cực thấp < 0.002%</option>
+                            </select></div>
+                            <script>
+                                {% if rwMaterial.sulfurcontent == "High > 0.01%" %}
+                                    $("#SulfurContent").val("High > 0.01%");
+                                {% elif  rwMaterial.sulfurcontent == "Low 0.002 - 0.01%" %}
+                                    $("#SulfurContent").val("Low 0.002 - 0.01%");
+                                {% elif rwMaterial.sulfurcontent == "Ultra Low < 0.002%" %}
+                                    $("#SulfurContent").val("Ultra Low < 0.002%");
+                                {% endif %}
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Material is Susceptible to PTA</div>
+                            <div class="col-md-6"><input type="checkbox" id="MaterialPTA" name="MaterialPTA" /></div>
+                            <script>
+                                if({{ rwMaterial.ispta }})
+                                    $("#MaterialPTA").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Vật liệu có khả năng bị PTA</div>
+                            <div class="col-md-6"><input type="checkbox" id="PTA" name="MaterialPTA" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Mức độ PTA của vật liệu:</div>
+                            <div class="col-md-6"><select class="form-control" id="PTAMaterial" name="PTAMaterialGrade">
+                                <option value="" disabled selected>Chọn mức độ PTA của vật liệu..</option>
+                                <option>Thép không gỉ 321</option>
+                                <option>Thép không gỉ 347, Hợp kim 20, Hợp kim 625, Lớp phủ mối hàn Austenit</option>
+                                <option>Thép không gỉ lớp 300  thường và hợp kim 600 và 800</option>
+                                <option>Thép không gỉ dòng H lớp 300</option>
+                                <option>Thép không gỉ dòng L lớp 300</option>
+                                <option>Không áp dụng</option>
+                            </select></div>
+                            <script>
+                                {% if rwMaterial.ptamaterialcode %}
+                                $("#PTAMaterial").val("{{ rwMaterial.ptamaterialcode }}")
+                                {% endif %}
+                            </script>
+                            <!------------PTA CHECKED FUNCTION-------------->
+                            <script>
+                                $(document).ready(function () {
+                                    var check = $("#PTA").is(':checked');
+                                    if(check){
+                                        $("#PTAMaterial").attr('disabled', false);
+                                    }
+                                    else {
+                                        $("#PTAMaterial").prop('selectedIndex',0);
+                                        $("#PTAMaterial").attr('disabled', true);
+                                    }
+                                    $("#PTA").click(function () {
+                                        if($("#PTA").prop('checked') == true){
+                                            $("#PTAMaterial").attr('disabled', false);
+                                        }
+                                        else {
+                                            $("#PTAMaterial").prop('selectedIndex',0);
+                                            $("#PTAMaterial").attr('disabled', true);
+                                        }
+                                    })
+                                })
+                            </script>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng của ăn mòn nứt do ứng suất</b></legend>
+                        <div class="row">
+                            <div class="col-md-6">Vật liệu dễ có khả năng bị giòn hydro do áp suất cao</div>
+                            <div class="col-md-6"><input type="checkbox" id="HTHA" name="MGTEHTHA"/></div>
+                            <script>
+                                if({{ rwMaterial.ishtha }})
+                                    $("#HTHA").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">Mác vật liệu giòn hydro do áp suất cao:</div>
+                            <div class="col-md-6"><select class="form-control" id="HTHAMaterial" name="HTHAMaterialGrade">
+                                <option value="" disabled selected>Chọn chất liệu HTHA..</option>
+                                <option>1.25Cr-0.5Mo</option>
+                                <option>1Cr-0.5Mo</option>
+                                <option>2.25Cr-1Mo</option>
+                                <option>C-0.5Mo (Annealed)</option>
+                                <option>C-0.5Mo (Normalised)</option>
+                                <option>6Cr-0.5Mo</option>
+                                <option>3Cr-1Mo</option>
+                                <option>Thép carbon</option>
+                                <option>Không áp dụng</option>
+                            </select></div>
+                            <script>
+                                {% if rwMaterial.hthamaterialcode %}
+                                $("#HTHAMaterial").val("{{ rwMaterial.hthamaterialcode }}")
+                                {% endif %}
+                            </script>
+                            <!-----------HTHA STICK CHANGE----------->
+                            <script>
+                                $(document).ready(function () {
+                                    var check = $("#HTHA").is(':checked');
+                                    if(check){
+                                        $("#HTHAMaterial").attr('disabled', false);
+                                    }
+                                    else {
+                                        $("#HTHAMaterial").prop('selectedIndex',0);
+                                        $("#HTHAMaterial").attr('disabled', true);
+                                    }
+                                    $("#HTHA").click(function () {
+                                        if($("#HTHA").prop('checked') == true){
+                                            $("#HTHAMaterial").attr('disabled', false);
+                                        }
+                                        else {
+                                            $("#HTHAMaterial").prop('selectedIndex',0);
+                                            $("#HTHAMaterial").attr('disabled', true);
+                                        }
+                                    })
+                                })
+                            </script>
+                        </div>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng của ăn mòn nứt do ứng suất</b></legend>
+                        <div class="row">
+                            <div class="col-md-7" style="color: red;">Nhiệt độ thiết kế tối thiểu, &deg;C:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" step="0.01" class="form-control" value="{{ rwMaterial.mindesigntemperature }}" max="100000" name="MinDesignTemp" id="MinDesignTemp" placeholder="Minimum design temp" required/></div>
+                            <!-------demo catch data-------->
+                            <script>
+                                $("#MinDesignTemp").change(function () {
+                                    $minDesignTemp = $("#MinDesignTemp").val();
+                                    $("#MaxDesignTemp").prop("min", $minDesignTemp);
+                                })
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">Nhiệt độ tham chiếu, &deg;C:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" step="0.01" class="form-control" value="0" max="100000" name="ReferenceTemperature" placeholder="Ref temp" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7" style="color: red">Hàm lượng Crom &ge;12%</div>
+                            <div class="col-md-1"><input type="checkbox" name="Chromium"/></div>
+                            <script>
+                                if({{ rwMaterial.chromemoreequal12 }})
+                                    $("#Chromium").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">Pha Sigma , %:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input onkeyup="Value()" type="number" step="0.01" min="0" max="100" value="{{ rwMaterial.sigmaphase }}" class="form-control" name="SigmaPhase" id="SigmaPhase" placeholder="Percent sigma" required/></div>
+                            <script>
+                                function Value(){
+                                    var max = document.getElementById("SigmaPhase").value;
+                                    if(max>100) {
+                                        alert("the value must be equal or less than 100");
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </fieldset>
+                </fieldset>
+            </div>
+{#<---------TAB-------->#}
+            <div class="tab">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Lớp phủ, Tráng phủ, Lớp lót, Vật liệu bọc</b></legend>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Lớp phủ</b></legend>
+                        <div class="row">
+                            <div class="col-md-6">Lớp phủ bên trong</div>
+                            <div class="col-md-6"><input type="checkbox" id="InternalCoating" name="InternalCoating"></div>
+                            <script>
+                                if({{ rwCoat.internalcoating }})
+                                    $("#InternalCoating").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="color: red">Lớp phủ bên ngoài</div>
+                            <div class="col-md-6"><input type="checkbox" id="ExternalCoating" name="ExternalCoating"></div>
+                            <script>
+                                if({{ rwCoat.externalcoating }})
+                                    $("#ExternalCoating").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Thời điểm sơn phủ bên ngoài</div>
+                            <div class="col-md-6"><input type="text" class="form-control" id="externalID" value="{{ extDate }}" data-format="yyyy-mm-dd" name="ExternalCoatingID" /></div>
+                            <script>
+                                $( "#externalID" ).datepicker({
+                                    dateFormat: 'yy-mm-dd'
+                                });
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="color: red">Chất lượng lớp phủ bên ngoài:</div>
+                            <div class="col-md-6"><select class="form-control" id="ExternalCoatingQuality" name="ExternalCoatingQuality">
+                                <option value="" disabled selected>Chọn chất lượng lớp phủ..</option>
+                                <option>Chất lượng lớp phủ cao</option>
+                                <option>Chất lượng lớp phủ trung bình</option>
+                                <option>Không có lớp phủ hoặc chất lượng thấp</option>
+                            </select></div>
+                            <script>
+                                {% if rwCoat.externalcoatingquality %}
+                                $("#ExternalCoatingQuality").val("{{ rwCoat.externalcoatingquality }}")
+                                {% endif %}
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Cấu hình của hệ đỡ không cho phép bảo dưỡng lớp phủ</div>
+                            <div class="col-md-6"><input type="checkbox" id="SCWD" name="SCWD"/></div>
+                            <script>
+                                if({{ rwCoat.supportconfignotallowcoatingmaint }})
+                                    $("#SCWD").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                var check = $("#ExternalCoating").is(':checked');
+                                if(check){
+                                    $("#ExternalCoatingQuality").attr('disabled', false);
+                                    $("#externalID").attr('disabled', false);
+                                }
+                                else {
+                                    $("#ExternalCoatingQuality").prop('selectedIndex',0);
+                                    $("#ExternalCoatingQuality").attr('disabled', true);
+                                    $("#externalID").attr('disabled', true);
+                                }
+                                $("#ExternalCoating").click(function () {
+                                    if($("#ExternalCoating").prop('checked') == true){
+                                        $("#ExternalCoatingQuality").attr('disabled', false);
+                                        $("#externalID").attr('disabled', false);
+                                    }
+                                    else {
+                                        $("#ExternalCoatingQuality").prop('selectedIndex',0);
+                                        $("#ExternalCoatingQuality").attr('disabled', true);
+                                        $("#externalID").attr('disabled', true);
+                                    }
+                                })
+                            })
+                            </script>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Tráng phủ</b></legend>
+                        <div class="row">
+                            <div class="col-md-6">Lớp phủ bên trong</div>
+                            <div class="col-md-6"><input type="checkbox" id="InternalCladding" name="InternalCladding"/></div>
+                            <script>
+                                if({{ rwCoat.internalcladding }})
+                                    $("#InternalCladding").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Độ dày của lớp phủ, mm:</div>
+                            <div class="col-md-6"><input onkeyup="Thickness()" type="number" max="1000" class="form-control" step="0.01" min="0" name="CladdingThickness" id="CladdingThickness" value="{{ rwCoat.claddingthickness }}" placeholder="Cladding Thickness" required/></div>
+                            <script>
+                                function Thickness(){
+                                    var min = document.getElementById("CladdingThickness").value;
+                                    var max= document.getElementById("NominalThickness").value;
+                                    if(min>max) {
+                                        alert("Cladding thickness must be lesser than nominal thickness. " + min + " > " + max );
+                                    }
+                                }
+                                function NominalThick(){
+                                    var min = parseInt(document.getElementById("CladdingThickness").value);
+                                    var max = parseInt(document.getElementById("NominalThickness").value);
+                                    if(max<min) {
+                                        alert("Nominal Thickness must be greater than or equal to the cladding thickness."  + min + " > " + max );
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Tốc độ ăn mòn lớp phủ, mm/yr:<span style="color: red">*</span></div>
+                            <div class="col-md-6"><input type="number" max="1000" class="form-control" step="0.01" min="0" name="CladdingCorrosionRate" value="{{ rwCoat.claddingcorrosionrate }}" placeholder="Cladding corrosion rate" required/></div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Lớp lót</b></legend>
+                        <div class="row">
+                            <div class="col-md-6" style="color: red">Lớp lót bên trong</div>
+                            <div class="col-md-6"><input type="checkbox" id="InterLinning" name="InternalLining"/></div>
+                            <script>
+                                if({{ rwCoat.internallining }})
+                                    $("#InterLinning").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Loại lót bên trong:</div>
+                            <div class="col-md-6"><select class="form-control" id="LinningType" name="InternalLinerType">
+                                <option value="" disabled selected>Chọn loại lót bên trong..</option>
+                                <option>Gạch chua</option>
+                                <option>Vật liệu chịu lửa đúc</option>
+                                <option>Điều kiện khắc nghiệt chịu lửa đúc</option>
+                                <option>Sợi thuỷ tinh</option>
+                                <option>Kính lót</option>
+                                <option>Hữu cơ - Chất lượng thấp</option>
+                                <option>Hữu cơ - Chất lượng trung bình</option>
+                                <option>Hữu cơ - Chất lượng cao</option>
+                                <option>Dải hợp kim lót</option>
+                            </select></div>
+                            <script>
+                                {% if rwCoat.internallinertype %}
+                                $("#LinningType").val("{{ rwCoat.internallinertype }}");
+                                {% endif %}
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Điều kiện của lớp lót bên trong:</div>
+                            <div class="col-md-6"><select class="form-control" id="LinningCondition" name="InternalLinerCondition">
+                                <option value="" disabled selected>Chọn điều kiện lớp lót..</option>
+                                <option>Trung bình</option>
+                                <option>Tốt</option>
+                                <option>Kém</option>
+                                <option>Không</option>
+                            </select></div>
+                            <script>
+                                {% if rwCoat.internallinercondition %}
+                                $("#LinningCondition").val("{{ rwCoat.internallinercondition }}")
+                                {% endif %}
+                            </script>
+                        </div>
+                        <!-----------LINNING CHECKED-------------->
+                            <script>
+                                $(document).ready(function () {
+                                    var check = $("#InterLinning").is(':checked');
+                                    if(check){
+                                        $("#LinningType").attr('disabled', false);
+                                        $("#LinningCondition").attr('disabled', false);
+                                    }
+                                    else {
+                                        $("#LinningType").prop('selectedIndex',0);
+                                        $("#LinningCondition").prop('selectedIndex',0);
+                                        $("#LinningType").attr('disabled', true);
+                                        $("#LinningCondition").attr('disabled', true);
+                                    }
+                                    $("#InterLinning").click(function () {
+                                        if($("#InterLinning").prop('checked') == true){
+                                            $("#LinningType").attr('disabled', false);
+                                            $("#LinningCondition").attr('disabled', false);
+                                        }
+                                        else {
+                                            $("#LinningType").prop('selectedIndex',0);
+                                            $("#LinningCondition").prop('selectedIndex',0);
+                                            $("#LinningType").attr('disabled', true);
+                                            $("#LinningCondition").attr('disabled', true);
+                                        }
+                                    })
+                                })
+                            </script>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Vật liệu bọc</b></legend>
+                        <div class="row">
+                            <div class="col-md-6">Vật liệu bọc bên ngoài</div>
+                            <div class="col-md-6"><input type="checkbox" id="ExternalInsulation" name="ExternalInsulation"/></div>
+                            <script>
+                                if({{ rwCoat.externalinsulation }})
+                                    $("#ExternalInsulation").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Vật liệu bọc có chứa clo</div>
+                            <div class="col-md-6"><input type="checkbox" id="ICC" name="ICC"/></div>
+                            <script>
+                                if({{ rwCoat.insulationcontainschloride }})
+                                    $("#ICC").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">Loại vật liệu bọc bên ngoài:</div>
+                            <div class="col-md-6"><select class="form-control" id="ExternalInsulationType" name="ExternalInsulationType">
+                                <option value="" disabled selected>Chọn loại vật liệu bọc..</option>
+                                <option>Không xác định</option>
+                                <option>Asbestos</option>
+                                <option>Calcium Silicate</option>
+                                <option>Sợi thủy tinh</option>
+                                <option>Thủy tinh xốp</option>
+                                <option>Len khoáng</option>
+                                <option>Peclit</option>
+                            </select></div>
+                            <script>
+                                {% if rwCoat.externalinsulationtype %}
+                                $("#ExternalInsulationType").val("{{ rwCoat.externalinsulationtype }}")
+                                {% endif %}
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="color: red">Điều kiện bọc:</div>
+                            <div class="col-md-6"><select class="form-control" id="InsulationCondition" name="InsulationCondition">
+                                <option value="" disabled selected>Chọn điều kiện bọc..</option>
+                                <option>Trên mức trung bình</option>
+                                <option>Trung bình</option>
+                                <option>Dưới trung bình</option>
+                            </select></div>
+                            <script>
+                                {% if rwCoat.insulationcondition %}
+                                $("#InsulationCondition").val("{{ rwCoat.insulationcondition }}");
+                                {% endif %}
+                            </script>
+                        </div>
+                        <!----------------External Checked------------------>
+                            <script>
+                                $(document).ready(function () {
+                                    var check = $("#ExternalInsulation").is(':checked');
+                                    if(check){
+                                        $("#ExternalInsulationType").attr('disabled', false);
+                                        $("#InsulationCondition").attr('disabled', false);
+                                    }
+                                    else {
+                                        $("#ExternalInsulationType").prop('selectedIndex',0);
+                                        $("#InsulationCondition").prop('selectedIndex',0);
+                                        $("#ExternalInsulationType").attr('disabled', true);
+                                        $("#InsulationCondition").attr('disabled', true);
+                                    }
+                                    $("#ExternalInsulation").click(function () {
+                                        if($("#ExternalInsulation").prop('checked') == true){
+                                            $("#ExternalInsulationType").attr('disabled', false);
+                                            $("#InsulationCondition").attr('disabled', false);
+                                        }
+                                        else {
+                                            $("#ExternalInsulationType").prop('selectedIndex',0);
+                                            $("#InsulationCondition").prop('selectedIndex',0);
+                                            $("#ExternalInsulationType").attr('disabled', true);
+                                            $("#InsulationCondition").attr('disabled', true);
+                                        }
+                                    })
+                                })
+                            </script>
+                    </fieldset>
+                </fieldset>
+            </div>
+
+            <div class="tab">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Dòng chảy</b></legend>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính chung</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">Chất lỏng mẫu:<span style="color:red">*</span></div>
+                            <div class="col-md-3"><select class="form-control" id="APIFluid" name="APIFluid" required>
+                                <option value="" selected disabled>Chọn chất lỏng..</option>
+                                {% for apifluid in api %}
+                                <option value="{{ apifluid }}">{{ apifluid }}</option>
+                                {% endfor %}
+                            </select></div>
+                            <script>
+                                {% if rwInputCa.api_fluid %}
+                                $("#APIFluid").val("{{ rwInputCa.api_fluid }}")
+                                {% endif %}
+                            </script>
+    {#                        <div class="col-md-3">Mass Inventory, kg:<span style="color: red">*</span></div>#}
+    {#                        <div class="col-md-3"><input type="number" step="0.01" min="0" max="1000000" class="form-control" name="MassInventory" value="0" placeholder="Mass inventory" required></div>#}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Chất lỏng độc hại:<span style="...">*</span> </div>
+                            <div class="col-md-3"><select class="form-control" id="ToxicFluid" name="ToxicFluid" required>
+                                <option value="" selected disabled>Chọn chất lỏng độc hại..</option>
+                                {% for toxic in toxicfluid %}
+                                <option value="{{toxic}}">{{toxic}}</option>
+                                {% endfor %}
+                            </select></div>
+                            <script>
+                                {% if rwInputCa.api_fluid %}
+                                $("#ToxicFluid").val("{{ rwInputCa.toxic_fluid }}")
+                                {% endif %}
+                            </script>
+                            <div class="col-md-3">Tỷ lệ chất lỏng độc hại, %:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" id="ToxicFluidPercent" name="ToxicFluidPercent" class="form-control" min="0" max="100" step="1.0" value="{{ rwInputCa.toxic_percent }}" placeholder="ToxicFluidPercentage" required></div>
+                        </div>
+                    <!-----DISABLE TOXIC FLUID PERCENTAGE------>
+                        <script>
+                            $(document).ready(function () {
+                                $("#ToxicFluidPercent").attr("readonly",false);
+                                $("#ToxicFluidPercent").val("0");
+    {#                            if ($("ToxicFluid").change(function (){}))#}
+    {#                                {#}
+    {#                                    $("#ToxicFluidPercent").attr("readonly",false);#}
+    {#                                }#}
+                                 })
+                        </script>
+                        <div class="row">
+                            <div class="col-md-3">Pha của chất lỏng khi tồn chứa: </div>
+                            <div class="col-md-3"><select  class="form-control" id="phaseOfFluid" name="phaseOfFluid" required>
+                                <option value="" selected disabled>Chọn pha của chất lỏng khi tồn chứa..</option>
+                                <option>Khí</option>
+                                <option>Lỏng</option>
+                            </select> </div>
+                            <script>
+                                {% if rwStream.storagephase %}
+                                $("#phaseOfFluid").val("{{ rwStream.storagephase }}")
+                                {% endif %}
+                            </script>
+                            <div class="col-md-3">Mực chất lỏng (%)</div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="1.0" min="0" max="1000000" name="LiquidLevel" placeholder="LiquidLevel" value="{{ rwStream.liquidlevel }}" required></div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border"><b>Thuộc tính tham số hư hỏng của ăn mòn nứt do ứng suất</b></legend>
+                        <div class="row">
+                            <div class="col-md-3">Nồng độ NaOH , %:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input onkeyup="NaoH()" type="number" class="form-control" min="0" max="100" value="{{ rwStream.naohconcentration }}" step="0.01" name="NaOHConcentration" id="NaOHConcentration" placeholder="NaOH concent" required/></div>
+                            <div class="col-md-3">Giải phóng chất độc trong chất lỏng, %:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input onkeyup="Toxic()" type="number" step="0.01"  min="0" max="100" value="{{ rwStream.releasefluidpercenttoxic }}" class="form-control" placeholder="Fluid percent toxic" name="RFPT" id="RFPT" required/></div>
+                            <script>
+                                function NaoH(){
+                                    var max = document.getElementById("NaOHConcentration").value;
+                                    if(max>100) {
+                                        alert("the NaOH Concentration must be equal or lesser than 100");
+                                    }
+                                }
+                                function Toxic(){
+                                    var max = document.getElementById("RFPT").value;
+                                    if(max>100) {
+                                        alert("the Release Fluid Percent Toxic must be equal or lesser than 100");
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Ion clorua, ppm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="1000000" value="{{ rwStream.chloride }}" name="ChlorideIon" placeholder="Chloride ion" required/></div>
+                            <div class="col-md-3">Nồng độ CO3 trong nước, ppm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" class="form-control" step="0.01"  min="0" max="1000000" value="{{ rwStream.co3concentration }}" name="CO3" placeholder="CO3 concent" required/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">Hàm lượng H2S trong nước, ppm:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input type="number" step="0.01" class="form-control"  min="0" max="1000000" value="{{ rwStream.h2sinwater }}" name="H2SContent" placeholder="H2S content" required/></div>
+                            <div class="col-md-3" style="color: red">Độ pH của nước:<span style="color: red">*</span></div>
+                            <div class="col-md-3"><input onkeyup="ValuePH()" type="number" step="0.01" class="form-control" min="0" max="14" value="{{ rwStream.waterph }}" name="PHWater" id="PHWater" placeholder="PH" required/></div>
+                            <script>
+                                function ValuePH(){
+                                    var max = document.getElementById("PHWater").value;
+                                    if(max>14.9) {
+                                        alert("the value must be equal or lesser than 14.9");
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <br>
+                        <div class="row">
+                             <div class="col-md-5" style="color: red">Tiếp xúc với khí axit xử lý amin</div>
+                            <div class="col-md-1"><input type="checkbox" name="EAGTA"/></div>
+                            <div class="col-md-5">Thành phần độc hại</div>
+                            <div class="col-md-1"><input type="checkbox" name="ToxicConstituents"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">Tiếp xúc với Amin:</div>
+                            <div class="col-md-3"><select name="ExposureAmine" class="form-control">
+                                <option value="" selected disabled>Chọn amin tiếp xúc..</option>
+                                <option>Amin giàu</option>
+                                <option>Amin nghèo</option>
+                                <option>Không có</option>
+                            </select></div>
+                            <script>
+                                {% if rwStream.exposuretoamine %}
+                                $("#ExposureAmine").val("{{ rwStream.exposuretoamine }}");
+                                {% endif %}
+                            </script>
+                            <div class="col-md-3">Hỗn hợp dung dịch amin:</div>
+                            <div class="col-md-3"><select class="form-control" name="ASC">
+                                <option value="" selected disabled>Chọn hỗn hợp dung dịch amin..</option>
+                                <option>Diethanolamine DEA</option>
+                                <option>Diglycolamine DGA</option>
+                                <option>Disopropanolamine DIPA</option>
+                                <option>Methyldiethanolamine MDEA</option>
+                                <option>Monoethanolamine MEA</option>
+                                <option>Sulfinol</option>
+                            </select></div>
+                            <script>
+                                {% if rwStream.aminesolution %}
+                                $("#ASC").val("{{ rwStream.aminesolution }}");
+                                {% endif %}
+                            </script>
+                        </div>
+                        <br>
+                        <div class="row">
+                             <div class="col-md-5" style="color: red">Pha nước trong quá trình vận hành</div>
+                            <div class="col-md-1"><input type="checkbox" name="APDO"/></div>
+                            <div class="col-md-5" style="color: red">Pha nước trong khi dừng hoạt động</div>
+                            <div class="col-md-1"><input type="checkbox" id="APDSD" name="APDSD"/></div>
+                            <script>
+                                if({{ rwStream.aqueousoperation }})
+                                    $("#APDO").attr('checked','checked');
+                                if({{ rwStream.aqueousshutdown }})
+                                    $("#APDSD").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5" style="color: red">Môi trường chứa H2S</div>
+                            <div class="col-md-1"><input type="checkbox" name="EnvironmentCH2S"/></div>
+                            <div class="col-md-5" style="color: red">Có chứa axit hydrofluoric</div>
+                            <div class="col-md-1"><input type="checkbox" name="PHA" id="PHA"/></div>
+                            <script>
+                                if({{ rwStream.h2s }})
+                                    $("#EnvironmentCH2S").attr('checked', 'checked');
+                                if({{ rwStream.hydrofluoric }})
+                                    $("#PHA").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">Sự có mặt của xyanua</div>
+                            <div class="col-md-1"><input type="checkbox" name="PresenceCyanides"/></div>
+                            <div class="col-md-5" style="color: red">Quá trình có chứa hydro</div>
+                            <div class="col-md-1"><input type="checkbox" name="PCH" id="PCH"/></div>
+                            <script>
+                                if({{ rwStream.cyanide }})
+                                    $("#presencecyanides").attr('checked', 'checked');
+                                if({{ rwStream.hydrogen }})
+                                    $("#PCH").attr('checked', 'checked');
+                            </script>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-5" style="color:red;">Môi trường chứa kiềm trong bất kỳ nồng độ nào</div>
+                            <div class="col-md-1"><input type="checkbox" name="ECCAC"/></div>
+                            <div class="col-md-5" style="color: red">Tiếp xúc với hợp chất mang lưu huỳnh</div>
+                            <div class="col-md-1"><input type="checkbox" name="ESBC" id="ESBC"/></div>
+                            <script>
+                                if({{ rwStream.caustic }})
+                                    $("#ECCAC").attr('checked', 'checked');
+                                if({{ rwStream.exposedtosulphur }})
+                                    $("#ESBC").attr('checked', 'checked');
+                            </script>
+                        </div>
+                    </fieldset>
+                </fieldset>
+            </div>
+
+            <div class="tab">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Phân tích hậu quả</b></legend>
+                    <div class="row">
+                        <div class="col-md-3">Khối lượng thành phần, kg:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="1000000" name="MassComponent" placeholder="Mass component" value="{{ rwInputCa.mass_component }}" required></div>
+                        <div class="col-md-3">Giá của thiết bị, $/m<sup>2</sup>:<span style="color: red">*</span></div>
+                        <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="1000000" name="EquipmentCost" value="{{ rwInputCa.equipment_cost }}" placeholder="Equipment cost" required></div>
+                    </div>
+{#                    <div class="row">#}
+{#                        <div class="col-md-3">Production Cost, $/day:<span style="color: red">*</span></div>#}
+{#                        <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="1000000000" name="ProductionCost" placeholder="Production cost" value="0" required></div>#}
+{#                        <div class="col-md-3">Toxic Percent, %:<span style="color: red">*</span></div>#}
+{#                        <div class="col-md-3"><input type="number" id="ToxicPercent" name="ToxicPercent" class="form-control" min="0" max="100" step="0.01" value="0" placeholder="Toxic percent" required></div>#}
+{#                    </div>#}
+                    <div class="row">
+{#                        <div class="col-md-3">Injure Cost, $/fatality:<span style="color: red">*</span></div>#}
+{#                        <div class="col-md-3"><input type="number" step="0.01" class="form-control" min="0" max="1000000000" name="InjureCost" value="0" placeholder="Injure cost" required></div>#}
+                        <div class="col-md-3">Thời gian phát tán, phút:</div>
+                        <div class="col-md-3"><select class="form-control" id="ReleaseDuration" name="ReleaseDuration" ></select></div>
+                        <script>
+                            {% if rwInputCa.release_duration %}
+                            $("#ReleaseDuration").val("{{ rwInputCa.release_duration }}")
+                            {% endif %}
+                        </script>
+                    </div>
+{#                    <div class="row">#}
+{#                        <div class="col-md-3">Environment Cost, $/event:<span style="color: red">*</span></div>#}
+{#                        <div class="col-md-3"><input type="number" class="form-control" step="0.01" min="0" max="10000000000" value="0" name="EnvironmentCost" placeholder="Environ clean cost" required></div>#}
+{#                        <div class="col-md-3">Person Density, persons/m<sup>2</sup>:<span style="color: red">*</span></div>#}
+{#                        <div class="col-md-3"><input type="number" class="form-control" step="0.00001" min="0" value="0" max="100" name="PersonDensity" placeholder="Person density" required></div>#}
+{#                    </div>#}
+{#                    <div class="row">#}
+{#                        <div class="col-md-3">Detection Type:</div>#}
+{#                        <div class="col-md-3"><select class="form-control" name="DetectionType">#}
+{#                            <option value="" selected disabled>Please select detection..</option>#}
+{#                            <option>A</option>#}
+{#                            <option>B</option>#}
+{#                            <option>C</option>#}
+{#                        </select></div>#}
+{#                        <div class="col-md-3">Isulation Type:</div>#}
+{#                        <div class="col-md-3"><select class="form-control" name="IsulationType">#}
+{#                            <option value="" selected disabled>Please select isulation..</option>#}
+{#                            <option>A</option>#}
+{#                            <option>B</option>#}
+{#                            <option>C</option>#}
+{#                        </select></div>#}
+{#                    </div>#}
+
+                    <!---- API CHANGE -->
+                    <script >
+                        $(document).ready(function () {
+                            $("#ToxicPercent").attr("readonly",true);
+                            $("#ReleaseDuration").attr("disabled", true);
+                            $("#ToxicPercent").val("0");
+                            $("#APIFluid").change(function () {
+                                $("#ReleaseDuration").empty();
+                                var val = $(this).val();
+                                var system = $("#_Systerm").val();
+                                if(val == "HF" || val =="H2S"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='5'>5</option>"+
+                                    "<option value='10'>10</option><option value='20'>20</option>"+
+                                    "<option value='40'>40</option><option value='60'>60</option>"+
+                                    "<option value='InstantaneousReleases'>Instantaneous Releases</option>");
+                                }
+                                else if(val == "Amonia" || val=="Chlorine"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='5'>5</option>"+
+                                    "<option value='10'>10</option><option value='15'>15</option>"+
+                                    "<option value='20'>20</option><option value='25'>25</option>"+
+                                    "<option value='30'>30</option><option value='35'>35</option>"+
+                                    "<option value='40'>40</option><option value='45'>45</option>"+
+                                    "<option value='50'>50</option><option value='55'>55</option>"+
+                                    "<option value='60'>60</option>"+
+                                    "<option value='InstantaneousReleases'>Instantaneous Releases</option>");
+                                }
+                                else if(val == "AlCl3"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='All'>All</option>");
+                                }
+                                else if((val == "CO" || val=="HCL")&&(system == "Vapor")){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "Nitric Acid" || val == "NO2" || val == "Phosgene"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "TDI" && system != "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if((val == "EE" || val == "EO") && (system == "Vapor")){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value='1.5'>1.5</option><option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "PO" && system == "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "EE" && system != "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "PO" && system != "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else {
+                                    $("#ReleaseDuration").empty();
+                                    $("#ReleaseDuration").attr("disabled", true);
+                                    $("#ToxicPercent").attr("readonly",true);
+                                    $("#ToxicPercent").val("0");
+                                }
+                            });
+                            $("#_Systerm").change(function () {
+                                $("#ReleaseDuration").empty();
+                                var val = $("#APIFluid").val();
+                                var system = $(this).val();
+                                if(val == "HF" || val =="H2S"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='5'>5</option>"+
+                                    "<option value='10'>10</option><option value='20'>20</option>"+
+                                    "<option value='40'>40</option><option value='60'>60</option>"+
+                                    "<option value='InstantaneousReleases'>Instantaneous Releases</option>");
+                                }
+                                else if(val == "Amonia" || val=="Chlorine"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='5'>5</option>"+
+                                    "<option value='10'>10</option><option value='15'>15</option>"+
+                                    "<option value='20'>20</option><option value='25'>25</option>"+
+                                    "<option value='30'>30</option><option value='35'>35</option>"+
+                                    "<option value='40'>40</option><option value='45'>45</option>"+
+                                    "<option value='50'>50</option><option value='55'>55</option>"+
+                                    "<option value='60'>60</option>"+
+                                    "<option value='InstantaneousReleases'>Instantaneous Releases</option>");
+                                }
+                                else if(val == "AlCl3"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='All'>All</option>");
+                                }
+                                else if((val == "CO" || val=="HCL")&&(system == "Vapor")){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "Nitric Acid" || val == "NO2" || val == "Phosgene"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "TDI" && system != "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if((val == "EE" || val == "EO") && (system == "Vapor")){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value='1.5'>1.5</option><option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "PO" && system == "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value ='3'>3</option>"+
+                                    "<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "EE" && system != "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else if(val == "PO" && system != "Vapor"){
+                                    $("#ToxicPercent").attr("readonly",false);
+                                    $("#ReleaseDuration").attr("disabled", false);
+                                    $("#ReleaseDuration").html("<option value='5'>5</option><option value='10'>10</option>"+
+                                    "<option value='20'>20</option><option value='40'>40</option>"+
+                                    "<option value='60'>60</option>");
+                                }
+                                else {
+                                    $("#ReleaseDuration").empty();
+                                    $("#ReleaseDuration").attr("disabled", true);
+                                    $("#ToxicPercent").attr("readonly",true);
+                                    $("#ToxicPercent").val("0");
+                                }
+                            });
+                        })
+                    </script>
+                </fieldset>
+            <!---------BLOCK INPUT-------->
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Đầu vào CoF dựa trên khu vực</b></legend>
+                    <div class="row">
+                        <div class="col-md-6">Lượng chất lỏng còn lại, Kg</div>
+                        <div class="col-md-6"><input type="number" class="form-control" value="{{ rwInputCa.mass_inventory }}" name="MassInventory" placeholder="fluidMass" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">Dạng hệ thống phát hiện</div>
+                        <div class="col-md-6"><select class="form-control" name="DetectionType">
+                            <option value="" selected disabled>Chọn dạng hệ thống phát hiện</option>
+                            <option>Quá trình thử nghiệm được thiết kế đặc biệt để phát hiện tổn thất vật liệu do thay đổi điều kiện hoạt động (tức là mất áp suất hoặc lưu lượng) trong hệ thống</option>
+                            <option>Các máy dò được định vị thích hợp để xác định thời điểm vật liệu hiện diện bên ngoài lớp bao chứa áp suất</option>
+                            <option>Phát hiện trực quan, máy ảnh hoặc máy dò có phạm vi phủ sóng cận biên</option>
+                        </select> </div>
+                        <script>
+                            if({{ rwInputCa.detection_type }}='A')
+                                $("#DetectionType").val("Intrumentation designed specifically to detect material losses by changes in operating conditions (i.e loss of pressure or flow) in the system");
+                            else if({{ rwInputCa.detection_type }}='B')
+                                $("#DetectionType").val("Suitably located detectors to determine when the material is present outside the pressure-containing envelope")
+                            else
+                                $("#DetectionType").val("Visual detection, cameras, or detectors with marginal coverage")
+                        </script>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6">Dạng hệ thống bọc</div>
+                        <div class="col-md-6"><select class="form-control" name="IsolationType">
+                            <option value="" selected disabled>Chọn dạng hệ thống bọc </option>
+                            <option>Hệ thống cách ly hoặc tắt máy được kích hoạt trực tiếp từ thiết bị đo lường hoặc máy dò quy trình, không có sự can thiệp của người vận hành</option>
+                            <option>Hệ thống cách ly hoặc tắt máy được kích hoạt bởi người vận hành trong phòng điều khiển hoặc các vị trí thích hợp khác cách xa nơi rò rỉ</option>
+                            <option>Sự cách ly phụ thuộc vào van vận hành bằng tay</option>
+                        </select>
+                        </div>
+                        <script>
+                            if({{ rwInputCa.isulation_type }}='A')
+                                $("#IsolationType").val("Isolation or shutdown systerms activated directly from process instrumentation or detectors, with no operator intervention");
+                            else if({{ rwInputCa.isulation_type }}='B')
+                                $("#IsolationType").val("Isolation or shutdown systems activated by operators in the control room or other suitable locations remote from the leak");
+                            else
+                                $("#IsolationType").val("Isolation dependent on manually-operated valves");
+                        </script>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">Dạng hệ thống làm giảm hư hỏng </div>
+                        <div class="col-md-6"><select class="form-control" name="MittigationSystem">
+                            <option value="" selected disabled>Chọn dạng hệ thống làm giảm hư hỏng</option>
+                            <option>Giảm thiểu hàng tồn kho, cùng với hệ thống cách ly được kích hoạt từ xa hoặc tự động</option>
+                            <option>Hệ thống và máy dò chống nước chữa cháy</option>
+                            <option>Hệ thống phun bọt</option>
+                            <option>Chỉ máy dò chống nước chữa cháy</option>
+                            <option>Không có</option>
+                        </select>
+                        </div>
+                        <script>
+                            {% if rwInputCa.mitigation_system %}
+                            $("#MittigationSystem").val("{{ rwInputCa.mitigation_system }}")
+                            {% endif %}
+                        </script>
+                    </div>
+                </fieldset>
+            <!----------- BLOCK FINANCIAL INPUT ---------->
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Đầu vào tài chính CoF</b></legend>
+                   <div class="row">
+                        <div class="col-md-8">Quy trình chi phí thay thế đơn vị cho thành phần, $/m<sup>2</sup></div>
+                        <div class="col-md-4"><input type="number" class="form-control" value="{{ rwInputCa.process_unit }}" name="ProcessUnit" placeholder="ProcessUnit" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Hệ số điện áp thiết bị</div>
+                        <div class="col-md-4"><input type="number" class="form-control" value="{{ rwInputCa.outage_multiplier }}" name="OutageMulti" placeholder="OutageMulti" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Mất chi phí sản xuất, $/day</div>
+                        <div class="col-md-4"><input type="number" class="form-control" value="{{ rwInputCa.production_cost }}" name="ProductionCost" placeholder="LossofProducCosts" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Đơn vị dân số mật độ Nhân sự hoặc Nhân viên, cá nhân/m<sup>2</sup></div>
+                        <div class="col-md-4"><input type="number" class="form-control" value="{{ rwInputCa.personal_density }}" name="PersonDensity" placeholder="PopulationDensity" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Chi phí liên quan đến thương tật nghiêm trọng về tử vong của nhân viên, $</div>
+                        <div class="col-md-4"><input type="number" class="form-control" value="{{ rwInputCa.injure_cost }}" name="InjureCost" placeholder="CostAssociated" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Chi phí làm sạch môi trường, $/Barrel </div>
+                        <div class="col-md-4"><input type="number" class="form-control" value="{{ rwInputCa.evironment_cost }}" name="EnvironmentCost" placeholder="CleanUpCosts" required/></div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                  <button type="button" class="btn btn-default" id="prevBtn" onclick="nextPrev(-1)">Trước</button>
+                  <button type="button" class="btn btn-success" id="nextBtn" onclick="nextPrev(1)">Tiếp</button>
+                </div>
+              </div>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+        </div>
+    </form>
+    <!----------------- Pagnation Data -------------------->
+    <script>
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the crurrent tab
+
+        function showTab(n) {
+          // This function will display the specified tab of the form...
+          var x = document.getElementsByClassName("tab");
+          x[n].style.display = "block";
+          //... and fix the Previous/Next buttons:
+          if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+          } else {
+            document.getElementById("prevBtn").style.display = "inline";
+          }
+          if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Submit";
+          } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+          }
+          //... and run a function that will display the correct step indicator:
+          fixStepIndicator(n)
+        }
+
+        function nextPrev(n) {
+          // This function will figure out which tab to display
+          var x = document.getElementsByClassName("tab");
+          // Exit the function if any field in the current tab is invalid:
+          if (n == 1 && !validateForm()) return false;
+          // Hide the current tab:
+          x[currentTab].style.display = "none";
+          // Increase or decrease the current tab by 1:
+          currentTab = currentTab + n;
+          // if you have reached the end of the form...
+          if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            document.getElementById("normal").submit();
+            ShowLoading();
+            return false;
+          }
+          // Otherwise, display the correct tab:
+          showTab(currentTab);
+        }
+
+        function validateForm() {
+          // This function deals with validation of the form fields
+          var x, y, i, valid = true;
+          x = document.getElementsByClassName("tab");
+          y = x[currentTab].getElementsByTagName("input");
+          // A loop that checks every input field in the current tab:
+          for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value == "") {
+                // add an "invalid" class to the field:
+                y[i].className += " invalid";
+                // and set the current valid status to false
+                valid = false;
+            }
+          }
+          // If the valid status is true, mark the step as finished and valid:
+          if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+          }
+          return valid; // return the valid status
+        }
+
+        function fixStepIndicator(n) {
+          // This function removes the "active" class of all steps...
+          var i, x = document.getElementsByClassName("step");
+          for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+          }
+          //... and adds the "active" class on the current step:
+          x[n].className += " active";
+        }
+
+        // spinner form by VuNA
+        function ShowLoading() {
+            var div = document.createElement('div');
+            var img = document.createElement('img');
+            img.src = '{% static 'image/loading/Pacman-1s-100px.gif' %}';
+            div.style.cssText = "position: fixed;left: 50%; top: 30%; width: 300px; text-align: center; background: rgba(54, 25, 25, .00004); border: 0px solid #000;";
+            div.appendChild(img);
+            document.body.appendChild(div);
+            $("#nextBtn").attr('disabled',true);
+            $("#prevBtn").attr('disabled',true);
+            return true;
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'BaseUI/BaseManager/baseManager.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block library %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Quản lí nhà máy{% endblock %}
+
+{% block vertical %}
+    <a class="active">Quản lí<br> nhà máy</a>
+    <a href="{% block listfaci %}{% endblock %}" class="{% if page == 'listFacility' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Danh sách nhà máy</i></a>
+    <a href="{% block backfaci %}{% endblock %}"><i class="fa fa-arrow-left">&emsp;Quay lại mục quản lí</i></a>
+{% endblock %}
+

@@ -1,0 +1,1103 @@
+{% extends 'BaseUI/BaseFacility/baseFacility.html' %}
+
+<!-------------- BLOCK MENU ---------------->
+{% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
+{% block newfaci %}{% url 'facilitiesNew' siteID %}{% endblock %}
+{% block design %}{% url 'designcodeDisplay' siteID %}{% endblock %}
+{% block manu %}{% url 'manufactureDisplay' siteID %}{% endblock %}
+{% block uploadInsp %}{% url 'upload' siteID %}{% endblock %}
+{% block uploadPlant %}{% url 'uploadPlan' siteID %}{% endblock %}
+{% block inspecPlan %}{% url 'inspectionPlan' siteID %}{% endblock %}
+<!----------------- END BLOCK----------------->
+{% block data-content %}
+<style>
+div.a {
+  white-space: nowrap;
+  width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.a:hover {
+  overflow: visible;
+}
+#searchs{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.city{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#search3{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#proposal
+{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#search2{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#searchs td,#searchs th {
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+.city td, .city th{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#search2 th,#search2 td{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#search3 th,#search3 td{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#proposal th,#proposal td{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#searchs tr:nth-child(even){background-color: #f2f2f2;}
+.city tr:nth-child(even){background-color: white;}
+#search2 tr:nth-child(even){background-color: #f2f2f2;}
+#search3 tr:nth-child(even){background-color: #f2f2f2;}
+#proposal tr:nth-child(even){background-color: #f2f2f2;}
+#searchs tr:hover {background-color: #f2f2f2;}
+.city tr:hover {background-color: #f2f2f2;}
+#search2 tr:hover {background-color: #f2f2f2;}
+#search3 tr:hover {background-color: #f2f2f2;}
+#proposal tr:hover {background-color: #f2f2f2;}
+
+#searchs th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+.city th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+#search2 th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+#search3 th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color :#305680;
+  color: white;
+}
+#proposal th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+
+.containerflex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    padding: 2px;
+    background: white;
+    min-width: 1250px;
+    height: 230px;
+    margin: auto;
+}
+
+.flexitem {
+    width: 530px;
+    height: 220px;
+    padding: 0px;
+    background: #0AA6DB;
+    margin: 1px;
+    font-weight: bold;
+}
+</style>
+<form id="inspectionplan2" method="post" >
+    {% csrf_token %}
+    <div class="container">
+        <div style=" text-align: left">
+          <caption><b style="font-size: 15px; color: #444444;">Tên kế hoạch kiểm định:{{name}}</b></caption>
+          <br>
+          <caption><b style="font-size: 15px; color: #444444;">Ngày kiểm định kế hoạch:{{date}}</b></caption>
+        </div>
+        <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="#menu0" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;">Phạm vi kiểm định</a></li>
+            <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu1">Phương pháp kiểm định</a></li>
+            <!--<li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #4CAF50;color: white;" href="#menu2">Damage Mechanism</a></li>-->
+            <!--<li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #4CAF50;color: white;" href="#menu3">Inspection Findings/Description</a></li>-->
+        </ul>
+
+    <!-------------- Body ---------------->
+        <div class="tab-content">
+          <!-------------- Inspection Scope ---------------->
+        <div id="menu0" class="tab-pane fade in active">
+            <div class="city" style="font-size: 15px; color: #444444;background-color:white">
+                <p style="color: red">Chọn site, nhà máy và thiết bị cho kế hoạch kiểm định.</p>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <caption><strong>Tên Site:</strong></caption>
+                        <a id="#search" class="btn btn-primary" data-toggle="modal" data-target="#searchPlan">
+                            {% if allSite %}
+                                All
+                            {% else %}
+                                {{siteT.sitename}}
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="form-group">
+                       <caption><strong>Tên nhà máy:</strong></caption>
+                        <a id="#searchFac" class="btn btn-primary" data-toggle="modal" data-target="#searchFacility">
+                            {% if allSite %}
+                                All
+                            {% else %}
+                                {{facName}}
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <caption><strong>Tên thiết bị:</strong></caption>
+                        <a id="#searchEquip" class="btn btn-primary" data-toggle="modal" data-target="#searchEquipment" >
+                            {% if allSite %}
+                                All
+                            {% else %}
+                                {{equipName.equipmentname}}
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="modal" id="searchPlan" style="margin-top: 10%">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content" style="width: 80%; margin: auto">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <span aria-hidden="true" style="font-size: 24px;font-weight: bold;color: #444444;font-family: Calibri;font-weight: bold;">Danh sách các Site</span>
+                          <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body" style="width: 90%;margin: auto">
+                            <table id="searchs">
+                                <tr>
+                                    <th width="100px" style="text-align: center"><input type="checkbox"></th>
+                                    <th>Tên Site</th>
+                                    <th>Site Date</th>
+                                </tr>
+                                {% for a in siteAll %}
+                                <tr >
+                                    <td align="center"><input type="checkbox" name="{{ a.ID }}"></td>
+                                    <td align="center">{{ a.SiteName }}</td>
+                                    <td align="center">{{ a.Create }}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td align="center"><input type="checkbox" name="allSite"></td>
+                                    <td align="center">All</td>
+                                    <td align="center">All</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer" style="margin: auto; width: 90%">
+                                <button name="_delete" type="submit" class="btn btn-warning" onclick="Sub()" ><i class="fa fa-trash-o">&emsp;Xóa mục đã chọn</i></button>
+                                <button name="_select" class="btn btn-primary" type="submit"><i class="fa fa-pencil">Chọn</i></button>
+                                <button type="button" class="btn btn-success"  style="background-color: #4575B7; border: 1px solid #204d74" data-dismiss="modal">Đóng</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                   <!-------------------------------------Search Facility------------------------------------------------->
+                    <div class="modal" id="searchFacility" style="  margin-top: 10%">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content" style="width: 80%; margin: auto">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <span aria-hidden="true" style="font-size: 24px;font-weight: bold;color: #444444;font-family: Calibri;font-weight: bold;">Danh sách các nhà máy</span>
+                          <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body" style="width: 90%;margin: auto">
+                            <table id="search2">
+                                <tr>
+                                    <th width="100px" style="text-align: center"><input type="checkbox"></th>
+                                    <th>Tên nhà máy</th>
+                                    <th>Ngày khởi tạo</th>
+                                </tr>
+                                {% for a in facility %}
+                                <tr >
+                                    <td align="center"><input type="checkbox" name="{{ a.facilityid }}"></td>
+                                    <td align="center">{{ a.facilityname }}</td>
+                                    <td align="center">{{ a.create }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer" style="margin: auto; width: 90%">
+                                <button name="_deleteFac" type="submit" class="btn btn-warning" onclick="Sub()" ><i class="fa fa-trash-o">&emsp;Xóa mục đã chọn</i></button>
+                                <button name="_selectFac" class="btn btn-primary" type="submit"><i class="fa fa-pencil">Chọn</i></button>
+                                <button type="button" class="btn btn-success"  style="background-color: #4575B7; border: 1px solid #204d74" data-dismiss="modal">Đóng</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <!---------------------------- Search Equipment------------------------------------>
+                    <div class="modal" id="searchEquipment" style="margin-top: 10%">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content" style="width: 80%; margin: auto">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <span aria-hidden="true" style="font-size: 24px;font-weight: bold;color: #444444;font-family: Calibri;font-weight: bold;">Danh sách thiết bị</span>
+                          <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body" style="width: 90%;margin: auto">
+                            <table id="search3">
+                                <tr>
+                                    <th width="100px" style="text-align: center"><input type="checkbox" id="chkHeader"></th>
+                                    <th>Tên thiết bị</th>
+                                    <th>Ngày khởi tạo</th>
+                                </tr>
+                                {% for a in equip %}
+                                <tr >
+                                    <td align="center"><input type="checkbox" name="{{ a.equipmentid }}"></td>
+                                    <td align="center">{{ a.equipmentname }}</td>
+                                    <td align="center">{{ a.equipmentnumber }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer" style="margin: auto; width: 90%">
+                                <button name="_deleteEquip" type="submit" class="btn btn-warning" id="sub" onclick="Sub()" ><i class="fa fa-trash-o">&emsp;Xóa mục đã chọn</i></button>
+                                <button name="_selectEquip" class="btn btn-primary" type="submit"><i class="fa fa-pencil">Chọn</i></button>
+                                <button type="button" class="btn btn-success"  style="background-color: #4575B7; border: 1px solid #204d74" data-dismiss="modal">Đóng</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------- Proposal----------------------------->
+                <div class="city">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a data-toggle="pill" href="#process" style="padding-top: 2px;padding-bottom: 2px;background-color: #0AA6DB;color: #03090C;">Quy trình kế hoạch</a></li>
+                        <li><a data-toggle="pill" style="padding-top: 2px;padding-bottom: 2px;background-color: #0AA6DB;color: #03090C;" href="#tank">Tank</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!---------------- Process Plant------------------>
+                        <div id="process" class="tab-pane fade in active">
+                            <div class="city" style="font-size: 13px; color: #444444;background-color:white">
+                                <div class="container">
+                                    <div class="table-responsive">
+                                    <table width=100% id="testing">
+                                        <thead>
+                                        <tr>
+                                          <!--<th style="background-color:#387BF9;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="17"><input type = "button" name = "-" id="portests1" style="color:black;" value = "Proposal"></th>-->
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="17">Bản ghi</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="21">Thuộc tính thiết bị</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="23">Thuộc tính thành phần</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="26">Dòng chảy /Process Flow</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="14">Vật liệu</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="14">Lớp phủ,tráng phủ,lớp lót và vật liệu học</th>
+                                        </tr>
+                                        <tr>
+                                            <!------- Proposal-------->
+                                          <th width="100px" style="text-align: center"><input type="checkbox" id="check"></th>
+                                          <th >Số thiết bị</th>
+                                            <th>Thành phần</th>
+                                          <th>Số thành phần</th>
+                                          <th>Site</th>
+                                          <th>Nhà máy</th>
+                                          <th>AP1</th>
+                                          <th>AP2</th>
+                                          <th>AP3</th>
+                                          <th >RLI9(months)</th>
+                                          <th>Tên đánh giá</th>
+                                          <th>Ngày đánh giá</th>
+                                          <th>Commission Date</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Phân tích rủi ro<br> Giai đoạn</th>
+                                          <th>Loại thiết bị</th>
+                                          <th >Loại thành phần</th>
+                                          <th style="overflow: auto;white-space: nowrap;">Hạn kiểm định<br>Ngày</th>
+                                          <th>Code thiết kế</th>
+                                            <!------- Equipment Properties-------->
+                                          <th style="overflow: auto; white-space: nowrap;">Kiểm soát hành chính đối với<br> Quản lí khi gặp sự cố</th>
+                                          <th>Contains Deadlegs</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Sự có mặt của Lưu huỳnh, Độ ẩm  <br>và Oxy trong quá trình vận hành</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Dòng hơi ra trước khi <br>rửa nước</th>
+                                          <th>Lịch sử nhiệt</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Yếu tố quản lí<br>hệ thống</th>
+                                          <th>Xử lý nhiệt sau hàn</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Kiểm soát áp suất<br>bởi Quản trị viên</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Sự có mặt của Lưu huỳnh, Độ ẩm<br>và Oxy trong quá trình ngừng hoạt động</th>
+                                          <th>Theo dõi trực tuyến</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Nhiệt độ yêu cầu tối thiểu <br> trước khi nâng áp suất(&deg;C)</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Vật liệu phơi nhiễm bên ngoài với tác nhân<br>chứa Clo dạng lỏng, sương hoặc rắn </th>                 <!--------------------- doing------------------------>
+                                          <th >Chu kì vận hành</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Theo dõi trực tuyến<br>lớp sơn lót</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Biện pháp bảo vệ trong thời gian <br>thiết bị ngừng hoạt động</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Thiết bị hoạt động trong nhiều năm <br>ở nhiệt độ dự kiến thấp nhất</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Thể tích thiết bị (m<sup>3</sup>)</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Tiếp xúc với <br>đất hoặc nước</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Môi trường bên ngoài</th>
+                                          <th>Vết nhiệt</th>
+                                          <th style="overflow: auto; white-space: nowrap;">Highly Effective <br>Inspection for Deadlegs</th>
+                                            <!------- Component Properties-------->
+                                            <th style="overflow: auto; white-space: nowrap;">Độ dày đo được tối thiểu(mm)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Chiều dày danh định<br>(mm)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Đường kính danh định<br>(mm)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Chiều dày yêu cầu  <br>tối thiểu(mm)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Tốc độ ăn mòn <br>hiện hữu(mm/yr)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Sự có mặt của <br>vết nứt</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Các hư hỏng đã xảy ra trước đó</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Thiệt hại phát hiện<br>trong quá trình kiểm tra </th>
+                                            <th style="overflow: auto; white-space: nowrap;">Presence of Injection<br> Mix Point</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Kiểm định hiệu năng cao đối với<br>Ăn mòn tại điểm phối trộn</th>
+                                            <th>Tramp Elements</th>
+                                            <th>Hệ số delta của giá trị<br>nhiệt độ xuất hiện nứt gãy</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Tải tuần hoàn trong<br>phạm vi 15,25m</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Độ cứng Brinnel cực đại<br>của mối hàn</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Số lượng các phụ kiện<br>đường ống</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Dạng mối nối<br>hoặc nhánh</th>
+                                            <th>Điều kiện của đường ống</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Sự rung nhìn thấy được<br>hoặc nghe thấy được</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Thời gian rung lũy kế<br>của đường ống</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Hành động khắc phục để<br>giảm sự rung </th>
+                                            <th>Đường kính nhánh</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Độ phức tạp của phần <br>xâm nhập lồi</th>
+                                            <!------- Stream/Process Flow-------->
+                                            <th style="overflow: auto; white-space: nowrap;">Nhiệt độ vận hành<br> tối đa(&deg;C)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Nhiệt độ vận hành tối thiểu(&deg;C)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Áp suất vận hành<br> tối đa(MPa)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Áp suất vận hành<br> tối thiểu(MPa)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Nhiệt độ cận <br>giới hạn(&deg;C)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Hỗn hợp dung dịch<br> amin</th>
+                                            <th>Nồng độ NaOH (%)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Hàm lượng H2S <br>trong nước (ppm))</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Vật liệu có tiếp xúc với chất lỏng, khí <br>hoặc chất rắn có chứa clo bên trong</th>
+                                            <th>Lưu lượng dòng chảy(m<sup>3</sup>)</th>
+                                            <th>Độ pH của nước</th>
+                                            <th>Thành phần độc hại</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Giải phóng phần trăm chất độc<br>trong chất lỏng(%)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Quá trình có <br>chứa hydro</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Có chứa <br>axit hydrofluoric</th>
+                                            <th>Tiếp xúc với Amin</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Sự có mặt của<br> xyanua</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Áp suất vận hành<br>riêng phần của hydro (MPa)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Tiếp xúc với hợp chất<br>mang lưu huỳnh</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Tiếp xúc với amin <br>xử lý khí axit</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Môi trường <br>chứa H2S</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Môi trường chứa kiềm trong<br>bất kỳ nồng độ nào</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Nồng độ CO3<br>trong nước (ppm)</th>
+                                            <th>Ion clorua (ppm)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Pha nước trong<br>quá trình vận hành</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Pha nước trong khi<br>dừng hoạt động</th>
+                                            <!------- Material-------->
+                                            <th>Nhiệt độ thiết kế(&deg;C)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Allowable Stress at<br>Assessment Temperature(MPa)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Áp xuất thiết kế<br>(MPa)</th>
+                                            <th >Ảnh hưởng bởi nhiệt độ</th>
+                                            <th>Hàm lượng lưu huỳnh</th>
+                                            <th>Pha Sigma (%)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Nhiệt độ tham chiếu<br>(&deg;C)</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Hợp kim niken</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Hệ số chi phí<br> vật liệu</th>
+                                            <th>Xử lý nhiệt</th>
+                                            <th style="overflow: auto; white-space: nowrap;"> Mức độ ăn mòn cho phép<br>(mm)</th>
+                                            <th>Hàm lượng Crom > 12 %</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Carbon hoặc<br>thép hợp kim thấp</th>
+                                            <th>Thép không rỉ</th>
+                                            <th>Lớp phủ bên trong</th>
+                                            <th>Lớp phủ bên ngoài</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Thời điểm sơn phủ<br> bên ngoài</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Chất lượng lớp phủ <br>bên ngoài</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Cấu hình của hệ đỡ không cho phép<br> bảo dưỡng lớp phủ</th>
+                                            <th >Lớp lót bên trong</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Loại lót bên trong</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Điều kiện của<br>lớp lót bên trong</th>
+                                            <th>Lớp phủ bên trong</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Tốc độ ăn mòn<br> lớp phủ(mmm/yr)</th>
+                                            <th>Lớp bọc bên ngoài</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Loại vật liệu<br>bọc bên ngoài</th>
+                                            <th>Điều kiện bọc</th>
+                                            <th style="overflow: auto; white-space: nowrap;">Vật liệu bọc<br>có chứa clo</th>
+                                            <th ></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for a in data %}
+                                            <tr>
+                                                <td><div class="a"><input type="checkbox" name="{{ a.ID }}"></div></td>
+                                                <td><div class="a">{{a.EquipmentNumber}}</div></td>
+                                                <td><div class="a">{{a.ConponentName}}</div></td>
+                                                <td><div class="a">{{a.ConponentNumber}}</div></td>
+                                                <td><div class="a">{{a.Site}}</div></td>
+                                                <td><div class="a">{{a.Facility}}</div></td>
+                                                <td><div class="a">{{a.API1}}</div></td>
+                                                <td><div class="a">{{a.API2}}</div></td>
+                                                <td><div class="a">{{a.API3}}</div></td>
+                                                <td><div class="a">{{a.RLI}}</div></td>
+                                                <td><div class="a">{{a.AssessmentName}}</div></td>
+                                                <td><div class="a">{{a.AssessmentDate}}</div></td>
+                                                <td><div class="a">{{a.CommissionDate}}</div></td>
+                                                <td><div class="a">{{a.RiskAnalysisPeriod}}</div></td>
+                                                <td><div class="a">{{a.EquipmentType}}</div></td>
+                                                <td><div class="a">{{a.ComponentType}}</div></td>
+                                                <td><div class="a">{{a.InspectionDueDate}}</div></td>
+                                                <td><div class="a">{{a.DesignCode}}</div></td>
+                                                <td><input type="checkbox"  name="adminControlUpset" id="{{a.ID}}1" disabled></td>
+                                                <td><input type="checkbox"  name="ContainsDeadlegs" id="{{a.ID}}2" disabled></td>
+                                                <td ><input type="checkbox"  name="PresenceofSulphides" id="{{a.ID}}3" disabled></td >
+                                                <td><input type="checkbox"  name="SteamedOut" id="{{a.ID}}4" disabled></td>
+                                                <td><div class="a">{{a.ThermalHistory}}</div></td>
+                                                <td><div class="a">{{a.SystemManagementFactor}}</div></td>
+                                                <td><input type="checkbox"  name="PWHT" id="{{a.ID}}5" disabled></td>
+                                                <td><input type="checkbox"  name="PressurisationControlled" id="{{a.ID}}6" disabled></td>
+                                                <td><input type="checkbox"  name="PresenceofSulphidesShutdow" id="{{a.ID}}7" disabled></td>
+                                                <td ><div class="a">{{a.OnlineMonitoring}}</div></td>
+                                                <td><div class="a">{{a.minreqtemperaturepressurisation}}</div></td>
+                                                <td><input type="checkbox"  name="MFTF" id="{{a.ID}}9" disabled></td>
+                                                <td><input type="checkbox"  name="CylicOper" id="{{a.ID}}10" disabled></td>
+                                                <td><input type="checkbox"  name="LOM" id="{{a.ID}}8" disabled></td>
+                                                <td><input type="checkbox"  name="Downtime" id="{{a.ID}}11" disabled></td>
+                                                <td><input type="checkbox"  name="EquOper" id={{a.ID}}12" disabled></td>
+                                                <td>{{a.EquipmentVolume}}</td>
+                                                <td><input type="checkbox"  name="InterfaceSoilWater" id="{{a.ID}}13" disabled></td>
+                                                <td><div class="a">{{a.ExternalEnvironment}}</div></td>
+                                                <td><input type="checkbox"  name="HeatTraced" id="{{a.ID}}14" disabled></td>
+                                                <td><input type="checkbox"  name="Highly" id="{{a.ID}}15" disabled></td>
+                                                <script>
+                                                    if({{ a.adminControlUpset }})
+                                                        $("#{{a.ID}}1").attr('checked', 'checked');
+                                                    if({{ a.ContainsDeadlegs }})
+                                                        $("#{{a.ID}}2").attr('checked', 'checked');
+                                                    if({{ a.PresenceofSulphides }})
+                                                        $("#{{a.ID}}3").attr('checked', 'checked');
+                                                    if({{ a.SteamedOut }})
+                                                        $("#{{a.ID}}4").attr('checked', 'checked');
+                                                    if({{ a.PWHT }})
+                                                        $("#{a.ID}}5").attr('checked', 'checked');
+                                                    if({{ a.PressurisationControlled }})
+                                                        $("#{{a.ID}}6").attr('checked', 'checked');
+                                                    if({{ a.PresenceofSulphidesShutdow }})
+                                                        $("#{{a.ID}}7").attr('checked', 'checked');
+                                                    if({{ a.LOM }})
+                                                        $("#{{a.ID}}8").attr('checked', 'checked');
+                                                    if({{ a.MFTF }})
+                                                        $("#{{a.ID}}9").attr('checked', 'checked');
+                                                    if({{ a.CylicOper }})
+                                                        $("#{{a.ID}}10").attr('checked', 'checked');
+                                                    if({{ a.Downtime }})
+                                                        $("#{{a.ID}}11").attr('checked', 'checked');
+                                                    if({{ a.EquOper }})
+                                                        $("#{{a.ID}}12").attr('checked', 'checked');
+                                                    if({{ a.InterfaceSoilWater }})
+                                                        $("#{{a.ID}}13").attr('checked', 'checked');
+                                                    if({{ a.HeatTraced }})
+                                                        $("#{{a.ID}}14").attr('checked', 'checked');
+                                                    if({{ a.Highly }})
+                                                        $("#{{a.ID}}15").attr('checked', 'checked');
+                                                </script>
+                                                <td><div class="a">{{a.MinimumMeasuredThickness}}</div></td>
+                                                <td><div class="a">{{a.NominalThickness}}</div></td>
+                                                <td><div class="a">{{a.NominalDiameter}}</div></td>
+                                                <td><div class="a">{{a.MinRequiredThickness}}</div></td>
+                                                <td><div class="a">{{a.CurrentCorrosionRate}}</div></td>
+                                                <td><input type="checkbox"  name="PresenceCracks" id="{{a.ID}}16" disabled></td>
+                                                <td><div class="a">{{a.PreviousFailure}}</div></td>
+                                                <td><input type="checkbox"  name="DFDI" id="{{a.ID}}17" disabled></td>
+                                                <td><input type="checkbox"  name="HFICI" id="{{a.ID}}18" disabled></td>
+                                                <td><input type="checkbox"  name="PIMP" id="{{a.ID}}21" disabled></td>
+                                                <td><input type="checkbox"  name="TrampElements" id="{{a.ID}}19" disabled></td>
+                                                <td><div class="a">{{a.DeltaFATT}}</div></td>
+                                                <td><div class="a">{{a.CylicLoadingConnectedwithin1525m}}</div></td>
+                                                <td><div class="a">{{a.MaximumBrinnellHardnessofWeld}}</div></td>
+                                                <td><div class="a">{{a.NumberofFittingsonPipe}}</div></td>
+                                                <td><div class="a">{{a.JointTypeofBranch}}</div></td>
+                                                <td><div class="a">{{a.PipeCondition}}</div></td>
+                                                <td><input type="checkbox"  name="VASD" id="{{a.ID}}20" disabled></td>
+                                                <td><div class="a">{{a.shakingamount}}</div></td>
+                                                <td><div class="a">{{a.correctiveaction}}</div></td>
+                                                <td><div class="a">{{a.branchdiameter}}</div></td>
+                                                <td><div class="a">{{a.complexityprotrusion}}</div></td>
+                                                <script>
+                                                    if({{ rwComp.PresenceCracks }})
+                                                        $("#{{a.ID}}16").attr('checked', 'checked');
+                                                    if({{ rwComp.DFDI }})
+                                                        $("#{{a.ID}}17").attr('checked', 'checked');
+                                                    if({{ rwComp.HFICI }})//loi can fix
+                                                        $("#{{a.ID}}18").attr('checked', 'checked');
+                                                    if({{ rwComp.TrampElements }})
+                                                        $("#{{a.ID}}19").attr('checked', 'checked');
+                                                    if({{ rwComp.VASD }})
+                                                        $("#{{a.ID}}20").attr('checked', 'checked');
+                                                    if({{ rwComp.PIMP }})
+                                                        $("#{{a.ID}}21").attr('checked', 'checked');
+                                                </script>
+                                                <td><div class="a">{{a.maxoperatingtemperature}}</div></td>
+                                                <td><div class="a">{{a.minoperatingtemperature}}</div></td>
+                                                <td><div class="a">{{a.maxoperatingtemperature}}</div></td>
+                                                <td><div class="a">{{a.minoperatingpressure}}</div></td>
+                                                <td><div class="a">{{a.criticalexposuretemperature}}</div></td>
+                                                <td><div class="a">{{a.aminesolution}}</div></td>
+                                                <td><div class="a">{{a.naohconcentration}}</div></td>
+                                                <td><div class="a">{{a.h2sinwater}}</div></td>
+                                                <td><input type="checkbox"  name="MEFMSCC" id="{{a.ID}}22" disabled></td>
+                                                <td><div class="a">{{a.flowrate}}</div></td>
+                                                <td><div class="a">{{a.waterph}}</div></td>
+                                                <td><input type="checkbox"  name="ToxicConstituents" id="{{a.ID}}23" disabled></td>
+                                                <td><div class="a">{{a.releasefluidpercenttoxic}}</div></td>
+                                                <td><input type="checkbox"  name="PCH" id="{{a.ID}}24" disabled></td>
+                                                <td><input type="checkbox"  name="PHA" id="{{a.ID}}25" disabled></td>
+                                                <td><div class="a">{{a.exposuretoamine}}</div></td>
+                                                <td><input type="checkbox"  name="PresenceCyanides" id="{{a.ID}}26" disabled></td>
+                                                <td><div class="a">{{a.h2spartialpressure}}</div></td>
+                                                <td><input type="checkbox"  name="ESBC" id="{{a.ID}}27" disabled></td>
+                                                <td><input type="checkbox"  name="EAGTA" id="{{a.ID}}28" disabled></td>
+                                                <td><input type="checkbox"  name="EnvironmentCH2S" id="{{a.ID}}29" disabled></td>
+                                                <td><input type="checkbox"  name="ECCAC" id="{{a.ID}}30" disabled></td>
+                                                <td><div class="a">{{a.co3concentration}}</div></td>
+                                                <td><div class="a">{{a.chloride}}</div></td>
+                                                <td><input type="checkbox"  name="APDO" id="{{a.ID}}31" disabled></td>
+                                                <td><input type="checkbox"  name="APDSD" id="{{a.ID}}32" disabled></td>
+                                                <script>
+                                                    if({{ a.MEFMSCC }})
+                                                        $("#{{a.ID}}22").attr('checked', 'checked');
+                                                    if({{ a.ToxicConstituents }})
+                                                        $("#{{a.ID}}23").attr('checked', 'checked');
+                                                    if({{ a.PCH }})
+                                                        $("#{{a.ID}}24").attr('checked', 'checked');
+                                                    if({{ a.PHA }})
+                                                        $("#{{a.ID}}25").attr('checked', 'checked');
+                                                    if({{ a.PresenceCyanides }})
+                                                        $("#{{a.ID}}26").attr('checked', 'checked');
+                                                    if({{ a.ESBC }})
+                                                        $("#{{a.ID}}27").attr('checked', 'checked');
+                                                    if({{ a.EAGTA }})
+                                                        $("#{{a.ID}}28").attr('checked', 'checked');
+                                                    if({{ a.EnvironmentCH2S }})
+                                                        $("#{{a.ID}}29").attr('checked', 'checked');
+                                                    if({{ a.ECCAC }})
+                                                        $("#{{a.ID}}30").attr('checked', 'checked');
+                                                    if({{ a.APDO }})
+                                                        $("#{{a.ID}}31").attr('checked', 'checked');
+                                                    if({{ a.APDSD }})
+                                                        $("#{{a.ID}}32").attr('checked', 'checked');
+                                                </script>
+                                                <td><div class="a">{{a.designtemperature}}</div></td>
+                                                <td><div class="a">{{a.allowablestress}}</div></td>
+                                                <td><div class="a">{{a.designpressure}}</div></td>
+                                                <td><input type="checkbox"  name="temper" id="{{a.ID}}33" disabled></td>
+                                                <td><div class="a">{{a.sulfurcontent}}</div></td>
+                                                <td><div class="a">{{a.sigmaphase}}</div></td>
+                                                <td><div class="a">{{a.referencetemperature}}</div></td>
+                                                <td><input type="checkbox"  name="NickelAlloy" id="{{a.ID}}34" disabled></td>
+                                                <td><div class="a">{{a.costfactor}}</div></td>
+                                                <td><div class="a">{{a.heattreatment}}</div></td>
+                                                <td><div class="a">{{a.corrosionallowance}}</div></td>
+                                                <td><input type="checkbox"  name="Chromium" id="{{a.ID}}35" disabled></td>
+                                                <td><input type="checkbox"  name="CoLAS" id="{{a.ID}}36" disabled></td>
+                                                <td><input type="checkbox"  name="AusteniticSteel" id="{{a.ID}}37" disabled></td>
+                                                <script>
+                                                    if({{ a.temper }})
+                                                        $("#{{a.ID}}33").attr('checked', 'checked');
+                                                    if({{ a.NickelAlloy }})
+                                                        $("#{{a.ID}}34").attr('checked', 'checked');
+                                                    if({{ a.chromemoreequal12 }})
+                                                        $("#{{a.ID}}35").attr('checked', 'checked');
+                                                    if({{ a.CoLAS }})
+                                                        $("#{{a.ID}}36").attr('checked', 'checked');
+                                                    if({{ a.AusteniticSteel }})
+                                                        $("#{{a.ID}}37").attr('checked', 'checked');
+                                                </script>
+                                                <td><input type="checkbox"  name="InternalCoating" id="{{a.ID}}38" disabled></td>
+                                                <td><input type="checkbox"  name="ExternalCoating" id="{{a.ID}}39" disabled></td>
+                                                <td><div class="a">{{a.externalcoatingdate}}</div></td>
+                                                <td><div class="a">{{a.externalcoatingquality}}</div></td>
+                                                <td><input type="checkbox"  name="ExternalCoating" id="{{a.ID}}40" disabled></td>
+                                                <td><input type="checkbox"  name="InternalLining" id="{{a.ID}}41" disabled></td>
+                                                <td><div class="a">{{a.internallinertype}}</div></td>
+                                                <td><div class="a">{{a.internallinercondition}}</div></td>
+                                                <td><input type="checkbox"  name="internalcladding" id="{{a.ID}}42" disabled></td>
+                                                <td><div class="a">{{a.claddingcorrosionrate}}</div></td>
+                                                <td><input type="checkbox"  name="externalinsulation" id="{{a.ID}}43" disabled></td>
+                                                <td><div class="a">{{a.externalinsulationtype}}</div></td>
+                                                <td><div class="a">{{a.insulationcondition}}</div></td>
+                                                <td><input type="checkbox"  name="externalinsulationtype" id="{{a.ID}}44" disabled></td>
+                                                <td><input type="checkbox"  name="ICC" id="{{a.ID}}45" disabled></td>
+                                                <script>
+                                                    if({{ a.InternalCoating }})
+                                                        $("#{{a.ID}}38").attr('checked', 'checked');
+                                                    if({{ a.ExternalCoating }})
+                                                        $("#{{a.ID}}39").attr('checked', 'checked');
+                                                    if({{ a.supportMaterial }})
+                                                        $("#{{a.ID}}40").attr('checked', 'checked');
+                                                    if({{ a.InternalLining }})
+                                                        $("#{{a.ID}}41").attr('checked', 'checked');
+                                                    if({{ a.internalcladding }})
+                                                        $("#{{a.ID}}42").attr('checked', 'checked');
+                                                    if({{ a.externalinsulation }})
+                                                        $("#{{a.ID}}43").attr('checked', 'checked');
+                                                    if({{ a.externalinsulationtype }})
+                                                        $("#{{a.ID}}44").attr('checked', 'checked');
+                                                    if({{ a.insulationcontainschloride }})
+                                                        $("#{{a.ID}}45").attr('checked', 'checked');
+                                                </script>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th >Số thiết bị</th>
+                                            <th>Thành phần</th>
+                                          <th>Số thành phần</th>
+                                          <th>Site</th>
+                                          <th>Nhà máy</th>
+                                          <th>AP1</th>
+                                          <th>AP2</th>
+                                          <th>AP3</th>
+                                          <th >RLI9(months)</th>
+                                          <th>Tên đánh giá</th>
+                                          <th>Ngày đánh giá</th>
+                                          <th>Commission Date</th>
+                                          <th >Thời gian phân tích rủi ro</th>
+                                          <th>Loại thiết bị</th>
+                                          <th >Loại thành phần</th>
+                                          <th >Hạn kiểm định</th>
+                                          <th>Code thiết kế</th>
+                                            <!------- Equipment Properties-------->
+                                          <th >Kiểm soát hành chính đối với Quản lí khi gặp sự cố</th>
+                                          <th>Contains Deadlegs</th>
+                                          <th >Sự có mặt của Lưu huỳnh, Độ ẩm và Oxy trong quá trình vận hành</th>
+                                          <th >Dòng hơi ra trước khi rửa nước</th>
+                                          <th>Lịch sử nhiệt</th>
+                                          <th >Yếu tố quản lí hệ thống</th>
+                                          <th>Xử lý nhiệt sau hàn</th>
+                                          <th>Kiểm soát áp suất bởi Quản trị viên</th>
+                                          <th>Sự có mặt của Lưu huỳnh, Độ ẩm và Oxy trong quá trình ngừng hoạt động</th>
+                                          <th>Theo dõi trực tuyến</th>
+                                          <th>Nhiệt độ yêu cầu tối thiểu trước khi nâng áp suất(&deg;C)</th>
+                                          <th>Vật liệu phơi nhiễm bên ngoài với tác nhân chứa Clo dạng lỏng, sương hoặc rắn </th>                 <!--------------------- doing------------------------>
+                                          <th >Chu kì vận hành</th>
+                                          <th>Theo dõi trực tuyến lớp sơn lót</th>
+                                          <th>Biện pháp bảo vệ trong thời gian thiết bị ngừng hoạt động</th>
+                                          <th>Thiết bị hoạt động trong nhiều năm ở nhiệt độ dự kiến thấp nhất</th>
+                                          <th>Thể tích thiết bị (m<sup>3</sup>)</th>
+                                          <th>Tiếp xúc với đất hoặc nước</th>
+                                          <th>Môi trường bên ngoài</th>
+                                          <th>Vết nhiệt</th>
+                                          <th>Highly Effective Inspection for Deadlegs</th>
+                                            <!------- Component Properties-------->
+                                            <th được tối thiểu(mm)</th>
+                                            <th >Chiều dày danh định (mm)</th>
+                                            <th>Đường kính danh định(mm)</th>
+                                            <th >Chiều dày yêu cầu tối thiểu(mm)</th>
+                                            <th>Tốc độ ăn mòn hiện hữu(mm/yr)</th>
+                                            <th >Sự có mặt của vết nứt</th>
+                                            <th >Các hư hỏng đã xảy ra trước đó</th>
+                                            <th >Thiệt hại phát hiện trong quá trình kiểm tra </th>
+                                            <th >Presence of Injection Mix Point</th>
+                                            <th >Kiểm định hiệu năng cao đối với ăn mòn tại điểm phối trộn</th>
+                                            <th>Tramp Elements</th>
+                                            <th>Hệ số delta của giá trị nhiệt độ xuất hiện nứt gãy</th>
+                                            <th >Tải tuần hoàn trong phạm vi 15,25m</th>
+                                            <th >Độ cứng Brinnel cực đại của mối hàn</th>
+                                            <th >Số lượng các phụ kiện đường ống</th>
+                                            <th >Dạng mối nối hoặc nhánh</th>
+                                            <th>Điều kiện của đường ống</th>
+                                            <th >Sự rung nhìn thấy được hoặc nghe thấy được</th>
+                                            <th >Thời gian rung lũy kế của đường ống</th>
+                                            <th >Hành động khắc phục để giảm sự rung </th>
+                                            <th>Đường kính nhánh</th>
+                                            <th >Độ phức tạp của phần xâm nhập lồi</th>
+                                            <!------- Stream/Process Flow-------->
+                                            <th>Nhiệt độ vận hành tối đa(&deg;C)</th>
+                                            <th>Nhiệt độ vận hành tối thiểu(&deg;C)</th>
+                                            <th>Áp suất vận hành<br> tối đa(MPa)</th>
+                                            <th>Áp suất vận hành<br> tối thiểu(MPa)</th>
+                                            <th>Nhiệt độ cận <br>giới hạn(&deg;C)</th>
+                                            <th>Hỗn hợp dung dịch<br> amin</th>
+                                            <th>Nồng độ NaOH (%)</th>
+                                            <th>Hàm lượng H2S <br>trong nước (ppm))</th>
+                                            <th>Vật liệu có tiếp xúc với chất lỏng, khí hoặc chất rắn có chứa clo bên trong</th>
+                                            <th>Lưu lượng dòng chảy(m<sup>3</sup>)</th>
+                                            <th>Độ pH của nước</th>
+                                            <th>Thành phần độc hại</th>
+                                            <th>Giải phóng phần trăm chất độc trong chất lỏng(%)</th>
+                                            <th>Quá trình có chứa hydro</th>
+                                            <th>Có chứa axit hydrofluoric</th>
+                                            <th>Tiếp xúc với Amin</th>
+                                            <th>Sự có mặt của xyanua</th>
+                                            <th>Áp suất vận hành riêng phần của hydro (MPa)</th>
+                                            <th>Tiếp xúc với hợp chất mang lưu huỳnh</th>
+                                            <th>Tiếp xúc với amin xử lý khí axit</th>
+                                            <th>Môi trường chứa H2S</th>
+                                            <th>Môi trường chứa kiềm trong bất kỳ nồng độ nào</th>
+                                            <th>Nồng độ CO3 trong nước (ppm)</th>
+                                            <th>Ion clorua (ppm)</th>
+                                            <th>Pha nước trong quá trình vận hành</th>
+                                            <th >Pha nước trong khi dừng hoạt động</th>
+                                            <!------- Material-------->
+                                            <th>Nhiệt độ thiết kế(&deg;C)</th>
+                                            <th>Allowable Stress at Assessment Temperature(MPa)</th>
+                                            <th>Áp xuất thiết kế(MPa)</th>
+                                            <th>Ảnh hưởng bởi nhiệt độ</th>
+                                            <th>Hàm lượng lưu huỳnh</th>
+                                            <th>Pha Sigma (%)</th>
+                                            <th>Nhiệt độ tham chiếu(&deg;C)</th>
+                                            <th>Hợp kim niken</th>
+                                            <th>Hệ số chi phí vật liệu</th>
+                                            <th>Xử lý nhiệt</th>
+                                            <th> Mức độ ăn mòn cho phép(mm)</th>
+                                            <th>Hàm lượng Crom > 12 %</th>
+                                            <th>Carbon hoặc thép hợp kim thấp</th>
+                                            <th>Thép không rỉ</th>
+                                            <th>Lớp phủ bên trong</th>
+                                            <th>Lớp phủ bên ngoài</th>
+                                            <th>Thời điểm sơn phủ bên ngoài</th>
+                                            <th>Chất lượng lớp phủ bên ngoài</th>
+                                            <th>Cấu hình của hệ đỡ không cho phép bảo dưỡng lớp phủ</th>
+                                            <th>Lớp lót bên trong</th>
+                                            <th>Loại lót bên trong</th>
+                                            <th>Điều kiện của lớp lót bên trong</th>
+                                            <th>Lớp phủ bên trong</th>
+                                            <th>Tốc độ ăn mòn lớp phủ(mmm/yr)</th>
+                                            <th>Lớp bọc bên ngoài</th>
+                                            <th>Loại vật liệu bọc bên ngoài</th>
+                                            <th>Điều kiện bọc</th>
+                                            <th>Vật liệu bọc có chứa clo</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---------------- Tank------------------>
+                        <div id="tank" class="tab-pane fade in active">
+                            <div class="city" style="font-size: 13px; color: #444444;background-color:white">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+<!-------------- Inspection Method ---------------->
+        <div id="menu1" class="tab-pane fade">
+            <div class="city" style="font-size: 15px; color: #444444;background-color:white">
+                <!--------------choose Inspection type ---------------->
+                <br>
+                <div class="row">
+                        <div class="col-md-1">Phương pháp kiểm định:</div>
+                        <div class="col-md-3"><select name="InspectionType" class="form-control">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Xâm nhập</option>
+                            <option>Không xâm nhập</option>
+                        </select></div>
+                    </div>
+                <!--<div class="container">-->
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border"><b>Kĩ thuật kiểm định</b></legend>
+                    <div class="row">
+                        <div class="col-md-1">Visual:</div>
+                        <div class="col-md-2"><select name="Visual" class="form-control">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Endoscopy</option>
+                            <option>Hydrotesting</option>
+                            <option>Naked Eye</option>
+                            <option>Video</option>
+                            <option>Holiday</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover1" class="form-control" name="Min" value="0" max="100" required/></div>
+                        <div class="col-md-1">Từ tính:</div>
+                        <div class="col-md-2"><select class="form-control" name="Magnetic">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Kiểm định từ tính huỳnh quang </option>
+                            <option>Rò rỉ từ thông</option>
+                            <option>Kiểm định bộ phận từ tính</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover2" class="form-control" name="Min" value="0" max="100" required/></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-1">Penetrant:</div>
+                        <div class="col-md-2"><select name="Penetrant" class="form-control">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Liquid Penetrant Inspection</option>
+                            <option>Liquid Penetrant Inspection</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover3" class="form-control" name="Min" value="0" max="100" required/></div>
+                        <div class="col-md-1">Radiography:</div>
+                        <div class="col-md-2"><select class="form-control" name="Radiography">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Compton Scatter</option>
+                            <option>Gamma Radiography</option>
+                            <option>Real-time Radiography</option>
+                            <option>X-Radiography</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover4" class="form-control" name="Min" value="0" max="100" required/></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-1">Ultrasonic:</div>
+                        <div class="col-md-2"><select name="Ultrasonic" class="form-control">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Angled Compression Wave</option>
+                            <option>Angled Shear Wave</option>
+                            <option>A-scan Thickness Survey</option>
+                            <option>B-scan</option>
+                            <option>Chime</option>
+                            <option>C-scan</option>
+                            <option>Digital Ultrasonic Thickness Gauge</option>
+                            <option>Lorus</option>
+                            <option>Surface Waves</option>
+                            <option>Teletest</option>
+                            <option>TOFD</option>
+                            <option>Advanced Ultrasonic Backscatter Technique</option>
+                            <option>Hệ thống kiểm tra luân phiên nội bộ</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover5" class="form-control" name="Min" value="0" max="100" required/></div>
+                        <div class="col-md-1">Dòng điện xoáy:</div>
+                        <div class="col-md-2"><select class="form-control" name="EddyCurrent">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>ACFM</option>
+                            <option>Tần số thấp</option>
+                            <option>Dao động</option>
+                            <option>Trường từ xa</option>
+                            <option>Tiêu chuẩn (flat coil)</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover6" class="form-control" name="Min" value="0" max="100" required/></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-1">Nhiệt độ:</div>
+                        <div class="col-md-2"><select name="Thermography" class="form-control">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Nhiệt độ thụ động</option>
+                            <option>Nhiệt độ tạm thời</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover7" class="form-control" name="Min" value="0" max="100" required/></div>
+                        <div class="col-md-1">Acoustic Emission:</div>
+                        <div class="col-md-2"><select class="form-control" name="AcousticEmission">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Phát hiện vết nứt</option>
+                            <option>Phát hiện rò rỉ</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover8" class="form-control" name="Min" value="0" max="100" required/></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-1">Metallurgical:</div>
+                        <div class="col-md-2"><select name="Metallurgical" class="form-control">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Khảo sát độ cứng</option>
+                            <option>Tái tạo cấu trúc vi mô</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover9" class="form-control" name="Min" value="0" max="100" required/></div>
+                        <div class="col-md-1">Giám sát:</div>
+                        <div class="col-md-2"><select class="form-control" name="Monitoring">
+                            <option value="" selected disabled>Chọn kĩ thuật kiểm định..</option>
+                            <option>Giám sát trực tuyến</option>
+                        </select></div>
+                        <div class="col-md-1">Phạm vi, %:</div>
+                        <div class="col-md-1"><input type="number" name="Cover10" class="form-control" name="Min" value="0" max="100" required/></div>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" name="_ok" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Phân tích</i></button>
+                        <button type="submit" name="_cancel" class="btn btn-warning" id="cancel" onclick="Sub()"><i class="fa fa-trash-o">&emsp;Hủy</i></button>
+                    </div>
+                </fieldset>
+
+                    <!--<div class="row">-->
+                        <!--<div class="containerflex" title="choose inspection technique" data-toggle="tooltip" data-placement="top">-->
+                            <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Inspection Methods &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-8">Inspection Methods<span style="color: red">*</span></div>-->
+                                <!--<div class="col-md-8">-->
+                                    <!--<select class="form-control" name="inspectionMethod" id="inspectionMethod" onchange="visiblehidden(this)" required>-->
+                                        <!--<option disabled selected>Please select inspection method..</option>-->
+                                        <!--{% for a in imitem %}-->
+                                            <!--{% if a.imdescription == a.inspectionMethod %}-->
+                                            <!--<option selected>{{ a.componenttypename }}</option>-->
+                                            <!--{% else %}-->
+                                            <!--<option>{{ a.imdescription }}</option>-->
+                                            <!--{% endif %}-->
+                                        <!--{% endfor %}-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Inspection Technique&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-8">Inspection Technique:<span style="color: red">*</span></div>-->
+                                <!--<div class="col-md-8">-->
+                                    <!--<select class="form-control" id="inspectionTechnique" name="inspectionTechnique" required>-->
+                                        <!--<option disabled selected>Please select inspection technique..</option>-->
+                                        <!--{% for a in imtype %}-->
+                                            <!--{% if a.imtypename == data.inspectionTechnique %}-->
+                                            <!--<option selected>{{ a.imtypename }}</option>-->
+                                            <!--{% else %}-->
+                                            <!--<option>{{ a.imtypename }}</option>-->
+                                            <!--{% endif %}-->
+                                        <!--{% endfor %}-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!---->
+                            <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Inspection Type Change-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+                            <!--<script>-->
+                            <!--$(document).ready(function () {-->
+                                 <!--var check = $("#CheckVisual").is(':checked');-->
+                                 <!--if(check){-->
+                                     <!--$("#Visual").attr('disabled', false);-->
+                                 <!--}-->
+                                 <!--else {-->
+                                     <!--$("#Visual").prop('selectedIndex',0);-->
+                                     <!--$("#Visual").attr('disabled', true);-->
+                                 <!--}-->
+                                 <!--$("#CheckVisual").click(function () {-->
+                                     <!--if($("#CheckVisual").prop('checked') == true){-->
+                                         <!--$("#Visual").attr('disabled', false);-->
+                                     <!--}-->
+                                     <!--else {-->
+                                         <!--$("#Visual").prop('selectedIndex',0);-->
+                                         <!--$("#Visual").attr('disabled', true);-->
+                                     <!--}-->
+                                 <!--})-->
+                             <!--})-->
+                            <!--$(document).ready(function () {-->
+                                <!--$("#inspectionMethod").change(function () {-->
+                                    <!--$("#inspectionTechnique").empty();-->
+                                    <!--var inspectionmethod = $("#inspectionMethod").val();-->
+                                    <!--if( inspectionmethod == "Visual"){-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Endoscopy'>Endoscopy</option>"+-->
+                                        <!--"<option value='Hydrotesting'>Hydrotesting</option><option value='Naked Eye'>Naked Eye</option>"+-->
+                                        <!--"<option value='Video'>Video</option>"+-->
+                                        <!--"<option value='Holiday Test'>Holiday Test</option>");-->
+                                    <!--}-->
+                                    <!--else if(inspectionmethod == "Magnetic"){-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Magnetic Fluorescent Inspection'>Magnetic Fluorescent Inspection</option>"+-->
+                                        <!--"<option value='Magnetic Flux Leakage'>Magnetic Flux Leakage</option>"+-->
+                                        <!--"<option value='Magnetic Particle Inspection'>Magnetic Particle Inspection</option>");-->
+                                    <!--}-->
+                                    <!--else if(inspectionmethod == "Penetrant"){-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Liquid Penetrant Inspection'>Liquid Penetrant Inspection</option>"+-->
+                                        <!--"<option value='Penetrant Leak Detection'>Penetrant Leak Detection</option>");-->
+                                    <!--}-->
+                                    <!--else if(inspectionmethod == "Radiography") {-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Compton Scatter'>Compton Scatter</option>"+-->
+                                        <!--"<option value='Gamma Radiography'>Gamma Radiography</option>"+-->
+                                        <!--"<option value='Real-time Radiography'>Real-time Radiography</option>"+-->
+                                        <!--"<option value='X-Radiography'>X-Radiography</option>");-->
+                                    <!--}-->
+                                    <!--else if(inspectionmethod == "Ultrasonic") {-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Angled Compression Wave'>Angled Compression Wave</option>"+-->
+                                        <!--"<option value='Angled Shear Wave'>Angled Shear Wave</option>"+-->
+                                        <!--"<option value='A-scan Thickness Survey'>A-scan Thickness Survey</option>"+-->
+                                        <!--"<option value='B-scan'>B-scan</option>"+-->
+                                        <!--"<option value='Chime'>Chime</option>"+-->
+                                        <!--"<option value='C-scan'>C-scan</option>"+-->
+                                        <!--"<option value='Digital Ultrasonic Thickness Gauge'>Digital Ultrasonic Thickness Gauge</option>"+-->
+                                        <!--"<option value='Lorus'>Lorus</option>"+-->
+                                        <!--"<option value='Surface Waves'>Surface Waves</option>"+-->
+                                        <!--"<option value='Teletest'>Teletest</option>"+-->
+                                        <!--"<option value='TOFD'>TOFD</option>"+-->
+                                        <!--"<option value='Advanced Ultrasonic Backscatter Technique'>Advanced Ultrasonic Backscatter Technique</option>"+-->
+                                        <!--"<option value='Internal Rotational Inspection System'>Internal Rotational Inspection System</option>");-->
+                                    <!--}-->
+                                    <!--else if(inspectionmethod == "Eddy Current") {-->
+                                        <!--$("#inspectionTechnique").html("<option value ='ACFM'>ACFM</option>"+-->
+                                        <!--"<option value='Low frequency'>Low frequency</option>"+-->
+                                        <!--"<option value='Pulsed'>Pulsed</option>"+-->
+                                        <!--"<option value='Remote field'>Remote field</option>"+-->
+                                         <!--"<option value='Standard (flat coil)'>Standard (flat coil)</option>");-->
+                                    <!--}-->
+                                    <!--else if( inspectionmethod == "Thermography"){-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Passive Thermography'>Passive Thermography</option>"+-->
+                                        <!--"<option value='Transient Thermography'>Transient Thermography</option>");-->
+                                    <!--}-->
+                                    <!--else if( inspectionmethod == "Acoustic Emission"){-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Crack Detection'>Crack Detection</option>"+-->
+                                        <!--"<option value='Leak Detection'>Leak Detection</option>");-->
+                                    <!--}-->
+                                    <!--else if( inspectionmethod == "Metallurgical"){-->
+                                        <!--$("#inspectionTechnique").html("<option value ='Hardness Surveys'>Hardness Surveys</option>"+-->
+                                        <!--"<option value='Microstructure Replication'>Microstructure Replication</option>");-->
+                                    <!--}-->
+                                    <!--else {-->
+                                        <!--$("#inspectionTechnique").html("<option value ='On-line Monitoring'>On-line Monitoring</option>");-->
+                                    <!--}-->
+                                    <!--})-->
+                                <!--})-->
+                            <!--</script>-->
+                            <!--<div>-->
+                                <!--<div class="col-md-12" style="text-align: left"><button type="submit" class="btn btn-primary">Add</button></div>-->
+                            <!--</div>-->
+                            <!----------------------------------------------------------------->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-------------- Damage Mechanism ---------------->
+        <!--<div id="menu2" class="tab-pane fade">-->
+          <!--<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>-->
+
+        <!--</div>-->
+
+          <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Inspection Findings/Description &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+        <!--<div id="menu3" class="tab-pane fade">-->
+            <!--<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>-->
+            <!--</div>-->
+        <!--</div>-->
+<!-------------- End Body ---------------->
+
+</form>
+{% endblock %}
