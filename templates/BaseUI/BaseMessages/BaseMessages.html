@@ -29,11 +29,11 @@
 {% csrf_token %}
     <div class="business-normal">
         <div class="sidenav">
-            <a class="active">Email<br>-Messages-</a>
+            <a class="active">Email<br>-Tin nhắn-</a>
             <a id="Messagesnew" class="Messagesnew" data-toggle="dropdown" ><i class="far fa-envelope">&emsp;Tin nhắn mới</i></a>
             <a href="{% url 'messagesInbox' %}" class="{% if page == 'messagesInbox' %}activeLink{% endif %}"><i class="fa fa-building">&emsp;Hộp thư đến</i></a>
             <a href="{% url 'messagesSent' %}" class="{% if page == 'messagesSent' %}activeLink{% endif %}"><i class="fa fa-building">&emsp;Các thư đã gửi</i></a>
-            <a><i class="fa fa-building">&emsp;Thư rác</i></a>
+            <a><i class="fa fa-building">&emsp;Thư nháp</i></a>
         </div>
         <article class="main">
             {% block data-content %}{% endblock %}

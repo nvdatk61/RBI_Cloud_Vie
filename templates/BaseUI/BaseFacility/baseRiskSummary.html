@@ -6,9 +6,9 @@
 
 {% block vertical %}
     <a class="vertical">Tóm tắt<br>rủi ro</a>
-    <a href="{% block pof %}{% endblock %}" class="{% if page == 'damageFactor' %}activeLink{% endif %}"><i class="fa fa-bomb">&emsp;Xác xuất<br>&emsp;&emsp; thất bại</i></a>
-    <a href="{% block fcof%}{% endblock %}" class="{% if page == 'fullyConse' %}activeLink{% endif %}"><i class="fa fa-money">&emsp;Tài chính CoF</i></a>
-    {% if isTank == 0 and isShell == 0 %}<a href="{% block acof%}{% endblock %}" class="{% if page == 'areaBasedCoF' %}activeLink{% endif %}"><i class="fa fa-money">&emsp;Cơ sở khu vực CoF</i></a>{% endif %}
+    <a href="{% block pof %}{% endblock %}" class="{% if page == 'damageFactor' %}activeLink{% endif %}"><i class="fa fa-bomb">&emsp;Xác xuất thất bại</i></a>
+    <a href="{% block fcof%}{% endblock %}" class="{% if page == 'fullyConse' %}activeLink{% endif %}"><i class="fa fa-money">&emsp;Thiệt hại tài chính CoF</i></a>
+    {% if isTank == 0 and isShell == 0 %}<a href="{% block acof%}{% endblock %}" class="{% if page == 'areaBasedCoF' %}activeLink{% endif %}"><i class="fa fa-money">&emsp;Area-Based CoF</i></a>{% endif %}
     <a href="{% block matrix %}{% endblock %}" class="{% if page == 'riskMatrix' %}activeLink{% endif %}"><i class="fa fa-th">&emsp;Ma trận rủi ro</i></a>
     <a href="{% block chart %}{% endblock %}" class="{% if page == 'riskChart' %}activeLink{% endif %}"><i class="fa fa-bar-chart-o">&emsp;Biểu đồ rủi ro</i></a>
     {% if isTank or isShell %}<a href="{% block corri %}{% endblock %}" class="{% if page == 'corrsionRate' %}activeLink{% endif %}"><i class="fa fa-bomb">&emsp;Tốc độ ăn mòn</i></a>{% endif %}

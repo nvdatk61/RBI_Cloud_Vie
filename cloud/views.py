@@ -1443,6 +1443,7 @@ def ListDesignCode(request, facilityID):
             return redirect('designcodeDisplay', siteID=siteID)
         if '_new' in request.POST:
             return redirect('designcodeNew', siteID=siteID)
+        print('gang')
     except:
         raise Http404
     return render(request, 'FacilityUI/design_code/designcodeListDisplay.html',

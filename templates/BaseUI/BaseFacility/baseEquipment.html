@@ -5,8 +5,10 @@
 {% block title %}Thiết bị{% endblock %}
 
 {% block vertical %}
-    <a class="vertical">Quản lí thiết bị</a>
-    <a href="{% block listeq %}{% endblock %}" class="{% if page == 'listEquip' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Danh sách thiết bị</i></a>
+    <<a class="active">Quản lí thiết bị</a>
+    <a href="{% block listeq %}{% endblock %}" class="{% if page == 'listEquip' %}activeLink{% endif %}"><i class="fa fa-list">&emsp; Danh sách thiết bị</i></a>
+    <a href="{% block design %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-barcode">&emsp; Code thiết kế</i></a>
+    <a href="{% block manu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-cubes">&emsp;Nhà sản suất</i></a>
 {#    <a href="{% block mana %}{% endblock %}" class="{% if page == 'mana' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Management Systems</i></a>#}
-    <a href="{% block backfaci %}{% endblock %}"><i class="fa fa-arrow-left">&emsp;Quay lại nhà máy</i></a>
+    <a href="{% block backfaci %}{% endblock %}"><i class="fa fa-arrow-left">&emsp; Quay lại mục nhà máy</i></a>
 {% endblock %}

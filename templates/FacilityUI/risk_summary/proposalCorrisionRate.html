@@ -56,27 +56,27 @@
 
 <form id="tanktank" method="post" >
     {% csrf_token %}
-    <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Corrosion Rate</b></caption></div>
+    <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Tốc độ ăn mòn</b></caption></div>
     <table id="customers">
 
         <tr>
-            <th>Corrision Number</th>
-            <th>Soil Side Corrosion Rate</th>
-            <th>Product Side Corrosion Rate</th>
-            <th>Potential Corrosion</th>
+            <th>Số ăn mòn</th>
+            <th>Tỷ lệ ăn mòn mặt đất</th>
+            <th>Tỷ lệ ăn mòn bên sản phẩm</th>
+            <th>Khả năng ăn mòn</th>
             <th>Tank Pad Material</th>
             <th>Tank Drainage Type</th>
             <th>Cathodic Protection Type</th>
             <th>Tank Bottom Type</th>
-            <th>Soil Side Temperature</th>
-            <th>Product Condition</th>
-            <th>Product Side Temp</th>
+            <th>Nhiệt độ đất xung quanh</th>
+            <th>Điều kiện sản xuất</th>
+            <th>Nhiệt độ xung quanh sản phẩm</th>
             <th>Steam Coil</th>
             <th>Water Draw Off</th>
             <th>Product Side Bottom</th>
             <th>Modified SoilSide Corrosion Rate</th>
             <th>Modified ProductSide Corrosion Rate</th>
-            <th>Final Estimated Corrosion Rate</th>
+            <th>Tốc độ ăn mòn ước tính cuối cùng</th>
         </tr>
                 {% for a in list %}
                 <tr >
@@ -110,22 +110,22 @@
             </td>
             <td>
                 <select name="PotentialCorrosion" style="width: 50px">
-                    <option >Very Corrosive (<500 &Omega;-centimeter)</option>
-                    <option >Corrosive (500-1000 &Omega;-cm)</option>
+                    <option >Rất ăn mòn(<500 &Omega;-cm)</option>
+                    <option >Ăn mòn (500-1000 &Omega;-cm)</option>
                     <option >Moderetly Corrosive (1000-2000 &Omega;-cm)</option>
-                    <option >Mildly Corrosive (2000-10000 &Omega;-cm)</option>
-                    <option >Progressively Less Corrosive (>10000 &Omega;-cm)</option>
+                    <option >Ăn mòn nhẹ(2000-10000 &Omega;-cm)</option>
+                    <option >Ít ăn mòn(>10000 &Omega;-cm)</option>
                 </select>
             </td>
             <td>
                 <select name="TankPadMaterial" style="width: 50px">
-                    <option>Soil With High Salt</option>
-                    <option>Crushed Limestone</option>
-                    <option>Native Soil</option>
-                    <option>Contruction Grade Sand</option>
+                    <option>Đất có tỉ lệ muối cao</option>
+                    <option>Đá vôi nghiền</option>
+                    <option>Đất tự nhiên</option>
+                    <option>Cát xây dựng</option>
                     <option>Continuous Asphat</option>
                     <option>Continuous Concrete</option>
-                    <option>Oil Sand</option>
+                    <option>Cát dầu</option>
                     <option>High Resistivity Low Chioride Sand</option>
                 </select>
             </td>
@@ -138,7 +138,7 @@
             </td>
             <td>
                 <select name="CathodicProtectionType" style="width: 50px">
-                    <option>None</option>
+                    <option>Không có</option>
                     <option>Yes Not  Per API 651</option>
                     <option>Yes Per API 651</option>
                 </select>
@@ -152,44 +152,44 @@
             </td>
             <td>
                 <select name="SoilSideTemperature" style="width: 50px">
-                    <option>Temp &le; 24</option>
-                    <option>24 < Temp &le; 66</option>
-                    <option>66 < Temp &le; 93</option>
-                    <option>92 < Temp &le; 121</option>
+                    <option>Nhiệt độ &le; 24</option>
+                    <option>24 < Nhiệt độ &le; 66</option>
+                    <option>66 < Nhiệt độ &le; 93</option>
+                    <option>92 < Nhiệt độ &le; 121</option>
                     <option> > 121 </option>
                 </select>
             </td>
             <td>
                 <select name="ProductCondition" style="width: 50px">
-                    <option>Wet</option>
-                    <option>Dry</option>
+                    <option>Ướt</option>
+                    <option>Khô</option>
                 </select>
             </td>
             <td>
                 <select name="ProductSideTemp" style="width: 50px">
-                    <option>Temp &le; 24</option>
-                    <option>24 < Temp &le; 66</option>
-                    <option>66 < Temp &le; 93</option>
-                    <option>92 < Temp &le; 121</option>
+                    <option>Nhiệt độ &le; 24</option>
+                    <option>24 < Nhiệt độ &le; 66</option>
+                    <option>66 < Nhiệt độ &le; 93</option>
+                    <option>92 < Nhiệt độ &le; 121</option>
                     <option> > 121 </option>
                 </select>
             </td>
             <td>
                 <select name="SteamCoil" style="width: 50px">
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option>Có</option>
+                    <option>Không</option>
                 </select>
             </td>
             <td>
                 <select name="WaterDrawOff" style="width: 50px">
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option>Có</option>
+                    <option>Không</option>
                 </select>
             </td>
             <td>
                 <select name="ProductSideBottom" style="width: 50px">
-                    <option>Localised</option>
-                    <option>Widespread</option>
+                    <option>Bản địa hóa</option>
+                    <option>Phổ biến rộng rãi</option>
                 </select>
             </td>
             <td name="ModifiedSoilSideCorrosionRate"></td>
@@ -198,7 +198,7 @@
         </tr>
         <td>
             <div>
-                <button  class="btn btn-primary" type="submit" value="Submit"><i class="fa fa-pencil">Calculate</i></button>
+                <button  class="btn btn-primary" type="submit" value="Submit"><i class="fa fa-pencil">Tính toán</i></button>
             </div>
         </td>
     </table>
