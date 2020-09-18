@@ -84,9 +84,9 @@ LOGOUT_REDIRECT_URL = '/'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'rbi-dat',
+         'NAME': 'rbi',
          'USER': 'root',
-         'PASSWORD': 'root',
+         'PASSWORD': '1',
          'HOST': 'localhost',
          'PORT': '3306',
      }

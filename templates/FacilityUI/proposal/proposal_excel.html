@@ -5,7 +5,7 @@
 {#{% block listProposal %}{% url 'proposalDisplay' componentID %}{% endblock %}#}
 
 <!----------------- END BLOCK----------------->
-{% block title %}View Proposal Excel{% endblock %}
+{% block title %}Xem bản ghi Excel{% endblock %}
 {% block vertical %}
 {% endblock %}
 {% block data-content %}
@@ -154,9 +154,9 @@ div.a:hover {
     <div class="container">
         <div class="city">
                     <ul class="nav nav-pills">
-                        <li class="active"><a data-toggle="pill" href="#process" style="padding-top: 2px;padding-bottom: 2px;background-color: #305680;color: #ffffff;">Risk Summary</a></li>
-                        <li><a data-toggle="pill" style="padding-top: 2px;padding-bottom: 2px;background-color: #305680;color: #ffffff;" href="#tank">Risk Summary Detail</a></li>
-                        <li><a data-toggle="pill" style="padding-top: 2px;padding-bottom: 2px;background-color: #305680;color: #ffffff;" href="#inspection">Inspection Plan</a></li>
+                        <li class="active"><a data-toggle="pill" href="#process" style="padding-top: 2px;padding-bottom: 2px;background-color: #305680;color: #ffffff;">Tóm tắt rủi ro</a></li>
+                        <li><a data-toggle="pill" style="padding-top: 2px;padding-bottom: 2px;background-color: #305680;color: #ffffff;" href="#tank">Chi tiết Tóm tắt Rủi ro</a></li>
+                        <li><a data-toggle="pill" style="padding-top: 2px;padding-bottom: 2px;background-color: #305680;color: #ffffff;" href="#inspection">Kế hoạch kiểm định</a></li>
                     </ul>
                     <div class="tab-content">
                         <!---------------- Process Plant------------------>
@@ -168,11 +168,11 @@ div.a:hover {
                                         <thead>
                                         <tr>
                                           <!--<th style="background-color:#387BF9;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="17"><input type = "button" name = "-" id="portests1" style="color:black;" value = "Proposal"></th>-->
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Indentification</th>
-                                            <th>Equipment</th>
-                                            <th>Equipment Description</th>
-                                            <th>Equipment Type</th>
-                                            <th>Component</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Nhận dạng</th>
+                                            <th>Thiết bị</th>
+                                            <th>Mô tả thiết bị</th>
+                                            <th>Loại thiết bị</th>
+                                            <th>Thành phần</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.equipment_name }}</div></td>
@@ -181,22 +181,22 @@ div.a:hover {
                                             <td><div class="a">{{ obj.component_name }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Represent Fluid</th>
-                                            <th>Represent.fluid</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Đại diện cho chất lỏng</th>
+                                            <th>Đại diện cho chất lỏng</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.fluid }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Releases Fluid</th>
-                                            <th>Fluid Phase</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Đại diện cho chất lỏng</th>
+                                            <th>Pha chất lỏng</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.fluid_phase }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Consequence (COF)</th>
-                                            <th>Current Risk</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Thiệt hại (COF)</th>
+                                            <th>Rủi ro hiện tại</th>
                                             <th>Cofcat.Flammable</th>
                                             <th>Cofcat.People</th>
                                             <th>Cofcat.Asset</th>
@@ -214,14 +214,14 @@ div.a:hover {
                                             <td><div class="a">{{ obj.consequencecv }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Component Material Glade</th>
-                                            <th>Component Material Glade</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Mức độ thành phần của vật liệu</th>
+                                            <th>Mức độ thành phần của vật liệu</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a"></div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Probability (POF)</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Xác suất (POF)</th>
                                             <th>InitThinning<br>POFcatalog</th>
                                             <th>InitEnv.Cracking</th>
                                             <th>InitOtherPOFCatalog</th>
@@ -245,9 +245,9 @@ div.a:hover {
                                             <td><div class="a">{{ obj.pof_catalogcv }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Risk</th>
-                                            <th>Current Risk</th>
-                                            <th>Future Risk</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Rủi ro</th>
+                                            <th>Rủi ro hiện tại</th>
+                                            <th>Rủi ro tương lai</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.riskcv }}</div></td>
@@ -271,11 +271,11 @@ div.a:hover {
                                         <thead>
                                         <tr>
                                           <!--<th style="background-color:#387BF9;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="17"><input type = "button" name = "-" id="portests1" style="color:black;" value = "Proposal"></th>-->
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Indentification</th>
-                                            <th>Equipment</th>
-                                            <th>Equipment Description</th>
-                                            <th>Equipment Type</th>
-                                            <th>Component</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Nhận dạng</th>
+                                            <th>Thiết bị</th>
+                                            <th>Mô tả thiết bị</th>
+                                            <th>Loại thiết bị</th>
+                                            <th>Thành phần</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.equipment_name }}</div></td>
@@ -284,22 +284,22 @@ div.a:hover {
                                             <td><div class="a">{{ obj.component_name }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Represent Fluid</th>
-                                            <th>Represent.fluid</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Đại diện cho chất lỏng</th>
+                                            <th>Đại diện cho chất lỏng</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.fluid }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Releases Fluid</th>
-                                            <th>Fluid Phase</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Phát tán chất lỏng</th>
+                                            <th>Pha chất lỏng</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.fluid_phase }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Consequence (COF)</th>
-                                            <th>Current Risk</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Thiệt hại (COF)</th>
+                                            <th>Rủi ro hiện tại</th>
                                             <th>Cofcat.Flammable</th>
                                             <th>Cofcat.People</th>
                                             <th>Cofcat.Asset</th>
@@ -317,14 +317,14 @@ div.a:hover {
                                             <td><div class="a">{{ obj.consequence }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Component Material Glade</th>
-                                            <th>Component Material Glade</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Mức độ thành phần của vật liệu</th>
+                                            <th>Mức độ thành phần của vật liệu</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a"></div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Probability (POF)</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Xác suất (POF)</th>
                                             <th>InitThinning<br>POFcatalog</th>
                                             <th>InitEnv.Cracking</th>
                                             <th>InitOtherPOFCatalog</th>
@@ -347,9 +347,9 @@ div.a:hover {
                                             <td><div class="a">{{ obj.pof_catalog }}</div></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Risk</th>
-                                            <th>Current Risk</th>
-                                            <th>Future Risk</th>
+                                            <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="0" rowspan="2">Rủi ro</th>
+                                            <th>rủi ro hiện tại</th>
+                                            <th>rủi ro tương lai</th>
                                         </tr>
                                         <tr>
                                             <td><div class="a">{{ obj.risk }}</div></td>
@@ -369,18 +369,18 @@ div.a:hover {
                                         <thead>
                                         <tr>
                                           <!--<th style="background-color:#387BF9;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="17"><input type = "button" name = "-" id="portests1" style="color:black;" value = "Proposal"></th>-->
-                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="9">Inspection Plan</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="9">Kế hoạch kiểm định</th>
                                         </tr>
                                         <tr>
-                                            <th>Equipment</th>
-                                            <th>Component Name</th>
-                                            <th>Damage Mechanism</th>
-                                            <th>Method</th>
-                                            <th>Coverage</th>
-                                            <th>Availability</th>
-                                            <th>Last Inspection Date</th>
-                                            <th>Inspection Interval, years</th>
-                                            <th>Due Date</th>
+                                            <th>Thiết bị</th>
+                                            <th>Tên thành phần</th>
+                                            <th>Cơ chế thiệt hại</th>
+                                            <th>Phương pháp</th>
+                                            <th>Phạm vi</th>
+                                            <th>Khả dụng</th>
+                                            <th>Ngày kiểm định cuối</th>
+                                            <th>Khoảng thời gian kiểm tra, năm</th>
+                                            <th>Hạn kiểm định</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -417,30 +417,30 @@ div.a:hover {
               <h4 class="modal-title">Chi tiết</h4>
             </div>
             <div class="modal-body" >
-                <h4>&ensp; <b><u> Risk Summary</u></b></h4>
-                <p>Risk summary là bảng thống kê tổng quát bản kiểm định, bao gồm các thông sô như tên thiết bị, loại thiết bị, kết quả tính toán tổng quan,...
-                    Trong trang Risk summary có các trường cột:</p>
-                <p>&nbsp; <b>Indentification:</b> bao gồm tên thiết bị, chi tiết thiết bị, loại thiết bị và các thành phần</p>
-                <p>&nbsp; <b>Represent Fluid:</b> chứa thông tin chất lỏng, pha của chất lỏng</p>
-                <p>&nbsp; <b>Consequence(COF)</b> bao gồm các thiệt hại lần lượt về hiện tại, cháy nổ, con người, tài sản, môi trường, uy tín...</p>
-                <p>&nbsp; <b>Probability(POF)</b> bao gồm xác xuất hư hại lần lượt như làm mỏng, bẻ gãy, ăn mòn,..</p>
-                <p>&nbsp; <b>Risk</b> là tổng quan rủi ro bao gồm hiện tại và sau này </p>
-                <h4>&ensp; <b><u> Risk Summary Detail</u></b></h4>
-                <p>Cũng giống như các trường bên Risk Summary thì Risk Summary Detail thay vì hiển thị tổng quan các kết quả thì sẽ hiển thị chi tiết kết quả</p>
-                <h4>&ensp; <b><u> Inspection Plan</u></b></h4>
+                <h4>&ensp; <b><u> Tóm tắt rủi ro</u></b></h4>
+                <p>Tóm tắt rủi ro là bảng thống kê tổng quát bản kiểm định, bao gồm các thông sô như tên thiết bị, loại thiết bị, kết quả tính toán tổng quan,...
+                    Trong trang Tóm tắt rủi ro có các trường cột:</p>
+                <p>&nbsp; <b>Nhận dạng:</b> bao gồm tên thiết bị, chi tiết thiết bị, loại thiết bị và các thành phần</p>
+                <p>&nbsp; <b>:</b> chứa thông tin chất lỏng, pha của chất lỏng</p>
+                <p>&nbsp; <b>Thiệt hại(COF)</b> bao gồm các thiệt hại lần lượt về hiện tại, cháy nổ, con người, tài sản, môi trường, uy tín...</p>
+                <p>&nbsp; <b>Xác suất(POF)</b> bao gồm xác xuất hư hại lần lượt như làm mỏng, bẻ gãy, ăn mòn,..</p>
+                <p>&nbsp; <b>Rủi ro</b> là tổng quan rủi ro bao gồm hiện tại và sau này </p>
+                <h4>&ensp; <b><u>Tóm tắt rủi ro chi tiết</u></b></h4>
+                <p>Cũng giống như các trường bên Tóm tắt rủi ro thì Tóm tắt rủi ro chi tiết thay vì hiển thị tổng quan các kết quả thì sẽ hiển thị chi tiết kết quả</p>
+                <h4>&ensp; <b><u> Kế hoạch kiểm định</u></b></h4>
                 <p>Đây là bảng chứa các dữ liệu liên quan đến việc lập kế hoạch kiểm định, phương pháp cũng như ngày kiểm định</p>
-                <p>&nbsp; <b>Damage Mechanism</b> là hư hại mà thiết bị đang có</p>
-                <p>&nbsp; <b>Method</b> đây là phương pháp kiểm định</p>
-                <p>&nbsp; <b>Inspection date/due date</b> là ngày kiểm định gần nhất và ngày kiểm định kế tiếp</p>
-                <p>&nbsp; <b>Inspection Interval, years</b> là thời gian giữa ngày kiểm định gần nhất và ngày kiểm định tiếp theo</p>
+                <p>&nbsp; <b>Cơ chế thiệt hại</b> là hư hại mà thiết bị đang có</p>
+                <p>&nbsp; <b>Phương pháp</b> đây là phương pháp kiểm định</p>
+                <p>&nbsp; <b>Ngày kiểm định/ ngày đến hạn</b> là ngày kiểm định gần nhất và ngày kiểm định kế tiếp</p>
+                <p>&nbsp; <b>Khoảng thời gian kiểm tra, năm</b> là thời gian giữa ngày kiểm định gần nhất và ngày kiểm định tiếp theo</p>
                 <h4>&ensp; <b><u> Giải thích các đại lượng</u></b></h4>
                 <p>A,B,C,D,E: là mức độ xác suất gây hại từ thấp lên cao</p>
                 <p>1,2,3,4,5: là mức độ thiệt hại từ thấp lên cao</p>
                 <p>Medium High, High, Medium, Low, N/A: là mức độ đánh giá rủi ro từ cao xuống thấp, N/A nghĩa là gần như không có rủi ro thiệt hại nào</p>
-                <p><b><u>NOTE:</u></b> Kết quả này được đánh giá dựa theo kết quả bên bảng Risk Summary Detail</p>
+                <p><b><u>NOTE:</u></b> Kết quả này được đánh giá dựa theo kết quả bên bảng Tóm tắt rủi ro chi tiết</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
           </div>
     </div>

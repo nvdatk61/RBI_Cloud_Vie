@@ -47,21 +47,21 @@
                     <div class="col-md-2"><b>D4</b></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">Flow Rate, bbls/day:</div>
+                    <div class="col-md-4">Lưu lượng dòng chảy, bbls/ngày:</div>
                     <div class="col-md-2">{{ data.flow_rate_d1 }}</div>
                     <div class="col-md-2">{{ data.flow_rate_d2 }}</div>
                     <div class="col-md-2">{{ data.flow_rate_d3 }}</div>
                     <div class="col-md-2">{{ data.flow_rate_d4 }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">Leak duration, days:</div>
+                    <div class="col-md-4">Thời gian rò rỉ, ngày:</div>
                     <div class="col-md-2">{{ data.leak_duration_d1 }}</div>
                     <div class="col-md-2">{{ data.leak_duration_d2 }}</div>
                     <div class="col-md-2">{{ data.leak_duration_d3 }}</div>
                     <div class="col-md-2">{{ data.leak_duration_d4 }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">Release volume from leakage, m<sup>3</sup>:</div>
+                    <div class="col-md-4">Lượng chất lỏng phát tán do rò rỉ, m<sup>3</sup>:</div>
                     <div class="col-md-2">{{ data.release_volume_leak_d1 }}</div>
                     <div class="col-md-2">{{ data.release_volume_leak_d2 }}</div>
                     <div class="col-md-2">{{ data.release_volume_leak_d3 }}</div>
@@ -70,11 +70,11 @@
                 <!-------------- block 2 ------------->
                 <div class="row"></div>
                 <div class="row">
-                    <div class="col-md-8">Realease volume from rupture, barrels:</div>
+                    <div class="col-md-8">Lượng chất lỏng phát tán do vết nứt, barrels:</div>
                     <div class="col-md-4">{{ data.release_volume_rupture }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The time to initate leakage to the ground water, days:</div>
+                    <div class="col-md-8">Thời điểm bắt đầu rò rỉ nước ngầm, ngày:</div>
                     <div class="col-md-4">{{ data.time_leak_ground }}</div>
                 </div>
                 <!-------------- block 3 ----------->
@@ -85,59 +85,59 @@
                     <div class="col-md-2"><b>D4</b></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The volume of the product in the subsoil from lakage, barrels:</div>
-                    <div class="col-md-2">{{ data.volume_subsoil_leak_d1 }}</div>
-                    <div class="col-md-2">{{ data.volume_subsoil_leak_d4 }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">The volume of the product in the ground water from leakage, m<sup>3</sup>:</div>
-                    <div class="col-md-2">{{ data.volume_ground_water_leak_d1 }}</div>
-                    <div class="col-md-2">{{ data.volume_ground_water_leak_d4 }}</div>
+                  <div class="col-md-8">Thể tích của sản phẩm trong đất chịu rò rỉ, barrels:</div>
+                        <div class="col-md-2">D1:{{ data.volume_subsoil_leak_d1 }}</div>
+                        <div class="col-md-2">D4:{{ data.volume_subsoil_leak_d4 }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Thể tích của sản phẩm trong nước ngầm chịu rò rỉ, barrels:</div>
+                        <div class="col-md-2">D1:{{ data.volume_ground_water_leak_d1 }}</div>
+                        <div class="col-md-2">D4:{{ data.volume_ground_water_leak_d4 }}</div>
                 </div>
                 <!------------ block 4 ---------->
                 <div class="row"></div>
                 <div class="row">
-                    <div class="col-md-8">The total barrels of fluid within the dike from rupture, barrels:</div>
-                    <div class="col-md-4">{{ data.barrel_dike_rupture }}</div>
+                     <div class="col-md-8">Tổng số thùng lưu chất , barrels:</div>
+                        <div class="col-md-4">{{ data.barrel_dike_rupture }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Tổng số thùng lưu chất trên mặt đất sau khi xảy ra hư hỏng, barrels:</div>
+                        <div class="col-md-4">{{ data.barrel_onsite_rupture }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Tổng số thùng lưu chất dưới mặt đất sau khi xảy ra hư hỏng, barrels:</div>
+                        <div class="col-md-4">{{ data.barrel_offsite_rupture }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">Tổng số thùng lưu chất tiếp xúc với nước sau khi xảy ra hư hỏng, barrels:</div>
+                        <div class="col-md-4">{{ data.barrel_water_rupture }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The total barrels of fluid in the on-site surface soil from a rupture, barrels:</div>
-                    <div class="col-md-4">{{ data.barrel_onsite_rupture }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">The total barrels of fluid in the off-site surface soil from a rupture, barrels:</div>
-                    <div class="col-md-4">{{ data.barrel_offsite_rupture }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">The total barrels of fluid that reach water from a rupture, barrels:</div>
-                    <div class="col-md-4">{{ data.barrel_water_rupture }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">The financial environmental cost from leakage, $:</div>
+                    <div class="col-md-8">Chi phí môi trường do rò rỉ, $:</div>
                     <div class="col-md-4">{{ data.fc_environ_leak }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The financial environmental cost from rupture, $:</div>
+                    <div class="col-md-8">Chi phí môi trường do phá hủy, $:</div>
                     <div class="col-md-4">{{ data.fc_environ_rupture }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The total financial environmental cost, $:</div>
+                    <div class="col-md-8">Tổng chi phí môi trường, $:</div>
                     <div class="col-md-4">{{ data.fc_environ }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The component damage cost, $:</div>
+                    <div class="col-md-8">Chi phí hư hỏng cấu kiện, $:</div>
                     <div class="col-md-4">{{ data.component_damage_cost }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The cost of business interruption, $:</div>
+                    <div class="col-md-8">Thiệt hại tài chính do dừng hoạt động kinh doanh, $:</div>
                     <div class="col-md-4">{{ data.business_cost }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">The total consequence, $:</div>
+                    <div class="col-md-8">Tổng hậu quả, $:</div>
                     <div class="col-md-4">{{ data.consequence }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">Consequence Category, $:</div>
+                    <div class="col-md-8">Loại hậu quả, $:</div>
                     <div class="col-md-4"><b>{{ data.consequencecategory }}</b></div>
                 </div>
             </fieldset>

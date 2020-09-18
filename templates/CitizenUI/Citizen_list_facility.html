@@ -6,15 +6,15 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
-{% block title %}Facility Management{% endblock %}
+{% block title %}Quản lí nhà máy{% endblock %}
 
 {% block vertical %}
-    <a class="active"><h3> &emsp;List Facility </h3></a>
-        <a href="{% url 'facilityCitizen' site.siteid %}" class="{% if page == 'inforCompany' %}activeLink{% endif %}"><i class="fa fa-print" >&emsp;Information &emsp;Company</i></a>
+    <a class="active"><h3> &emsp;Danh sách nhà máy </h3></a>
+        <a href="{% url 'facilityCitizen' site.siteid %}" class="{% if page == 'inforCompany' %}activeLink{% endif %}"><i class="fa fa-print" >&emsp;Thông tin công ty</i></a>
         {% for faci in faci %}
             <a href="{% url 'ListProposalCitizen' faci.facilityid faci.siteid_id %}" class="{% if page == 'listProposal' %}activeLink{% endif %}"><i class="fa fa-print" >&emsp;{{ faci.facilityname }}</i></a>
         {% endfor %}
-    <a href="{% url 'citizenHome' %}"><i class="fa fa-print" >&emsp;Back</i></a>
+    <a href="{% url 'citizenHome' %}"><i class="fa fa-print" >&emsp;Quay lại</i></a>
 {% endblock %}
 
 {% block data-content %}

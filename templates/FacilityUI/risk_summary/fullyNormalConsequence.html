@@ -16,33 +16,33 @@
     {% csrf_token %}
         <div class="input-data">
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border"><b>Financial CoF</b></legend>
+                <legend class="scheduler-border"><b>Thiệt hại tài chính CoF</b></legend>
 
                 <!-------- BLOCK CONSEQUENCE ------->
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Input</b></legend>
+                    <legend class="scheduler-border"><b>Đầu vào</b></legend>
                     <div class="row">
-                        <div class="col-md-8">Process unit placement cost for component</div>
+                        <div class="col-md-8">Chi phí thay thế cấu kiện</div>
                         <div class="col-md-4">{{data.process_unit}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Equipment Outage Multiplier</div>
+                        <div class="col-md-8">Hệ số ngừng thiết bị</div>
                         <div class="col-md-4">{{data.equip_outage_multiplier}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Loss of Product Cost</div>
+                        <div class="col-md-8">Chi phí sản xuất mất mát</div>
                         <div class="col-md-4">{{data.production_cost}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">The unit Population Density of Personal or Employees</div>
+                        <div class="col-md-8">Mật độ dân số và nhân viên </div>
                         <div class="col-md-4">{{data.personal_density}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">The cost associated with serious injury of fatality of personal</div>
+                        <div class="col-md-8">Chi phí cho bệnh nhân hoặc tai nạn chết người</div>
                         <div class="col-md-4">{{data.equipment_cost}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Environmental clean up Cost</div>
+                        <div class="col-md-8">Chi phí làm sạch môi trường</div>
                         <div class="col-md-4">{{data.evironment_cost}}</div>
                     </div>
                 </fieldset>
@@ -59,61 +59,61 @@
                 </fieldset>
                 <!--------BLOCK INTERMEDIATE VALUES------>
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Imtermediate Values</b></legend>
+                    <legend class="scheduler-border"><b>Giá trị trung gian</b></legend>
                     <div class="row">
-                        <div class="col-md-8">Material Costs Factor</div>
+                        <div class="col-md-8">Yếu tố chi phí vật liệu</div>
                         <div class="col-md-4">{{ data.material_cost }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Fration of Fluid to Evaporate in 24 Hours </div>
+                        <div class="col-md-8">Phần chất lỏng bay hơi trong 24 giờ</div>
                         <div class="col-md-4">{{ data.frac_evap }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4"><b>Release Hole Size</b></div>
-                        <div class="col-md-2"><b>Small</b></div>
-                        <div class="col-md-2"><b>Medium</b></div>
-                        <div class="col-md-2"><b>Large</b></div>
-                        <div class="col-md-2"><b>Rupture</b></div>
+                         <div class="col-md-4"><b>Kích thước lỗ phát tán</b></div>
+                        <div class="col-md-2"><b>Nhỏ</b></div>
+                        <div class="col-md-2"><b>Trung bình</b></div>
+                        <div class="col-md-2"><b>Lớn</b></div>
+                        <div class="col-md-2"><b>Nứt gãy</b></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Generic Failure Frequency</div>
+                        <div class="col-md-4">Tần suất lỗi chung</div>
                         <div class="col-md-2">{{ data.gff_small }}</div>  <!ô chứa giá trị hiển thị -->
                         <div class="col-md-2">{{ data.gff_medium }}</div>
                         <div class="col-md-2">{{ data.gff_large }}</div>
                         <div class="col-md-2">{{ data.gff_rupture }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Equipment Repair Cost</div>
+                        <div class="col-md-4">Chi phí sửa chữa thiết bị</div>
                         <div class="col-md-2">{{ data.Equiment_cost_small }}</div>  <!ô chứa giá trị hiển thị -->
                         <div class="col-md-2">{{ data.Equiment_cost_medium }}</div>
                         <div class="col-md-2">{{ data.Equiment_cost_large }}</div>
                         <div class="col-md-2">{{ data.Equiment_cost_rupture }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">No. of Downtime Days to Repair Damage Outage</div>
+                        <div class="col-md-4">Số ngày ngừng hoạt động để sửa chữa sự cố mất điện</div>
                         <div class="col-md-2">{{ data.Damage_outage_small }}</div>  <!ô chứa giá trị hiển thị -->
                         <div class="col-md-2">{{ data.Damage_outage_medium }}</div>
                         <div class="col-md-2">{{ data.Damage_outage_large }}</div>
                         <div class="col-md-2">{{ data.Damage_outage_rupture }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9">Financial Consequence of Component Damage</div>
+                        <div class="col-md-9">Hậu quả tài chính do hư hỏng thành phần</div>
                         <div class="col-md-2">{{ data.FC_cmd }}</div>  <!ô chứa giá trị hiển thị -->
                     </div>
                     <div class="row">
-                        <div class="col-md-9">Financial Consequence of Damage to Surrounding Equipment</div>
+                        <div class="col-md-9">Hậu quả tài chính của thiệt hại đối với thiết bị xung quanh</div>
                         <div class="col-md-2">{{ data.FC_affa }}</div>  <!ô chứa giá trị hiển thị -->
                     </div>
                     <div class="row">
-                        <div class="col-md-9">No. of Downtime days to Repair Damage to The Surrounding Equipment</div>
+                        <div class="col-md-9">Số ngày ngừng hoạt động để sửa chữa hư hỏng cho thiết bị xung quanh</div>
                         <div class="col-md-2">{{ data.outage_affa }}</div>  <!ô chứa giá trị hiển thị -->
                     </div>
                     <div class="row">
-                        <div class="col-md-9">Financial Consequence of Lost Production </div>
+                        <div class="col-md-9">Hậu quả tài chính của sản phẩm bị mất </div>
                         <div class="col-md-2">{{ data.FC_prod }}</div>  <!ô chứa giá trị hiển thị -->
                     </div>
                     <div class="row">
-                        <div class="col-md-9">Financial Consequence Serious Injury to Personnel</div>
+                        <div class="col-md-9">Hậu quả tài chính tai nạn nghiêm trọng cho nhân sự</div>
                         <div class="col-md-2">{{ data.FC_inj }}</div>  <!ô chứa giá trị hiển thị -->
                     </div>
                     <div class="row">
@@ -121,7 +121,7 @@
                         <div class="col-md-2">{{ data.FC_env }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9">No. of Downtime Days to Repair the Specific Piece of Equipment that is being Evaluated </div>
+                        <div class="col-md-9">Số ngày ngừng hoạt động để sửa chữa phần thiết bị cụ thể đang được đánh giá</div>
                         <div class="col-md-2">{{ data.outage_cmd }}</div>  <!ô chứa giá trị hiển thị -->
                     </div>
                 </fieldset>

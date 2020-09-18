@@ -38,28 +38,28 @@
                 <legend class="scheduler-border"><b>Fully-Quantitative Financial Cosequense of Failure and Category</b></legend>
                 <!----------- BLOCK INPUT ---------->
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Input</b></legend>
+                    <legend class="scheduler-border"><b>Đầu vào</b></legend>
                     <div class="row">
-                        <div class="col-md-8">Cost of lost production due to downtime to repair equipment, $/day:</div>
+                        <div class="col-md-8">Thiệt hại tài chính do dừng sản xuất để sửa thiết bị, $/day:</div>
                         <div class="col-md-4">{{ data.production_cost }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Equipment cost, $/m2:</div>
+                        <div class="col-md-8">Chi phí thiết bị, $/m2:</div>
                         <div class="col-md-4">{{ data.equipment_cost }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Population density of personal or employees in the unit, personal/m2:</div>
+                        <div class="col-md-8">Mật độ dân số và nhân viên trong cụm thiết bị/m2:</div>
                         <div class="col-md-4">{{ data.personal_density }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Environmental clean-up cost, $/barrel:</div>
+                        <div class="col-md-8">Chi phí làm sạch môi trường, $/barrel:</div>
                         <div class="col-md-4">{{ data.evironment_cost }}</div>
                     </div>
                 </fieldset>
 
                 <!-------- BLOCK CONSEQUENCE ------->
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Consequence of Failure and Category</b></legend>
+                    <legend class="scheduler-border"><b>Hậu quả của hư hỏng và phân loại</b></legend>
                     <div class="row">
                         <div class="col-md-8">Financial Consequence Area of Component Damage Flamable, m<sup>2</sup>:</div>
                         <div class="col-md-4">{{ data.ca_cmd }}</div>
@@ -69,31 +69,31 @@
                         <div class="col-md-4">{{ data.ca_inj_flame }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Financial Consequence of Component Damage Costs, $:</div>
+                        <div class="col-md-8">Hậu quả tài chính do hư hỏng cấu kiện, $:</div>
                         <div class="col-md-4">{{ data.fc_cmd }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Financial Consequence of Affected Area, $:</div>
+                        <div class="col-md-8">Hậu quả tài chính của khu vực bị ảnh hưởng, $:</div>
                         <div class="col-md-4">{{ data.fc_affa }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Financial Consequence of Business Interruption Costs, $:</div>
+                        <div class="col-md-8">Hậu quả tài chính do dừng hoạt động kinh doanh, $:</div>
                         <div class="col-md-4">{{ data.fc_prod }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Financial Consequence of Potential Injury Costs, $:</div>
+                        <div class="col-md-8">Hậu quả tài chính của chi phí thương tật tiềm tàng, $:</div>
                         <div class="col-md-4">{{ data.fc_inj }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Financial Consequence of Environmental Cleanup Costs, $:</div>
+                        <div class="col-md-8">Hậu quả tài chính của chi phí làm sạch môi trường, $:</div>
                         <div class="col-md-4">{{ data.fc_envi }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Financial Consequence of Falure, $:</div>
+                        <div class="col-md-8">Hậu quả tài chính do hư hỏng, $:</div>
                         <div class="col-md-4">{{ data.fc_total }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">Consequence of Failure Category:</div>
+                        <div class="col-md-8">Loại hậu quả do hư hỏng:</div>
                         <div class="col-md-4"><b>{{ data.fcof_category }}</b></div>
                     </div>
                 </fieldset>

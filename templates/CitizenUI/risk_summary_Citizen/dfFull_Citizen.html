@@ -45,23 +45,23 @@
         <fieldset class="scheduler-border" >
             <!-----------BLOCK DATA GENERAL FACTOR---------->
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border"><b>Initial Factor</b></legend>
+                <legend class="scheduler-border"><b>Yếu tố ban đầu</b></legend>
                 <div class="row">
-                    <div class="col-md-6">Thinning Type:</div>
+                    <div class="col-md-6">Dạng suy giảm chiều dày:</div>
                     <div class="col-md-6"><select class="form-control" id="thinningType" name="thinningType">
-                        <option>Local</option>
-                        <option>General</option>
+                        <option>Riêng</option>
+                        <option>Chung</option>
                     </select></div>
                     <script>
                         $("#thinningType").val("{{ obj.thinningType }}");
                     </script>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">Total Generic Frequence:</div>
+                    <div class="col-md-6">Tổng tần suất thiệt hại chung:</div>
                     <div class="col-md-6">{{ obj.gfftotal }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">Factor of Management System:</div>
+                    <div class="col-md-6">Yếu tố quản lí hệ thống:</div>
                     <div class="col-md-6">{{ obj.fms }}</div>
                 </div>
             </fieldset>
@@ -69,94 +69,94 @@
 
             <!-------------- BLOCK DETAIL DAMAGE FACTOR ------------>
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border"><b>Damage Factors and Probability of Failure</b></legend>
+                <legend class="scheduler-border"><b>Các yếu tố hư hỏng và xác suất hư hỏng</b></legend>
 
                 <div class="row">
-                    <div class="col-md-6">Assessment Periods</div>
-                    <div class="col-md-2">0<br>months</div>
-                    <div class="col-md-2">36 months</div>
-                    <div class="col-md-2">72 months</div>
+                   <div class="col-md-6">Thời gian đánh giá</div>
+                    <div class="col-md-2">0<br>tháng</div>
+                    <div class="col-md-2">36 tháng</div>
+                    <div class="col-md-2">72 tháng</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Governing Thinning Damage Factor:</div>
+                    <div class="col-md-6">Yếu tố hư hỏng tại các vị trí giảm chiều dày:</div>
                     <div class="col-md-2">{{ obj.thinningap1 }}</div>
                     <div class="col-md-2">{{ obj.thinningap2 }}</div>
                     <div class="col-md-2">{{ obj.thinningap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Governing Stress Corrosion Cracking Damage Factor:</div>
+                    <div class="col-md-6">Thuộc tính của tham số hư hỏng do nứt do ứng suất:</div>
                     <div class="col-md-2">{{ obj.sccap1 }}</div>
                     <div class="col-md-2">{{ obj.sccap2 }}</div>
                     <div class="col-md-2">{{ obj.sccap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Governing External Damage Factor:</div>
+                    <div class="col-md-6">Yếu tố hư hỏng bên ngoài:</div>
                     <div class="col-md-2">{{ obj.externalap1 }}</div>
                     <div class="col-md-2">{{ obj.externalap2 }}</div>
                     <div class="col-md-2">{{ obj.externalap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">High Temperature Hydrogen Attack Damage Factor:</div>
+                    <div class="col-md-6">Yếu tố hư hỏng do giòn hydro ở nhiệt độ cao:</div>
                     <div class="col-md-2">{{ obj.htha_ap1 }}</div>
                     <div class="col-md-2">{{ obj.htha_ap2 }}</div>
                     <div class="col-md-2">{{ obj.htha_ap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Governing Brittle Fracture Damage Factor:</div>
+                    <div class="col-md-6">Thuộc tính của tham số hư hỏng do nứt gãy:</div>
                     <div class="col-md-2">{{ obj.brittleap1 }}</div>
                     <div class="col-md-2">{{ obj.brittleap2 }}</div>
                     <div class="col-md-2">{{ obj.brittleap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Piping Mechanical Fatigue Damage Factor:</div>
+                    <div class="col-md-6">Yếu tố hư hỏng do mỏi cơ học của đường ống:</div>
                     <div class="col-md-2">{{ obj.fatigueap1 }}</div>
                     <div class="col-md-2">{{ obj.fatigueap2 }}</div>
                     <div class="col-md-2">{{ obj.fatigueap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Other Damage Factor:</div>
+                    <div class="col-md-6">Yếu tố hư hỏng khác:</div>
                     <div class="col-md-2">0.0</div>
                     <div class="col-md-2">0.0</div>
                     <div class="col-md-2">0.0</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Total Damage Factor with General Thinning:</div>
+                    <div class="col-md-6">Tổng yếu tố hư hỏng chung tại các vị trí giảm chiều dày:</div>
                     <div class="col-md-2">{{ obj.thinninggeneralap1 }}</div>
                     <div class="col-md-2">{{ obj.thinninggeneralap2 }}</div>
                     <div class="col-md-2">{{ obj.thinninggeneralap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Total Damage Factor with Local Thinning:</div>
+                    <div class="col-md-6">Tổng yếu tố hư hỏng riêng tại các vị trí giảm chiều dày:</div>
                     <div class="col-md-2">{{ obj.thinninglocalap1 }}</div>
                     <div class="col-md-2">{{ obj.thinninglocalap2 }}</div>
                     <div class="col-md-2">{{ obj.thinninglocalap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Final Total Damage Factor:</div>
+                    <div class="col-md-6">Tổng yếu tố hư hỏng cuối cùng:</div>
                     <div class="col-md-2">{{ obj.totaldfap1 }}</div>
                     <div class="col-md-2">{{ obj.totaldfap2 }}</div>
                     <div class="col-md-2">{{ obj.totaldfap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Probability of Failure:</div>
+                    <div class="col-md-6">Xác xuất xảy ra hư hỏng:</div>
                     <div class="col-md-2">{{ obj.pofap1 }}</div>
                     <div class="col-md-2">{{ obj.pofap2 }}</div>
                     <div class="col-md-2">{{ obj.pofap3 }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">Probability of Failure Category:</div>
+                    <div class="col-md-6">Phân loại xác suất hư hỏng:</div>
                     <div class="col-md-2"><b>{{ obj.pofap1category }}</b></div>
                     <div class="col-md-2"><b>{{ obj.pofap2category }}</b></div>
                     <div class="col-md-2"><b>{{ obj.pofap3category }}</b></div>

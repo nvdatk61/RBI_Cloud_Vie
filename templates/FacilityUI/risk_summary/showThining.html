@@ -32,35 +32,35 @@
     <!--suppress ALL -->
     <form id="inspectionplan" method="post" class="card" >
     {% csrf_token %}
-       <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Governing Thinning Damage Factor</b></caption></div>
+       <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Thuộc tính tham số hư hỏng tại các vị trí suy giảm chiều dày</b></caption></div>
         {% for a in data %}x
                 <!-----------BlOCK FULLY QUANTITIVE FCOF AND CATEGORY--------->
         <fieldset class="scheduler-border">
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Assessment General Information</b></legend>
+                    <legend class="scheduler-border"><b>thông tin đánh giá chung</b></legend>
                     <div class="row">
-                        <div class="col-md-4">Equipment Number</div>
+                        <div class="col-md-4">Số thiết bị</div>
                         <div class="col-md-6"><form><input  type="text" size="70px" value="EQUP1"></form></div>
 
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Component Number</div>
+                        <div class="col-md-4">Số thành phần</div>
                         <div class="col-md-6"><form><input  type="text" size="70px" value="COM1"> </form></div>
                     </div>
                     <div class="row">
-                         <div class="col-md-4">Assessment Name</div>
+                         <div class="col-md-4">Tên đánh giá</div>
                         <div class="col-md-6"><form><input  type="text" size="70px" value="New Proposal"> </form></div>
                     </div>
                 </fieldset>
 
                 <!-----------BLOCK INFLUENCING INPUT------------>
             <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Assessment Data Input</b></legend>
+                    <legend class="scheduler-border"><b>Dữ liệu đánh giá đầu vào</b></legend>
 
            <details >
                <summary style="text-align: center"></summary>
                     <div class="row">
-                        <div class="col-md-3">Assessment Date</div>
+                        <div class="col-md-3">Ngày đánh giá</div>
                         <div class="col-md-3"><form><input type="text" name="assessmentdate"  id="assessmentdate" placeholder="yyyy-mm-dd" value="{{ a.assessmentDate }}">
                         <script>
                             $( "#assessmentdate" ).datepicker({
@@ -73,9 +73,9 @@
                         <div class="col-md-3"><form><input  type="text" value=""> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Risk Analysis Period</div>
+                        <div class="col-md-3">Thời gian phân tích rủi ro</div>
                         <div class="col-md-3"><form><input  type="text" value="36"> </form></div>
-                        <div class="col-md-3">Last Inspection Date</div>
+                        <div class="col-md-3">Ngày kiểm định cuối</div>
                         <div class="col-md-3"><form><input  type="text" name="lastInspection"  id="lastInspection" placeholder="yyyy-mm-dd" value="{{a.LastInspectionDate}}">
                         <script>
                             $( "#lastInspection" ).datepicker({
@@ -98,33 +98,33 @@
                         <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Nominal Thickness</div>
+                        <div class="col-md-3">Chiều dày danh định</div>
                         <div class="col-md-3"><form><input  type="text" value="{{a.NominalThickness }}"> </form></div>
-                        <div class="col-md-3">Minimun Measured Thickness</div>
+                        <div class="col-md-3">Chiều dày đo được tối thiểu</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.CurentThickness }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Current Corosion Rate</div>
+                        <div class="col-md-3">Tốc độ ăn mòn hiện tại</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.CorrosionRate }}"> </form></div>
-                        <div class="col-md-3">Minimun Required Thickness</div>
+                        <div class="col-md-3">Chiều dày yêu cầu tối thiểu</div>
                         <div class="col-md-3"><form><input  type="text" value="{{a.MinimunRequiredThickness  }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">InternalCladding</div>
+                        <div class="col-md-3">Lớp phủ bên trong</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.InternalCladding }}"> </form></div>
-                        <div class="col-md-3">Cladding Corosion Rate</div>
+                        <div class="col-md-3">Tốc độ ăn mòn lớp phủ</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.CladdingCorrosionRate }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Design Pressure</div>
+                        <div class="col-md-3">Áp suất thiết kế</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.DesignPressure }}"> </form></div>
-                        <div class="col-md-3">Diameter</div>
+                        <div class="col-md-3">Đường kính</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.Diameter }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Chemical Injection</div>
+                        <div class="col-md-3">Bơm hóa chất</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.ChemicalInjection }}"> </form></div>
-                        <div class="col-md-3">Highly Effective Inspection for Chemical Injection </div>
+                        <div class="col-md-3">Kiểm định hiệu năng đối với bơm hóa chất </div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.HighlyEffectiveInspectionforChemicalInjection }}"> </form></div>
                     </div>
                     <div class="row">
@@ -134,26 +134,26 @@
                         <div class="col-md-3"><form><input  type="text" value="{{ a.HighEffectiveDeadlegs }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Level of Confidence in Cororion Sources</div>
+                        <div class="col-md-3">Mức độ tin cậy trong việc xác định tốc độ ăn mòn</div>
                         <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
-                        <div class="col-md-3">Weld Joint Efficiency</div>
+                        <div class="col-md-3">Hiệu quả mối hàn</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.WeltJointEfficiency }}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">Yield Strength</div>
+                        <div class="col-md-3">Năng suất</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.YeildStrength }}"> </form></div>
-                        <div class="col-md-3">Tensile Strength</div>
+                        <div class="col-md-3">Sức kéo</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.TensileStrength }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Allowable Stress Assessment</div>
+                        <div class="col-md-3">Ứng suất cho phép tại nhiệt độ đánh giá </div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.AllowableStress }}"> </form></div>
                         <div class="col-md-3"></div>
                         <div class="col-md-3"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Online Monitoring</div>
+                        <div class="col-md-3">Theo dõi trực tuyến</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.Onlinemonitoring }}"> </form></div>
                     </div>
             </details>
@@ -161,41 +161,41 @@
                {#      Khối Intermediate Results       #}
 
             <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Intermediate Results </b></legend>
+                    <legend class="scheduler-border"><b>Kết quả trung gian</b></legend>
                 <details>
                     <summary style="text-align: center"></summary>
                     <div class="row">
-                        <div class="col-md-4">Base Metal Thickness</div>
+                        <div class="col-md-4">Độ dày kim loại cơ bản</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="12"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Shape</div>
+                        <div class="col-md-4">Hình dạng</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="Cylindrical"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Shape Factor</div>
+                        <div class="col-md-4">Yếu tố hình dạng</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="2"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Flow Stress</div>
+                        <div class="col-md-4">Ứng suất dòng chảy</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="9.625"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Srength Ratio- Internal Pressure/Hoop Stress</div>
+                        <div class="col-md-4">Tỷ lệ sức bền- Áp suất bên trong / Ứng suất vòng</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value=""> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Srength Ratio- Minimum Structural Thickness Governs</div>
+                        <div class="col-md-4">Tỷ lệ sức bền-Chiều dày cấu trúc tối thiểu </div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="2.17052"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Damage Factor Adjustment for Injection Points</div>
+                        <div class="col-md-4">Điều chỉnh yếu tố hư hỏng cho các điểm phối trộn</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="1"> </form></div>
                     </div>
 
@@ -205,14 +205,14 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Damage Factor Adjustment for Online Monitoring</div>
+                        <div class="col-md-4">Điều chỉnh yếu tố hư hỏng để giám sát trực tuyến</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="10"> </form></div>
                     </div>
                     </details>
             </fieldset>
 {#            Khối Structral Realiability Theory Parameters#}
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border"><b>Structral Realiability Theory Parameters </b></legend>
+                <legend class="scheduler-border"><b>Các tham số lý thuyết về độ chuẩn cấu trúc</b></legend>
                 <details>
                     <summary style="text-align: center"> </summary>
                         <div class="row">
@@ -220,42 +220,42 @@
                             <div class="col-md-1"><form><input  type="text" size="51px" style="background-color: #0C5BED" value="0 months                        36 months                         72 months"> </form></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">Prior Probability of Corrosion Rate Data Confidence</div>
+                            <div class="col-md-6">Xác suất trước của mức độ tin cậy dữ liệu về tốc độ ăn mòn</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
                             <div class="col-md-2"><form><input  type="text"size="9px"value="0.2"> </form></div>
                             <div class="col-md-2"><form><input  type="text"size="9px" value="0.1"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Inspection Effectiveness Factors</div>
+                            <div class="col-md-6">Các yếu tố kiểm định hiệu quả</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.2"> </form></div>
                             <div class="col-md-2"><form><input  type="text"size="9px"  value="0.1"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Posterior Probability</div>
+                            <div class="col-md-6">Xác suất sau</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.2"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.1"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">The Beta Reliability Indices at 0AP</div>
+                            <div class="col-md-6">Chỉ số Độ tin cậy Beta tại 0AP</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-5.41935"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-5.70238"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-6.28780"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">The Beta Reliability Indices at 1AP</div>
+                            <div class="col-md-6">Chỉ số Độ tin cậy Beta tại 1AP</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-4.37833"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-3.94713"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-3.73879"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">The Beta Reliability Indices at 2AP</div>
+                            <div class="col-md-6">Chỉ số Độ tin cậy Beta tại 2AP</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-3.94866"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-3.73954"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="-3.63689"> </form></div>
@@ -267,21 +267,21 @@
                             <div class="col-md-1"><form><input  type="text" style="background-color: #0C5BED" size="51px"  value="0 months                        36 months                         72 months"> </form></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">Years in Service, Age</div>
+                            <div class="col-md-6">Số năm hoạt động, tuổi thọ</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.02"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="3.02"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="6.02"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Years Since Last Inspection, age, tk</div>
+                            <div class="col-md-6">Số năm kể từ lần kiểm định cuối cùng, tuổi thọ, tk</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.02"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="3.02"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="6.02"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Remaining Life of Cladding Material, Age_rc</div>
+                            <div class="col-md-6">Tuổi thọ còn lại của vật liệu tráng phủ, tuổi_rc</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0.32"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="0"> </form></div>
@@ -316,7 +316,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Base Damage Factor</div>
+                            <div class="col-md-6">Yếu tố hư hỏng cơ bản</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="6410.25626"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="6410.11961"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="6409.87347"> </form></div>
@@ -325,7 +325,7 @@
                         <br>
 
                         <div class="row">
-                            <div class="col-md-6">Thinning Damage Factor</div>
+                            <div class="col-md-6">Yếu tố hư hỏng chiều dày</div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="641.02562"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="641.01196"> </form></div>
                             <div class="col-md-2"><form><input  type="text" size="9px" value="640.98734"> </form></div>

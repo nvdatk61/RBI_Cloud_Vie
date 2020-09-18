@@ -7,10 +7,10 @@
             <caption style="font-size: 32px; text-align: center; color: black">Site List is Calculated</caption>
             <thead>
                 <th style="text-align: center;width: 50px">ID</th>
-                <th style="text-align: center;width: 150px">Factory Name</th>
-                <th style="text-align: center;width: 700px">Describe</th>
-                <th style="text-align: center;width: 200px">Contact Address</th>
-                <th style="text-align: center;width: 100px">Check Result</th>
+                <th style="text-align: center;width: 150px">Tên nhà máy</th>
+                <th style="text-align: center;width: 700px">Mô tả</th>
+                <th style="text-align: center;width: 200px">Địa chỉ liên hệ</th>
+                <th style="text-align: center;width: 100px">Kiểm tra kết quả</th>
             </thead>
             <tbody>
                 {% for com in risk %}
@@ -20,11 +20,11 @@
                     <td style="padding-left: 15px;padding-right: 5px"><br>{{ com.compainfor }}<br><br>
                         <table>
                             <tr>
-                                <td><h5>Director</h5></td>
+                                <td><h5>Giám đốc</h5></td>
                                 <td>{{ com.name }}</td>
                             </tr>
                             <tr>
-                                <td style="width: 100px"><h5>Phone</h5></td>
+                                <td style="width: 100px"><h5>Số điện thoại</h5></td>
                                 <td style="width: 700px">{{ com.phone }}</td>
                             </tr>
                             <tr>
@@ -38,7 +38,7 @@
                         </table>
                     </td>
                     <td style="padding-left: 15px;padding-right: 5px">{{ com.add }}</td>
-                    <td style="padding-left: 15px;padding-right: 5px"><a href="{% url 'facilityCitizen' com.siteID %}" > View</a></td>
+                    <td style="padding-left: 15px;padding-right: 5px"><a href="{% url 'facilityCitizen' com.siteID %}" > Xem</a></td>
                 </tr>
                 {% endfor %}
 {% endblock %}

@@ -11,13 +11,13 @@
 {% block vertical %}
 {#    <img style="width: 100%%;height: 25%;text-align: center" src="{% static 'image/logo/logoAPI.png' %}">#}
     {#<a class="vertical">Inspection<br>Plan</a>#}
-    <a class="active">Inspection Plan<br>Management</a>
-    <a href="{% block listfaci %}{% endblock %}" class="{% if page == 'listFacility' %}activeLink{% endif %}"><i class="fa fa-list">&emsp; Factories</i></a>
+    <a class="active">Quản lí kế hoạch<br>kiểm định</a>
+    <a href="{% block listfaci %}{% endblock %}" class="{% if page == 'listFacility' %}activeLink{% endif %}"><i class="fa fa-list">&emsp; Nhà máy</i></a>
     <!--<a href="{% block design %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-barcode">&emsp; Design Code</i></a>-->
     <!--<a href="{% block manu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-cubes">&emsp;Manufacture</i></a>-->
-    <a href="{% block uploadInsp %}{% endblock %}" class="{% if page == 'uploadHistory' %}activeLink{% endif %}"><i class="fa fa-file">&emsp; Upload History</i></a>
-    <a href="{% block uploadPlant %}{% endblock %}" class="{% if page == 'uploadPlan' %}activeLink{% endif %}"><i class="fa fa-file-excel-o">&emsp; Upload Plan</i></a>
+    <a href="{% block uploadInsp %}{% endblock %}" class="{% if page == 'uploadHistory' %}activeLink{% endif %}"><i class="fa fa-file">&emsp; Lịch sử tải lên</i></a>
+    <a href="{% block uploadPlant %}{% endblock %}" class="{% if page == 'uploadPlan' %}activeLink{% endif %}"><i class="fa fa-file-excel-o">&emsp; Kế hoạch tải lên</i></a>
 {#    <a href="{% block uploadScada %}{% endblock %}" class="{% if page == 'uploadScada' %}activeLink{% endif %}"><i class="fa fa-file-archive-o">&emsp; DCS/SCADA</i></a>#}
-    <a href="{% block inspecPlan %}{% endblock %}" class="{% if page == 'inspectionPlan' %}activeLink{% endif %}"><i class="fa fa-pencil-square-o">&emsp;Inpsection Plan</i></a>
+    <a href="{% block inspecPlan %}{% endblock %}" class="{% if page == 'inspectionPlan' %}activeLink{% endif %}"><i class="fa fa-pencil-square-o">&emsp;Kế hoạch kiểm định</i></a>
     <!--<a href="{% block mitigation %}{% endblock %}" class="{% if page == 'mitigation' %}activeLink{% endif %}"><i class="fa fa-pencil-square-o"> Mitigation</i></a>-->
 {% endblock %}

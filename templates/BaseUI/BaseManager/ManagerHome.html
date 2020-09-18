@@ -10,15 +10,15 @@
 
 {% block vertical %}
     <!--<a class="active">&emsp;HOME</a>-->
-    <a href="{% block homedetail %}{% endblock %}" class="{% if page == 'managerHomeDetail' %}activeLink{% endif %}"><i class="fa fa-home">&emsp; Home</i></a>
-    <a href="{% block listmana %}{% endblock %}" class="{% if page == 'listManagement' %}activeLink{% endif %}"><i class="fa fa-building">&emsp; List of Facilities</i></a>
-    <a href="{% block calculate %}{% endblock %}" class="{% if page == 'calculateFunctionManager' %}activeLink{% endif %}"><i class="fa fa-edit">&emsp;Calculation Function</i></a>
+    <a href="{% block homedetail %}{% endblock %}" class="{% if page == 'managerHomeDetail' %}activeLink{% endif %}"><i class="fa fa-home">&emsp; Trang chủ</i></a>
+    <a href="{% block listmana %}{% endblock %}" class="{% if page == 'listManagement' %}activeLink{% endif %}"><i class="fa fa-building">&emsp; Danh sách nhà máy</i></a>
+    <a href="{% block calculate %}{% endblock %}" class="{% if page == 'calculateFunctionManager' %}activeLink{% endif %}"><i class="fa fa-edit">&emsp;Chức năng tính toán</i></a>
     <!--<a href="{% block toolmanage %}{% endblock %}" class="{% if page == 'toolManager' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Tiện ích quản lí</i></a>-->
-    <a class="dropdown-btn"><i class="fa fa-caret-down"> &emsp; Utility</i></a>
+    <a class="dropdown-btn"><i class="fa fa-caret-down"> &emsp; Tiện ích</i></a>
     <div class="dropdown-container">
-        <a class="a-normal" href="{% url 'messagesInbox' %}" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="fa fa-wechat">&emsp;Message</i></a>
-        <a class="a-normal" href="{% url 'help' %}" data-toggle="tooltip" data-placement="bottom" title="Help"><i class="fa fa-question"> &emsp;Help</i></a>
-        <a class="a-normal" href="{% url 'reportmana' %}" data-toggle="tooltip" data-placement="bottom" title="Report"><i class="fa fa-file">&emsp;Report</i></a>
+        <a class="a-normal" href="{% url 'messagesInbox' %}" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="fa fa-wechat">&emsp;Tin nhắn</i></a>
+        <a class="a-normal" href="{% url 'help' %}" data-toggle="tooltip" data-placement="bottom" title="Help"><i class="fa fa-question"> &emsp;Trợ giúp</i></a>
+        <a class="a-normal" href="{% url 'reportmana' %}" data-toggle="tooltip" data-placement="bottom" title="Report"><i class="fa fa-file">&emsp;Báo cáo</i></a>
     </div>
     <!--<a href="{% block design %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-barcode">&emsp;Design Code</i></a>-->
     <!--<a href="{% block manu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-cubes">&emsp;Manufacture</i></a>-->

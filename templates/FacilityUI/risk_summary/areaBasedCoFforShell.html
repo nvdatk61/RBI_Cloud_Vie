@@ -22,63 +22,63 @@
 
                 <!-----------BlOCK FULLY QUANTITIVE FCOF AND CATEGORY--------->
                 <fieldset class="scheduler-border" >
-                    <legend class="scheduler-border"><b>Intermediate Values</b></legend>
+                    <legend class="scheduler-border"><b>Giá trị trung gian</b></legend>
                     <div class="row">
-                        <div class="col-md-4">The hydraulic conductivity for water</div>
+                        <div class="col-md-4">Độ dẫn thủy lực đối với nước</div>
                         <div class="col-md-2">{{ data.hydraulic_water }}</div>                    <!---contain data get from database---->
                     </div>
                     <div class="row">
-                        <div class="col-md-4">The hydraulic conductivity for liquid</div>
+                        <div class="col-md-4">Độ dẫn thủy lực đối với chất lỏng</div>
                         <div class="col-md-2">{{ data.hydraulic_fluid }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">The product seepage velocity</div>
+                        <div class="col-md-4">Vận tốc thấm </div>
                         <div class="col-md-2">{{ data.product_velocity }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Area Hole Size</div>
+                        <div class="col-md-4">Kích thước khu vực</div>
                         <div class="col-md-2">S:{{ data.area_small }}</div>
                         <div class="col-md-2">M:{{ data.area_medium }}</div>
                         <div class="col-md-2">L:{{ data.area_large }}</div>
                         <div class="col-md-2">R:{{ data.area_rupture }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Flow rate</div>
+                        <div class="col-md-4">Lưu lượng dòng chảy</div>
                         <div class="col-md-2">D1:{{ data.flow_rate_d1 }}</div>
                         <div class="col-md-2">D2:{{ data.flow_rate_d2 }}</div>
                         <div class="col-md-2">D3:{{ data.flow_rate_d3 }}</div>
                         <div class="col-md-2">D4:{{ data.flow_rate_d4 }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">The liquid height above the shell question</div>
+                        <div class="col-md-4">Chiều cao chất lỏng trên vỏ </div>
                         <div class="col-md-2">{{ data.liquid_height_shell }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">The value of fluid above the shell question</div>
+                        <div class="col-md-4">Giá trị của chất lỏng bên trên vỏ</div>
                         <div class="col-md-2">{{ data.fluid_above }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Leak Duration</div>
+                        <div class="col-md-4">Thời gian rò rỉ</div>
                         <div class="col-md-2">D1:{{ data.leak_duration_d1 }}</div>
                         <div class="col-md-2">D2:{{ data.leak_duration_d2 }}</div>
                         <div class="col-md-2">D3:{{ data.leak_duration_d3 }}</div>
                         <div class="col-md-2">D4:{{ data.leak_duration_d4 }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Release volume from leakage</div>
+                        <div class="col-md-4">Lượng chất lỏng phát tán do rò rỉ</div>
                         <div class="col-md-2">D1:{{ data.release_volume_leak_d1 }}</div>
                         <div class="col-md-2">D2:{{ data.release_volume_leak_d2 }}</div>
                         <div class="col-md-2">D3:{{ data.release_volume_leak_d3 }}</div>
                         <div class="col-md-2">D4:{{ data.release_volume_leak_d4 }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Release volume from rupture</div>
+                        <div class="col-md-4">Lượng chất lỏng phát tán do vết nứt</div>
                         <div class="col-md-2">{{ data.release_volume_leak_d4 }}</div>
                     </div>
                 </fieldset>
 
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border"><b>Flammable Consequence</b></legend>
+                <legend class="scheduler-border"><b>Hậu quả của cháy nổ</b></legend>
                 <fieldset class="scheduler-border">
                     <legend class="scheduler-border">{{ data.model_fluid }}</legend>
                     <div class="row">
@@ -87,34 +87,34 @@
                             <div class="col-md-2"><b>B</b></div>
                     </div>
                     <div class="row">
-                           <div class="col-md-8">Continuous Release - Auto - Ignition Not Likely  </div>
+                           <div class="col-md-8">Phát tán liên tục - Tự động - Không có khả năng đánh lửa </div>
                            <div class="col-md-2">{{ data.cainl_cmd_a }}</div>             <!-----contain data get from database---------->
                            <div class="col-md-2">{{ data.cainl_cmd_b }}</div>
                     </div>
                     <div class="row">
-                           <div class="col-md-8">Continuous Release - Auto - Ignition Likely  </div>
+                           <div class="col-md-8">Phát tán liên tục - Tự động - Có thể Đánh lửa  </div>
                            <div class="col-md-2">{{ data.cail_cmd_a }}</div>             <!-----contain data get from database---------->
                            <div class="col-md-2">{{ data.cail_cmd_b }}</div>
                     </div>
                     <div class="row">
-                           <div class="col-md-8">Instantaneous Release - Auto - Ignition Not Likely  </div>
+                           <div class="col-md-8">Phát tán tức thời - Tự động - Không có khả năng đánh lửa  </div>
                            <div class="col-md-2">{{ data.cainl_inj_a }}</div>             <!-----contain data get from database---------->
                            <div class="col-md-2">{{ data.cainl_inj_b }}</div>
                     </div>
                     <div class="row">
-                           <div class="col-md-8">Instantaneous Release - Auto - Ignition Likely  </div>
+                           <div class="col-md-8">Phát tán tức thời - Tự động - Có thể đánh lửa  </div>
                            <div class="col-md-2">{{ data.cail_inj_a }}</div>             <!-----contain data get from database---------->
                            <div class="col-md-2">{{ data.cail_inj_b }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4"><b>Release Hole Size</b> </div>
-                           <div class="col-md-2"><b>Small</b></div>             <!-----contain data get from database---------->
-                           <div class="col-md-2"><b>Medium</b></div>
-                           <div class="col-md-2"><b>Large</b></div>
-                           <div class="col-md-2"><b>Rupture</b></div>
+                        <div class="col-md-4"><b>Kích thước lỗ phát tán</b> </div>
+                           <div class="col-md-2"><b>Nhỏ</b></div>             <!-----contain data get from database---------->
+                           <div class="col-md-2"><b>Trung bình</b></div>
+                           <div class="col-md-2"><b>To</b></div>
+                           <div class="col-md-2"><b>Nứt gãy</b></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Release rate (Kg/s)</div>
+                        <div class="col-md-4">Tỉ lệ phát tán (Kg/s)</div>
                            <div class="col-md-2">{{ data.release_rate_1 }}</div>             <!-----contain data get from database---------->
                            <div class="col-md-2">{{ data.release_rate_2 }}</div>
                            <div class="col-md-2">{{ data.release_rate_3 }}</div>
@@ -191,7 +191,7 @@
                            <div class="col-md-2">D4:{{ data.AIT_inj_ca_4 }}</div>
                     </div>
                     <div class = "row">
-                        <div class="col-md-8">Flammable Component Damage Consequence Area, m<sup>2</sup></div>
+                        <div class="col-md-8">Khu vực chịu hậu quả thiệt hại do thành phần dễ cháy, m<sup>2</sup></div>
                         <div class="col_md_4">{{ data.CA_Flam_Cmd_shell }}</div>
                     </div>
                     <div class = "row">
@@ -200,25 +200,25 @@
                     </div>
                 </fieldset>
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Toxic Consequence Area</b></legend>
+                    <legend class="scheduler-border"><b>Vùng chịu ảnh hưởng độc hại</b></legend>
                     <fieldset class="scheduler-border">
                     <legend class="scheduler-border">{{ data.model_fluid }}</legend>
                      <div class="row">
-                        <div class="col-md-4"><b>Release Hole Size</b></div>
-                        <div class="col-md-2"><b>Small</b></div>
-                        <div class="col-md-2"><b>Medium</b></div>
-                        <div class="col-md-2"><b>Large</b></div>
-                        <div class="col-md-2"><b>Rupture</b></div>
+                        <div class="col-md-4"><b>Kích thước lỗ phát tán</b></div>
+                       <div class="col-md-2"><b>Nhỏ</b></div>             <!-----contain data get from database---------->
+                           <div class="col-md-2"><b>Trung bình</b></div>
+                           <div class="col-md-2"><b>To</b></div>
+                           <div class="col-md-2"><b>Nứt gãy</b></div>
                     </div>
                      <div class="row">
-                         <div class="col-md-4">Toxic Leak Duration, seconds</div>
+                         <div class="col-md-4">Thời gian rò rỉ chất độc hại, giây</div>
                          <div class="col-md-2">D1:{{ data.ld_toxic_shell_1 }}</div>
                          <div class="col-md-2">D2:{{ data.ld_toxic_shell_2 }}</div>
                          <div class="col-md-2">D3:{{ data.ld_toxic_shell_3 }}</div>
                          <div class="col-md-2">D4:{{ data.ld_toxic_shell_4 }}</div>
                      </div>
                      <div class="row">
-                         <div class="col-md-4">Toxic Release mass rate, kg/s</div>
+                         <div class="col-md-4">Tốc độ rò rỉ chất độc hại, kg/s</div>
                          <div class="col-md-2">D1:{{ data.mass_rate_shell_1 }}</div>
                          <div class="col-md-2">D2:{{ data.mass_rate_shell_2 }}</div>
                          <div class="col-md-2">D3:{{ data.mass_rate_shell_3 }}</div>
@@ -239,30 +239,30 @@
                          <div class="col-md-2">D4:{{ data.Constant_D_4 }}</div>
                      </div>
                      <div class="row">
-                         <div class="col-md-4">Toxic CA, m<sup>2</sup></div>
+                         <div class="col-md-4">Chất độc CA, m<sup>2</sup></div>
                          <div class="col-md-2">D1:{{ data.CA_toxic_shell1 }}</div>
                          <div class="col-md-2">D2:{{ data.CA_toxic_shell2 }}</div>
                          <div class="col-md-2">D3:{{ data.CA_toxic_shell3 }}</div>
                          <div class="col-md-2">D4:{{ data.CA_toxic_shell4 }}</div>
                      </div>
                      <div class="row">
-                         <div class="col-md-8">Toxic Personnel Injury Consequence Area, m<sup>2</sup></div>
+                         <div class="col-md-8">Vùng chịu ảnh hưởng độc hại đối với con người, m<sup>2</sup></div>
                          <div class="col-md-4">{{ data.CA_toxic_fi }}</div>
                      </div>
                          </legend>
                  </fieldset>
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border">Consequence Areas</legend>
+                    <legend class="scheduler-border">Vùng chịu hậu quả</legend>
                     <div class="row">
-                        <div class="col-md-4">Financial Component Damage Consequence Area</div>
+                        <div class="col-md-4">Vùng chịu ảnh hưởng tài chính đối với hư hỏng thiết bị</div>
                         <div class="col-md-2">{{ data.CA_final_Com }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Financial Personnel Injury Consequence Area</div>
+                        <div class="col-md-4">Vùng chịu ảnh hưởng tài chính đối với con người</div>
                         <div class="col-md-2">{{ data.CA_final_Per }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Financial Consequence</div>
+                        <div class="col-md-4">Thiệt hại tài chính</div>
                         <div class="col-md-2">{{ data.CA_final }}</div>
                     </div>
                 </fieldset>
