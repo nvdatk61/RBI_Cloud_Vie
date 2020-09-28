@@ -25,13 +25,13 @@
                 <a href="https://cortekrbi.com/" ><img src='/static/image/logo/england.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
                 <h1>Nhanh hơn. Chính xác hơn.</h1>
                 <h3>Kiểm tra như một dịch vụ giúp hàng triệu quản trị viên, <br> doanh nghiệp và người dùng theo dõi, bảo trì <br> và thay thế các thiết bị ngay lập tức</h3><br>
-                <h4>Create your free account</h4>
+                <h4>Tạo tải khoản cho bạn</h4>
             </div>
             <dv><br><br></dv>
 
-            <button class="index-red-btn" onclick="location.href='{% url 'accountcitizen' %}'"><i class="fa fa-group" >&emsp;Tôi là người dân</i></button>
-            <button class="index-btn" onclick="location.href='{% url 'accountbusiness' %}'"><i class="fa fa-gear">&emsp;Tôi là cơ quan nhà máy</i></button>
-            <button class="index-btn" onclick="location.href='{% url 'accountmanagement' %}'"><i class="fa fa-gear">&emsp;Tôi là cơ quan quản lý</i></button>
+            <button class="index-btn" onclick="location.href='{% url 'accountcitizen' %}'"><i class="fa fa-group" >&emsp;Tôi là người dân</i></button>
+            <button class="index-btn" onclick="location.href='{% url 'accountbusiness' %}'"><i class="fa fa-gear">&emsp;Tôi là nhà máy</i></button>
+            <button class="index-btn" onclick="location.href='{% url 'accountmanagement' %}'"><i class="fa fa-gear">&emsp;Tôi là quản lý</i></button>
         </div>
 <form method="post">
 {% csrf_token %}
