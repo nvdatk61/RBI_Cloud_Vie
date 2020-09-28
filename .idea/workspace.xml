@@ -3,110 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7f231c43-833f-45f1-9b74-18536c96b33c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RbiCloud/settings.py" afterPath="$PROJECT_DIR$/RbiCloud/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/views.py" afterPath="$PROJECT_DIR$/cloud/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizenHome.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizenHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseRiskSummary_Citizen.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseRiskSummary_Citizen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseChart.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseChart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseComponent.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseComponent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseDesigncode.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseDesigncode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseManufacture.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseManufacture.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseProposal.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseProposal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseHelp/BaseHelp.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseHelp/BaseHelp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/Inputdata.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/Inputdata.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/ManagerHome.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/ManagerHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseComponentMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseComponentMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseDesigncodeMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseDesigncodeMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseEquipmentMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseEquipmentMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManufactureMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManufactureMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseProposalMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseProposalMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseRiskSummaryMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseRiskSummaryMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/basefacilitymana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/basefacilitymana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/Citizen_list_facility.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/Citizen_list_facility.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/ListProposalCitizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/ListProposalCitizen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/infor_facility.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/infor_facility.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/dfFull_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/dfFull_Citizen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyBottomConsequence_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyBottomConsequence_Citizen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyNormalConsequence_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyNormalConsequence_Citizen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyShellConsequence_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyShellConsequence_Citizen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/component/componentEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/component/componentEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/component/componentNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/component/componentNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadSCADA.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadSCADA.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/NewSensor.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/NewSensor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/SensorConnect.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/SensorConnect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposal_excel.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposal_excel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskMatrix.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskMatrix.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Component.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/component_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/component_List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/designcode_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/designcode_List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Messages/Messages_Inbox.html" afterPath="$PROJECT_DIR$/templates/Messages/Messages_Inbox.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Messages/Messages_Sent.html" afterPath="$PROJECT_DIR$/templates/Messages/Messages_Sent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Account_Management/Login_and_Password.html" afterPath="$PROJECT_DIR$/templates/help/Account_Management/Login_and_Password.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Account_Management/Notification.html" afterPath="$PROJECT_DIR$/templates/help/Account_Management/Notification.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Account_Management/Personal_Information.html" afterPath="$PROJECT_DIR$/templates/help/Account_Management/Personal_Information.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Policies_Reports.html" afterPath="$PROJECT_DIR$/templates/help/Policies_Reports.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/response/complete_regiatration.html" afterPath="$PROJECT_DIR$/templates/response/complete_regiatration.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Home/index.html" afterPath="$PROJECT_DIR$/templates/Home/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -147,66 +44,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="proposal_List.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/proposal_List.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="95" column="14" lean-forward="false" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Report_Component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="63" column="14" lean-forward="false" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Report_Equipment.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Report_Facilities.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Report_Mana.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="151" column="14" lean-forward="false" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Report_Proposal.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="91" column="14" lean-forward="false" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Tool_Manager.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Tool_Manager.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -220,7 +57,7 @@
       <file leaf-file-name="Messages_Inbox.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Inbox.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
+            <state relative-caret-position="527">
               <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
               <folding />
             </state>
@@ -230,18 +67,78 @@
       <file leaf-file-name="Messages_Sent.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Sent.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
+            <state relative-caret-position="595">
               <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="complete_regiatration.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="complete_regiatration.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/response/complete_regiatration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="60" lean-forward="true" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+            <state relative-caret-position="374">
+              <caret line="22" column="49" lean-forward="false" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="componentNew.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentNew.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1173">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="componentEdit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentEdit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-306">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="componentListDisplay.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-304">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="73" column="51" lean-forward="true" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="areaBasedCoFforNormal.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1938">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="areaBasedCoFforShell.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -297,7 +194,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" />
@@ -348,6 +244,7 @@
         <option value="$PROJECT_DIR$/templates/Messages/Messages_Inbox.html" />
         <option value="$PROJECT_DIR$/templates/Messages/Messages_Sent.html" />
         <option value="$PROJECT_DIR$/templates/response/complete_regiatration.html" />
+        <option value="$PROJECT_DIR$/templates/Home/index.html" />
       </list>
     </option>
   </component>
@@ -385,162 +282,35 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="process" type="462c0819:PsiDirectoryNode" />
-              <item name="File" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="process" type="462c0819:PsiDirectoryNode" />
-              <item name="RBI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="regularverification" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="regularverification" type="462c0819:PsiDirectoryNode" />
-              <item name="datajson" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="RbiCloud" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="404" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="risk_summary" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="showdatabase" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="help" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="help" type="462c0819:PsiDirectoryNode" />
-              <item name="Account_Management" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="help" type="462c0819:PsiDirectoryNode" />
-              <item name="User_Manual" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="Home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Home" type="462c0819:PsiDirectoryNode" />
-              <item name="Account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
-              <item name="RiskSummaryMana" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
-              <item name="verification_requirments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Messages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="response" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -750,13 +520,13 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2647504" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27231467" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -785,59 +555,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_excel/tableExcel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="757" column="0" lean-forward="false" selection-start-line="757" selection-start-column="0" selection-end-line="757" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="164" column="14" lean-forward="false" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="142" column="14" lean-forward="false" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="207" column="14" lean-forward="false" selection-start-line="207" selection-start-column="14" selection-end-line="207" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -845,7 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="205" column="14" lean-forward="false" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -853,7 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -861,9 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
           <caret line="239" column="10" lean-forward="false" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
-          <folding>
-            <element signature="e#8114#9029#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -871,7 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -879,7 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="337" column="14" lean-forward="false" selection-start-line="337" selection-start-column="14" selection-end-line="337" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -887,7 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -895,7 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -911,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,7 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-459">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -935,7 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -943,7 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,7 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-816">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -959,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -967,7 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-494">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -983,7 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="162" column="14" lean-forward="false" selection-start-line="162" selection-start-column="14" selection-end-line="162" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -991,7 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="154" column="14" lean-forward="false" selection-start-line="154" selection-start-column="14" selection-end-line="154" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -999,7 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="106" column="14" lean-forward="false" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,7 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="145" column="14" lean-forward="false" selection-start-line="145" selection-start-column="14" selection-end-line="145" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,7 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1004">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,7 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="239" column="14" lean-forward="false" selection-start-line="239" selection-start-column="14" selection-end-line="239" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,7 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="74" column="14" lean-forward="false" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,7 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,7 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
           <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1055,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="615" column="61" lean-forward="true" selection-start-line="615" selection-start-column="61" selection-end-line="615" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,7 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,7 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="121" lean-forward="false" selection-start-line="17" selection-start-column="121" selection-end-line="17" selection-end-column="121" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,7 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
           <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,19 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
           <caret line="70" column="14" lean-forward="false" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
-          <folding>
-            <element signature="e#775#801#0#HTML" expanded="true" />
-            <element signature="e#827#867#0#HTML" expanded="true" />
-            <element signature="e#1060#1084#0#HTML" expanded="true" />
-            <element signature="e#1171#1195#0#HTML" expanded="true" />
-            <element signature="e#1221#1227#0#HTML" expanded="true" />
-            <element signature="e#1288#1312#0#HTML" expanded="true" />
-            <element signature="e#1338#1344#0#HTML" expanded="true" />
-            <element signature="e#1399#1423#0#HTML" expanded="true" />
-            <element signature="e#1453#1459#0#HTML" expanded="true" />
-            <element signature="e#1529#1553#0#HTML" expanded="true" />
-            <element signature="e#1584#1590#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1107,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-306">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,7 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="54" column="14" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,13 +797,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2480">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ManagerUI/proposal_List.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
+        <state relative-caret-position="1615">
           <caret line="95" column="14" lean-forward="false" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
           <folding />
         </state>
@@ -1137,7 +810,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
+        <state relative-caret-position="1071">
           <caret line="63" column="14" lean-forward="false" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
           <folding />
         </state>
@@ -1145,7 +818,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
+        <state relative-caret-position="1088">
           <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
           <folding />
         </state>
@@ -1153,7 +826,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="1088">
           <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
           <folding />
         </state>
@@ -1161,7 +834,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
+        <state relative-caret-position="2567">
           <caret line="151" column="14" lean-forward="false" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
           <folding />
         </state>
@@ -1169,7 +842,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
+        <state relative-caret-position="1547">
           <caret line="91" column="14" lean-forward="false" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
           <folding />
         </state>
@@ -1185,7 +858,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Inbox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="527">
           <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
           <folding />
         </state>
@@ -1193,7 +866,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Sent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="595">
           <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
           <folding />
         </state>
@@ -1201,8 +874,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/response/complete_regiatration.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="60" lean-forward="true" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+        <state relative-caret-position="374">
+          <caret line="22" column="49" lean-forward="false" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentNew.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1173">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-304">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1938">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="73" column="51" lean-forward="true" selection-start-line="73" selection-start-column="51" selection-end-line="73" selection-end-column="51" />
           <folding />
         </state>
       </provider>
