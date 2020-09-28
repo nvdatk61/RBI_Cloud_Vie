@@ -86,14 +86,16 @@
         <br>
         <div class="city" style="font-size: 13px; color: #444444;background-color:white">
             <table width=100%>
+                {% if listInpsecCoverage %}
                 <tr>
-                    <th>ID kế hoạch kiểm định</th>
-                    <th>Ngày khởi tạo kế hoạch kiểm định</th>
-                    <th>Thiết bị</th>
-                    <th>Thành phần</th>
-                    <th>Nhận xét</th>
-                    <th>Kết quả</th>
+                    <th>Inspection Plan ID</th>
+                    <th>Inspection Plan Date</th>
+                    <th>Equipment</th>
+                    <th>Component</th>
+                    <th>Remarks</th>
+                    <th>Findings</th>
                 </tr>
+                {% endif%}
                 {% for a in listInpsecCoverage %}
                     <tr >
                         <td align="center">{{ a.InpsecName }}</td>

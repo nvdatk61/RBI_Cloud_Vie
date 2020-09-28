@@ -121,6 +121,7 @@ class Newton:
                 Thresholdmax = 100000
                 Thresholdmin = 0
                 output = self.AddListInter("OpHydroPressure")
+                print("OpHydroPressure",output)
             elif self.value == "flowrate":
                 Thresholdmax = 100000
                 Thresholdmin = 0
@@ -217,6 +218,10 @@ class Newton:
                 Thresholdmax = 100000
                 Thresholdmin = 0
                 output = self.AddListInter("distance")
+            elif self.value == "fluidHeight":
+                Thresholdmax = 100000
+                Thresholdmin = 0
+                output = self.AddListInter("fluidHeight")
             else:
                 print("Value fail")
             if (output>Thresholdmax or output<Thresholdmin):
@@ -312,11 +317,15 @@ class Newton:
                     stream = models.RwStream.objects.get(id=ass.id)
                     self.Y.append(stream.waterph)
                 elif value1 == "OpHydroPressure":
+                    print("id",ass.id)
                     stream = models.RwStream.objects.get(id=ass.id)
                     self.Y.append(stream.h2spartialpressure)
                 elif value1 == "flowrate":
                     stream = models.RwStream.objects.get(id=ass.id)
                     self.Y.append(stream.flowrate)
+                elif value1 == "fluidHeight":
+                    stream = models.RwStream.objects.get(id=ass.id)
+                    self.Y.append(stream.fluidheight)
                 elif value1 == "OP1":
                     excor = models.RwExtcorTemperature.objects.get(id=ass.id)
                     self.Y.append(excor.minus12tominus8)
@@ -386,7 +395,6 @@ class Newton:
         self.n = len(self.X)
         datenow = datetime.datetime.now()
         return self.__interpolation((datenow.year * 365 + datenow.month * 30 + datenow.day) - datatmin)
-
     def __interpolation(self, t):
         try:
             c = [0 for _ in range(self.n)]
@@ -402,6 +410,8 @@ class Newton:
                 s = s * (t -self.X[i])+c[i]
             return s
         except Exception as e:
+            print("error __interpolation", t)
+            return 0
             raise
 import math
 if __name__=="__main__":

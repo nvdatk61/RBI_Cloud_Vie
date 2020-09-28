@@ -1,13 +1,16 @@
-{% extends 'BaseUI/BaseFacility/baseFacility.html' %}
+{% extends 'BaseUI/BaseFacility/baseDesigncode.html' %}
 
 <!------------ BLOCK MENU --------------->
-{% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
-{% block newfaci %}{% url 'facilitiesNew' siteID %}{% endblock %}
-{% block design %}{% url 'designcodeDisplay' siteID %}{% endblock %}
-{% block manu %}{% url 'manufactureDisplay' siteID %}{% endblock %}
-{% block uploadInsp %}{% url 'upload' siteID %}{% endblock %}
-{% block uploadPlant %}{% url 'uploadPlan' siteID %}{% endblock %}
-{% block inspecPlan %}{% url 'inspectionPlan' siteID %}{% endblock %}
+{% block listeq %}{% url 'equipmentDisplay' facilityID %}{% endblock %}
+{% block design %}{% url 'designcodeDisplay' facilityID %}{% endblock %}
+{% block backfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
+
+<!--{% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}-->
+<!--{% block newfaci %}{% url 'facilitiesNew' siteID %}{% endblock %}-->
+{% block manu %}{% url 'manufactureDisplay' facilityID %}{% endblock %}
+<!--{% block uploadInsp %}{% url 'upload' siteID %}{% endblock %}-->
+<!--{% block uploadPlant %}{% url 'uploadPlan' siteID %}{% endblock %}-->
+<!--{% block inspecPlan %}{% url 'inspectionPlan' siteID %}{% endblock %}-->
 <!----------- END BLOCK --------------->
 
 {% block data-content %}
@@ -65,11 +68,11 @@
 
 {#            tool div #}
             <br>
-            <div>
-                <button type="submit" name="_edit" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Chỉnh sửa </i></button>
-                <button type="submit" class="btn btn-warning" id="sub" onclick="Sub()"><i class="fa fa-trash-o">&emsp;Xóa mục đã chọn</i></button>
-                <button type="submit" name="_new" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Tạo mới</i></button>
-            </div>
+            <!--<div>-->
+                <!--<button type="submit" name="_edit" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Edit Selected</i></button>-->
+                <!--<button type="submit" class="btn btn-warning" id="sub" onclick="Sub()"><i class="fa fa-trash-o">&emsp;Delete Selected</i></button>-->
+                <!--<button type="submit" name="_new" class="btn btn-primary"><i class="fa fa-pencil">&emsp;New Designcode</i></button>-->
+            <!--</div>-->
 
         </div>
     </form>

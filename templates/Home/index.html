@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 
-{% block title %}Trang chủ{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block library %}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,13 +25,13 @@
                 <a href="https://cortekrbi.com/" ><img src='/static/image/logo/england.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
                 <h1>Fast More. Exactly More.</h1>
                 <h3>Inspection As a Service helps millions of administrators,<br> businesses and users  in monitoring, maintaining<br> and replacing facilities immediately</h3><br>
-                <h4>Tạo tài khoản miễn phí</h4>
+                <h4>Create your free account</h4>
             </div>
             <dv><br><br></dv>
 
-            <button class="index-red-btn" onclick="location.href='{% url 'accountcitizen' %}'"><i class="fa fa-group" >&emsp;Tôi là người dân</i></button>
-            <button class="index-btn" onclick="location.href='{% url 'accountbusiness' %}'"><i class="fa fa-gear">&emsp;Tôi là doanh nghiệp</i></button>
-            <button class="index-btn" onclick="location.href='{% url 'accountmanagement' %}'"><i class="fa fa-gear">&emsp;Tôi là quản lí</i></button>
+            <button class="index-red-btn" onclick="location.href='{% url 'accountcitizen' %}'"><i class="fa fa-group" >&emsp;I'm Citizen</i></button>
+            <button class="index-btn" onclick="location.href='{% url 'accountbusiness' %}'"><i class="fa fa-gear">&emsp;I'm Business</i></button>
+            <button class="index-btn" onclick="location.href='{% url 'accountmanagement' %}'"><i class="fa fa-gear">&emsp;I'm Management</i></button>
         </div>
 <form method="post">
 {% csrf_token %}
@@ -42,7 +42,7 @@
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <span aria-hidden="true" style="font-size: 24px;font-weight: bold;color: #444444;font-family: Calibri;font-weight: bold">Đăng nhập vào RBI-Cortek</span>
+          <span aria-hidden="true" style="font-size: 24px;font-weight: bold;color: #444444;font-family: Calibri;font-weight: bold">Sign in to RBI-Cortek</span>
           <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
         </div>
 
@@ -64,7 +64,7 @@
 
         <!-- Modal footer -->
         <div class="modal-footer" style="margin: auto; width: 90%">
-          <button type="submit" class="btn btn-success"  style="background-color: #4575B7; border: 1px solid #204d74">Đăng nhập</button>
+          <button type="submit" class="btn btn-success"  style="background-color: #4575B7; border: 1px solid #204d74">Sign In</button>
         </div>
       </div>
     </div>

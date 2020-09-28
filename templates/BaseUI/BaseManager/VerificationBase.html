@@ -65,14 +65,15 @@
     <a class="a-normal" href="{% url 'messagesInbox' %}" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="fa fa-wechat">{% if count %}<span class="badge red" style="color: red">{{ count }}</span>{% endif %}</i></a>
     <a class="a-normal" href="{% url 'forum' %}" data-toggle="tooltip" data-placement="bottom" title="Forum"><i class="fa fa-dedent"></i></a>
     <a class="a-lormal active" href="" data-toggle="tooltip" data-placement="bottom" title="Verificaton"><i class="fa fa-exclamation-triangle"><span class="badge red" style="color: red"></span></i></a>
+    <a class="a-normal" href="" data-toggle="modal" data-target="#LanguageModal" data-placement="bottom"><i class="fa fa-language"></i></a>
     <a class="a-normal" href="{% url 'home' %}" data-toggle="tooltip" data-placement="bottom" title="Home"><i class="fa fa-home"></i></a>
 {% endblock %}
 
 {% block content %}
     <div class="business-normal">
-{#        <div class="sidenav">#}
-{#            {% block vertical %}{% endblock %}#}
-{#        </div>#}
+        <div class="sidenav">
+           {% block vertical %}{% endblock %}
+        </div>
         <article class="main">
             {% block data-content %}{% endblock %}
         </article>

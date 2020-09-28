@@ -1,19 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fde8cb31-8142-47e6-8ad9-f8bba9add79b" name="Default" comment="">
+    <list default="true" id="7f231c43-833f-45f1-9b74-18536c96b33c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RbiCloud/settings.py" afterPath="$PROJECT_DIR$/RbiCloud/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/views.py" afterPath="$PROJECT_DIR$/cloud/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizenHome.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizenHome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseRiskSummary_Citizen.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseRiskSummary_Citizen.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseChart.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseChart.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseComponent.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseComponent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseDesigncode.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseDesigncode.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseManufacture.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseManufacture.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseProposal.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseProposal.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseHelp/BaseHelp.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseHelp/BaseHelp.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/Inputdata.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/Inputdata.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/ManagerHome.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/ManagerHome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseComponentMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseComponentMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseDesigncodeMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseDesigncodeMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseEquipmentMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseEquipmentMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManufactureMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManufactureMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseProposalMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseProposalMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseRiskSummaryMana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseRiskSummaryMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/basefacilitymana.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/basefacilitymana.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/Citizen_list_facility.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/Citizen_list_facility.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/ListProposalCitizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/ListProposalCitizen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/infor_facility.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/infor_facility.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/dfFull_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/dfFull_Citizen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyBottomConsequence_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyBottomConsequence_Citizen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyNormalConsequence_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyNormalConsequence_Citizen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyShellConsequence_Citizen.html" afterPath="$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyShellConsequence_Citizen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/component/componentEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/component/componentEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/component/componentNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/component/componentNew.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeListDisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeNew.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentNew.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityNew.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadSCADA.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadSCADA.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureListDisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureNew.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/NewSensor.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/NewSensor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/SensorConnect.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/SensorConnect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalNew.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankEdit.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankEdit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposal_excel.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposal_excel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskMatrix.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskMatrix.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Component.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/component_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/component_List.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/designcode_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/designcode_List.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Messages/Messages_Inbox.html" afterPath="$PROJECT_DIR$/templates/Messages/Messages_Inbox.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Messages/Messages_Sent.html" afterPath="$PROJECT_DIR$/templates/Messages/Messages_Sent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Account_Management/Login_and_Password.html" afterPath="$PROJECT_DIR$/templates/help/Account_Management/Login_and_Password.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Account_Management/Notification.html" afterPath="$PROJECT_DIR$/templates/help/Account_Management/Notification.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Account_Management/Personal_Information.html" afterPath="$PROJECT_DIR$/templates/help/Account_Management/Personal_Information.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/Policies_Reports.html" afterPath="$PROJECT_DIR$/templates/help/Policies_Reports.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/response/complete_regiatration.html" afterPath="$PROJECT_DIR$/templates/response/complete_regiatration.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,20 +115,100 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Update_RBI_Web$FinancialCOF.coverage" NAME="FinancialCOF Coverage Results" MODIFIED="1598437955934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="rbi31_5@localhost" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="rbi31_5@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="rbi31_5" type="e3449647:DbNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Update_RBI_Web" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="VerificationBase.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="proposal_List.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/proposal_List.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1197">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="444">
+              <caret line="95" column="14" lean-forward="false" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Inputdata.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/Inputdata.html">
+      <file leaf-file-name="Report_Component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="63" column="14" lean-forward="false" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Report_Equipment.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Report_Facilities.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="458">
+              <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Report_Mana.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="151" column="14" lean-forward="false" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Report_Proposal.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="91" column="14" lean-forward="false" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tool_Manager.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Tool_Manager.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -44,81 +217,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="areaBasedCoFforNormal.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html">
+      <file leaf-file-name="Messages_Inbox.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Inbox.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-294">
-              <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+            <state relative-caret-position="458">
+              <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="areaBasedCoFforShell.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html">
+      <file leaf-file-name="Messages_Sent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Sent.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="275" column="0" lean-forward="false" selection-start-line="275" selection-start-column="0" selection-end-line="275" selection-end-column="0" />
+            <state relative-caret-position="458">
+              <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dfFull.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html">
+      <file leaf-file-name="complete_regiatration.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/response/complete_regiatration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="168" column="14" lean-forward="true" selection-start-line="168" selection-start-column="14" selection-end-line="168" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseRiskSummaryMana.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseRiskSummaryMana.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseRiskSummary.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="141" lean-forward="false" selection-start-line="8" selection-start-column="141" selection-end-line="8" selection-end-column="141" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forumhome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1302">
-              <caret line="76" column="34" lean-forward="true" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forumposts.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-189">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proposalCorrisionRate.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="135" column="66" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="68" />
+            <state relative-caret-position="119">
+              <caret line="7" column="60" lean-forward="true" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -126,38 +249,46 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>1.25</find>
-      <find>pta</find>
-      <find>materialPTA</find>
-      <find>lớp l</find>
-      <find>điều kiện môi</find>
-      <find>naoh</find>
-      <find>rắn</find>
-      <find>hậu quả</find>
-      <find>chọn hệ</find>
-      <find>hơi</find>
-      <find>chi phí thiết</find>
-      <find>phun</find>
-      <find>chi phí sả</find>
-      <find>chi phí môi</find>
-      <find>loại vật liệu bọc</find>
-      <find>thời</find>
-      <find>Thiệt hại tài chính do dừng hoạt động kinh doanh</find>
-      <find>environ_leak</find>
-      <find>thể tích</find>
-      <find>designcode</find>
-      <find>manufacture</find>
-      <find>equipment</find>
+      <find>RwDamageMechanism</find>
+      <find>calculatef</find>
+      <find>proposalMana</find>
+      <find>riskmatrix</find>
+      <find>verification</find>
+      <find>tank</find>
+      <find>CalculateFunctionManager</find>
+      <find>detail</find>
+      <find>basemanager</find>
+      <find>ListFacili</find>
+      <find>basemanage</find>
+      <find>baseManage</find>
+      <find>Home_</find>
+      <find>Facilit</find>
+      <find>facilitiesNew</find>
       <find>facilities</find>
-      <find>InspectionHistory</find>
-      <find>điều kiện b</find>
-      <find>CoF</find>
-      <find>nhiệt</find>
-      <find>-12</find>
-      <find>messagessent</find>
-      <find>damage-factor</find>
+      <find>ListFaci</find>
+      <find>info</find>
+      <find>state</find>
+      <find>is_</find>
+      <find>is_see</find>
+      <find>facilitiesm</find>
+      <find>notifica</find>
+      <find>ListFac</find>
+      <find>notifi.state = 1</find>
+      <find>id_user=3</find>
+      <find>state = 1</find>
+      <find>kind=</find>
+      <find>_delte</find>
+      <find>_del</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,59 +297,64 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/CitizenUI/Citizen_list_facility.html" />
-        <option value="$PROJECT_DIR$/templates/CitizenUI/CitizenHome.html" />
-        <option value="$PROJECT_DIR$/templates/CitizenUI/infor_facility.html" />
-        <option value="$PROJECT_DIR$/templates/CitizenUI/ListProposalCitizen.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureEdit.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureListDisplay.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureNew.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/NewSensor.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposal_excel.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalEdit.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalNormalNew.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/risk_excel/tableExcel.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankEdit.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalTankNew.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/SensorConnect.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskMatrix.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" />
+        <option value="$PROJECT_DIR$/templates/help/Account_Management/Login_and_Password.html" />
         <option value="$PROJECT_DIR$/templates/help/Account_Management/Notification.html" />
+        <option value="$PROJECT_DIR$/templates/help/Account_Management/Personal_Information.html" />
+        <option value="$PROJECT_DIR$/templates/help/Policies_Reports.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/component_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/designcode_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Component.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html" />
         <option value="$PROJECT_DIR$/templates/Messages/Messages_Inbox.html" />
         <option value="$PROJECT_DIR$/templates/Messages/Messages_Sent.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Component.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Mitigation.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Home_Manager.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/designcode_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/component_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html" />
-        <option value="$PROJECT_DIR$/RbiCloud/settings.py" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/facility/uploadSCADA.html" />
-        <option value="$PROJECT_DIR$/cloud/views.py" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html" />
-        <option value="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html" />
+        <option value="$PROJECT_DIR$/templates/response/complete_regiatration.html" />
       </list>
     </option>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="Update_RBI_Web/invalid/Django" />
+    </ignored-facets>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -227,10 +363,12 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="429" />
-    <option name="width" value="1500" />
-    <option name="height" value="1060" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -246,201 +384,155 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="process" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="process" type="462c0819:PsiDirectoryNode" />
+              <item name="File" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="process" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="regularverification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="regularverification" type="462c0819:PsiDirectoryNode" />
+              <item name="datajson" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="RbiCloud" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+              <item name="404" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseCitizen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseFacility" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseForum" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseHelp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseManager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseMessages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
-              <item name="BaseWeb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="CitizenUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="CitizenUI" type="462c0819:PsiDirectoryNode" />
-              <item name="risk_summary_Citizen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="component" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="design_code" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="equipment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="facility" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="inspection_plan" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="manufacture" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="proposal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
-              <item name="risk_excel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
               <item name="risk_summary" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="FacilityUI" type="462c0819:PsiDirectoryNode" />
+              <item name="showdatabase" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="help" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="help" type="462c0819:PsiDirectoryNode" />
               <item name="Account_Management" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="help" type="462c0819:PsiDirectoryNode" />
+              <item name="User_Manual" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="Home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
+              <item name="Account" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
               <item name="RiskSummaryMana" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
+              <item name="verification_requirments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="Messages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="RBI_Cloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="response" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -448,13 +540,24 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RBI_Cloud" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Project_Lab411\rbi_16-09-2020\RBI_Cloud\static\image\help" />
+      <recent name="C:\Users\Dat\Downloads\RBI_Cloud\static\image\logo" />
+      <recent name="F:\Project_Lab411\rbi12092020\RBI_Cloud\static\image\logo" />
+      <recent name="F:\Project_Lab411\rbi09102020\RBI_Cloud\static\image" />
+      <recent name="F:\Project_Lab411\rbi09102020\RBI_Cloud\templates\help" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -468,19 +571,56 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django server.RBI_Cloud_Vie">
-    <configuration name="RBI_Cloud_Vie" type="Python.DjangoServer" factoryName="Django server">
+  <component name="RunManager" selected="Django server.Update_RBI_Web">
+    <configuration name="CA_CAL" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Program Files\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Update_RBI_Web" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/process/RBI/CA_CAL.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="FinancialCOF" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Update_RBI_Web" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/process/RBI/FinancialCOF.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="Update_RBI_Web" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="RbiCloud.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python38\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RBI_Cloud_Vie" />
+      <module name="Update_RBI_Web" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
       <option name="host" value="" />
@@ -491,36 +631,137 @@
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
     </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Update_RBI_Web" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="regular" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\CuongLuong\PycharmProjects\untitled\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Update_RBI_Web" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/regularverification/regular.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="subscribe" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Update_RBI_Web" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/regularverification/subscribe.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="subscribe_thingsboard" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\CuongLuong\PycharmProjects\untitled\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Update_RBI_Web" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cloud/regularverification/subscribe_thingsboard.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="Django server.Update_RBI_Web" />
+      <item index="1" class="java.lang.String" itemvalue="Python.regular" />
+      <item index="2" class="java.lang.String" itemvalue="Python.subscribe_thingsboard" />
+      <item index="3" class="java.lang.String" itemvalue="Python.CA_CAL" />
+      <item index="4" class="java.lang.String" itemvalue="Python.subscribe" />
+      <item index="5" class="java.lang.String" itemvalue="Python.FinancialCOF" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.FinancialCOF" />
+        <item index="1" class="java.lang.String" itemvalue="Python.subscribe" />
+        <item index="2" class="java.lang.String" itemvalue="Python.CA_CAL" />
+        <item index="3" class="java.lang.String" itemvalue="Python.subscribe_thingsboard" />
+        <item index="4" class="java.lang.String" itemvalue="Python.regular" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fde8cb31-8142-47e6-8ad9-f8bba9add79b" name="Default" comment="" />
-      <created>1600346926694</created>
+      <changelist id="7f231c43-833f-45f1-9b74-18536c96b33c" name="Default" comment="" />
+      <created>1590889080900</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1600346926694</updated>
+      <updated>1590889080900</updated>
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2647504" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24865736" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -533,6 +774,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -541,358 +785,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-777">
-          <caret line="93" column="54" lean-forward="false" selection-start-line="93" selection-start-column="46" selection-end-line="93" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/riskChartMana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1077">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="629" column="58" lean-forward="false" selection-start-line="629" selection-start-column="58" selection-end-line="629" selection-end-column="58" />
-          <folding>
-            <element signature="e#3548#3554#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/component_List.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-468">
-          <caret line="29" column="98" lean-forward="false" selection-start-line="29" selection-start-column="98" selection-end-line="29" selection-end-column="98" />
-          <folding>
-            <element signature="e#1534#1540#0#HTML" expanded="false" />
-            <element signature="e#1651#1657#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/designcode_List.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="122" lean-forward="false" selection-start-line="17" selection-start-column="122" selection-end-line="17" selection-end-column="122" />
-          <folding>
-            <element signature="e#833#839#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="57" column="88" lean-forward="false" selection-start-line="57" selection-start-column="88" selection-end-line="57" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="28" column="63" lean-forward="false" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/uploadSCADA.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="49" column="117" lean-forward="false" selection-start-line="49" selection-start-column="117" selection-end-line="49" selection-end-column="117" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1161">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/design_code/designcodeNew.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/manufacture/manufactureListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="41" lean-forward="true" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseEquipment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-          <folding>
-            <element signature="e#329#335#0#HTML" expanded="false" />
-            <element signature="e#494#500#0#HTML" expanded="false" />
-            <element signature="e#648#654#0#HTML" expanded="false" />
-            <element signature="e#909#915#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="27" lean-forward="true" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RbiCloud/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-985">
-          <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2197">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2722">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/dfFull_Citizen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyBottomConsequence_Citizen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyNormalConsequence_Citizen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/CitizenUI/risk_summary_Citizen/fullyShellConsequence_Citizen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-657">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="156" column="44" lean-forward="false" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="230" column="44" lean-forward="false" selection-start-line="230" selection-start-column="44" selection-end-line="230" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="113" column="61" lean-forward="false" selection-start-line="113" selection-start-column="59" selection-end-line="113" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="37" column="40" lean-forward="false" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3111">
-          <caret line="1080" column="57" lean-forward="false" selection-start-line="1080" selection-start-column="54" selection-end-line="1080" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7161">
-          <caret line="341" column="127" lean-forward="false" selection-start-line="341" selection-start-column="127" selection-end-line="341" selection-end-column="127" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Sent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="58" column="25" lean-forward="true" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RbiCloud/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="68" column="70" lean-forward="false" selection-start-line="68" selection-start-column="70" selection-end-line="68" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1143">
-          <caret line="8672" column="4" lean-forward="false" selection-start-line="8672" selection-start-column="4" selection-end-line="8672" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding>
-            <marker date="1600413141792" expanded="false" signature="766:772" ph=" " />
-            <marker date="1600413141792" expanded="false" signature="923:929" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-840">
-          <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseCitizenHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1827">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseCitizen/baseRiskSummary_Citizen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-909">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1197">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/Inputdata.html">
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_excel/tableExcel.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -902,29 +795,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforNormal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294">
-          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        <state relative-caret-position="418">
+          <caret line="757" column="0" lean-forward="false" selection-start-line="757" selection-start-column="0" selection-end-line="757" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/areaBasedCoFforShell.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="275" column="0" lean-forward="false" selection-start-line="275" selection-start-column="0" selection-end-line="275" selection-end-column="0" />
+        <state relative-caret-position="461">
+          <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="168" column="14" lean-forward="true" selection-start-line="168" selection-start-column="14" selection-end-line="168" selection-end-column="14" />
+        <state relative-caret-position="526">
+          <caret line="164" column="14" lean-forward="false" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseRiskSummaryMana.html">
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyBottomConsequence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="142" column="14" lean-forward="false" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyNormalConsequence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/fullyShellConsequence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="207" column="14" lean-forward="false" selection-start-line="207" selection-start-column="14" selection-end-line="207" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="205" column="14" lean-forward="false" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskChart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -932,34 +857,352 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseRiskSummary.html">
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/riskMatrix.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="141" lean-forward="false" selection-start-line="8" selection-start-column="141" selection-end-line="8" selection-end-column="141" />
-          <folding />
+        <state relative-caret-position="424">
+          <caret line="239" column="10" lean-forward="false" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
+          <folding>
+            <element signature="e#8114#9029#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html">
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/showGoverning.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1302">
-          <caret line="76" column="34" lean-forward="true" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/proposalCorrisionRate.html">
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="135" column="66" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="68" />
+        <state relative-caret-position="444">
+          <caret line="337" column="14" lean-forward="false" selection-start-line="337" selection-start-column="14" selection-end-line="337" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/showdatabase/database_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/Account_Management/Access_and_Download_Information.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/Account_Management/Login_and_Password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/Account_Management/Notification.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/Account_Management/Personal_Information.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/User_Manual/help_Business.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/User_Manual/help_Citizen.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/help.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/helpusesoft.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/Policies_Reports.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help/Private_Safe.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-494">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Home/Account/activateEmail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/FullDF.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="162" column="14" lean-forward="false" selection-start-line="162" selection-start-column="14" selection-end-line="162" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyBottomConsequenceMana.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="154" column="14" lean-forward="false" selection-start-line="154" selection-start-column="14" selection-end-line="154" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="106" column="14" lean-forward="false" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="145" column="14" lean-forward="false" selection-start-line="145" selection-start-column="14" selection-end-line="145" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/riskChartMana.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1004">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="239" column="14" lean-forward="false" selection-start-line="239" selection-start-column="14" selection-end-line="239" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="74" column="14" lean-forward="false" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Business_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="615" column="61" lean-forward="true" selection-start-line="615" selection-start-column="61" selection-end-line="615" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/component_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/designcode_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="121" lean-forward="false" selection-start-line="17" selection-start-column="121" selection-end-line="17" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/facility_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="70" column="14" lean-forward="false" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
+          <folding>
+            <element signature="e#775#801#0#HTML" expanded="true" />
+            <element signature="e#827#867#0#HTML" expanded="true" />
+            <element signature="e#1060#1084#0#HTML" expanded="true" />
+            <element signature="e#1171#1195#0#HTML" expanded="true" />
+            <element signature="e#1221#1227#0#HTML" expanded="true" />
+            <element signature="e#1288#1312#0#HTML" expanded="true" />
+            <element signature="e#1338#1344#0#HTML" expanded="true" />
+            <element signature="e#1399#1423#0#HTML" expanded="true" />
+            <element signature="e#1453#1459#0#HTML" expanded="true" />
+            <element signature="e#1529#1553#0#HTML" expanded="true" />
+            <element signature="e#1584#1590#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Home_Manager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="54" column="14" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Mitigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2480">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/proposal_List.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="95" column="14" lean-forward="false" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="63" column="14" lean-forward="false" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Equipment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Facilities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Mana.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="151" column="14" lean-forward="false" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Report_Proposal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="91" column="14" lean-forward="false" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Tool_Manager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Inbox.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Messages/Messages_Sent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/response/complete_regiatration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="60" lean-forward="true" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
           <folding />
         </state>
       </provider>

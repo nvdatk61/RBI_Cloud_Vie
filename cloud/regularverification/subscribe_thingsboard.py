@@ -1,4 +1,7 @@
-
+import os
+from django.core.wsgi import get_wsgi_application
+os.environ['DJANGO_SETTINGS_MODULE'] = 'RbiCloud.settings'
+application = get_wsgi_application()
 import datetime
 import time
 import json
@@ -13,7 +16,7 @@ class Subscribe_thingsboard:
     def SubDATA(self):
         try:
             client = mqtt.Client()
-            client.username_pw_set("K6BEkJp2NbDSNjq87VVe")
+            client.username_pw_set("TWPyrKRcMyoNQU6oukSn")
             client.connect(THINGSBOARD_HOST, 1883)
             client.on_connect =self.on_connect
             client.subscribe('v1/devices/me/attributes', 0)
@@ -21,7 +24,7 @@ class Subscribe_thingsboard:
             rc = 0
             while rc == 0:
                 rc = client.loop()
-            # print('Result code: ' + str(rc))
+            print('Result code: ' + str(rc))
             time.sleep(10)
             self.SubDATA()
         except Exception as e:
@@ -41,6 +44,7 @@ class Subscribe_thingsboard:
 
 
     def on_connect(client, userdata, flags, rc):
+        print("on_connect")
         print("Result code " + str(rc))
         if(rc == 0):
             print("Result code " + str(rc) + ": good connection")
@@ -64,15 +68,18 @@ class Subscribe_thingsboard:
         client.publish('v1/devices/me/attributes/request/1', json.dumps(sensor_data))
 
     def on_message(self,client, userdata, msg):
+        print("on_message")
         payload = msg.payload.decode()
         data = json.loads(payload)
         print(data['client'])
         sensor = models.ZSensor.objects.filter(Componentid=self.componentID)[0].idsensor
+        print (sensor)
         package = models.PackageSensor(idsensor_id=sensor, package=json.dumps(data['client']))
         package.save()
         client.disconnect()
 
 if __name__=="__main__":
+    print("go main")
     a = Subscribe_thingsboard(1)
     a.SubDATA()
     # PushData()

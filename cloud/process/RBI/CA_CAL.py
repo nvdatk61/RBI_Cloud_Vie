@@ -2011,7 +2011,7 @@ class CA_TANK_BOTTOM:
                 #print('hjxhjx')
                 dn = 250 * self.TANK_DIAMETER
             else:
-                print('dat3')
+                # print('dat3')
                 dn=self.TANK_DIAMETER
         else:
             #print('concac')
@@ -2032,38 +2032,42 @@ class CA_TANK_BOTTOM:
     #         print(C35 * 0.21 * pow(self.dn_bottom(i), 0.2) * pow(self.FLUID_HEIGHT, 0.9) * pow(self.k_h_water(), 0.74) * self.n_rh())
     #         return C35 * 0.21 * pow(self.dn_bottom(i), 0.2) * pow(self.FLUID_HEIGHT, 0.9) * pow(self.k_h_water(), 0.74) * self.n_rh()
     def rate_n_tank_bottom(self, i):
-        C33 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(33)
-        C34 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(34)
-        C35 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(35)
-        C37 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(37)
-        C38 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(38)
-        C39 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(39)
-        C40 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(40)
-        if (self.PREVENTION_BARRIER):
-            if (self.k_h_prod() > C34 * pow(self.dn_bottom(i), 2)):
-                print('nguyen1')
-                return C33 * math.pi * self.dn_bottom(i) * math.sqrt(2 * 1 * 0.0762) * self.n_rh()
-            elif (self.k_h_prod() <= C37 * pow(pow(self.dn_bottom(i), 1.8) / (0.21 * pow(0.0762, 0.4)),1 / 0.74)):
-                print('vu1')
-                return C35 * 0.21 * pow(self.dn_bottom(i), 0.2) * pow(0.0762, 0.9) * pow(self.k_h_prod(),0.74) * self.n_rh()
+        try:
+            C33 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(33)
+            C34 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(34)
+            C35 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(35)
+            C37 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(37)
+            C38 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(38)
+            C39 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(39)
+            C40 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(40)
+            if (self.PREVENTION_BARRIER):
+                if (self.k_h_prod() > C34 * pow(self.dn_bottom(i), 2)):
+                    print('nguyen1')
+                    return C33 * math.pi * self.dn_bottom(i) * math.sqrt(2 * 1 * 0.0762) * self.n_rh()
+                elif (self.k_h_prod() <= C37 * pow(pow(self.dn_bottom(i), 1.8) / (0.21 * pow(0.0762, 0.4)),1 / 0.74)):
+                    print('vu1')
+                    return C35 * 0.21 * pow(self.dn_bottom(i), 0.2) * pow(0.0762, 0.9) * pow(self.k_h_prod(),0.74) * self.n_rh()
+                else:
+                    print('dat1')
+                    m = C40 - 0.4324 * math.log10(self.dn_bottom(i)) + 0.5405 * math.log10(0.0762)
+                    return C38 * pow(10,2 * math.log10(self.dn_bottom(i)) + 0.5 * math.log10(0.0762) - 0.74 * pow((C39 * 2 * math.log10(self.dn_bottom(i)) - math.log10(self.k_h_prod())) / m, m))
             else:
-                print('dat1')
-                m = C40 - 0.4324 * math.log10(self.dn_bottom(i)) + 0.5405 * math.log10(0.0762)
-                return C38 * pow(10,2 * math.log10(self.dn_bottom(i)) + 0.5 * math.log10(0.0762) - 0.74 * pow((C39 * 2 * math.log10(self.dn_bottom(i)) - math.log10(self.k_h_prod())) / m, m))
-        else:
-            #print('self.dn_bottom(i)',self.dn_bottom(i))
-            print('self.n_rh()',self.n_rh())
-            print('self.k_h_prod()',self.k_h_prod())
-            if (self.k_h_prod() > C34 * pow(self.dn_bottom(i), 2)):
-                print('nguyen2',self.dn_bottom(i))
-                return C33 * math.pi * self.dn_bottom(i) * math.sqrt(2 * 1 * self.FLUID_HEIGHT) * self.n_rh()
-            elif (self.k_h_prod() <= C37*pow(pow(self.dn_bottom(i),1.8)/(0.21*pow(self.FLUID_HEIGHT,0.4)),1/0.74)):
-                print('vu2',self.dn_bottom(i))
-                return C35 * 0.21 * pow(self.dn_bottom(i), 0.2) * pow(self.FLUID_HEIGHT, 0.9) * pow(self.k_h_prod(), 0.74) * self.n_rh()
-            else:
-                print('dat2',self.dn_bottom(i))
-                m = C40-0.4324*math.log10(self.dn_bottom(i)) + 0.5405*math.log10(self.FLUID_HEIGHT)
-                return C38*pow(10,2*math.log10(self.dn_bottom(i))+0.5*math.log10(self.FLUID_HEIGHT)-0.74*pow((C39 * 2*math.log10(self.dn_bottom(i))-math.log10(self.k_h_prod()))/m,m))
+                print('self.dn_bottom(i)',self.dn_bottom(i))
+                print('self.n_rh()',self.n_rh())
+                print('self.k_h_prod()',self.k_h_prod())
+                if (self.k_h_prod() > C34 * pow(self.dn_bottom(i), 2)):
+                    print('nguyen2',self.dn_bottom(i))
+                    print(C33 * math.pi * self.dn_bottom(i) * math.sqrt(2 * 1 * self.FLUID_HEIGHT) * self.n_rh())
+                    return C33 * math.pi * self.dn_bottom(i) * math.sqrt(2 * 1 * self.FLUID_HEIGHT) * self.n_rh()
+                elif (self.k_h_prod() <= C37*pow(pow(self.dn_bottom(i),1.8)/(0.21*pow(self.FLUID_HEIGHT,0.4)),1/0.74)):
+                    print('vu2',self.dn_bottom(i))
+                    return C35 * 0.21 * pow(self.dn_bottom(i), 0.2) * pow(self.FLUID_HEIGHT, 0.9) * pow(self.k_h_prod(), 0.74) * self.n_rh()
+                else:
+                    print('dat2',self.dn_bottom(i))
+                    m = C40-0.4324*math.log10(self.dn_bottom(i)) + 0.5405*math.log10(self.FLUID_HEIGHT)
+                    return C38*pow(10,2*math.log10(self.dn_bottom(i))+0.5*math.log10(self.FLUID_HEIGHT)-0.74*pow((C39 * 2*math.log10(self.dn_bottom(i))-math.log10(self.k_h_prod()))/m,m))
+        except Exception as e:
+            print("Error rate_n_tank_bottom:", e)
 
     def t_ld_tank_bottom(self):
         if (self.Concrete_Asphalt):
@@ -2078,12 +2082,21 @@ class CA_TANK_BOTTOM:
         return math.pi * pow(self.TANK_DIAMETER, 2) * self.FLUID_HEIGHT / (4 * C13)
 
     def ld_n_tank_bottom(self, i):
-        C13 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(13)
-        Bbl_total_tank_bottom = (math.pi * pow(self.TANK_DIAMETER, 2) * self.FLUID_HEIGHT * C13) / (4)
-        if self.rate_n_tank_bottom(i) == 0:
-            return self.t_ld_tank_bottom()
-        else:
-            return min(Bbl_total_tank_bottom / self.rate_n_tank_bottom(i), self.t_ld_tank_bottom())
+        try:
+            print("go ld_n_tank_bottom")
+            C13 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(13)
+            Bbl_total_tank_bottom = (math.pi * pow(self.TANK_DIAMETER, 2) * self.FLUID_HEIGHT * C13) / 4
+            if self.rate_n_tank_bottom(i) == 0:
+                print("ld_n_tank_bottom ")
+                return self.t_ld_tank_bottom()
+            else:
+                print("else ld_n_tank_bottom")
+                print(self.t_ld_tank_bottom())
+                print(float(Bbl_total_tank_bottom))
+                print(self.rate_n_tank_bottom(i))
+                return min(float(Bbl_total_tank_bottom) / self.rate_n_tank_bottom(i), self.t_ld_tank_bottom())
+        except Exception as e:
+            print("Error ld_n_tank_bottom:",e)
 
     def Bbl_leak_n_bottom(self, i):
         C13 = DAL_CAL.POSTGRESQL.GET_TBL_3B21(13)

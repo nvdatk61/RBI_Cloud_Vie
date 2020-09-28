@@ -1308,6 +1308,12 @@ def ListFacilities(request, siteID):
             if '_delete' in request.POST:
                 for a in data:
                     if (request.POST.get('%d' % a.facilityid)):
+                        facilityname = models.Facility.objects.get(facilityid=a.facilityid).facilityname
+                        noti = models.ZNotification(id_user=request.session['id'], subject=request.session['name'],
+                                                    content=' đã xóa nhà máy ', object=facilityname,
+                                                    link=siteID,
+                                                    time=datetime.now(), state=0)
+                        noti.save()
                         a.delete()
                 return redirect('facilitiesDisplay', siteID)
         except Exception as e:
@@ -1315,6 +1321,12 @@ def ListFacilities(request, siteID):
             raise Http404
         if '_new' in request.POST:
             return redirect('facilitiesNew', siteID=siteID)
+        # dat=models.ZNotification.objects.filter(link=siteID)
+        # if siteID == dat.link:
+        #     noti = models.ZNotification.objects.all().filter(link=siteID)
+        #     for notifi in noti:
+        #         notifi.state = 1
+        #         notifi.save()
     except:
         raise Http404
     return render(request, 'FacilityUI/facility/facilityListDisplay.html',
@@ -1364,6 +1376,12 @@ def NewFacilities(request, siteID):
                 faTarget = models.FacilityRiskTarget(facilityid_id=fa.facilityid, risktarget_ac=data['targetAC'],
                                                      risktarget_fc=data['targetFC'])
                 faTarget.save()
+                user=models.ZUser.objects.get(kind='manager').id
+                noti = models.ZNotification(id_user=user, subject=request.session['name'],
+                                                content=' đã thêm nhà máy ', object=data['facilityname'],
+                                                link=siteID,
+                                                time=datetime.now(), state=0)
+                noti.save()
                 return redirect('facilitiesDisplay', siteID=siteID)
     except:
         raise Http404
@@ -1443,7 +1461,6 @@ def ListDesignCode(request, facilityID):
             return redirect('designcodeDisplay', siteID=siteID)
         if '_new' in request.POST:
             return redirect('designcodeNew', siteID=siteID)
-        print('gang')
     except:
         raise Http404
     return render(request, 'FacilityUI/design_code/designcodeListDisplay.html',
@@ -5541,11 +5558,6 @@ def uploadInspPlan(request, siteID):
 #                   {'siteID': siteID, 'noti': noti, 'countnoti': countnoti, 'count': count,
 #                    'info': request.session, 'page': 'uploadHistory'})
 ############### Dang Nhap Dang Suat #################
-# def RegularVerification():
-#     print(1)
-#     obj = REGULAR()
-#     obj.regular_1()
-
 def ManagementSystems(request, facilityID):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
                                           Q(Is_see=0)).count()
@@ -6124,16 +6136,19 @@ def ManagementSystems(request, facilityID):
                   {'page': 'mana', 'facilityID': facilityID, 'siteID': faci.siteid_id, 'count': count,
                    'info': request.session, 'noti': noti, 'countnoti': countnoti})
 
-
+def RegularVerification():
+    # print(1)
+    obj = REGULAR()
+    obj.regular_1()
 def signin(request):
     error = ''
     try:
         # t1 = threading.Thread(target=RegularVerification)
         # t1.setDaemon(True)
         # t1.start()
-        t2 = threading.Thread(target=subscribe.SubDATA)
-        t2.setDaemon(True)
-        t2.start()
+        # t2 = threading.Thread(target=subscribe.SubDATA)
+        # t2.setDaemon(True)
+        # t2.start()
         if request.session.has_key('id'):
             if request.session['kind'] == 'citizen':
                 return redirect('citizenHome')
@@ -7064,6 +7079,7 @@ def FullyConsequenceMana(request, proposalID):
                           {'page': 'fullyConse', 'data': data, 'proposalID': proposalID, 'ass': rwAss, 'count': count,
                            'noti': noti, 'countnoti': countnoti, 'info': request.session})
         else:
+            print(" vào thiết bị thường")
             ca = models.RwCaLevel1.objects.get(id=proposalID)
             inputCa = models.RwInputCaLevel1.objects.get(id=proposalID)
             data['production_cost'] = roundData.roundMoney(inputCa.production_cost)
@@ -7079,12 +7095,15 @@ def FullyConsequenceMana(request, proposalID):
             data['fc_envi'] = roundData.roundMoney(ca.fc_envi)
             data['fc_total'] = roundData.roundMoney(ca.fc_total)
             data['fcof_category'] = ca.fcof_category
+            print("lấy xong dữ liệu")
             if request.method == 'POST':
+                print("vào method post")
                 return redirect('verifullyConsequenceMana', proposalID)
             return render(request, 'ManagerUI/RiskSummaryMana/fullyNormalConsequenceMana.html',
                           {'page': 'fullyConse', 'data': data, 'proposalID': proposalID, 'ass': rwAss, 'count': count,
                            'noti': noti, 'countnoti': countnoti, 'info': request.session, 'siteID': siteID})
-    except:
+    except Exception as e:
+        print(e)
         raise Http404
 
 
@@ -7711,11 +7730,13 @@ def VeriFullyDamageFactorMana(request, proposalID):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
                                           Q(Is_see=0)).count()
     try:
+        print("go VeriFullyDamageFactorMana")
         df = models.RwFullPof.objects.get(id=proposalID)
         rwAss = models.RwAssessment.objects.get(id=proposalID)
         data = {}
         component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
         equip = models.EquipmentMaster.objects.get(equipmentid=component.equipmentid_id)
+        siteID = equip.siteid_id
         if component.componenttypeid_id == 8 or component.componenttypeid_id == 12 or component.componenttypeid_id == 14 or component.componenttypeid_id == 15:
             isTank = 1
         else:
@@ -7760,12 +7781,14 @@ def VeriFullyDamageFactorMana(request, proposalID):
         data['pofap1category'] = df.pofap1category
         data['pofap2category'] = df.pofap2category
         data['pofap3category'] = df.pofap3category
+        print("test data")
         # if request.method == 'POST':
         #     df.thinningtype = request.POST.get('thinningType')
         #     df.save()
         #     ReCalculate.ReCalculate(proposalID)
         #     return redirect('veridamgeFactorMana', proposalID)
         if 'Verifica' in request.POST:
+            print("go verifiaca")
             veri = models.Verification(proposal=rwAss.proposalname, Is_active=0, manager=request.session['name'],
                                        facility=equip.facilityid_id, com=component.componentname,
                                        eq=equip.equipmentname)
@@ -7780,7 +7803,7 @@ def VeriFullyDamageFactorMana(request, proposalID):
         print(e)
         raise Http404
     return render(request, 'ManagerUI/verification_requirments/FullDFV.html',
-                  {'page': 'damageFactor', 'obj': data, 'assess': rwAss, 'isTank': isTank,
+                  {'page': 'damageFactor', 'obj': data, 'assess': rwAss, 'isTank': isTank, 'siteID':siteID,
                    'isShell': isShell, 'proposalID': proposalID, 'count': count, 'noti': noti, 'countnoti': countnoti,
                    'info': request.session})
 
@@ -7792,9 +7815,11 @@ def VeriFullyConsequenceMana(request, proposalID):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
                                           Q(Is_see=0)).count()
     try:
+        print(" vào VeriFullyConsequenceMana")
         rwAss = models.RwAssessment.objects.get(id=proposalID)
         component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
         equip = models.EquipmentMaster.objects.get(equipmentid=component.equipmentid_id)
+        siteID = equip.siteid_id
         if component.componenttypeid_id == 12 or component.componenttypeid_id == 15:
             isBottom = 1
         else:
@@ -7844,7 +7869,7 @@ def VeriFullyConsequenceMana(request, proposalID):
                     vericontent.save()
                 return HttpResponse("Bạn đã yêu cầu kiểm định thành công")
             return render(request, 'ManagerUI/verification_requirments/fullyBottomConsequenVerification.html',
-                          {'page': 'fullyConse', 'data': data, 'proposalID': proposalID, 'ass': rwAss, 'count': count,
+                          {'page': 'fullyConse', 'data': data, 'proposalID': proposalID,'siteID':siteID, 'ass': rwAss, 'count': count,
                            'noti': noti, 'countnoti': countnoti, 'info': request.session})
         elif isShell:
             shellConsequences = models.RwCaTank.objects.get(id=proposalID)
@@ -7889,9 +7914,10 @@ def VeriFullyConsequenceMana(request, proposalID):
                     vericontent.save()
                 return HttpResponse("Bạn đã yêu cầu kiểm định thành công")
             return render(request, 'ManagerUI/verification_requirments/fullyShellConsequenceVerification.html',
-                          {'page': 'fullyConse', 'data': data, 'proposalID': proposalID, 'ass': rwAss, 'count': count,
+                          {'page': 'fullyConse', 'data': data, 'proposalID': proposalID,'siteID':siteID,'ass': rwAss, 'count': count,
                            'noti': noti, 'countnoti': countnoti, 'info': request.session})
         else:
+            print("vào lại loại thường")
             ca = models.RwCaLevel1.objects.get(id=proposalID)
             inputCa = models.RwInputCaLevel1.objects.get(id=proposalID)
             data['production_cost'] = roundData.roundMoney(inputCa.production_cost)
@@ -7907,6 +7933,7 @@ def VeriFullyConsequenceMana(request, proposalID):
             data['fc_envi'] = roundData.roundMoney(ca.fc_envi)
             data['fc_total'] = roundData.roundMoney(ca.fc_total)
             data['fcof_category'] = ca.fcof_category
+            print("đưa dữ liệu vào mảng")
             if 'Verifica' in request.POST:
                 veri = models.Verification(proposal=rwAss.proposalname, Is_active=0, manager=request.session['name'],
                                            facility=equip.facilityid_id, com=component.componentname,
@@ -7919,9 +7946,10 @@ def VeriFullyConsequenceMana(request, proposalID):
                     vericontent.save()
                 return HttpResponse("Bạn đã yêu cầu kiểm định thành công")
             return render(request, 'ManagerUI/verification_requirments/fullyNormalConsequenceVericification.html',
-                          {'page': 'fullyConse', 'data': data, 'proposalID': proposalID, 'ass': rwAss, 'count': count,
+                          {'page': 'fullyConse', 'data': data, 'proposalID': proposalID, 'siteID':siteID,'ass': rwAss, 'count': count,
                            'noti': noti, 'countnoti': countnoti, 'info': request.session})
-    except:
+    except Exception as e:
+        print(e)
         raise Http404
 
 
@@ -7930,6 +7958,7 @@ def VerificationHome(request, faciid):
         faci = models.Facility.objects.filter(facilityid=faciid)
         array = []
         for a in faci:
+            print("go veri")
             veri = models.Verification.objects.filter(facility=a.facilityid)
             ct = models.VeriContent.objects.all()
             for verifi in veri:
@@ -8795,6 +8824,12 @@ def CalculateFunctionManager(request,siteID):
     APINormal = []
     APITank = []
     rwComponent = models.ComponentMaster.objects.all()
+    rwdamAll = models.RwDamageMechanism.objects.all()
+    rwassessment = models.RwAssessment.objects.all()
+    datarw = []  # kiem tra id proposal co ton tai trong bang RwDamageMechanism
+    for a in rwdamAll:
+        array = a.id_dm_id
+        datarw.append(array)
     for a in rwComponent:
         print("let go")
         data = []
@@ -8835,6 +8870,8 @@ def CalculateFunctionManager(request,siteID):
         rwasessmentN = models.RwAssessment.objects.get(id=nor)
         equipmaster = models.EquipmentMaster.objects.get(equipmentid=rwasessmentN.equipmentid_id)
         component = models.ComponentMaster.objects.get(componentid=rwasessmentN.componentid_id)
+        equiptype = models.EquipmentType.objects.get(equipmenttypeid=equipmaster.equipmenttypeid_id)
+        comptype = models.ComponentType.objects.get(componenttypeid=component.componenttypeid_id)
         faci = models.Facility.objects.get(facilityid=equipmaster.facilityid_id)
         site = models.Sites.objects.get(siteid=equipmaster.siteid_id)
         df = models.RwFullPof.objects.filter(id=nor)
@@ -8855,11 +8892,24 @@ def CalculateFunctionManager(request,siteID):
             obj['POFAPI2'] = df.pofap2category + ca.fcofcategory
             obj['POFAPI3'] = df.pofap3category + ca.fcofcategory
             obj['RLI'] = df.rli
+            obj['AssessmentName'] = rwasessmentN.proposalname
+            obj['AssessmentDate'] = rwasessmentN.assessmentdate
+            obj['CommissionDate'] = equipmaster.commissiondate
+            obj['RiskAnalysisPeriod'] = rwasessmentN.riskanalysisperiod
+            obj['EquipmentType'] = equiptype.equipmenttypename
+            obj['ComponentType'] = comptype.componenttypename
+            if (nor in datarw):
+                rwdam = models.RwDamageMechanism.objects.get(id_dm_id=nor)
+                obj['InspectionDueDate'] = rwdam.inspduedate
+            else:
+                obj['InspectionDueDate'] = "None"
             APINormal.append(obj)
     for nor in RecommendProposalTank:
         rwasessmentN = models.RwAssessment.objects.get(id=nor)
         equipmaster = models.EquipmentMaster.objects.get(equipmentid=rwasessmentN.equipmentid_id)
         component = models.ComponentMaster.objects.get(componentid=rwasessmentN.componentid_id)
+        equiptype = models.EquipmentType.objects.get(equipmenttypeid=equipmaster.equipmenttypeid_id)
+        comptype = models.ComponentType.objects.get(componenttypeid=component.componenttypeid_id)
         faci = models.Facility.objects.get(facilityid=equipmaster.facilityid_id)
         site = models.Sites.objects.get(siteid=equipmaster.siteid_id)
         df = models.RwFullPof.objects.filter(id=nor)
@@ -8880,7 +8930,28 @@ def CalculateFunctionManager(request,siteID):
             obj['POFAPI2'] = df.pofap2category + ca.fcofcategory
             obj['POFAPI3'] = df.pofap3category + ca.fcofcategory
             obj['RLI'] = df.rli
+            obj['AssessmentName'] = rwasessmentN.proposalname
+            obj['AssessmentDate'] = rwasessmentN.assessmentdate
+            obj['CommissionDate'] = equipmaster.commissiondate
+            obj['RiskAnalysisPeriod'] = rwasessmentN.riskanalysisperiod
+            obj['EquipmentType'] = equiptype.equipmenttypename
+            obj['ComponentType'] = comptype.componenttypename
+            if (nor in datarw):
+                rwdam = models.RwDamageMechanism.objects.get(id_dm_id=nor)
+                obj['InspectionDueDate'] = rwdam.inspduedate
+            else:
+                obj['InspectionDueDate'] = "None"
             APITank.append(obj)
+    try:
+        if '_detail' in request.POST:
+            for a in rwassessment:
+                if request.POST.get('%d' % a.id):
+                    return redirect('damgeFactorMana', proposalID=a.id)
+        if '_refresh' in request.POST:
+            return redirect('calculateFunctionManager', siteID=siteID)
+    except Exception as e:
+        print(e)
+
     return render(request, 'ManagerUI/Calculate_Function_Manager.html', {'page':'calculateFunctionManager','siteID':siteID,'APINormal':APINormal,'APITank':APITank,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def Help_UseSoftware(request):
     countveri = 0
@@ -8896,7 +8967,6 @@ def ViewExeclProposal(request, index, type):
     getP_risk=export_data.getP_risk(index)
     getP_insp=export_data.getP_insp_show(index)
     getP_name=export_data.getP_name(index)
-    getP_risk['init_thinning']=roundData.roundDF(getP_risk['init_thinning'])
     if getP_risk['init_thinning']==0 or getP_risk['init_thinning'] is None:
         getP_risk['init_thinningcv']='N/A'
     elif getP_risk['init_thinning'] <=2:
@@ -8910,9 +8980,8 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['init_thinningcv']='E'
 
-    getP_risk['init_cracking'] = roundData.roundDF(getP_risk['init_cracking'])
     if getP_risk['init_cracking']==0 or getP_risk['init_cracking'] is None:
-        getP_risk['init_crackingcv']='N/A'
+        getP_risk['init_crackingcvv']='N/A'
     elif getP_risk['init_cracking'] <=2:
         getP_risk['init_crackingcv']='A'
     elif getP_risk['init_cracking'] <=20:
@@ -8924,7 +8993,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['init_crackingcv']='E'
 
-    getP_risk['init_other'] = roundData.roundDF(getP_risk['init_other'])
     if getP_risk['init_other']==0 or getP_risk['init_other'] is None:
         getP_risk['init_othercv']='N/A'
     elif getP_risk['init_other'] <=2:
@@ -8938,7 +9006,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['init_othercv']='E'
 
-    getP_risk['init_pof'] = roundData.roundDF(getP_risk['init_pof'])
     if getP_risk['init_pof']==0 or getP_risk['init_pof'] is None:
         getP_risk['init_pofcv']='N/A'
     elif getP_risk['init_pof'] <=2:
@@ -8952,7 +9019,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['init_pofcv']='E'
 
-    getP_risk['ext_thinning']=roundData.roundDF(getP_risk['ext_thinning'])
     if getP_risk['ext_thinning']==0 or getP_risk['ext_thinning'] is None:
         getP_risk['ext_thinningcv']='N/A'
     elif getP_risk['ext_thinning'] <=2:
@@ -8966,7 +9032,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['ext_thinningcv']='E'
 
-    getP_risk['pof_catalog'] = roundData.roundDF(getP_risk['pof_catalog'])
     if getP_risk['pof_catalog']==0 or getP_risk['pof_catalog'] is None:
         getP_risk['pof_catalogcv']='N/A'
     elif getP_risk['pof_catalog'] <=2:
@@ -8980,7 +9045,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['pof_catalogcv']='E'
 
-    getP_risk['flamable'] = roundData.roundDF(getP_risk['flamable'])
     if getP_risk['flamable']==0 or getP_risk['flamable'] is None:
         getP_risk['flamablecv']=0
     elif getP_risk['flamable'] <=10000:
@@ -8994,7 +9058,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['flamablecv']=5
 
-    getP_risk['inj'] = roundData.roundDF(getP_risk['inj'])
     if getP_risk['inj']==0 or getP_risk['inj'] is None:
         getP_risk['injcv']=0
     elif getP_risk['inj'] <=10000:
@@ -9008,7 +9071,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['injcv']=5
 
-    getP_risk['business'] = roundData.roundDF(getP_risk['business'])
     if getP_risk['business']==0 or getP_risk['business'] is None:
         getP_risk['businesscv']=0
     elif getP_risk['business'] <=10000:
@@ -9022,7 +9084,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['businesscv']=5
 
-    getP_risk['env'] = roundData.roundDF(getP_risk['env'])
     if getP_risk['env']==0 or getP_risk['env'] is None:
         getP_risk['envcv']=0
     elif getP_risk['env'] <=10000:
@@ -9036,7 +9097,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['envcv']=5
 
-    getP_risk['consequence'] = roundData.roundDF(getP_risk['consequence'])
     if getP_risk['consequence']==0 or getP_risk['consequence'] is None:
         getP_risk['consequencecv']=0
     elif getP_risk['consequence'] <=10000:
@@ -9050,7 +9110,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['consequencecv']=5
 
-    getP_risk['risk'] = roundData.roundDF(getP_risk['risk'])
     if getP_risk['consequence'] == 0 or getP_risk['pof_catalog'] == 'N/A':
         getP_risk['riskcv']= 'N/A'
     elif getP_risk['consequence'] in (1, 2) and getP_risk['pof_catalog'] in ('A', 'B', 'C'):
@@ -9062,7 +9121,6 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['riskcv'] = "Medium High"
 
-    getP_risk['risk_future'] = roundData.roundDF(getP_risk['risk_future'])
     if getP_risk['consequence'] == 0 or getP_risk['pof_catalog2'] == 'N/A':
         getP_risk['risk_futurecv'] = 'N/A'
     elif getP_risk['consequence'] in (1, 2) and getP_risk['pof_catalog2'] in ('A', 'B', 'C'):
@@ -9074,3 +9132,8 @@ def ViewExeclProposal(request, index, type):
     else:
         getP_risk['risk_futurecv'] = "Medium High"
     return render(request, 'FacilityUI/proposal/proposal_excel.html' , {'page':'damageFactor', 'obj': getP_risk,'obj1':getP_insp, 'id':index, 'componentID':componentID} )
+
+def DatabaseReport(request):
+    return render(request,  'FacilityUI/showdatabase/database_report.html',{'page':'databasereport'})
+def RBITracking(request):
+    return render(request,  'FacilityUI/showdatabase/RBITracking.html',{'page':'rbitracking'})

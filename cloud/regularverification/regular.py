@@ -2,7 +2,7 @@ import os,sys
 
 
 from django.core.wsgi import get_wsgi_application
-# import paho.mqtt.client as mqtt
+import paho.mqtt.client as mqtt
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'RbiCloud.settings'
 application = get_wsgi_application()
@@ -30,7 +30,11 @@ class REGULAR:
                     if(dateins!=0):
                         date = datetime.datetime.now()
                         timer = (date.year*365 + date.month*30 + date.day) - (dateins.year*365 + dateins.month*30 + dateins.day)
+                        print("timer",timer)
                         if(timer>7):
+                            print("start new")
+                            global componentid
+                            componentid = compo.componentid
                             self.NowProposal(compo.componentid)
                             print("New ok")
                 time.sleep(100)#86400
@@ -40,6 +44,7 @@ class REGULAR:
 
     def getDate(self,ComponentID):
         try:
+            print("getDate")
             insdate = models.RwAssessment.objects.filter(componentid_id=ComponentID)
             # for i in range(len(insdate)):
             print(insdate[len(insdate)-1].create)
@@ -52,18 +57,18 @@ class REGULAR:
             print("tuan")
             print(componentID)
             THINGSBOARD_HOST = "demo.thingsboard.io"
-            # ACCESS_TOKEN = models.ZSensor.objects.filter(Componentid=componentID)[0].Token
-            # print(ACCESS_TOKEN)
+            ACCESS_TOKEN = models.ZSensor.objects.filter(Componentid=componentID)[0].Token
+            print(ACCESS_TOKEN)
             client = mqtt.Client()
-            client.username_pw_set("TWPyrKRcMyoNQU6oukSn")
+            client.username_pw_set(ACCESS_TOKEN)
+            # client.username_pw_set("Xl3AXEbRsuAvctwHLzFA")
             client.connect(THINGSBOARD_HOST, 1883)
             print("11111")
             client.on_connect = self.on_connect
             client.on_message = self.on_message
             client.loop_forever()
         except Exception as e:
-            print("eror")
-            print(e)
+            print("eror at NowProposal:",e)
             data=[]
             self.saveData(data,componentID)
             # raise Http404
@@ -90,8 +95,7 @@ class REGULAR:
             print(data)
             self.saveData(data,data['componentid'])
         except Exception as e:
-            print(e)
-            print('connect data error')
+            print('connect data error:',e)
 
 
     def saveData(self,data,ComponentID):
@@ -737,7 +741,8 @@ class REGULAR:
         try:
             fluidHeight = data['fluidHeight']
         except:
-            fluidHeight = 0
+            obj = Newton(ComponentID, "fluidHeight")
+            fluidHeight = obj.calculate()
         try:
             tankDiameter = data['tankDiameter']
         except:
@@ -812,86 +817,86 @@ class REGULAR:
 
         print("Get data ok")
 
-        checktank = 0
         comp = models.ComponentMaster.objects.get(componentid=ComponentID)
         if comp.componenttypeid_id == 8 or comp.componenttypeid_id == 12 or comp.componenttypeid_id == 14 or comp.componenttypeid_id == 15:
             checktank = 1
         else:
             checktank = 0
         Proposalname = "proposal" + str(models.RwAssessment.objects.filter(componentid=comp.componentid).count())
+        print("Checktank",checktank)
         if(checktank==0):
-            rwassessment = models.RwAssessment(equipmentid_id=comp.equipmentid_id,
-                                               componentid_id=comp.componentid,
-                                               assessmentdate=datetime.datetime.now(),
-                                               riskanalysisperiod=36,
-                                               isequipmentlinked=comp.isequipmentlinked,
-                                               assessmentmethod="",
-                                               proposalname=Proposalname)
-
-            # rwassessment.save()
-            eq=models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id)
-            faci = models.Facility.objects.get(facilityid=models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id).facilityid_id)
-            rwequipment = models.RwEquipment(id=rwassessment, commissiondate=eq.commissiondate,
-                                             adminupsetmanagement=AdminControlUpset,
-                                             containsdeadlegs=ContainsDeadlegs,
-                                             cyclicoperation=CylicOper,
-                                             highlydeadleginsp=Highly,
-                                             downtimeprotectionused=Downtime,
-                                             externalenvironment=ExternalEnvironment,
-                                             heattraced=HeatTraced,
-                                             interfacesoilwater=InterfaceSoilWater,
-                                             lineronlinemonitoring=LOM,
-                                             materialexposedtoclext=MFTF,
-                                             minreqtemperaturepressurisation=minTemp,
-                                             onlinemonitoring=OnlineMonitoring,
-                                             presencesulphideso2=PresenceofSulphides,
-                                             presencesulphideso2shutdown=PresenceofSulphidesShutdown,
-                                             pressurisationcontrolled=PressurisationControlled,
-                                             pwht=PWHT,
-                                             steamoutwaterflush=SteamedOut,
-                                             managementfactor=faci.managementfactor,
-                                             thermalhistory=ThermalHistory,
-                                             yearlowestexptemp=EquOper,
-                                             volume=EquipmentVolumn)
-            # rwequipment.save()
-            rwcomponent = models.RwComponent(id=rwassessment,
-                                             nominaldiameter=NorminalDiameter,
-                                             nominalthickness=NorminalThickness,
-                                             currentthickness=CurrentThickness,
-                                             minreqthickness=MinReqThickness,
-                                             currentcorrosionrate=CurrentCorrosionRate,
-                                             branchdiameter=BranchDiameter,
-                                             branchjointtype=BranchJointType,
-                                             brinnelhardness=MaxBrinell,
-                                             deltafatt=DeltaFATT,
-                                             chemicalinjection=ChemicalInjection,
-                                             highlyinjectioninsp=HFICI,
-                                             complexityprotrusion=complex,
-                                             correctiveaction=CorrectiveAction,
-                                             crackspresent=PresenceCracks,
-                                             cyclicloadingwitin15_25m=CylicLoad,
-                                             damagefoundinspection=DFDI,
-                                             numberpipefittings=NumberPipeFittings,
-                                             pipecondition=PipeCondition,
-                                             previousfailures=PreviousFailures,
-                                             shakingamount=ShakingAmount,
-                                             shakingdetected=VASD,
-                                             shakingtime=timeShakingPipe,
-                                             weldjointefficiency=weldjointeff,
-                                             allowablestress=allowablestresss,
-                                             structuralthickness=structuralthickness,
-                                             componentvolume=compvolume,
-                                             hthadamage=HthaDamage,
-                                             minstructuralthickness=MinStructuralThickness,
-                                             fabricatedsteel=Fabricatedsteel,
-                                             equipmentsatisfied=EquipmentSatisfied,
-                                             nominaloperatingconditions=NominalOperating,
-                                             cetgreaterorequal=Cetgreaterorequal, cyclicservice=Cyclicservice,
-                                             equipmentcircuitshock=equipmentCircuit,
-                                             brittlefracturethickness=BrittleFacture,
-                                             confidencecorrosionrate=confidencecr)
-            # rwcomponent.save()
             try:
+                rwassessment = models.RwAssessment(equipmentid_id=comp.equipmentid_id,
+                                                   componentid_id=comp.componentid,
+                                                   assessmentdate=datetime.datetime.now(),
+                                                   riskanalysisperiod=36,
+                                                   isequipmentlinked=comp.isequipmentlinked,
+                                                   assessmentmethod="",
+                                                   proposalname=Proposalname)
+
+                rwassessment.save()
+                eq=models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id)
+                faci = models.Facility.objects.get(facilityid=models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id).facilityid_id)
+                rwequipment = models.RwEquipment(id=rwassessment, commissiondate=eq.commissiondate,
+                                                 adminupsetmanagement=AdminControlUpset,
+                                                 containsdeadlegs=ContainsDeadlegs,
+                                                 cyclicoperation=CylicOper,
+                                                 highlydeadleginsp=Highly,
+                                                 downtimeprotectionused=Downtime,
+                                                 externalenvironment=ExternalEnvironment,
+                                                 heattraced=HeatTraced,
+                                                 interfacesoilwater=InterfaceSoilWater,
+                                                 lineronlinemonitoring=LOM,
+                                                 materialexposedtoclext=MFTF,
+                                                 minreqtemperaturepressurisation=minTemp,
+                                                 onlinemonitoring=OnlineMonitoring,
+                                                 presencesulphideso2=PresenceofSulphides,
+                                                 presencesulphideso2shutdown=PresenceofSulphidesShutdown,
+                                                 pressurisationcontrolled=PressurisationControlled,
+                                                 pwht=PWHT,
+                                                 steamoutwaterflush=SteamedOut,
+                                                 managementfactor=faci.managementfactor,
+                                                 thermalhistory=ThermalHistory,
+                                                 yearlowestexptemp=EquOper,
+                                                 volume=EquipmentVolumn)
+                rwequipment.save()
+                rwcomponent = models.RwComponent(id=rwassessment,
+                                                 nominaldiameter=NorminalDiameter,
+                                                 nominalthickness=NorminalThickness,
+                                                 currentthickness=CurrentThickness,
+                                                 minreqthickness=MinReqThickness,
+                                                 currentcorrosionrate=CurrentCorrosionRate,
+                                                 branchdiameter=BranchDiameter,
+                                                 branchjointtype=BranchJointType,
+                                                 brinnelhardness=MaxBrinell,
+                                                 deltafatt=DeltaFATT,
+                                                 chemicalinjection=ChemicalInjection,
+                                                 highlyinjectioninsp=HFICI,
+                                                 complexityprotrusion=complex,
+                                                 correctiveaction=CorrectiveAction,
+                                                 crackspresent=PresenceCracks,
+                                                 cyclicloadingwitin15_25m=CylicLoad,
+                                                 damagefoundinspection=DFDI,
+                                                 numberpipefittings=NumberPipeFittings,
+                                                 pipecondition=PipeCondition,
+                                                 previousfailures=PreviousFailures,
+                                                 shakingamount=ShakingAmount,
+                                                 shakingdetected=VASD,
+                                                 shakingtime=timeShakingPipe,
+                                                 weldjointefficiency=weldjointeff,
+                                                 allowablestress=allowablestresss,
+                                                 structuralthickness=structuralthickness,
+                                                 componentvolume=compvolume,
+                                                 hthadamage=HthaDamage,
+                                                 minstructuralthickness=MinStructuralThickness,
+                                                 fabricatedsteel=Fabricatedsteel,
+                                                 equipmentsatisfied=EquipmentSatisfied,
+                                                 nominaloperatingconditions=NominalOperating,
+                                                 cetgreaterorequal=Cetgreaterorequal, cyclicservice=Cyclicservice,
+                                                 equipmentcircuitshock=equipmentCircuit,
+                                                 brittlefracturethickness=BrittleFacture,
+                                                 confidencecorrosionrate=confidencecr)
+                rwcomponent.save()
                 rwstream = models.RwStream(id=rwassessment, aminesolution=AminSolution,
                                            aqueousoperation=AqueOp,
                                            aqueousshutdown=AqueShutdown,
@@ -918,194 +923,201 @@ class REGULAR:
                                            waterph=float(PHWater),
                                            h2spartialpressure=float(OpHydroPressure),
                                            flowrate=float(flowrate))
-                # rwstream.save()
+                rwstream.save()
+                rwexcor = models.RwExtcorTemperature(id=rwassessment, minus12tominus8=OP1,
+                                                     minus8toplus6=OP2,
+                                                     plus6toplus32=OP3,
+                                                     plus32toplus71=OP4,
+                                                     plus71toplus107=OP5,
+                                                     plus107toplus121=OP6,
+                                                     plus121toplus135=OP7,
+                                                     plus135toplus162=OP8,
+                                                     plus162toplus176=OP9,
+                                                     morethanplus176=OP10)
+                rwexcor.save()
+
+                rwcoat = models.RwCoating(id=rwassessment, externalcoating=ExternalCoating,
+                                          externalinsulation=ExternalInsulation,
+                                          internalcladding=InternalCladding,
+                                          internalcoating=InternalCoating,
+                                          internallining=InternalLining,
+                                          externalcoatingdate=ExternalCoatingDate,
+                                          externalcoatingquality=ExternalCoatingQuality,
+                                          externalinsulationtype=ExternalInsulationType,
+                                          insulationcondition=InsulationCondition,
+                                          insulationcontainschloride=InsulationCholride,
+                                          internallinercondition=InternalLinerCondition,
+                                          internallinertype=InternalLinerType,
+                                          claddingcorrosionrate=CladdingCorrosionRate,
+                                          supportconfignotallowcoatingmaint=supportMaterial,
+                                          claddingthickness=claddingthickness)
+                rwcoat.save()
+
+                rwmaterial = models.RwMaterial(id=rwassessment, corrosionallowance=CorrosionAllowance,
+                                               materialname=Material,
+                                               designpressure=DesignPressure,
+                                               designtemperature=MaxDesignTemp,
+                                               mindesigntemperature=MinDesignTemp,
+                                               brittlefracturethickness=BrittleFacture, sigmaphase=SigmaPhase,
+                                               sulfurcontent=SulfurContent, heattreatment=heatTreatment,
+                                               referencetemperature=tempRef,
+                                               ptamaterialcode=PTAMaterialGrade,
+                                               hthamaterialcode=HTHAMaterialGrade, ispta=MaterialPTA,
+                                               ishtha=MaterialHTHA,
+                                               austenitic=AusteniticSteel, temper=SusceptibleTemper, carbonlowalloy=CarbonAlloySteel,
+                                               nickelbased=NickelAlloy, chromemoreequal12=Chromium,
+                                               costfactor=MaterialCostFactor,
+                                               yieldstrength=yieldstrength, tensilestrength=tensilestrength)
+                rwmaterial.save()
+
+                rwinputca = models.RwInputCaLevel1(id=rwassessment, api_fluid=APIFluid, system=Systerm,
+                                                   release_duration=ReleaseDuration,
+                                                   detection_type=DetectionType,
+                                                   isulation_type=IsulationType,
+                                                   mitigation_system=MittigationSysterm,
+                                                   equipment_cost=EquipmentCost, injure_cost=InjureCost,
+                                                   evironment_cost=EnvironmentCost, toxic_percent=ToxicPercent,
+                                                   personal_density=PersonDensity,
+                                                   material_cost=MaterialCostFactor,
+                                                   production_cost=ProductionCost, mass_inventory=MassInventory,
+                                                   mass_component=MassComponent,
+                                                   stored_pressure=float(minOP) * 6.895, stored_temp=minOT)
+                rwinputca.save()
+                ReCalculate.ReCalculate(rwassessment.id)
+            except Exception as e:
+                print (e)
+        else:
+            try:
+                rwassessment = models.RwAssessment(equipmentid_id=comp.equipmentid_id, componentid_id=comp.componentid,
+                                                   assessmentdate=datetime.datetime.now(),
+                                                   riskanalysisperiod=36,
+                                                   isequipmentlinked=comp.isequipmentlinked,
+                                                   assessmentmethod="",
+                                                   proposalname=Proposalname)
+                rwassessment.save()
+                eq = models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id)
+                faci = models.Facility.objects.get(
+                facilityid=models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id).facilityid_id)
+
+                rwequipment = models.RwEquipment(id=rwassessment, commissiondate=eq.commissiondate,
+                                                 adminupsetmanagement=AdminControlUpset,
+                                                 cyclicoperation=CylicOper, highlydeadleginsp=Highly,
+                                                 downtimeprotectionused=Downtime, steamoutwaterflush=SteamedOut,
+                                                 pwht=PWHT, heattraced=HeatTraced, distancetogroundwater=distance,
+                                                 interfacesoilwater=InterfaceSoilWater, typeofsoil=soiltype,
+                                                 pressurisationcontrolled=PressurisationControlled,
+                                                 minreqtemperaturepressurisation=minTemp,
+                                                 yearlowestexptemp=EquOper,
+                                                 materialexposedtoclext=MFTF,
+                                                 lineronlinemonitoring=LOM,
+                                                 presencesulphideso2=PresenceofSulphides,
+                                                 presencesulphideso2shutdown=PresenceofSulphidesShutdown,
+                                                 componentiswelded=componentWelded, tankismaintained=tankIsMaintain,
+                                                 adjustmentsettle=adjustSettlement,
+                                                 externalenvironment=ExternalEnvironment,
+                                                 environmentsensitivity=EnvSensitivity,
+                                                 onlinemonitoring=OnlineMonitoring, thermalhistory=ThermalHistory,
+                                                 managementfactor=faci.managementfactor,
+                                                 volume=EquipmentVolumn)
+                rwequipment.save()
+
+                rwcomponent = models.RwComponent(id=rwassessment, nominaldiameter=NorminalDiameter,
+                                                 allowablestress=allowablestresss,
+                                                 nominalthickness=NorminalThickness, currentthickness=CurrentThickness,
+                                                 minreqthickness=MinReqThickness,
+                                                 currentcorrosionrate=CurrentCorrosionRate,
+                                                 shellheight=shellHieght, damagefoundinspection=DFDI,
+                                                 crackspresent=PresenceCracks,
+                                                 # trampelements=trampElements,
+                                                 releasepreventionbarrier=preventBarrier, concretefoundation=concreteFoundation,
+                                                 brinnelhardness=MaxBrinell,
+                                                 structuralthickness=structuralthickness,
+                                                 complexityprotrusion=complex, minstructuralthickness=MinStructuralThickness,
+                                                 severityofvibration=severityVibration,
+                                                 brittlefracturethickness=BrittleFacture,
+                                                 confidencecorrosionrate=confidencecr)
+                rwcomponent.save()
+
+                rwstream = models.RwStream(id=rwassessment, maxoperatingtemperature=maxOT,
+                                           maxoperatingpressure=maxOP,
+                                           minoperatingtemperature=minOT, minoperatingpressure=minOP,
+                                           h2spartialpressure=float(OpHydroPressure), criticalexposuretemperature=CriticalTemp,
+                                           tankfluidname=fluid, fluidheight=fluidHeight,
+                                           fluidleavedikepercent=fluidLeaveDike,
+                                           fluidleavedikeremainonsitepercent=fluidOnsite,
+                                           fluidgooffsitepercent=fluidOffsite,
+                                           naohconcentration=NaOHConcentration,
+                                           releasefluidpercenttoxic=float(ReleasePercentToxic),
+                                           chloride=ChlorideIon, co3concentration=CO3,
+                                           h2sinwater=H2SInWater,
+                                           waterph=float(PHWater), exposedtogasamine=exposureAcid,
+                                           aminesolution=AminSolution,
+                                           exposuretoamine=ExposureAmine, aqueousoperation=AqueOp, h2s=EnvCH2S,
+                                           aqueousshutdown=AqueShutdown, cyanide=PresenceCyanides, hydrofluoric=HydrogenFluoric,
+                                           caustic=EnvCaustic, hydrogen=hydrogen,
+                                           materialexposedtoclint=materialExposedFluid,
+                                           exposedtosulphur=ExposedSulfur)
+                rwstream.save()
+
+                rwexcor = models.RwExtcorTemperature(id=rwassessment, minus12tominus8=OP1, minus8toplus6=OP2,
+                                                     plus6toplus32=OP3, plus32toplus71=OP4,
+                                                     plus71toplus107=OP5,
+                                                     plus107toplus121=OP6, plus121toplus135=OP7,
+                                                     plus135toplus162=OP8, plus162toplus176=OP9,
+                                                     morethanplus176=OP10)
+                rwexcor.save()
+                rwcoat = models.RwCoating(id=rwassessment, internalcoating=InternalCoating, externalcoating=ExternalCoating,
+                                          externalcoatingdate=ExternalCoatingDate,
+                                          externalcoatingquality=ExternalCoatingQuality,
+                                          supportconfignotallowcoatingmaint=supportMaterial,
+                                          internalcladding=InternalCladding,
+                                          claddingcorrosionrate=CladdingCorrosionRate, internallining=InternalLining,
+                                          internallinertype=InternalLinerType,
+                                          internallinercondition=InternalLinerCondition, externalinsulation=ExternalInsulation,
+                                          insulationcontainschloride=InsulationCholride,
+                                          externalinsulationtype=ExternalInsulationType,
+                                          insulationcondition=InsulationCondition,
+                                          claddingthickness=claddingthickness
+                                          )
+                rwcoat.save()
+                rwmaterial = models.RwMaterial(id=rwassessment, materialname=Material,
+                                               designtemperature=MaxDesignTemp,
+                                               mindesigntemperature=MinDesignTemp, designpressure=DesignPressure,
+                                               referencetemperature=tempRef,
+                                               # allowablestress=data['allowStress'],
+                                               brittlefracturethickness=BrittleFacture,
+                                               corrosionallowance=CorrosionAllowance,
+                                               carbonlowalloy=CarbonAlloySteel, austenitic=AusteniticSteel,
+                                               nickelbased=NickelAlloy,
+                                               chromemoreequal12=Chromium,
+                                               sulfurcontent=SulfurContent, heattreatment=heatTreatment,
+                                               ispta=MaterialPTA, ptamaterialcode=PTAMaterialGrade,
+                                               costfactor=MaterialCostFactor)
+                rwmaterial.save()
+
+                rwinputca = models.RwInputCaTank(id=rwassessment, fluid_height=fluidHeight,
+                                                 shell_course_height=shellHieght,
+                                                 tank_diametter=tankDiameter, prevention_barrier=preventBarrier,
+                                                 environ_sensitivity=envsensitivity,
+                                                 p_lvdike=fluidLeaveDike, p_offsite=fluidOffsite,
+                                                 p_onsite=fluidOnsite, soil_type=soiltype,
+                                                 tank_fluid=fluid, api_fluid=APIFluid, sw=distance,
+                                                 productioncost=ProductionCost)
+                rwinputca.save()
+                # Customize Caculate Here
+                print("Save tank")
+                ReCalculate.ReCalculate(rwassessment.id)
             except Exception as e:
                 print(e)
-            rwexcor = models.RwExtcorTemperature(id=rwassessment, minus12tominus8=OP1,
-                                                 minus8toplus6=OP2,
-                                                 plus6toplus32=OP3,
-                                                 plus32toplus71=OP4,
-                                                 plus71toplus107=OP5,
-                                                 plus107toplus121=OP6,
-                                                 plus121toplus135=OP7,
-                                                 plus135toplus162=OP8,
-                                                 plus162toplus176=OP9,
-                                                 morethanplus176=OP10)
-            # rwexcor.save()
-
-            rwcoat = models.RwCoating(id=rwassessment, externalcoating=ExternalCoating,
-                                      externalinsulation=ExternalInsulation,
-                                      internalcladding=InternalCladding,
-                                      internalcoating=InternalCoating,
-                                      internallining=InternalLining,
-                                      externalcoatingdate=ExternalCoatingDate,
-                                      externalcoatingquality=ExternalCoatingQuality,
-                                      externalinsulationtype=ExternalInsulationType,
-                                      insulationcondition=InsulationCondition,
-                                      insulationcontainschloride=InsulationCholride,
-                                      internallinercondition=InternalLinerCondition,
-                                      internallinertype=InternalLinerType,
-                                      claddingcorrosionrate=CladdingCorrosionRate,
-                                      supportconfignotallowcoatingmaint=supportMaterial,
-                                      claddingthickness=claddingthickness)
-            # rwcoat.save()
-
-            rwmaterial = models.RwMaterial(id=rwassessment, corrosionallowance=CorrosionAllowance,
-                                           materialname=Material,
-                                           designpressure=DesignPressure,
-                                           designtemperature=MaxDesignTemp,
-                                           mindesigntemperature=MinDesignTemp,
-                                           brittlefracturethickness=BrittleFacture, sigmaphase=SigmaPhase,
-                                           sulfurcontent=SulfurContent, heattreatment=heatTreatment,
-                                           referencetemperature=tempRef,
-                                           ptamaterialcode=PTAMaterialGrade,
-                                           hthamaterialcode=HTHAMaterialGrade, ispta=MaterialPTA,
-                                           ishtha=MaterialHTHA,
-                                           austenitic=AusteniticSteel, temper=SusceptibleTemper, carbonlowalloy=CarbonAlloySteel,
-                                           nickelbased=NickelAlloy, chromemoreequal12=Chromium,
-                                           costfactor=MaterialCostFactor,
-                                           yieldstrength=yieldstrength, tensilestrength=tensilestrength)
-            # rwmaterial.save()
-
-            rwinputca = models.RwInputCaLevel1(id=rwassessment, api_fluid=APIFluid, system=Systerm,
-                                               release_duration=ReleaseDuration,
-                                               detection_type=DetectionType,
-                                               isulation_type=IsulationType,
-                                               mitigation_system=MittigationSysterm,
-                                               equipment_cost=EquipmentCost, injure_cost=InjureCost,
-                                               evironment_cost=EnvironmentCost, toxic_percent=ToxicPercent,
-                                               personal_density=PersonDensity,
-                                               material_cost=MaterialCostFactor,
-                                               production_cost=ProductionCost, mass_inventory=MassInventory,
-                                               mass_component=MassComponent,
-                                               stored_pressure=float(minOP) * 6.895, stored_temp=minOT)
-            # rwinputca.save()
-            # ReCalculate.ReCalculate(rwassessment.id)
-        else:
-            rwassessment = models.RwAssessment(equipmentid_id=comp.equipmentid_id, componentid_id=comp.componentid,
-                                               assessmentdate=datetime.datetime.now(),
-                                               riskanalysisperiod=36,
-                                               isequipmentlinked=comp.isequipmentlinked,
-                                               assessmentmethod="",
-                                               proposalname=Proposalname)
-            # rwassessment.save()
-            eq = models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id)
-            faci = models.Facility.objects.get(
-            facilityid=models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id).facilityid_id)
-
-            rwequipment = models.RwEquipment(id=rwassessment, commissiondate=eq.commissiondate,
-                                             adminupsetmanagement=AdminControlUpset,
-                                             cyclicoperation=CylicOper, highlydeadleginsp=Highly,
-                                             downtimeprotectionused=Downtime, steamoutwaterflush=SteamedOut,
-                                             pwht=PWHT, heattraced=HeatTraced, distancetogroundwater=distance,
-                                             interfacesoilwater=InterfaceSoilWater, typeofsoil=soiltype,
-                                             pressurisationcontrolled=PressurisationControlled,
-                                             minreqtemperaturepressurisation=minTemp,
-                                             yearlowestexptemp=EquOper,
-                                             materialexposedtoclext=MFTF,
-                                             lineronlinemonitoring=LOM,
-                                             presencesulphideso2=PresenceofSulphides,
-                                             presencesulphideso2shutdown=PresenceofSulphidesShutdown,
-                                             componentiswelded=componentWelded, tankismaintained=tankIsMaintain,
-                                             adjustmentsettle=adjustSettlement,
-                                             externalenvironment=ExternalEnvironment,
-                                             environmentsensitivity=EnvSensitivity,
-                                             onlinemonitoring=OnlineMonitoring, thermalhistory=ThermalHistory,
-                                             managementfactor=faci.managementfactor,
-                                             volume=EquipmentVolumn)
-            # rwequipment.save()
-
-            rwcomponent = models.RwComponent(id=rwassessment, nominaldiameter=NorminalDiameter,
-                                             allowablestress=allowablestresss,
-                                             nominalthickness=NorminalThickness, currentthickness=CurrentThickness,
-                                             minreqthickness=MinReqThickness,
-                                             currentcorrosionrate=CurrentCorrosionRate,
-                                             shellheight=shellHieght, damagefoundinspection=DFDI,
-                                             crackspresent=PresenceCracks,
-                                             # trampelements=trampElements,
-                                             releasepreventionbarrier=preventBarrier, concretefoundation=concreteFoundation,
-                                             brinnelhardness=MaxBrinell,
-                                             structuralthickness=structuralthickness,
-                                             complexityprotrusion=complex, minstructuralthickness=MinStructuralThickness,
-                                             severityofvibration=severityVibration,
-                                             brittlefracturethickness=BrittleFacture,
-                                             confidencecorrosionrate=confidencecr)
-            # rwcomponent.save()
-            rwstream = models.RwStream(id=rwassessment, maxoperatingtemperature=maxOT,
-                                       maxoperatingpressure=maxOP,
-                                       minoperatingtemperature=minOT, minoperatingpressure=minOP,
-                                       h2spartialpressure=float(OpHydroPressure), criticalexposuretemperature=CriticalTemp,
-                                       tankfluidname=fluid, fluidheight=fluidHeight,
-                                       fluidleavedikepercent=fluidLeaveDike,
-                                       fluidleavedikeremainonsitepercent=fluidOnsite,
-                                       fluidgooffsitepercent=fluidOffsite,
-                                       naohconcentration=NaOHConcentration,
-                                       releasefluidpercenttoxic=float(ReleasePercentToxic),
-                                       chloride=ChlorideIon, co3concentration=CO3,
-                                       h2sinwater=H2SInWater,
-                                       waterph=float(PHWater), exposedtogasamine=exposureAcid,
-                                       aminesolution=AminSolution,
-                                       exposuretoamine=ExposureAmine, aqueousoperation=AqueOp, h2s=EnvCH2S,
-                                       aqueousshutdown=AqueShutdown, cyanide=PresenceCyanides, hydrofluoric=HydrogenFluoric,
-                                       caustic=EnvCaustic, hydrogen=hydrogen,
-                                       materialexposedtoclint=materialExposedFluid,
-                                       exposedtosulphur=ExposedSulfur)
-            # rwstream.save()
-            rwexcor = models.RwExtcorTemperature(id=rwassessment, minus12tominus8=OP1, minus8toplus6=OP2,
-                                                 plus6toplus32=OP3, plus32toplus71=OP4,
-                                                 plus71toplus107=OP5,
-                                                 plus107toplus121=OP6, plus121toplus135=OP7,
-                                                 plus135toplus162=OP8, plus162toplus176=OP9,
-                                                 morethanplus176=OP10)
-            # rwexcor.save()
-            rwcoat = models.RwCoating(id=rwassessment, internalcoating=InternalCoating, externalcoating=ExternalCoating,
-                                      externalcoatingdate=ExternalCoatingDate,
-                                      externalcoatingquality=ExternalCoatingQuality,
-                                      supportconfignotallowcoatingmaint=supportMaterial,
-                                      internalcladding=InternalCladding,
-                                      claddingcorrosionrate=CladdingCorrosionRate, internallining=InternalLining,
-                                      internallinertype=InternalLinerType,
-                                      internallinercondition=InternalLinerCondition, externalinsulation=ExternalInsulation,
-                                      insulationcontainschloride=InsulationCholride,
-                                      externalinsulationtype=ExternalInsulationType,
-                                      insulationcondition=InsulationCondition,
-                                      claddingthickness=claddingthickness
-                                      )
-            # rwcoat.save()
-            rwmaterial = models.RwMaterial(id=rwassessment, materialname=Material,
-                                           designtemperature=MaxDesignTemp,
-                                           mindesigntemperature=MinDesignTemp, designpressure=DesignPressure,
-                                           referencetemperature=tempRef,
-                                           # allowablestress=data['allowStress'],
-                                           brittlefracturethickness=BrittleFacture,
-                                           corrosionallowance=CorrosionAllowance,
-                                           carbonlowalloy=CarbonAlloySteel, austenitic=AusteniticSteel,
-                                           nickelbased=NickelAlloy,
-                                           chromemoreequal12=Chromium,
-                                           sulfurcontent=SulfurContent, heattreatment=heatTreatment,
-                                           ispta=MaterialPTA, ptamaterialcode=PTAMaterialGrade,
-                                           costfactor=MaterialCostFactor)
-            # rwmaterial.save()
-
-            rwinputca = models.RwInputCaTank(id=rwassessment, fluid_height=fluidHeight,
-                                             shell_course_height=shellHieght,
-                                             tank_diametter=tankDiameter, prevention_barrier=preventBarrier,
-                                             environ_sensitivity=envsensitivity,
-                                             p_lvdike=fluidLeaveDike, p_offsite=fluidOffsite,
-                                             p_onsite=fluidOnsite, soil_type=soiltype,
-                                             tank_fluid=fluid, api_fluid=APIFluid, sw=distance,
-                                             productioncost=ProductionCost)
-            # rwinputca.save()
-            # Customize Caculate Here
-            print("Save tank")
-            # ReCalculate.ReCalculate(rwassessment.id)
         # return redirect('damgeFactor', proposalID=rwassessment.id)
         print("okok")
 if __name__=="__main__":
     obj = REGULAR()
     data=[]
-    # obj.getDate(27)
+    # obj.getDate(28)
     # obj.regular_1()
     # obj.NowProposal(27)
+    obj.saveData(data, 27)
+
     # obj.NowProposal(28)
-    obj.saveData(data,28)
+    # obj.saveData(data,28)

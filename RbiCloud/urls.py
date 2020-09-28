@@ -146,10 +146,9 @@ urlpatterns = [
     path('reportproposal/<int:componentID>/', views.ReportProposal, name='reportproposal'),
     path('propasal/<int:proposalID>/areaBased-CoF-shell/',views.AreaBasedCoFShell, name='AreaBasedCoFShell'),
     path('help/UseSoftware', views.Help_UseSoftware, name='helpUseSoftware'),
-    path('proposal/viewexcel/<int:index>/<str:type>/', views.ViewExeclProposal, name='viewexcelproposal')
+    path('proposal/viewexcel/<int:index>/<str:type>/', views.ViewExeclProposal, name='viewexcelproposal'),
+path('databasereport/',views.DatabaseReport, name='databasereport'),
+    path('rbitracking/',views.RBITracking, name='rbitracking')
 ]
-'''
-Dkm cuong luong
-'''
 handler500 = 'cloud.views.handler404'
 handler404 = 'cloud.views.handler404'

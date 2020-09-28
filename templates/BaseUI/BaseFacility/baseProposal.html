@@ -2,10 +2,11 @@
 {% load staticfiles %}
 {% load static %}
 
-{% block title %}Bản ghi{% endblock %}
+{% block title %}Proposal{% endblock %}
 {% block vertical %}
-    <a class="vertical">Quản lí bản ghi</a>
+    {#<a class="vertical">Proposal Management</a>#}
+    <a class="active">Quản lý bản ghi</a>
     <a href="{% block listProposal %}{% endblock %}" class="{% if page == 'listProposal' or page == 'listProposalTank' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Danh sách bản ghi</i></a>
     <a href="{% block newsensor %}{% endblock %}" class="{% if page == 'newsensor' %}activeLink{% endif %}"><i class="fa fa-anchor">&emsp;Kết nối cảm biến</i></a>
-    <a href="{% block backComp %}{% endblock %}" ><i class="fa fa-arrow-left">&emsp;Quay lại mục thành phần</i></a>
+    <a href="{% block backComp %}{% endblock %}" ><i class="fa fa-arrow-left">&emsp;Quay  lại</i></a>
 {% endblock %}

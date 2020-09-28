@@ -2,10 +2,10 @@
 {% load staticfiles %}
 {% load static %}
 
-{% block title %}Dữ liệu tải lên{% endblock %}
+{% block title %}Upload File{% endblock %}
 
 {% block vertical %}
-    <a class="active">Quản lí dữ liệu<br>tải lên</a>
+    <a class="active">Quản lý dữ liệu<br>tải lên</a>
     <a href="{% block listfaci %}{% endblock %}" class="{% if page == 'listFacility' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Danh sách nhà máy</i></a>
     <a href="{% block design %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-barcode">&emsp;Code thiết kế</i></a>
     <a href="{% block manu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-cubes">&emsp;Nhà sản xuất</i></a>

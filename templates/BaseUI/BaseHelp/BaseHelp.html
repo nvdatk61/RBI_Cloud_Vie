@@ -46,7 +46,7 @@
             <a class="a-normal" href="" data-toggle="modal" data-target="#notiModal"  data-placement="bottom" title="Notification" onclick="hidenoti()" style="position: relative"><i class="fa fa-bell">{% if countnoti %}<span id="countnoti" class="forum-notification">{{ countnoti }}</span>{% endif %}</i></a>
             <a class="a-normal" href="{% url 'messagesInbox' %}" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="fa fa-wechat">{% if count %}<span class="badge red" style="color: red">{{ count }}</span>{% endif %}</i></a>
             <a class="a-normal" href="{% url 'forum' %}" data-toggle="tooltip" data-placement="bottom" title="Forum"><i class="fa fa-dedent"></i></a>
-{#            {% if info.kind == "factory" %}<a class="a-lormal" href="{% url 'VerificationHome' %}" data-toggle="tooltip" data-placement="bottom" title="Verificaton"><i class="fa fa-exclamation-triangle"><span class="badge red" style="color: red">1</span></i></a> {% endif %}#}
+            {% if info.kind == "factory" %}<a class="a-normal" href="{% url 'VerificationFaci' %}" data-toggle="tooltip" data-placement="bottom" title="Verification"><i class="fa fa-exclamation-triangle">{% if countveri %}<span class="badge red" style="color: red">{{ countveri }}</span>{% endif %}</i></a> {% endif %}
             <a class="a-normal" href="{% url 'home' %}" data-toggle="tooltip" data-placement="bottom" title="Home"><i class="fa fa-home"></i></a>
         {% endblock %}
     </div>
@@ -62,12 +62,12 @@
             <li>
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #4575B7"><b class="btn">Hướng dẫn sử dụng</b><span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{% url 'helpUserManualCtizen' %}">cho Người dân</a></li>
-                    <li><a href="{% url 'helpUserManualBusiness' %}">cho Doanh nghiệp</a></li>
-                    <li><a href="{% url 'helpUserManualManager' %}">cho Quản lí</a></li>
+                    <li><a href="{% url 'helpUserManualCtizen' %}">cho người dân</a></li>
+                    <li><a href="{% url 'helpUserManualBusiness' %}">cho doanh nghiệp</a></li>
+                    <li><a href="{% url 'helpUserManualManager' %}">cho quản lý</a></li>
                 </ul>
             </li>
-            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #4575B7" class="{% if page == 'accountManager' %}activeLink{% endif %}"><b class="btn">Quản lí tài khoản</b><span class="caret"></span></a>
+            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #4575B7" class="{% if page == 'accountManager' %}activeLink{% endif %}"><b class="btn">Quản lý tài khoản</b><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{% url 'LoginPasswork' %}" >Đăng nhập và mật khẩu</a></li>
                     <li><a href="{% url 'perinfor' %}">Thông tin cá nhân</a></li>

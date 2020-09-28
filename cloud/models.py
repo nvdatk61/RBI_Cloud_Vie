@@ -784,7 +784,7 @@ class RwStream(models.Model):
     releasefluidpercenttoxic = models.FloatField(db_column='ReleaseFluidPercentToxic', blank=True, null=True,default=0)  # Field name made lowercase.
     waterph = models.FloatField(db_column='WaterpH', blank=True, null=True,default=0)  # Field name made lowercase.
     tankfluidname = models.CharField(db_column='TankFluidName', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    fluidheight = models.FloatField(db_column='FluidHeight', blank=True, null=True)  # Field name made lowercase.
+    fluidheight = models.FloatField(db_column='FluidHeight', blank=True, null=True,default=0)  # Field name made lowercase.
     fluidleavedikepercent = models.FloatField(db_column='FluidLeaveDikePercent', blank=True, null=True)  # Field name made lowercase.
     fluidleavedikeremainonsitepercent = models.FloatField(db_column='FluidLeaveDikeRemainOnSitePercent', blank=True, null=True)  # Field name made lowercase.
     fluidgooffsitepercent = models.FloatField(db_column='FluidGoOffSitePercent', blank=True, null=True)  # Field name made lowercase.

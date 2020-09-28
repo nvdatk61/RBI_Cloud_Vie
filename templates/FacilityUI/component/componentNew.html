@@ -11,10 +11,10 @@
         {% csrf_token %}
         <div class="input-data">
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border"><b>Thông tin thành phần </b></legend>
+                <legend class="scheduler-border"><b>Thông tin thành phần</b></legend>
 
                 <div class="row">
-                    <div class="col-md-4">Số thành phần :<span style="color: red">*</span></div>
+                    <div class="col-md-4">Số thành phần:<span style="color: red">*</span></div>
                     <div class="col-md-8"><input class="form-control" type="text"  name="componentNumber" value="{{ data.componentNumber }}" placeholder="Input component number here!" required></div>
                 </div>
 
@@ -26,7 +26,7 @@
                 {% endif %}
 
                 <div class="row">
-                    <div class="col-md-4">Loại thành phần :<span style="color: red">*</span></div>
+                    <div class="col-md-4">Loại thành phần:<span style="color: red">*</span></div>
                     <div class="col-md-8">
                         <select class="form-control" name="componentType" id="componentType" onchange="visiblehidden(this)" required>
                             <option disabled selected>Please select component type..</option>
@@ -124,7 +124,7 @@
             <!------------------------------------------------>
 
                 <div class="row">
-                    <div class="col-md-4">Tên thành phần :<span style="color: red">*</span></div>
+                    <div class="col-md-4">Tên thành phần:<span style="color: red">*</span></div>
                     <div class="col-md-8"><input class="form-control" type="text"  value="{{ data.componentname }}" name="componentName" placeholder="Input component name here!" required></div>
                 </div>
 
@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">Mô tả :</div>
+                    <div class="col-md-4">Mô tả:</div>
                     <div class="col-md-8">
                         <textarea class="form-control" type="text" name="description" placeholder="Write component description here!">{{ data.description }}</textarea>
                     </div>
