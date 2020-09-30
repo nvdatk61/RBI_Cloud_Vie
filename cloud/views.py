@@ -44,7 +44,7 @@ from django.template.loader import render_to_string
 from cloud.process.RBI import Postgresql as DAL_CAL
 from cloud.process.RBI import CA_Flammable
 from cloud.process.RBI import ToxicConsequenceArea
-from cloud.process.RBI import FinancialCOF
+from cloud.process.RBI import FinancialCOF,Detail_DM_CAL
 from django.contrib.auth import login
 import time
 from django.http import JsonResponse
@@ -1282,16 +1282,42 @@ def ListFacilities(request, siteID):
     countnoti = noti.filter(state=0).count()
     try:
         risk = []
-
+        error={}
+        result = {}
         data = models.Facility.objects.filter(siteid=siteID)
-        for a in data:
-            dataF = {}
-            risTarget = models.FacilityRiskTarget.objects.get(facilityid=a.facilityid)
-            dataF['ID'] = a.facilityid
-            dataF['FacilitiName'] = a.facilityname
-            dataF['ManagementFactor'] = a.managementfactor
-            dataF['RiskTarget'] = risTarget.risktarget_fc
-            risk.append(dataF)
+        if '_search' in request.POST and request.POST.get('searchFacility')!="":
+            search = request.POST.get('searchFacility')
+            for a in data:
+                print(a.facilityname)
+                print(search)
+                risTarget = models.FacilityRiskTarget.objects.get(facilityid=a.facilityid)
+                if(a.facilityname == search or str(a.managementfactor)==search or str(risTarget.risktarget_fc)==search):
+                    dataF = {}
+                    dataF['ID'] = a.facilityid
+                    dataF['FacilitiName'] = a.facilityname
+                    dataF['CreatedTime'] = a.create
+                    dataF['ManagementFactor'] = a.managementfactor
+                    dataF['RiskTarget'] = risTarget.risktarget_fc
+                    risk.append(dataF)
+            i=0
+            for b in risk:
+                i=i+1
+            print(i)
+            if i:
+                result['data'] = str(i) + " kết quả với từ khóa " + search
+            else:
+                print("go error")
+                error['exist'] = "Không thể tìm thấy " + "'" + search + "'" + " trong bất kỳ thư mục nào"
+        else:
+            for a in data:
+                dataF = {}
+                risTarget = models.FacilityRiskTarget.objects.get(facilityid=a.facilityid)
+                dataF['ID'] = a.facilityid
+                dataF['FacilitiName'] = a.facilityname
+                dataF['CreatedTime'] = a.create
+                dataF['ManagementFactor'] = a.managementfactor
+                dataF['RiskTarget'] = risTarget.risktarget_fc
+                risk.append(dataF)
         pagiFaci = Paginator(risk, 25)
         pageFaci = request.GET.get('page', 1)
         try:
@@ -1309,7 +1335,8 @@ def ListFacilities(request, siteID):
                 for a in data:
                     if (request.POST.get('%d' % a.facilityid)):
                         facilityname = models.Facility.objects.get(facilityid=a.facilityid).facilityname
-                        noti = models.ZNotification(id_user=request.session['id'], subject=request.session['name'],
+                        user = models.ZUser.objects.get(kind='manager').id
+                        noti = models.ZNotification(id_user=user, subject=request.session['name'],
                                                     content=' đã xóa nhà máy ', object=facilityname,
                                                     link=siteID,
                                                     time=datetime.now(), state=0)
@@ -1321,16 +1348,11 @@ def ListFacilities(request, siteID):
             raise Http404
         if '_new' in request.POST:
             return redirect('facilitiesNew', siteID=siteID)
-        # dat=models.ZNotification.objects.filter(link=siteID)
-        # if siteID == dat.link:
-        #     noti = models.ZNotification.objects.all().filter(link=siteID)
-        #     for notifi in noti:
-        #         notifi.state = 1
-        #         notifi.save()
-    except:
+    except Exception as e:
+        print(e)
         raise Http404
     return render(request, 'FacilityUI/facility/facilityListDisplay.html',
-                  {'page': 'listFacility', 'obj': users, 'siteID': siteID, 'count': count, 'info': request.session,
+                  {'page': 'listFacility', 'obj': users,'siteID': siteID,'error':error,'result':result ,'count': count, 'info': request.session,
                    'noti': noti, 'countnoti': countnoti})
 
 
@@ -1376,11 +1398,11 @@ def NewFacilities(request, siteID):
                 faTarget = models.FacilityRiskTarget(facilityid_id=fa.facilityid, risktarget_ac=data['targetAC'],
                                                      risktarget_fc=data['targetFC'])
                 faTarget.save()
-                user=models.ZUser.objects.get(kind='manager').id
+                user = models.ZUser.objects.get(kind='manager').id
                 noti = models.ZNotification(id_user=user, subject=request.session['name'],
-                                                content=' đã thêm nhà máy ', object=data['facilityname'],
-                                                link=siteID,
-                                                time=datetime.now(), state=0)
+                                            content=' đã thêm nhà máy ', object=data['facilityname'],
+                                            link=siteID,
+                                            time=datetime.now(), state=0)
                 noti.save()
                 return redirect('facilitiesDisplay', siteID=siteID)
     except:
@@ -1704,7 +1726,41 @@ def ListEquipment(request, facilityID):
     try:
         faci = models.Facility.objects.get(facilityid=facilityID)
         data = models.EquipmentMaster.objects.filter(facilityid=facilityID)
-        pagiEquip = Paginator(data, 25)
+        risk = []
+        error = {}
+        result = {}
+        if '_search' in request.POST and request.POST.get('searchEquipment') != "":
+            search = request.POST.get('searchEquipment')
+            for a in data:
+                equiptype = models.EquipmentType.objects.get(equipmenttypeid=a.equipmenttypeid_id)
+                if (a.equipmentname == search or a.equipmentnumber==search or equiptype.equipmenttypename==search):
+                    dataF = {}
+                    dataF['ID'] = a.equipmentid
+                    dataF['EquipmentName'] = a.equipmentname
+                    dataF['Created'] = a.create
+                    dataF['EquipmentType'] = equiptype.equipmenttypename
+                    dataF['EquipmentNumber'] = a.equipmentnumber
+                    risk.append(dataF)
+            i = 0
+            for b in risk:
+                i = i + 1
+            print(i)
+            if i:
+                result['data'] = str(i) + " kết quả với từ khóa " + search
+            else:
+                print("go error")
+                error['exist'] = "Không thể tìm thấy " + "'" + search + "'" + " trong bất kỳ thư mục nào"
+        else:
+            for a in data:
+                equiptype = models.EquipmentType.objects.get(equipmenttypeid=a.equipmenttypeid_id)
+                dataF = {}
+                dataF['ID'] = a.equipmentid
+                dataF['EquipmentName'] = a.equipmentname
+                dataF['Created'] = a.create
+                dataF['EquipmentType'] = equiptype.equipmenttypename
+                dataF['EquipmentNumber'] = a.equipmentnumber
+                risk.append(dataF)
+        pagiEquip = Paginator(risk, 25)
         pageEquip = request.GET.get('page', 1)
         try:
             obj = pagiEquip.page(pageEquip)
@@ -1719,6 +1775,13 @@ def ListEquipment(request, facilityID):
         if '_delete' in request.POST:
             for a in data:
                 if request.POST.get('%d' % a.equipmentid):
+                    user = models.ZUser.objects.get(kind='manager').id
+                    equipmentname = models.EquipmentMaster.objects.get(equipmentid=a.equipmentid).equipmentname
+                    noti = models.ZNotification(id_user=user, subject=request.session['name'],
+                                                content=' đã xóa thiết bị ', object=equipmentname,
+                                                link=facilityID,
+                                                time=datetime.now(), state=0)
+                    noti.save()
                     a.delete()
             return redirect('equipmentDisplay', facilityID=facilityID)
         if '_new' in request.POST:
@@ -1728,7 +1791,7 @@ def ListEquipment(request, facilityID):
         raise Http404
     return render(request, 'FacilityUI/equipment/equipmentListDisplay.html',
                   {'page': 'listEquip', 'obj': obj, 'facilityID': facilityID, 'siteID': faci.siteid_id, 'faci': faci,
-                   'info': request.session, 'noti': noti, 'countnoti': countnoti, 'count': count})
+                   'info': request.session,'error':error,'result':result ,'noti': noti, 'countnoti': countnoti, 'count': count})
 
 
 def NewEquipment(request, facilityID):
@@ -1770,6 +1833,12 @@ def NewEquipment(request, facilityID):
                                             processdescription=data['processdescrip'],
                                             equipmentdesc=data['description'])
                 eq.save()
+                user = models.ZUser.objects.get(kind='manager').id
+                noti = models.ZNotification(id_user=user, subject=request.session['name'],
+                                            content=' đã thêm thiết bị ', object=data['equipmentname'],
+                                            link=facilityID,
+                                            time=datetime.now(), state=0)
+                noti.save()
                 return redirect('equipmentDisplay', facilityID=facilityID)
     except:
         raise Http404
@@ -1842,7 +1911,41 @@ def ListComponent(request, equipmentID):
         eq = models.EquipmentMaster.objects.get(equipmentid=equipmentID)
         faci = models.Facility.objects.get(facilityid=eq.facilityid_id)
         data = models.ComponentMaster.objects.filter(equipmentid=equipmentID)
-        pagiComp = Paginator(data, 25)
+        risk = []
+        error = {}
+        result = {}
+        if '_search' in request.POST and request.POST.get('searchComponent') != "":
+            search = request.POST.get('searchComponent')
+            for a in data:
+                componentType = models.ComponentType.objects.get(componenttypeid=a.componenttypeid_id)
+                if (a.componentnumber == search or a.componentname==search or componentType.componenttypename==search):
+                    dataF = {}
+                    dataF['ID'] = a.componentid
+                    dataF['ComponentNumber'] = a.componentnumber
+                    dataF['ComponentName'] = a.componentname
+                    dataF['ComponentType'] = componentType.componenttypename
+                    dataF['Created'] = a.create
+                    risk.append(dataF)
+            i = 0
+            for b in risk:
+                i = i + 1
+            print(i)
+            if i:
+                result['data'] = str(i) + " kết quả trả về với từ khóa " + search
+            else:
+                print("go error")
+                error['exist'] = "Không thể tìm thấy " + "'" + search + "'" + " trong bất kỳ thư mục nào"
+        else:
+            for a in data:
+                dataF = {}
+                componentType = models.ComponentType.objects.get(componenttypeid=a.componenttypeid_id)
+                dataF['ID'] = a.componentid
+                dataF['ComponentNumber'] = a.componentnumber
+                dataF['ComponentName'] = a.componentname
+                dataF['ComponentType'] = componentType.componenttypename
+                dataF['Created'] = a.create
+                risk.append(dataF)
+        pagiComp = Paginator(risk, 25)
         pageComp = request.GET.get('page', 1)
         try:
             obj = pagiComp.page(pageComp)
@@ -1857,14 +1960,22 @@ def ListComponent(request, equipmentID):
         if '_delete' in request.POST:
             for a in data:
                 if request.POST.get('%d' % a.componentid):
+                    componentname = models.ComponentMaster.objects.get(componentid=a.componentid).componentname
+                    user = models.ZUser.objects.get(kind='manager').id
+                    noti = models.ZNotification(id_user=user, subject=request.session['name'],
+                                                content=' đã xóa thành phần ', object=componentname,
+                                                link=equipmentID,
+                                                time=datetime.now(), state=0)
+                    noti.save()
                     a.delete()
             return redirect('componentDisplay', equipmentID=equipmentID)
         if '_new' in request.POST:
             return redirect('componentNew', equipmentID=equipmentID)
-    except:
+    except Exception as e:
+        print(e)
         raise Http404
     return render(request, 'FacilityUI/component/componentListDisplay.html',
-                  {'page': 'listComp', 'obj': obj, 'equipmentID': equipmentID, 'facilityID': eq.facilityid_id, 'eq': eq,
+                  {'page': 'listComp', 'obj': obj, 'equipmentID': equipmentID,'error':error ,'result':result,'facilityID': eq.facilityid_id, 'eq': eq,
                    'faci': faci, 'info': request.session, 'noti': noti, 'countnoti': countnoti, 'count': count})
 
 
@@ -1909,6 +2020,12 @@ def NewComponent(request, equipmentID):
                                               apicomponenttypeid=models.ApiComponentType.objects.get(
                                                   apicomponenttypename=data['apicomponenttype']).apicomponenttypeid)
                 comp.save()
+                user = models.ZUser.objects.get(kind='manager').id
+                noti = models.ZNotification(id_user=user, subject=request.session['name'],
+                                            content=' đã thêm thành phần ', object=data['componentNumber'],
+                                            link=equipmentID,
+                                            time=datetime.now(), state=0)
+                noti.save()
                 return redirect('componentDisplay', equipmentID=equipmentID)
     except:
         raise Http404
@@ -1969,43 +2086,91 @@ def ListProposal(request, componentID):
     try:
         rwass = models.RwAssessment.objects.filter(componentid=componentID)
         data = []
+        error={}
+        result={}
         comp = models.ComponentMaster.objects.get(componentid=componentID)
         api = models.ApiComponentType.objects.get(apicomponenttypeid=comp.apicomponenttypeid)
         equip = models.EquipmentMaster.objects.get(equipmentid=comp.equipmentid_id)
         faci = models.Facility.objects.get(facilityid=equip.facilityid_id)
         tank = [8, 12, 14, 15]
         # tank = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 36, 38, 39]
-        for a in rwass:
-            df = models.RwFullPof.objects.filter(id=a.id)
-            fc = models.RwFullFcof.objects.filter(id=a.id)
-            dm = models.RwDamageMechanism.objects.filter(id_dm=a.id)
-            obj1 = {}
-            obj1['id'] = a.id
-            obj1['name'] = a.proposalname
-            obj1['lastinsp'] = a.assessmentdate.strftime('%Y-%m-%d')
-            if df.count() != 0:
-                obj1['df'] = round(df[0].totaldfap1, 2)
-                obj1['gff'] = df[0].gfftotal
-                obj1['fms'] = df[0].fms
+        if '_search' in request.POST and request.POST.get('searchProposal') != "":
+            search = request.POST.get('searchProposal')
+            for a in rwass:
+                df = models.RwFullPof.objects.filter(id=a.id)
+                fc = models.RwFullFcof.objects.filter(id=a.id)
+                dm = models.RwDamageMechanism.objects.filter(id_dm=a.id)
+                if (a.proposalname == search):
+                    obj1 = {}
+                    obj1['id'] = a.id
+                    obj1['name'] = a.proposalname
+                    obj1['lastinsp'] = a.assessmentdate.strftime('%Y-%m-%d')
+                    if df.count() != 0:
+                        obj1['df'] = round(df[0].totaldfap1, 2)
+                        obj1['gff'] = df[0].gfftotal
+                        obj1['fms'] = df[0].fms
+                    else:
+                        obj1['df'] = 0
+                        obj1['gff'] = 0
+                        obj1['fms'] = 0
+                    if fc.count() != 0:
+                        obj1['fc'] = round(fc[0].fcofvalue, 2)
+                    else:
+                        obj1['fc'] = 0
+                    if dm.count() != 0:
+                        obj1['duedate'] = dm[0].inspduedate.date().strftime('%Y-%m-%d')
+                        obj1['lastinsp'] = dm[0].lastinspdate.date().strftime('%Y-%m-%d')
+                    else:
+                        # obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=15)).strftime('%Y-%m-%d')
+                        obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=16)).strftime(
+                            '%Y-%m-%d')  # cuong sua
+                        obj1['lastinsp'] = equip.commissiondate.date().strftime('%Y-%m-%d')  # cuong them vao
+                    obj1['risk'] = round(obj1['df'] * obj1['gff'] * obj1['fms'] * obj1['fc'], 2)
+                    data.append(obj1)
+            i = 0
+            for b in data:
+                i = i + 1
+            print(i)
+            if i:
+                result['data'] = str(i) + " kết quả trả về với từ khóa " + search
             else:
-                obj1['df'] = 0
-                obj1['gff'] = 0
-                obj1['fms'] = 0
-            if fc.count() != 0:
-                obj1['fc'] = round(fc[0].fcofvalue, 2)
-            else:
-                obj1['fc'] = 0
-            if dm.count() != 0:
-                obj1['duedate'] = dm[0].inspduedate.date().strftime('%Y-%m-%d')
-                obj1['lastinsp'] = dm[0].lastinspdate.date().strftime('%Y-%m-%d')
-            else:
-                # obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=15)).strftime('%Y-%m-%d')
-                obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=16)).strftime('%Y-%m-%d')  # cuong sua
-                obj1['lastinsp'] = equip.commissiondate.date().strftime('%Y-%m-%d')  # cuong them vao
-            obj1['risk'] = round(obj1['df'] * obj1['gff'] * obj1['fms'] * obj1['fc'], 2)
-            data.append(obj1)
+                print("go error")
+                error['exist'] = "Không thể tìm thấy" + "'" + search + "'" + " trong bất kỳ thư mục nào"
+        else:
+            for a in rwass:
+                df = models.RwFullPof.objects.filter(id=a.id)
+                fc = models.RwFullFcof.objects.filter(id=a.id)
+                dm = models.RwDamageMechanism.objects.filter(id_dm=a.id)
+                obj1 = {}
+                obj1['id'] = a.id
+                obj1['name'] = a.proposalname
+                obj1['lastinsp'] = a.assessmentdate.strftime('%Y-%m-%d')
+                if df.count() != 0:
+                    obj1['df'] = round(df[0].totaldfap1, 2)
+                    obj1['gff'] = df[0].gfftotal
+                    obj1['fms'] = df[0].fms
+                else:
+                    obj1['df'] = 0
+                    obj1['gff'] = 0
+                    obj1['fms'] = 0
+                if fc.count() != 0:
+                    obj1['fc'] = round(fc[0].fcofvalue, 2)
+                else:
+                    obj1['fc'] = 0
+                if dm.count() != 0:
+                    obj1['duedate'] = dm[0].inspduedate.date().strftime('%Y-%m-%d')
+                    obj1['lastinsp'] = dm[0].lastinspdate.date().strftime('%Y-%m-%d')
+                else:
+                    # obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=15)).strftime('%Y-%m-%d')
+                    obj1['duedate'] = (a.assessmentdate.date() + relativedelta(years=16)).strftime(
+                        '%Y-%m-%d')  # cuong sua
+                    obj1['lastinsp'] = equip.commissiondate.date().strftime('%Y-%m-%d')  # cuong them vao
+                obj1['risk'] = round(obj1['df'] * obj1['gff'] * obj1['fms'] * obj1['fc'], 2)
+                data.append(obj1)
         pagidata = Paginator(data, 25)
         pagedata = request.GET.get('page', 1)
+        print(error)
+        print(result)
         try:
             obj = pagidata.page(pagedata)
         except PageNotAnInteger:
@@ -2027,9 +2192,9 @@ def ListProposal(request, componentID):
                     if request.POST.get('%d' % a.id):
                         a.delete()
                 return redirect('proposalDisplay', componentID=componentID)
-            elif '_cancel' in request.POST:
+            if '_cancel' in request.POST:
                 return redirect('proposalDisplay', componentID=componentID)
-            elif '_edit' in request.POST:
+            if '_edit' in request.POST:
                 for a in rwass:
                     if request.POST.get('%d' % a.id):
                         if istank:  # tuansua
@@ -2041,7 +2206,7 @@ def ListProposal(request, componentID):
                         else:
                             print("nottank")
                             return redirect('prosalEdit', proposalID=a.id)
-            elif '_new' in request.POST:
+            if '_new' in request.POST:
                 try:
                     if api.apicomponenttypename == 'TANKBOTTOM':
                         return redirect('tankNew', componentID=componentID)
@@ -2052,7 +2217,7 @@ def ListProposal(request, componentID):
                 except Exception as e:
                     print(e)
                     raise Http404
-            elif '_newscada' in request.POST and request.FILES['myexcelFile']:
+            if '_newscada' in request.POST and request.FILES['myexcelFile']:
                 print("newscada")
                 try:
                     for a in rwass:
@@ -2068,7 +2233,7 @@ def ListProposal(request, componentID):
                             ExcelImport.ImportSCADA(url_file, a.id)
                 except Exception as e:
                     print(e)
-            else:
+            if '_recal' in request.POST:
                 for a in rwass:
                     if request.POST.get('%d' % a.id):
                         ReCalculate.ReCalculate(a.id)
@@ -2078,7 +2243,7 @@ def ListProposal(request, componentID):
         raise Http404
     return render(request, 'FacilityUI/proposal/proposalListDisplay.html',
                   {'page': 'listProposal', 'obj': obj, 'istank': istank, 'isshell': isshell,
-                   'componentID': componentID,
+                   'componentID': componentID,'error':error,'result':result,
                    'equipmentID': comp.equipmentid_id, 'comp': comp, 'equip': equip, 'faci': faci,
                    'info': request.session, 'noti': noti, 'countnoti': countnoti, 'count': count})
 
@@ -4480,7 +4645,7 @@ def ShowThining(request, proposalID):
         rwcoat = models.RwCoating.objects.get(id=proposalID)
         rwmaterial = models.RwMaterial.objects.get(id=proposalID)
         rwequipment = models.RwEquipment.objects.get(id=proposalID)
-        damageMachinsm = models.RwDamageMechanism.objects.get(id_dm=proposalID)
+        # damageMachinsm = models.RwDamageMechanism.objects.get(id_dm=proposalID)
         obj = {}
         obj['AllowableStress'] = rwcomponent.allowablestress
         obj['MinimunRequiredThickness'] = rwcomponent.minreqthickness
@@ -4499,8 +4664,10 @@ def ShowThining(request, proposalID):
         obj['DesignPressure'] = rwmaterial.designpressure
         obj['Onlinemonitoring'] = rwequipment.onlinemonitoring
         obj['HighEffectiveDeadlegs'] = rwequipment.highlydeadleginsp
-        obj['LastInspectionDate'] = damageMachinsm.lastinspdate
-        obj['NumberofInspection'] = damageMachinsm.numberofinspections
+        # obj['LastInspectionDate'] = damageMachinsm.lastinspdate
+        # obj['NumberofInspection'] = damageMachinsm.numberofinspections
+        obj['LastInspectionDate'] = 0
+        obj['NumberofInspection'] = 0
         data.append(obj)
         return render(request, 'FacilityUI/risk_summary/showThining.html',
                       {'page': 'thining', 'proposalID': proposalID, 'data': data, 'info': request.session, 'noti': noti,
@@ -6228,7 +6395,7 @@ def base_forum(request):
         count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
                                               Q(Is_see=0)).count()
         return render(request, 'BaseUI/BaseForum/forumhome.html',
-                      {'data': mang, 'noti': noti, 'countnoti': countnoti, 'info': request.session})
+                      {'data': mang, 'noti': noti, 'countnoti': countnoti,'countveri':countveri,'count':count ,'info': request.session})
     else:
         return redirect('home')
 
@@ -6669,16 +6836,16 @@ def ManagerHomeDetail(request, siteID):
 
 
 # NOTE: page: managerHomeDetail dùng cho baseMN khi so sanh, khác với name: managerhomedetail trong view
-def CalculateFunctionManager(request, siteID):
-    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
-    countnoti = noti.filter(state=0).count()
-    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
-                                          Q(Is_see=0)).count()
-    # data = ListNormalProposalFofInpsection(siteID=siteID, facilityID=0, equimentID=0)
-    # dataTank = ListTankProposalForInpsection(siteID=siteID, facilityID=0, equimentID=0)
-    return render(request, 'ManagerUI/Calculate_Function_Manager.html',
-                  {'page': 'calculateFunctionManager', 'siteID': siteID, 'info': request.session, 'noti': noti,
-                   'countnoti': countnoti, 'count': count})
+# def CalculateFunctionManager(request, siteID):
+#     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+#     countnoti = noti.filter(state=0).count()
+#     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+#                                           Q(Is_see=0)).count()
+#     # data = ListNormalProposalFofInpsection(siteID=siteID, facilityID=0, equimentID=0)
+#     # dataTank = ListTankProposalForInpsection(siteID=siteID, facilityID=0, equimentID=0)
+#     return render(request, 'ManagerUI/Calculate_Function_Manager.html',
+#                   {'page': 'calculateFunctionManager', 'siteID': siteID, 'info': request.session, 'noti': noti,
+#                    'countnoti': countnoti, 'count': count})
 
 
 def ToolManager(request, siteID):
@@ -6750,6 +6917,11 @@ def ListFacilitiesMana(request, siteID):
             users = pagiFaci.page(1)
         except EmptyPage:
             users = pageFaci.page(pagiFaci.num_pages)
+        noti = models.ZNotification.objects.filter(link=siteID)
+        for notifi in noti:
+            if request.session['id'] == notifi.id_user:
+                notifi.state = 1
+                notifi.save()
     except:
         raise Http404
     return render(request, 'ManagerUI/facility_List.html',
@@ -6774,6 +6946,11 @@ def ListEquipmentMana(request, facilityID):
             obj = pagiEquip.page(1)
         except EmptyPage:
             obj = pageEquip.page(pagiEquip.num_pages)
+        noti = models.ZNotification.objects.filter(link=facilityID)
+        for notifi in noti:
+            if request.session['id'] == notifi.id_user:
+                notifi.state = 1
+                notifi.save()
     except:
         raise Http404
     return render(request, 'ManagerUI/Equipment_List.html',
@@ -6801,6 +6978,11 @@ def ListComponentMana(request, equipmentID):
             obj = pagiComp.page(1)
         except EmptyPage:
             obj = pageComp.page(pagiComp.num_pages)
+        noti = models.ZNotification.objects.filter(link=equipmentID)
+        for notifi in noti:
+            if request.session['id'] == notifi.id_user:
+                notifi.state = 1
+                notifi.save()
     except:
         raise Http404
     return render(request, 'ManagerUI/component_List.html',
@@ -8558,13 +8740,12 @@ def base_report(request, siteID):
     return render(request, 'BaseUI/BaseWeb/basedat.html', {'siteID': siteID, 'count': count})
 
 
-def mitigation(request):
-    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
-    countnoti = noti.filter(state=0).count()
-    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
-                                          Q(Is_see=0)).count()
-    return render(request, 'FacilityUI/risk_summary/mitigation.html', {'page': 'mitigation'})
-
+# def mitigation(request):
+#     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+#     countnoti = noti.filter(state=0).count()
+#     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+#                                           Q(Is_see=0)).count()
+#     return render(request, 'FacilityUI/risk_summary/mitigation.html', {'page': 'mitigation'})
 
 def ReportMana(request):
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
@@ -8699,6 +8880,164 @@ def Mitigation(request,siteID):
     return render(request, 'ManagerUI/Mitigation.html',
                   {'page': 'mitigation','siteID': siteID, 'count': count, 'noti': noti,
                    'countnoti': countnoti, 'info': request.session})
+
+def MitigationSite(request,siteID):
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    tank = [8, 9, 12, 13, 14, 15]
+    RecommendProposalTank = []
+    RecommendProposalNormal = []
+    APINormal = []
+    APITank = []
+    rwComponent = models.ComponentMaster.objects.all()
+    rwdamAll = models.RwDamageMechanism.objects.all()
+    rwassessment = models.RwAssessment.objects.all()
+    datarw = []  # kiem tra id proposal co ton tai trong bang RwDamageMechanism
+    for a in rwdamAll:
+        array = a.id_dm_id
+        datarw.append(array)
+    for a in rwComponent:
+        print("let go")
+        data = []
+        datamax = []
+        if a.componenttypeid_id in tank:
+            rwAsessmentT = models.RwAssessment.objects.filter(componentid_id=a.componentid)
+            if rwAsessmentT.count() == 1:
+                R1 = models.RwAssessment.objects.get(componentid_id=a.componentid)
+                RecommendProposalTank.append(R1.id)
+            elif rwAsessmentT.count() > 1:
+                for b in rwAsessmentT:
+                    if b.assessmentdate:
+                        obj = {}
+                        obj['assessmentdate'] = b.assessmentdate.timestamp()
+                        obj['IDProposal'] = b.id
+                        data.append(obj)
+                        datamax.append(b.assessmentdate.timestamp())
+                M = max(datamax)
+                i = datamax.index(M)
+                RecommendProposalTank.append(data[i]['IDProposal'])
+        else:
+            rwAsessmentN = models.RwAssessment.objects.filter(componentid_id=a.componentid)
+            if rwAsessmentN.count() == 1:
+                R1 = models.RwAssessment.objects.get(componentid_id=a.componentid)
+                RecommendProposalNormal.append(R1.id)
+            elif rwAsessmentN.count() > 1:
+                for b in rwAsessmentN:
+                    if b.assessmentdate:
+                        obj = {}
+                        obj['assessmentdate'] = b.assessmentdate.timestamp()
+                        obj['IDProposal'] = b.id
+                        data.append(obj)
+                        datamax.append(b.assessmentdate.timestamp())
+                M = max(datamax)
+                i = datamax.index(M)
+                RecommendProposalNormal.append(data[i]['IDProposal'])
+    for nor in RecommendProposalNormal:
+        rwasessmentN = models.RwAssessment.objects.get(id=nor)
+        equipmaster = models.EquipmentMaster.objects.get(equipmentid=rwasessmentN.equipmentid_id)
+        component = models.ComponentMaster.objects.get(componentid=rwasessmentN.componentid_id)
+        equiptype = models.EquipmentType.objects.get(equipmenttypeid=equipmaster.equipmenttypeid_id)
+        comptype = models.ComponentType.objects.get(componenttypeid=component.componenttypeid_id)
+        faci = models.Facility.objects.get(facilityid=equipmaster.facilityid_id)
+        site = models.Sites.objects.get(siteid=equipmaster.siteid_id)
+        df = models.RwFullPof.objects.filter(id=nor)
+        ca = models.RwFullFcof.objects.filter(id=nor)
+        if df.count() > 0 and ca.count() > 0:
+            df = models.RwFullPof.objects.get(id=nor)
+            ca = models.RwFullFcof.objects.get(id=nor)
+            obj = {}
+            obj['ID'] = nor
+            obj['API1'] = location.locatData(df.totaldfap1, ca.fcofvalue)
+            obj['API2'] = location.locatData(df.totaldfap2, ca.fcofvalue)
+            obj['API3'] = location.locatData(df.totaldfap3, ca.fcofvalue)
+            obj['ConponentNumber'] = component.componentnumber
+            obj['EquipmentNumber'] = equipmaster.equipmentnumber
+            obj['Facility'] = faci.facilityname
+            obj['Site'] = site.sitename
+            obj['POFAPI1'] = df.pofap1category + ca.fcofcategory
+            obj['POFAPI2'] = df.pofap2category + ca.fcofcategory
+            obj['POFAPI3'] = df.pofap3category + ca.fcofcategory
+            obj['RLI'] = df.rli
+            obj['AssessmentName'] = rwasessmentN.proposalname
+            obj['AssessmentDate'] = rwasessmentN.assessmentdate
+            obj['CommissionDate'] = equipmaster.commissiondate
+            obj['RiskAnalysisPeriod'] = rwasessmentN.riskanalysisperiod
+            obj['EquipmentType'] = equiptype.equipmenttypename
+            obj['ComponentType'] = comptype.componenttypename
+            if (nor in datarw):
+                rwdam = models.RwDamageMechanism.objects.get(id_dm_id=nor)
+                obj['InspectionDueDate'] = rwdam.inspduedate
+            else:
+                obj['InspectionDueDate'] = "None"
+            APINormal.append(obj)
+    for nor in RecommendProposalTank:
+        rwasessmentN = models.RwAssessment.objects.get(id=nor)
+        equipmaster = models.EquipmentMaster.objects.get(equipmentid=rwasessmentN.equipmentid_id)
+        component = models.ComponentMaster.objects.get(componentid=rwasessmentN.componentid_id)
+        equiptype = models.EquipmentType.objects.get(equipmenttypeid=equipmaster.equipmenttypeid_id)
+        comptype = models.ComponentType.objects.get(componenttypeid=component.componenttypeid_id)
+        faci = models.Facility.objects.get(facilityid=equipmaster.facilityid_id)
+        site = models.Sites.objects.get(siteid=equipmaster.siteid_id)
+        df = models.RwFullPof.objects.filter(id=nor)
+        ca = models.RwFullFcof.objects.filter(id=nor)
+        if df.count() > 0 and ca.count() > 0:
+            df = models.RwFullPof.objects.get(id=nor)
+            ca = models.RwFullFcof.objects.get(id=nor)
+            obj = {}
+            obj['ID'] = nor
+            obj['API1'] = location.locatData(df.totaldfap1, ca.fcofvalue)
+            obj['API2'] = location.locatData(df.totaldfap2, ca.fcofvalue)
+            obj['API3'] = location.locatData(df.totaldfap3, ca.fcofvalue)
+            obj['ComponentNumber'] = component.componentnumber
+            obj['EquipmentNumber'] = equipmaster.equipmentnumber
+            obj['Facility'] = faci.facilityname
+            obj['Site'] = site.sitename
+            obj['POFAPI1'] = df.pofap1category + ca.fcofcategory
+            obj['POFAPI2'] = df.pofap2category + ca.fcofcategory
+            obj['POFAPI3'] = df.pofap3category + ca.fcofcategory
+            obj['RLI'] = df.rli
+            obj['AssessmentName'] = rwasessmentN.proposalname
+            obj['AssessmentDate'] = rwasessmentN.assessmentdate
+            obj['CommissionDate'] = equipmaster.commissiondate
+            obj['RiskAnalysisPeriod'] = rwasessmentN.riskanalysisperiod
+            obj['EquipmentType'] = equiptype.equipmenttypename
+            obj['ComponentType'] = comptype.componenttypename
+            if (nor in datarw):
+                rwdam = models.RwDamageMechanism.objects.get(id_dm_id=nor)
+                obj['InspectionDueDate'] = rwdam.inspduedate
+            else:
+                obj['InspectionDueDate'] = "None"
+            APITank.append(obj)
+    try:
+        if '_detail' in request.POST:
+            for a in rwassessment:
+                if request.POST.get('%d' % a.id):
+                    return redirect('damgeFactor', proposalID=a.id)
+        if '_refresh' in request.POST:
+            return redirect('mitigationSite', siteID=siteID)
+        if '_mitigation' in request.POST:
+            for a in rwassessment:
+                if request.POST.get('%d' % a.id):
+                    return redirect('damageDetailmitigation', siteID=siteID,proposalID=a.id)
+    except Exception as e:
+        print(e)
+    return render(request, 'FacilityUI/mitigation/mitigationSite.html',
+                  {'page': 'mitigation','siteID':siteID,'APINormal':APINormal,'APITank':APITank, 'count': count, 'noti': noti,
+                   'countnoti': countnoti, 'info': request.session})
+
+def MitigationDetail(request, siteID,proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    rwdamage= models.RwDamageMechanism.objects.get(id_dm_id=proposalID)
+    dmitem = models.DMItems.objects.get(dmitemid=rwdamage.dmitemid_id)
+    return render(request, 'FacilityUI/mitigation/damageMechanism.html',
+                  {'page': 'damageDetailmitigation','siteID':siteID, 'count': count,
+                   'noti': noti,
+                   'countnoti': countnoti, 'info': request.session})
 def FullyDamageFactor(request, proposalID):
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
@@ -8753,10 +9092,10 @@ def FullyDamageFactor(request, proposalID):
         data['pofap1category'] = df.pofap1category
         data['pofap2category'] = df.pofap2category
         data['pofap3category'] = df.pofap3category
-        if '_show1' in request.POST:
-            return redirect('thining', proposalID=proposalID)
-        if '_show2' in request.POST:
-            return redirect('governing', proposalID=proposalID)
+        if '_btnGoverningExternal' in request.POST:
+            return redirect('governingExternal', proposalID=proposalID)
+        if '_btnThinning' in request.POST:
+            return redirect('choseThining', proposalID=proposalID)
         if request.method == 'POST':
             df.thinningtype = request.POST.get('thinningType')
             df.save()
@@ -8767,6 +9106,24 @@ def FullyDamageFactor(request, proposalID):
         raise Http404
     return render(request, 'FacilityUI/risk_summary/dfFull.html', {'page':'damageFactor', 'obj':data, 'assess': rwAss, 'isTank': isTank,
                                                                    'isShell': isShell, 'proposalID':proposalID,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
+def chooseThining(request,proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    if '_thin' in request.POST:
+        return redirect('thining', proposalID=proposalID)
+    if '_lining' in request.POST:
+        return redirect('lining', proposalID=proposalID)
+    return render(request,'FacilityUI/risk_summary/chooseThining.html',{'page':'chooseThining','proposalID':proposalID,'noti':noti,'countnoti':countnoti,'count':count})
+def showLining(request,proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    return render(request, 'FacilityUI/risk_summary/showLining.html',
+                  {'page': 'lining', 'proposalID': proposalID, 'info': request.session, 'noti': noti,
+                   'countnoti': countnoti, 'count': count})
 def ShowThining(request,proposalID):
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
@@ -8780,6 +9137,16 @@ def ShowThining(request,proposalID):
         rwmaterial = models.RwMaterial.objects.get(id=proposalID)
         rwequipment = models.RwEquipment.objects.get(id=proposalID)
         damageMachinsm = models.RwDamageMechanism.objects.get(id_dm=proposalID)
+        comp = models.ComponentMaster.objects.get(componentid=rwassessment.componentid_id)
+        comptype = models.ComponentType.objects.get(componenttypeid=comp.componenttypeid_id)
+        EquipmentType = models.EquipmentType.objects.get(
+            equipmenttypeid=models.EquipmentMaster.objects.get(
+                equipmentid=comp.equipmentid_id).equipmenttypeid_id).equipmenttypename
+        COMPONENT_INSTALL_DATE = models.EquipmentMaster.objects.get(
+            equipmentid=comp.equipmentid_id).commissiondate
+        ComponentNumber = str(comp.componentnumber)
+        APIComponentType = models.ApiComponentType.objects.get(
+            apicomponenttypeid=comp.apicomponenttypeid).apicomponenttypename
         obj = {}
         obj['AllowableStress'] = rwcomponent.allowablestress
         obj['MinimunRequiredThickness'] = rwcomponent.minreqthickness
@@ -8800,12 +9167,89 @@ def ShowThining(request,proposalID):
         obj['HighEffectiveDeadlegs'] = rwequipment.highlydeadleginsp
         obj['LastInspectionDate']=damageMachinsm.lastinspdate
         obj['NumberofInspection']=damageMachinsm.numberofinspections
-        data.append(obj)
-        return render(request, 'FacilityUI/risk_summary/showThining.html',{'page':'thining','proposalID':proposalID,'data':data,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
+        obj['shapeFactor']=comptype.shapefactor
+        obj['shape']=API_COMPONENT_TYPE_NAME=models.ApiComponentType.objects.get(
+                                            apicomponenttypeid=comp.apicomponenttypeid).apicomponenttypename
+
+        thin = Detail_DM_CAL.Df_Thin(obj['Diameter'],obj['NominalThickness'],obj['CurentThickness'],obj['MinimunRequiredThickness'],obj['CorrosionRate'],
+                                     rwmaterial.corrosionallowance,bool(rwcomponent.releasepreventionbarrier),rwcoat.claddingcorrosionrate,bool(rwcoat.internalcladding),
+                                     0,"E",obj['Onlinemonitoring'],obj['HighEffectiveDeadlegs'],bool(rwequipment.containsdeadlegs),rwequipment.tankismaintained,
+                                     rwequipment.adjustmentsettle,rwequipment.componentiswelded,obj['WeltJointEfficiency'],obj['AllowableStress'],obj['TensileStrength'],obj['YeildStrength'],rwcomponent.structuralthickness,
+                                     rwcomponent.minstructuralthickness,rwmaterial.designpressure,comptype.shapefactor,rwcomponent.confidencecorrosionrate,EquipmentType,rwassessment.assessmentdate,COMPONENT_INSTALL_DATE,ComponentNumber,APIComponentType)
+        obj['flowTress']=thin.FS_Thin
+        obj['strengthRatioIn']=thin.strengthRatioInter
+        obj['strengthRatioMin']=thin.strengthRationMin
+        obj['adjustmentInjection']=thin.adjustmentInjection
+        obj['adjustmentOnline']=thin.adjustmentOnline
+        obj['adjustmentDeadLegs']=thin.adjustmentDeadLegs
+
+        obj['priorProbabilities1']=thin.Pr_P1_Thin
+        obj['priorProbabilities2']=thin.Pr_P2_Thin
+        obj['priorProbabilities3']=thin.Pr_P3_Thin
+        obj['inspectioneffectivenessfactors1']=thin.I1_Thin()
+        obj['inspectioneffectivenessfactors2']=thin.I2_Thin()
+        obj['inspectioneffectivenessfactors3']=thin.I3_Thin()
+        obj['PosteriorProbability1']=thin.Po_P1_Thin()
+        obj['PosteriorProbability2']=thin.Po_P2_Thin()
+        obj['PosteriorProbability3']=thin.Po_P3_Thin()
+        obj['BetaReliabilityIndices0AP_1']=thin.B1_Thin(0)
+        obj['BetaReliabilityIndices0AP_2']=thin.B1_Thin(36)
+        obj['BetaReliabilityIndices0AP_3']=thin.B1_Thin(72)
+        obj['BetaReliabilityIndices1AP_1'] = thin.B2_Thin(0)
+        obj['BetaReliabilityIndices1AP_2'] = thin.B2_Thin(36)
+        obj['BetaReliabilityIndices1AP_3'] = thin.B2_Thin(72)
+        obj['BetaReliabilityIndices2AP_1'] = thin.B3_Thin(0)
+        obj['BetaReliabilityIndices2AP_2'] = thin.B3_Thin(36)
+        obj['BetaReliabilityIndices2AP_3'] = thin.B3_Thin(72)
+        obj['age1']=thin.agetk(0)
+        obj['age2']=thin.agetk(36)
+        obj['age3']=thin.agetk(72)
+        obj['agetk1']=thin.agetk(0)
+        obj['agetk2']=thin.agetk(36)
+        obj['agetk3']=thin.agetk(72)
+        obj['agerc']=thin.agerc()
+        obj['ArtWithout1']=thin.ArtWithoutCladdingMaterial(0)
+        obj['ArtWithout2']=thin.ArtWithoutCladdingMaterial(36)
+        obj['ArtWithout3']=thin.ArtWithoutCladdingMaterial(72)
+        obj['ArtWith1_1']=thin.ArtWithCladdingMaterial1(0)
+        obj['ArtWith1_2']=thin.ArtWithCladdingMaterial1(36)
+        obj['ArtWith1_3']=thin.ArtWithCladdingMaterial1(72)
+        obj['ArtWith2_1'] = thin.ArtWithCladdingMaterial2(0)
+        obj['ArtWith2_2'] = thin.ArtWithCladdingMaterial2(36)
+        obj['ArtWith2_3'] = thin.ArtWithCladdingMaterial2(72)
+        obj['WallLossFraction1'] = thin.Art(0)
+        obj['WallLossFraction2'] = thin.Art(36)
+        obj['WallLossFraction3'] = thin.Art(72)
+
+        obj['BaseDamageFactor1'] = thin.DFB_THIN_API(0)
+        obj['BaseDamageFactor2'] = thin.DFB_THIN_API(36)
+        obj['BaseDamageFactor3'] = thin.DFB_THIN_API(72)
+        obj['ThinningDamageFactor1'] = thin.DF_THINNING_API(0)
+        obj['ThinningDamageFactor2'] = thin.DF_THINNING_API(36)
+        obj['ThinningDamageFactor3'] = thin.DF_THINNING_API(72)
+
+
+         # test Linning
+        lining=Detail_DM_CAL.Df_Lining(bool(rwcoat.internallining),rwcoat.internallinertype,rwcoat.internallinercondition,bool(rwequipment.lineronlinemonitoring),rwassessment.assessmentdate,COMPONENT_INSTALL_DATE,"")
+        print(lining.DF_LINNING(3))
+        # data.append(obj)
+        # data.append(output)
+
+        # if 'BaseMetalThickness' in request.POST:
+        #     return redirect('governingExternal', proposalID=proposalID)
+        # else:
+        #     print("BaseMetalThickness")
+        return render(request, 'FacilityUI/risk_summary/showThining.html',{'page':'thining','proposalID':proposalID,'a':obj,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
     except Exception as e:
         print(e)
         raise Http404
 
+def ShowGoverningExternal(request,proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    return render(request, 'FacilityUI/risk_summary/showGoverningExternal.html',{'page':'governingExternal','info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def ShowGoverning(request,proposalID):
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
@@ -8831,7 +9275,6 @@ def CalculateFunctionManager(request,siteID):
         array = a.id_dm_id
         datarw.append(array)
     for a in rwComponent:
-        print("let go")
         data = []
         datamax =[]
         if a.componenttypeid_id in tank:

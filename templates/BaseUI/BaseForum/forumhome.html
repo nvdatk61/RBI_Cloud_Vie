@@ -127,15 +127,31 @@
       <div class="modal-content" style="margin-left: 60%;margin-top:60px;width: 40%;border-radius: 0px">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><a href=""><i class="fa fa-user"></i></a>Thông báo</h4>
+            <h4 class="modal-title"><i class="fa fa-bell"></i></a> Thông báo</h4>
         </div>
         <div class="modal-body">
             {% for noti in noti %}
-            <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
-            <a href="{% url 'posts' noti.link %}">
-                <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
-            </a>
-            </div>
+                {% if noti.content == " đã xóa nhà máy " %}
+                    <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
+                    <a href="{% url 'facilitiesDisplay' noti.link %}" >
+                        <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
+                    </a>
+                    </div>
+                {% endif %}
+                {% if noti.content == " đã phản hồi bài viết " %}
+                    <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
+                    <a href="{% url 'posts' noti.link %}">
+                        <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
+                    </a>
+                    </div>
+                {% endif %}
+                {% if noti.content == " đã thêm nhà máy " %}
+                    <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
+                    <a href="{% url 'facilitiesDisplay' noti.link %}">
+                        <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
+                    </a>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
         <div class="modal-footer">
@@ -145,6 +161,23 @@
   </div>
 
       <!-- Modal -->
+<div class="modal fade" id="delete" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body" >
+                <h4>Đối tượng đã bị xóa</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
   <div class="modal" id="myModal">
       <div class="modal-content" style="margin-left: 60%;margin-top:60px;width: 40%;border-radius: 0px">
           <div class="modal-header">
@@ -190,7 +223,7 @@
             <h4 class="modal-title"><i class="fa fa-language"></i></a> Chọn ngôn ngữ bạn muốn:</h4>
         </div>
         <div class="modal-body">
-            <a href="https://cortekrbi.com/" ><img src='/static/image/logo/vietnam.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
+            <a href="https://eng.cortekrbi.com/" ><img src='/static/image/logo/vietnam.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
             <a href="https://cortekrbi.com/" ><img src='/static/image/logo/england.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
         </div>
         <div class="modal-footer">

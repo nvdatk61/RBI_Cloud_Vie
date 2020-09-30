@@ -18,8 +18,8 @@
     <a class="a-normal" href="{% url 'help' %}" data-toggle="tooltip" data-placement="bottom" title="Help"><i class="fa fa-question"></i></a>
     <a class="a-normal" href="" data-toggle="modal" data-target="#notiModal"  data-placement="bottom" title="Notification" onclick="hidenoti()" style="position: relative"><i class="fa fa-bell">{% if countnoti %}<span id="countnoti" class="forum-notification">{{ countnoti }}</span>{% endif %}</i></a>
     <a class="a-normal active" href="{% url 'messagesInbox' %}" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="fa fa-wechat">{% if count %}<span class="badge red" style="color: red">{{ count }}</span>{% endif %}</i></a>
-    <a class="a-normal" href="{% url 'forum' %}" data-toggle="tooltip" data-placement="bottom" title="Forum"><i class="fa fa-dedent"></i></a>
-{#    {% if info.kind == "factory" %} <a class="a-normal" href="{% url 'VerificationHome' %}" data-toggle="tooltip" data-placement="bottom" title="Verificaton"><i class="fa fa-exclamation-triangle">{% if countveri %}<span class="badge red" style="color: red">{{ countveri }}</span>{% endif %}</i></a> {% endif %}#}
+    {% if info.kind == "factory" %}<a class="a-normal" href="{% url 'forum' %}" data-toggle="tooltip" data-placement="bottom" title="Forum"><i class="fa fa-dedent"></i></a>{% endif %}
+    {% if info.kind == "factory" %} <a class="a-normal" href="{% url 'VerificationFaci' %}" data-toggle="tooltip" data-placement="bottom" title="Verificaton"><i class="fa fa-exclamation-triangle">{% if countveri %}<span class="badge red" style="color: red">{{ countveri }}</span>{% endif %}</i></a> {% endif %}
     <a class="a-normal" href="{% url 'home' %}" data-toggle="tooltip" data-placement="bottom" title="Home"><i class="fa fa-home"></i></a>
     <a class="a-normal" href="" data-toggle="modal" data-target="#LanguageModal" data-placement="bottom"><i class="fa fa-language"></i></a>
 {% endblock %}
@@ -104,15 +104,31 @@
       <div class="modal-content" style="margin-left: 60%;margin-top:60px;width: 40%;border-radius: 0px">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><a href=""><i class="fa fa-user"></i></a>Thông báo</h4>
+            <h4 class="modal-title"><i class="fa fa-bell"></i></a> Thông báo</h4>
         </div>
         <div class="modal-body">
             {% for noti in noti %}
-            <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
-            <a href="{% url 'posts' noti.link %}">
-                <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
-            </a>
-            </div>
+                {% if noti.content == " đã xóa nhà máy " %}
+                    <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
+                    <a href="{% url 'facilitiesDisplay' noti.link %}" >
+                        <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
+                    </a>
+                    </div>
+                {% endif %}
+                {% if noti.content == " đã phản hồi bài viết " %}
+                    <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
+                    <a href="{% url 'posts' noti.link %}">
+                        <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
+                    </a>
+                    </div>
+                {% endif %}
+                {% if noti.content == " đã thêm nhà máy " %}
+                    <div class="noti{{ noti.state }}" style="border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;width: 100%;text-align: left;padding-left: 15px;padding-top: 15px;padding-bottom: 10px; font-family: Arial">
+                    <a href="{% url 'facilitiesDisplay' noti.link %}">
+                        <span style="color: #204d74">{{ noti.subject }}</span><span style="color: black"> {{ noti.content }} </span><span style="color: #204d74">{{ noti.object }}</span>
+                    </a>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
         <div class="modal-footer">
@@ -169,7 +185,7 @@
             <h4 class="modal-title"><i class="fa fa-language"></i></a> Chọn ngôn ngữ mà bạn muốn:</h4>
         </div>
         <div class="modal-body">
-            <a href="https://cortekrbi.com/" ><img src='/static/image/logo/vietnam.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
+            <a href="https://eng.cortekrbi.com/" ><img src='/static/image/logo/vietnam.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
             <a href="https://cortekrbi.com/" ><img src='/static/image/logo/england.png' style="width:70px;padding-left: 6px;height: 45px;"></a>
         </div>
         <div class="modal-footer">

@@ -39,6 +39,8 @@ urlpatterns = [
     path('basereport/', views.base_report,name='basereport'), #Dat sua
     ########################## Facility UI################################
     path('damage/thining/<int:proposalID>/', views.ShowThining, name='thining'),
+    path('damage/lining/<int:proposalID>/', views.showLining, name='lining'),
+    path('damage/chooseThining/<int:proposalID>/', views.chooseThining, name='choseThining'),
     path('damage/governing/<int:proposalID>/', views.ShowGoverning, name='governing'),
     path('inspection/plan/<int:siteID>/', views.MainInpsectionPlan, name='inspectionPlan'),
     path('inspection/plan/<int:siteID>/<int:planID>/damageMechanism', views.DamamgeMechanism, name='damageMechanism'),
@@ -104,6 +106,9 @@ urlpatterns = [
     path('importExcel/<str:url_file>/', views.ImportExcel, name= 'importexcel'),
     # Cuong bo sung 12/8/2020 => thiet ke giao dien hang mmuc co quan quan li
     path('mitigation/<int:siteID>/Home/', views.Mitigation, name= 'mitigation'),
+    path('mitigation/<int:siteID>/<int:proposalID>/damage-mechanism/', views.MitigationDetail, name= 'damageDetailmitigation'),
+    # Cuong bo sung mitigationSite cho hạng mục nhà máy 28/9/2020
+    path('mitigationSite/<int:siteID>/', views.MitigationSite, name= 'mitigationSite'),
     path('management/<int:siteID>/Home/', views.ManagerHomeDetail, name= 'managerhomedetail'),
     path('management/<int:siteID>/CalculateFunction/', views.CalculateFunctionManager, name= 'calculatefunctionmanager'),
     path('management/<int:siteID>/ToolManager/', views.ToolManager, name= 'toolmanager'),
@@ -147,7 +152,7 @@ urlpatterns = [
     path('propasal/<int:proposalID>/areaBased-CoF-shell/',views.AreaBasedCoFShell, name='AreaBasedCoFShell'),
     path('help/UseSoftware', views.Help_UseSoftware, name='helpUseSoftware'),
     path('proposal/viewexcel/<int:index>/<str:type>/', views.ViewExeclProposal, name='viewexcelproposal'),
-path('databasereport/',views.DatabaseReport, name='databasereport'),
+    path('databasereport/',views.DatabaseReport, name='databasereport'),
     path('rbitracking/',views.RBITracking, name='rbitracking')
 ]
 handler500 = 'cloud.views.handler404'

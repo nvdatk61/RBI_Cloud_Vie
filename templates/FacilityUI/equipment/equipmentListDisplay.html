@@ -16,8 +16,37 @@
 <!--------------- END BLOCK -------------->
 
 {% block data-content %}
+<style>
+.alert {
+  padding: 10px;
+  background-color: #ff9800;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.0s;
+  margin-bottom: 15px;
+  font-size: 17px
+}
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 25px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.0s;
+}
+.alert.success {background-color: #4CAF50;}
+.closebtn:hover {
+  color: black;
+}
+</style>
     <form method="post">
     {% csrf_token %}
+        <div style="text-align: right;">
+            <input type="text" class="search-field" placeholder="Search Equipment..." value="" name='searchEquipment'>
+            <button type="submit" name="_search" id="search" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button></div>
+        <div>
         <div>
             {% if faci %}<a href="{% url 'equipmentDisplay' faci.facilityid %}">{{ faci.facilityname }}</a>{% endif %}
         </div>
@@ -30,18 +59,54 @@
                         <th width="100px" style="text-align: center"><input type="checkbox" id="chkHeader"></th>
                         <th width="200px" style="text-align: center"><i class="fa fa-fax"></i>&ensp;Số thiết bị</th>
                         <th width="200px" style="text-align: center"><i class="fa fa-tag"></i>&ensp;Tên thiết bị</th>
+                        <th width="200px" style="text-align: left"><i class="fa fa-tag"></i>&ensp;Loại thiết bị</th>
+                        <th width="200px" style="text-align: left"><i class="fa fa-tag"></i>&ensp;Thời gian tạo</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% if error.exist %}
+                <div class="alert">
+                    <span class="closebtn">&times;</span>
+                    <strong>Không tìm thấy kết quẩ!</strong> {{error.exist}}
+                    <h4 style="text-align:left">Gợi ý :</h4>
+                    <ul style="text-align:left">
+                      <li>Hãy chắc chắn rằng bạn nhập đúng từng ký tự theo các đánh vần.</li>
+                      <li>Hãy thử tìm kiếm một từ khác.</li>
+                      <li>Hãy sử dụng ký tự bình thường.</li>
+                    </ul>
+                </div>
+                <script>
+                var close = document.getElementsByClassName("closebtn");
+                var i;
+
+                for (i = 0; i < close.length; i++) {
+                  close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                  }
+                }
+                </script>
+                {% else %}
+                    {% if result.data %}
+                    <div class="alert success">
+                        <span class="closebtn">&times;</span>
+                        <strong>Kết quả!</strong>{{result.data}}
+                    </div>
+                    {% endif %}
                     {% for a in obj %}
                     <tr>
-                        <td style="text-align: center"><input type="checkbox" id="checkbox" name="{{ a.equipmentid }}"></td>
-                        <td style="text-align: center"><a href="{% url 'componentDisplay' a.equipmentid %}">{{ a.equipmentnumber }}</a></td>
-                        <td style="text-align: center">{{ a.equipmentname }}</td>
-{#                        <td align="center"><a href="{% url 'exportData' a.equipmentid 'Equipment' %}"><i class="fa fa-print" ></i></a></td>#}
+                        <td style="text-align: left"><input type="checkbox" id="checkbox" name="{{ a.ID }}"></td>
+                        <td style="text-align: left"><a href="{% url 'componentDisplay' a.ID %}">{{ a.EquipmentName }}</a></td>
+                        <td style="text-align: left">{{ a.EquipmentNumber }}</td>
+                        <td style="text-align: left">{{ a.EquipmentType }}</td>
+                        <td style="text-align: left">{{ a.Created }}</td>
+{#                        <td align="left"><a href="{% url 'exportData' a.ID 'Equipment' %}"><i class="fa fa-print" ></i></a></td>#}
                     </tr>
                     {% endfor %}
+                {% endif %}
                 </tbody>
+
             </table>
 
               {#          Pagination div  #}

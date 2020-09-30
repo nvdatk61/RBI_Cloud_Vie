@@ -1,0 +1,58 @@
+{% extends 'BaseUI/BaseFacility/baseRiskSummary.html' %}
+{% load staticfiles %}
+<!----------------BLOCK MENU--------------->
+{% block pof %}{% url 'damgeFactor' proposalID %}{% endblock %}
+{% block fcof%}{% url 'fullyConsequence' proposalID %}{% endblock %}
+{% block acof%}{% url 'areaBasedCoF' proposalID %}{% endblock %}
+{% block matrix %}{% url 'riskMatrix' proposalID %}{% endblock %}
+{% block chart %}{% url 'riskChart' proposalID %}{% endblock %}
+{% block corri %}{% url 'corrision' proposalID %}{% endblock %}
+{% block backProposal %}{% url 'damgeFactor' proposalID%}{% endblock %}
+{% block data-content %}
+    <style>
+    .card{
+        background: #ffffff;
+    }
+    .bang{
+        width: 420px;
+        height: 150px;
+        background-color: #305680;
+        margin: auto;
+
+    }
+    button{
+        width: 150px;
+        height: 100px;
+        margin-top: 20px;
+        margin-left: 5px;
+        background-color: #FFFFFF;
+    }
+    </style>
+
+    <form id="inspectionplan" method="post" class="card" >
+    {% csrf_token %}
+       <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Governing Thining Damange Factor</b></caption></div>
+        <br>
+    <fieldset class="bang">
+        <script>
+            var i=0;
+            if (i!== 0){
+                document.getElementById('myelement').style.display='block'
+            }
+        </script>
+        <div class="row" id="myelement">
+            <div class="col-md-6"><button type="submit" style="color: black;font-family: Arial" name="_thin" value="">Internal Thining</button></div>
+            <div class="col-md-6"><button type="submit" style="color: black;font-family: Arial" name="_lining" value="">Enternal Lining Degradation</button></div>
+
+        </div>
+        </fieldset>
+    </form>
+    <p style="margin-top:8%">\[D_{f - gov}^{thin} = \left\{ \begin{array}{l}
+    \min \left( {D_f^{thin},D_f^{elin}} \right)Khi\,thiết\,bị\,có\,lớp\,vỏ\,bảo\,vệ\\
+    D_f^{thin}\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,Khi\,thiết\,bị\,không\,có\,lớp\,vỏ\,bảo\,vệ
+    \end{array} \right.\]</p>
+    <p style="display:inline-block;margin-left: 30%;margin-right:2%;margin-top:0;">with:</p>
+    <p style="display:inline-block;margin-left:0%;text-align: left;">$D_{f - gov}^{thin}$ is the  governing damage factor for thinning<br>$D_f^{thin}$ is the damage factor for thinning<br>$D_f^{elin}$is the damage factor when an internal liner is present</p>
+
+
+{% endblock %}

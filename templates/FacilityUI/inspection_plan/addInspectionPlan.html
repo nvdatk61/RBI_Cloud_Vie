@@ -1,4 +1,4 @@
-{% extends 'BaseUI/BaseFacility/baseFacility.html' %}
+{% extends 'BaseUI/BaseFacility/baseInspectionPlan.html' %}
 
 <!-------------- BLOCK MENU ---------------->
 {% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
@@ -8,6 +8,8 @@
 {% block uploadInsp %}{% url 'upload' siteID %}{% endblock %}
 {% block uploadPlant %}{% url 'uploadPlan' siteID %}{% endblock %}
 {% block inspecPlan %}{% url 'inspectionPlan' siteID %}{% endblock %}
+{% block rbitracking %}{% url 'rbitracking' %}{% endblock %}
+{% block mitigationSite %}{% url 'mitigationSite' siteID%}{% endblock %}
 <!----------------- END BLOCK----------------->
 {% block data-content %}
 <style>
@@ -812,6 +814,23 @@ div.a:hover {
                         <!---------------- Tank------------------>
                         <div id="tank" class="tab-pane fade in active">
                             <div class="city" style="font-size: 13px; color: #444444;background-color:white">
+                                <div class="container">
+                                    <div class="table-responsive">
+                                    <table width=100% id="#">
+                                        <thead>
+                                        <tr>
+                                          <!--<th style="background-color:#387BF9;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="17"><input type = "button" name = "-" id="portests1" style="color:black;" value = "Proposal"></th>-->
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="17">Proposal</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="21">Equipment Properties</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="23">Component Properties</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="26">Stream /Process Flow</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="14">Material</th>
+                                          <th style="background-color:#DB812D;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="14">Coating, Cladding,Lining and Insulation</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

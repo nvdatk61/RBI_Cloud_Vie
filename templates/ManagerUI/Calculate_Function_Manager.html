@@ -134,7 +134,7 @@ div.a:hover {
             <!--<li><a data-toggle="pill" style="padding-top: 2px;padding-bottom: 2px;background-color: #DB812D;color: White;" href="#tank">Tank</a></li>-->
             <li class="active"><a data-toggle="pill" href="#menu0" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;">Process Plant</a></li>
             <li><a data-toggle="pill" style="padding-top: 10px;padding-bottom: 10px;background-color: #DB812D;color: white;" href="#menu1">Tank</a></li>
-            <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Làm mới</i></button>
+{#            <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Làm mới</i></button>#}
         </ul>
 
         <div class="tab-content">
@@ -338,7 +338,7 @@ div.a:hover {
                             <tbody>
                             {% for a in APINormal %}
                                 <tr>
-                                    <td><div class="a"><input type="checkbox" name="{{ a.ID }}"></div></td>
+                                    <td><div class="a"><input type="checkbox" name="{{ a.ID }}" id="checkbox"></div></td>
                                     <td><div class="a">{{a.Site}}</div></td>
                                     <td><div class="a">{{a.Facility}}</div></td>
                                     <td><div class="a">{{a.EquipmentNumber}}</div></td>
@@ -381,9 +381,19 @@ div.a:hover {
                         </table>
                         </div>
                         <!--<button type="submit" name="_verification" style="text-align:left" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Verification</i></button>-->
-                        <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Làm mới</i></button>
-                        <button type="submit" name="_detail" style="text-align:left" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Xem rủi ro</i></button>
-                    </div>
+                        <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-spinner">&emsp;Refresh</i></button>
+                        <button type="submit" name="_detail" id="detail"style="text-align:left" class="btn btn-primary" disabled><i class="fa fa-info-circle">&emsp;View Risk Summary</i></button>
+                        <script>
+                            $("input[id='checkbox']").change(function (e) {
+                            var isChecked = $(this).prop("checked");
+                            if (isChecked == false) {
+                                $("#detail").attr("disabled", true);
+                            }
+                            else {
+                                $("#detail").attr("disabled", false);
+                                }
+                            });
+                        </script>
                 </div>
             </div>
             <!---------------- Tank------------------>
@@ -588,7 +598,7 @@ div.a:hover {
                                 <tbody>
                                 {% for a in APITank %}
                                     <tr>
-                                        <td><div class="a"><input type="checkbox" name="{{ a.ID }}"></div></td>
+                                        <td><div class="a"><input type="checkbox" name="{{ a.ID }}" id="checkboxT"></div></td>
                                         <td><div class="a">{{a.Site}}</div></td>
                                         <td><div class="a">{{a.Facility}}</div></td>
                                         <td><div class="a">{{a.EquipmentNumber}}</div></td>
@@ -632,8 +642,19 @@ div.a:hover {
                             </table>
                             </div>
                             <!--<button type="submit" name="_verification" style="text-align:left" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Verification</i></button>-->
-                            <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Làm mới</i></button>
-                            <button type="submit" name="_detail" style="text-align:left" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Xem rủi ro</i></button>
+                            <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-spinner">&emsp;Refresh</i></button>
+                            <button type="submit" name="_detail" id="detailT"style="text-align:left" class="btn btn-primary" disabled><i class="fa fa-info-circle" >&emsp;View Risk Summary</i></button>
+                            <script>
+                            $("input[id='checkboxT']").change(function (e) {
+                            var isChecked = $(this).prop("checked");
+                            if (isChecked == false) {
+                                $("#detailT").attr("disabled", true);
+                            }
+                            else {
+                                $("#detailT").attr("disabled", false);
+                                }
+                            });
+                            </script>
                         </div>
                     </div>
                 </div>

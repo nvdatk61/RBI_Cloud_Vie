@@ -1,0 +1,23 @@
+{% extends 'BaseUI/BaseFacility/baseBusiness.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block library %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Cortek-RBI{% endblock %}
+
+{% block vertical %}
+{#    <img style="width: 100%%;height: 25%;text-align: center" src="{% static 'image/logo/logoAPI.png' %}">#}
+    {#<a class="vertical">Facility<br>Management</a>#}
+    <a class="active">Mitigation<br>Management</a>
+    <a href="{% block listfaci %}{% endblock %}" class="{% if page == 'listFacility' %}activeLink{% endif %}"><i class="fa fa-list">&emsp; Danh sách nhà máy</i></a>
+    <!--<a href="{% block design %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-barcode">&emsp; Design Code</i></a>-->
+    <!--<a href="{% block manu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-cubes">&emsp;Manufacture</i></a>-->
+    <a href="{% url 'uploadPlan' siteID %}"><i class="fa fa-cloud-upload">&emsp;Tải lên thư mục</i></a>
+{#    <a href="{% block uploadScada %}{% endblock %}" class="{% if page == 'uploadScada' %}activeLink{% endif %}"><i class="fa fa-file-archive-o">&emsp; DCS/SCADA</i></a>#}
+    <a href="{% block inspecPlan %}{% endblock %}" class="{% if page == 'inspectionPlan' %}activeLink{% endif %}"><i class="fa fa-pencil-square-o">&emsp;Kế hoạch kiểm định</i></a>
+    <a href="{% block rbitracking %}{% endblock %}" class="{% if page == 'rbitracking' %}activeLink{% endif %}"><i class="fa fa-users">&emsp;RBI Tracking</i></a>
+    <a href="{% block mitigationSite %}{% endblock %}" class="{% if page == 'mitigation' %}activeLink{% elif page == 'damageDetailmitigation'%}activeLink{% endif %}"><i class="fa fa-sort-amount-asc">&emsp;Giảm thiểu rủi ro</i></a>
+{% endblock %}

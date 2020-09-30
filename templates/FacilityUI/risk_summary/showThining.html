@@ -28,39 +28,492 @@
     .row{
         text-align: left;
     }
+    p.Cen{
+        text-align: justify;
+    }
+    p.Right{text-align: right;}
+    p.Left{text-align: left;margin-left: 250px; margin-right: 250px}
+    p.Left0{text-align: left;margin-left: 10px; margin-right: 10px}
+    p.Left1{text-align: left;margin-left: 130px; margin-right: 100px}
     </style>
     <!--suppress ALL -->
     <form id="inspectionplan" method="post" class="card" >
     {% csrf_token %}
-       <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Thuộc tính tham số hư hỏng tại các vị trí suy giảm chiều dày</b></caption></div>
-        {% for a in data %}x
+       <div style=" text-align: center"><caption><b style="font-size: 20px; color: #444444;">Governing Thinning Damage Factor</b></caption></div>
+
+
+  <!-- Modal -->
+   <div class="modal fade" id="baseMetalThickness" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Base Metal Thickness</h4>
+        </div>
+        <div class="modal-body">
+          <p class="Cen">
+              A furnished thickness may be replaced with a measured thickness as a result of a high quality inspection (for
+                thinning and external corrosion, as applicable) and high confidence in the measurement accuracy. Key reasons
+                for replacing the furnished thickness with a measured thickness are:
+          </p>
+            <ul style="text-align: justify">
+                <li>The component service start date when combined with a reasonably conservative corrosion rate predicts an
+                unrealistically high wall loss when the measured wall loss based on quality inspection is much lower than
+                predicted</li>
+                <li>The process conditions differ significantly from historical service conditions that are the basis for historical
+                measured corrosion rate</li>
+                <li>The furnished thickness based on design is significantly different than the thickness measured by a baseline
+                inspection or lack of reliable baseline data</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="shapeFactor" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Shape Factor</h4>
+        </div>
+        <div >
+          <p class="Left">
+                <p class="Left">$\alpha$ is the shape factor for the component type </p>
+                $\left\{\begin{matrix}
+			    \alpha=2 \hspace{3pt}for \hspace{3pt}a \hspace{3pt}cylinder\\
+			    \alpha=4 \hspace{3pt}for\hspace{3pt} a \hspace{3pt}sphere \\
+			    \alpha=1.13\hspace{3pt} for \hspace{3pt}a \hspace{3pt} head
+		        \end{matrix}\right.$
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="modal fade" id="strengthRatioIn" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Strength Ratio- Internal Pressure/Hoop Stress</h4>
+            </div>
+            <div >
+              <p>
+                  $SR_p^{Thin} = \frac{S \times E}{F{S^{Thin}}} \times \frac{Max({t_{\min }},{t_c})}{t_{rdi}}$
+                   <p class="Left0"> $SR_p^{Thin}$ is the strength ratio parameter defined as the ratio of hoop stress to flow stress</p>
+                  <p class="Left0"> S is the allowable stress</p>
+                  <p class="Left0"> E is the allowable stress</p>
+                  <p class="Left0"> $F{S^{Thin}}$ is the Flow Stress</p>
+                  <p class="Left0"> ${t_c}$ is the minimum structural thickness of the component base material</p>
+                  <p class="Left0"> $t_{rdi}$ the furnished thickness,t, or measured thickness reading from previous inspection, only if there is
+                    a high level of confidence in its accuracy, with respect to wall loss associated with internal
+                    corrosion</p>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="flowStress" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Flow Stress</h4>
+            </div>
+            <div class="modal-body">
+              <p class="Left">
+                   $F{S^{Thin}} = \frac{YS + TS}{2} \times E \times 1.1$
+                        <p class="Left">YS is the Tensile Strength at design temperature</p>
+                        <p class="Left"> TS is the Yield Strength at design temperature </p>
+                        <p class="Left"> E is the weld joint efficiency or quality code from the original construction code</p>
+
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+     <div class="modal fade" id="strengthRatioMin" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Srength Ratio- Minimum Structural Thickness Governs</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                  $SR_p^{Thin} = \frac{P \times D}{\alpha  \times F{S^{Thin} \times {t_{rdi}}}}$
+                  <p class="Left0"> $SR_p^{Thin}$ is the strength ratio parameter defined as the ratio of hoop stress to flow stress</p>
+                  <p class="Left0"> P is the Pressure (operating, design, PRD overpressure, etc.)</p>
+                  <p class="Left0"> D is the component inside diameter</p>
+                  <p class="Left0"> $F{S^{Thin}}$ is the Flow Stress</p>
+                  <p class="Left0"> $t_{rdi}$ the furnished thickness,t, or measured thickness reading from previous inspection, only if there is
+a high level of confidence in its accuracy, with respect to wall loss associated with internal
+corrosion</p>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="adjustOnline" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Damage Factor Adjustment for Online Monitoring</h4>
+            </div>
+            <div class="modal-body">
+              <img src= "{% static '/image/help/eqAdjustOnl.png' %}" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+     <div class="modal fade" id="adjustInj" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Damage Factor Adjustment for Injection Points</h4>
+            </div>
+            <div class="modal-body">
+              <p class="Cen">   If a piping circuit contains an injection/mix point, then an adjustment factor equal to $F_{ip}=3$ should be
+                    used to account for the higher likelihood of thinning activity at this location. If a highly effective
+                    inspection specifically for injection/mix point corrosion within the injection point circuit (according to
+                    API 570) is performed, then an adjustment is not necessary, or $F_{ip}=1$ .
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+     <div class="modal fade" id="adjustDead" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Damage Factor Adjustment for Dead Legs</h4>
+            </div>
+            <div class="modal-body">
+              <p class="Cen">  $F_{DL}$ – A deadleg is defined as a section of piping or piping circuit that is used
+                only during intermittent service such as start-ups, shutdowns, or regeneration cycles rather than continuous
+                service. Deadlegs include components of piping that normally have no significant flow. If a piping circuit
+                contains a deadleg, then an adjustment should be made to the thinning DF to account for the higher
+                likelihood of thinning activity at this location. The adjustment factor is $F_{DL}=3$. If a highly effective inspection
+                method is used to address the potential of localized corrosion in the deadleg, then an adjustment is not
+                necessary, or $F_{DL}=1$
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="priorProbabilities" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Prior Probability of Corrosion Rate Data Confidence</h4>
+            </div>
+            <div class="modal-body">
+                 <p>$Pr _{p1}^{Thin}$ is the prior probability of corrosion rate data confidence for damage state 1</p>
+                <p>$Pr _{p2}^{Thin}$ is the prior probability of corrosion rate data confidence for damage state 2</p>
+                <p>$Pr _{p3}^{Thin}$ is the prior probability of corrosion rate data confidence for damage state 3</p>
+                <img src="{% static '/image/help/PriorProbability.png' %}">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+        <div class="modal fade" id="inspectioneffectivenessfactors" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Inspection Effectiveness Factors</h4>
+            </div>
+            <div class="modal-body">
+                $I_1^{Thin} = \Pr _{p1}^{Thin}{(Co_{p1}^{ThinA})^{N_A^{Thin}}}{(Co_{p1}^{ThinB})^{N_B^{Thin}}}{(Co_{p1}^{ThinC})^{N_C^{Thin}}}{(Co_{p1}^{ThinD})^{N_D^{ThinD}}}$<br>
+                $I_2^{Thin} = \Pr _{p2}^{Thin}{(Co_{p2}^{ThinA})^{N_A^{Thin}}}{(Co_{p2}^{ThinB})^{N_B^{Thin}}}{(Co_{p2}^{ThinC})^{N_C^{Thin}}}{(Co_{p2}^{ThinD})^{N_D^{ThinD}}}$<br>
+                $I_3^{Thin} = \Pr _{p3}^{Thin}{(Co_{p3}^{ThinA})^{N_A^{Thin}}}{(Co_{p3}^{ThinB})^{N_B^{Thin}}}{(Co_{p3}^{ThinC})^{N_C^{Thin}}}{(Co_{p3}^{ThinD})^{N_D^{ThinD}}}$
+                 <hr  width="100%" align="center" />
+                <p class="Left1">$I_1^{Thin}$ is the first order inspection effectiveness factor</p>
+                <p class="Left1">$I_2^{Thin}$ is the second order inspection effectiveness factor</p>
+                <p class="Left1">$I_3^{Thin}$ is the third order inspection effectiveness factor</p>
+                <p class="Left1">$Co_{p1}^{Thin}$ is the conditional probability of inspection history inspection effectiveness for damage state 1</p>
+                <p class="Left1">$Co_{p2}^{Thin}$ is the conditional probability of inspection history inspection effectiveness for damage state 2</p>
+                <p class="Left1">$Co_{p3}^{Thin}$ is the conditional probability of inspection history inspection effectiveness for damage state 3</p>
+                <p class="Left1">$N_A^{Thin}$ is the number of A level inspections</p>
+                <p class="Left1">$N_B^{Thin}$ is the number of B level inspections</p>
+                <p class="Left1">$N_C^{Thin}$ is the number of C level inspections</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+        <div class="modal fade" id="PosteriorProbability" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Posterior Probability</h4>
+            </div>
+            <div class="modal-body">
+                <p>$\mathop {Po}\nolimits_{p1}^{Thin}  = \frac{I_1^{Thin}}{I_1^{Thin} + I_2^{Thin} + I_3^{Thin}}$;     $\mathop {Po}\nolimits_{p2}^{Thin}  = \frac{I_2^{Thin}}{I_1^{Thin} + I_2^{Thin} + I_3^{Thin}}$;
+                $\mathop {Po}\nolimits_{p3}^{Thin}  = \frac{I_3^{Thin}}{I_1^{Thin} + I_2^{Thin} + I_3^{Thin}}$</p>
+                 <hr  width="100%" align="center" />
+                <p class="Left">$\mathop {Po}\nolimits_{p1}^{Thin}$ is the posterior probability for damage state 1</p>
+                <p class="Left">$\mathop {Po}\nolimits_{p2}^{Thin}$ is the posterior probability for damage state 2</p>
+                <p class="Left">$\mathop {Po}\nolimits_{p3}^{Thin}$ is the posterior probability for damage state 3</p>
+                <p class="Left">${I_1^{Thin}}$ is the first order inspection effectiveness factor</p>
+                <p class="Left">${I_2^{Thin}}$ is the second order inspection effectiveness factor</p>
+                <p class="Left">${I_3^{Thin}}$ is the third order inspection effectiveness factor</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+               <div class="modal fade" id="BetaReliabilityIndicesAP0" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">The Beta Reliability Indices at 0AP</h4>
+            </div>
+            <div class="modal-body">
+                $\beta _1^{Thin} = \frac{1 - {D_{s1}}{A_{rt}} - SR_p^{Thin}}{\sqrt {D_{s1}^2.A_{rt}^2.CO{V_{\Delta t}^2} + {\left( {1 - {D_{s_1}}.{A_{rt}}} \right)}^2.COV_{S_f}^2 + \left( {SR_p^{Thin}} \right).COV_p^2} }$
+                 <hr  width="100%" align="center" />
+                <p class="Left">$\beta _1^{Thin}$ is the β reliability indices for damage state 1</p>
+                <p class="Left">$D_{s1}$ is the corrosion rate factor for damage state 1</p>
+                <p class="Left">$A_{rt}$ is the component wall loss fraction since last inspection thickness measurement or service start
+date</p>
+                <p class="Left">$SR_p^{Thin}$ is the strength ratio parameter defined as the ratio of hoop stress to flow stress</p>
+                <p class="Left">$CO{V_{\Delta t}^2}$ is the Thinning Coefficient of Variance</p>
+                <p class="Left">$COV_{S_f}^2$ is the Flow Stress Coefficient of Variance</p>
+                <p class="Left">$COV_p^2$ is the Pressure Coefficient of Variance</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+        <div class="modal fade" id="BetaReliabilityIndicesAP1" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">The Beta Reliability Indices at 1AP</h4>
+            </div>
+            <div class="modal-body">
+                $\beta _2^{Thin} = \frac{1 - {D_{s1}}{A_{rt}} - SR_p^{Thin}}{\sqrt {D_{s1}^2.A_{rt}^2.CO{V_{\Delta t}^2} + {\left( {1 - {D_{s_2}}.{A_{rt}}} \right)}^2.COV_{S_f}^2 + \left( {SR_p^{Thin}} \right).COV_p^2} }$
+                 <hr  width="100%" align="center" />
+                <p class="Left">$\beta _2^{Thin}$ is the β reliability indices for damage state 2</p>
+                <p class="Left">$D_{s2}$ is the corrosion rate factor for damage state 2</p>
+                <p class="Left">$A_{rt}$ is the component wall loss fraction since last inspection thickness measurement or service start
+date</p>
+                <p class="Left">$SR_p^{Thin}$ is the strength ratio parameter defined as the ratio of hoop stress to flow stress</p>
+                <p class="Left">$CO{V_{\Delta t}^2}$ is the Thinning Coefficient of Variance</p>
+                <p class="Left">$COV_{S_f}^2$ is the Flow Stress Coefficient of Variance</p>
+                <p class="Left">$COV_p^2$ is the Pressure Coefficient of Variance</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+        <div class="modal fade" id="BetaReliabilityIndicesAP2" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">The Beta Reliability Indices at 2AP</h4>
+            </div>
+            <div class="modal-body">
+                $\beta _3^{Thin} = \frac{1 - {D_{s3}}{A_{rt}} - SR_p^{Thin}}{\sqrt {D_{s3}^2.A_{rt}^2.CO{V_{\Delta t}^2} + {\left( {1 - {D_{s_3}}.{A_{rt}}} \right)}^2.COV_{S_f}^2 + \left( {SR_p^{Thin}} \right).COV_p^2} }$
+                 <hr  width="100%" align="center" />
+                <p class="Left">$\beta _3^{Thin}$ is the β reliability indices for damage state 2</p>
+                <p class="Left">$D_{s3}$ is the corrosion rate factor for damage state 2</p>
+                <p class="Left">$A_{rt}$ is the component wall loss fraction since last inspection thickness measurement or service start
+date</p>
+                <p class="Left">$SR_p^{Thin}$ is the strength ratio parameter defined as the ratio of hoop stress to flow stress</p>
+                <p class="Left">$CO{V_{\Delta t}^2}$ is the Thinning Coefficient of Variance</p>
+                <p class="Left">$COV_{S_f}^2$ is the Flow Stress Coefficient of Variance</p>
+                <p class="Left">$COV_p^2$ is the Pressure Coefficient of Variance</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+        <div class="modal fade" id="ArtWithoutCladdingMaterial" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Wall Loss Fraction Without Cladding Material </h4>
+            </div>
+            <div class="modal-body">
+                ${A_{rt}} = \frac{C_{r,bm} \times age_{tk}}{t_rdi}$
+                 <p class="Left0">$A_{rt}$ is the component wall loss fraction since last inspection thickness measurement or service start
+date</p>
+                <p class="Left0">$C_{r,bm}$ is the corrosion rate for the base material </p>
+                <p class="Left0">$age_{tk} is the component in-service time since the last inspection thickness measurement or service start
+date$ is </p>
+                <p class="Left0">$t_{rdi}$ is the remaining life of the cladding/weld overlay associated with the date of the starting thickness </p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+        <div class="modal fade" id="ArtWithoutCladdingMaterialWith1" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Wall Loss Fraction With Cladding Material(Age_tk< Age_rc) </h4>
+            </div>
+            <div class="modal-body">
+                ${A_{rt}} = \frac{C_{r,nm} \times age_{tk}}{t_rdi}$
+                 <p class="Left1">$A_{rt}$ is the component wall loss fraction since last inspection thickness measurement or service start
+date</p>
+                <p class="Left1">$C_{r,cm}$ is the corrosion rate for the cladding/weld overlay </p>
+                <p class="Left1">$age_{tk}$ is the component in-service time since the last inspection thickness measurement or service start date </p>
+                <p class="Left1">$t_{rdi}$ is the remaining life of the cladding/weld overlay associated with the date of the starting thickness </p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+        <div class="modal fade" id="ArtWithoutCladdingMaterialWith2" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Wall Loss Fraction With Cladding Material(Age_tk>= Age_rc) </h4>
+            </div>
+            <div class="modal-body">
+             ${A_{rt}} = \frac{C_{r,cm} \times ag{e_{rc}} + {C_{r,cm}} \times \left( {ag{e_{tk}} - age_rc} \right)}{t_rdi}$
+                 <p class="Left0">$A_{rt}$ is the component wall loss fraction since last inspection thickness measurement or service start
+date</p>
+                <p class="Left0">$C_{r,cm}$ is the corrosion rate for the cladding/weld overlay </p>
+                <p class="Left0">$age_{rc}$ is the remaining life of the cladding/weld overlay associated with the date of the starting thickness</p>
+                <p class="Left0">$age_{tk}$ is the component in-service time since the last inspection thickness measurement or service start
+date </p>
+                <p class="Left0">$t_{rdi}$ the furnished thickness,t, or measured thickness reading from previous inspection, only if there is
+a high level of confidence in its accuracy, with respect to wall loss associated with internal
+corrosion</p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+               <div class="modal fade" id="WallLossFraction" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Wall Loss Fraction</h4>
+            </div>
+            <div class="modal-body">
+                <ul style="text-align: left">
+                    <li> For tank bottom components:${A_{rt}} = \max \left[ {\left( {\frac{t_{rdi} - {t_{bm}}}{c_{r,cm}}} \right),0.0} \right]$</li>
+                    <li>For components without cladding/weld overlay or where the cladding/weld overlay is corroded away at the
+date of the starting thickness: ${A_{rt}} = \frac{C_{r,bm} \times age_{tk}}{t_rdi}$</li>
+                    <li>For components with cladding/weld overlay (i.e. agerc ≥ 0.0 ) at the date of the starting thickness but where $age_{rc}$ < $age_{tk}$: ${A_{rt}} = \frac{C_{r,nm} \times age_{tk}}{t_rdi}$</li>
+                    <li>For components with cladding/weld overlay (i.e. agerc ≥ 0.0 ) at the date of the starting thickness
+inspection but where $age_{rc}$≥$age_{tk}$:  ${A_{rt}} = \frac{C_{r,cm} \times ag{e_{rc}} + {C_{r,cm}} \times \left( {ag{e_{tk}} - age_rc} \right)}{t_rdi}$</li>
+                </ul>
+                 <p class="Left0">$A_{rt}$ is the component wall loss fraction since last inspection thickness measurement or service start
+date</p>
+                <p class="Left0">$C_{r,cm}$ is the corrosion rate for the cladding/weld overlay </p>
+                <p class="Left0">$age_{rc}$ is the remaining life of the cladding/weld overlay associated with the date of the starting thickness</p>
+                <p class="Left0">$age_{tk}$ is the component in-service time since the last inspection thickness measurement or service start
+date </p>
+                <p class="Left0">$t_{rdi}$ the furnished thickness,t, or measured thickness reading from previous inspection, only if there is
+a high level of confidence in its accuracy, with respect to wall loss associated with internal
+corrosion: </p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
                 <!-----------BlOCK FULLY QUANTITIVE FCOF AND CATEGORY--------->
         <fieldset class="scheduler-border">
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>thông tin đánh giá chung</b></legend>
+                    <legend class="scheduler-border"><b>Assessment General Information</b></legend>
                     <div class="row">
-                        <div class="col-md-4">Số thiết bị</div>
+                        <div class="col-md-4">Equipment Number</div>
                         <div class="col-md-6"><form><input  type="text" size="70px" value="EQUP1"></form></div>
 
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Số thành phần</div>
+                        <div class="col-md-4">Component Number</div>
                         <div class="col-md-6"><form><input  type="text" size="70px" value="COM1"> </form></div>
                     </div>
                     <div class="row">
-                         <div class="col-md-4">Tên đánh giá</div>
+                         <div class="col-md-4">Assessment Name</div>
                         <div class="col-md-6"><form><input  type="text" size="70px" value="New Proposal"> </form></div>
                     </div>
                 </fieldset>
 
                 <!-----------BLOCK INFLUENCING INPUT------------>
             <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Dữ liệu đánh giá đầu vào</b></legend>
+                    <legend class="scheduler-border"><b>Assessment Data Input</b></legend>
 
            <details >
                <summary style="text-align: center"></summary>
                     <div class="row">
-                        <div class="col-md-3">Ngày đánh giá</div>
+                        <div class="col-md-3">Assessment Date</div>
                         <div class="col-md-3"><form><input type="text" name="assessmentdate"  id="assessmentdate" placeholder="yyyy-mm-dd" value="{{ a.assessmentDate }}">
                         <script>
                             $( "#assessmentdate" ).datepicker({
@@ -73,9 +526,9 @@
                         <div class="col-md-3"><form><input  type="text" value=""> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Thời gian phân tích rủi ro</div>
+                        <div class="col-md-3">Risk Analysis Period</div>
                         <div class="col-md-3"><form><input  type="text" value="36"> </form></div>
-                        <div class="col-md-3">Ngày kiểm định cuối</div>
+                        <div class="col-md-3">Last Inspection Date</div>
                         <div class="col-md-3"><form><input  type="text" name="lastInspection"  id="lastInspection" placeholder="yyyy-mm-dd" value="{{a.LastInspectionDate}}">
                         <script>
                             $( "#lastInspection" ).datepicker({
@@ -98,33 +551,33 @@
                         <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Chiều dày danh định</div>
+                        <div class="col-md-3">Nominal Thickness</div>
                         <div class="col-md-3"><form><input  type="text" value="{{a.NominalThickness }}"> </form></div>
-                        <div class="col-md-3">Chiều dày đo được tối thiểu</div>
+                        <div class="col-md-3">Minimun Measured Thickness</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.CurentThickness }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Tốc độ ăn mòn hiện tại</div>
+                        <div class="col-md-3">Current Corosion Rate</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.CorrosionRate }}"> </form></div>
-                        <div class="col-md-3">Chiều dày yêu cầu tối thiểu</div>
+                        <div class="col-md-3">Minimun Required Thickness</div>
                         <div class="col-md-3"><form><input  type="text" value="{{a.MinimunRequiredThickness  }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Lớp phủ bên trong</div>
+                        <div class="col-md-3">InternalCladding</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.InternalCladding }}"> </form></div>
-                        <div class="col-md-3">Tốc độ ăn mòn lớp phủ</div>
+                        <div class="col-md-3">Cladding Corosion Rate</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.CladdingCorrosionRate }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Áp suất thiết kế</div>
+                        <div class="col-md-3">Design Pressure</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.DesignPressure }}"> </form></div>
-                        <div class="col-md-3">Đường kính</div>
+                        <div class="col-md-3">Diameter</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.Diameter }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Bơm hóa chất</div>
+                        <div class="col-md-3">Chemical Injection</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.ChemicalInjection }}"> </form></div>
-                        <div class="col-md-3">Kiểm định hiệu năng đối với bơm hóa chất </div>
+                        <div class="col-md-3">Highly Effective Inspection for Chemical Injection </div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.HighlyEffectiveInspectionforChemicalInjection }}"> </form></div>
                     </div>
                     <div class="row">
@@ -134,26 +587,26 @@
                         <div class="col-md-3"><form><input  type="text" value="{{ a.HighEffectiveDeadlegs }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Mức độ tin cậy trong việc xác định tốc độ ăn mòn</div>
+                        <div class="col-md-3">Level of Confidence in Cororion Sources</div>
                         <div class="col-md-3"><form><input  type="text" value="0"> </form></div>
-                        <div class="col-md-3">Hiệu quả mối hàn</div>
+                        <div class="col-md-3">Weld Joint Efficiency</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.WeltJointEfficiency }}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">Năng suất</div>
+                        <div class="col-md-3">Yield Strength</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.YeildStrength }}"> </form></div>
-                        <div class="col-md-3">Sức kéo</div>
+                        <div class="col-md-3">Tensile Strength</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.TensileStrength }}"> </form></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Ứng suất cho phép tại nhiệt độ đánh giá </div>
+                        <div class="col-md-3">Allowable Stress Assessment</div>
                         <div class="col-md-3"><form><input  type="text" value="{{ a.AllowableStress }}"> </form></div>
                         <div class="col-md-3"></div>
                         <div class="col-md-3"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Theo dõi trực tuyến</div>
+                        <div class="col-md-3">Online Monitoring</div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.Onlinemonitoring }}"> </form></div>
                     </div>
             </details>
@@ -161,178 +614,183 @@
                {#      Khối Intermediate Results       #}
 
             <fieldset class="scheduler-border">
-                    <legend class="scheduler-border"><b>Kết quả trung gian</b></legend>
+                    <legend class="scheduler-border"><b>Intermediate Results</b></legend>
                 <details>
                     <summary style="text-align: center"></summary>
+
                     <div class="row">
-                        <div class="col-md-4">Độ dày kim loại cơ bản</div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value="12"> </form></div>
+                        <div class="col-md-4">Base Metal Thickness <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#baseMetalThickness"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{a.NominalThickness }}"> </form></div>
+{#                        <div class="col-md-1"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-question-circle" style="color: black" ></i></button></div>#}
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-4">Shape</div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{a.shape}}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Hình dạng</div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value="Cylindrical"> </form></div>
+                        <div class="col-md-4">Shape Factor <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#shapeFactor"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{a.shapeFactor}}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Yếu tố hình dạng</div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value="2"> </form></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">Ứng suất dòng chảy</div>
+                        <div class="col-md-4">Flow Stress <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#flowStress"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
                         <div class="col-md-1"><form><input  type="text" size="70px" value="9.625"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Tỷ lệ sức bền- Áp suất bên trong / Ứng suất vòng</div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value=""> </form></div>
+                        <div class="col-md-4">Strength Ratio- Minimum Structural Thickness Governs <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#strengthRatioIn"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.strengthRatioMin }}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Tỷ lệ sức bền-Chiều dày cấu trúc tối thiểu </div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value="2.17052"> </form></div>
+                        <div class="col-md-4">Strength Ratio- Internal Pressure/Hoop Stress <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#strengthRatioMin"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.strengthRatioIn }}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Điều chỉnh yếu tố hư hỏng cho các điểm phối trộn</div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value="1"> </form></div>
+                        <div class="col-md-4">Damage Factor Adjustment for Injection Points <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#adjustInj"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.adjustmentInjection }}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Damage Factor Adjustment for Dead Legs</div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value="1"> </form></div>
+                        <div class="col-md-4">Damage Factor Adjustment for Dead Legs <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#adjustDead "><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.adjustmentDeadLegs }}"> </form></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">Điều chỉnh yếu tố hư hỏng để giám sát trực tuyến</div>
-                        <div class="col-md-1"><form><input  type="text" size="70px" value="10"> </form></div>
+                        <div class="col-md-4">Damage Factor Adjustment for Online Monitoring <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#adjustOnline "><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                        <div class="col-md-1"><form><input  type="text" size="70px" value="{{ a.adjustmentOnline }}"> </form></div>
                     </div>
                     </details>
             </fieldset>
 {#            Khối Structral Realiability Theory Parameters#}
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border"><b>Các tham số lý thuyết về độ chuẩn cấu trúc</b></legend>
+                <legend class="scheduler-border"><b>Structral Realiability Theory Parameters </b></legend>
                 <details>
                     <summary style="text-align: center"> </summary>
                         <div class="row">
                             <div class="col-md-6"></div>
-                            <div class="col-md-1"><form><input  type="text" size="51px" style="background-color: #0C5BED" value="0 months                        36 months                         72 months"> </form></div>
+                            <div class="col-md-1"><form><input  type="text" size="51px" style="background-color: #0C5BED; color: white" value="0 months                    36 months                  72 months"> </form></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">Xác suất trước của mức độ tin cậy dữ liệu về tốc độ ăn mòn</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
-                            <div class="col-md-2"><form><input  type="text"size="9px"value="0.2"> </form></div>
-                            <div class="col-md-2"><form><input  type="text"size="9px" value="0.1"> </form></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">Các yếu tố kiểm định hiệu quả</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.2"> </form></div>
-                            <div class="col-md-2"><form><input  type="text"size="9px"  value="0.1"> </form></div>
+                            <div class="col-md-6">Prior Probability of Corrosion Rate Data Confidence <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#priorProbabilities"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.priorProbabilities1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text"size="9px"value="{{ a.priorProbabilities2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text"size="9px" value="{{ a.priorProbabilities3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Xác suất sau</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.7"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.2"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.1"> </form></div>
+                            <div class="col-md-6">Inspection Effectiveness Factors <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#inspectioneffectivenessfactors"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.inspectioneffectivenessfactors1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.inspectioneffectivenessfactors2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text"size="9px"  value="{{ a.inspectioneffectivenessfactors3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Chỉ số Độ tin cậy Beta tại 0AP</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-5.41935"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-5.70238"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-6.28780"> </form></div>
+                            <div class="col-md-6">Posterior Probability <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#PosteriorProbability"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.PosteriorProbability1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.PosteriorProbability2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.PosteriorProbability3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Chỉ số Độ tin cậy Beta tại 1AP</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-4.37833"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.94713"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.73879"> </form></div>
+                            <div class="col-md-6">The Beta Reliability Indices at 0AP <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BetaReliabilityIndicesAP0"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices0AP_1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices0AP_2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices0AP_3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Chỉ số Độ tin cậy Beta tại 2AP</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.94866"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.73954"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="-3.63689"> </form></div>
+                            <div class="col-md-6">The Beta Reliability Indices at 1AP <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BetaReliabilityIndicesAP1"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices1AP_1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices1AP_2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices1AP_3}}"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">The Beta Reliability Indices at 2AP <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BetaReliabilityIndicesAP2"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices2AP_1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value={{ a.BetaReliabilityIndices2AP_2 }}> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BetaReliabilityIndices2AP_3 }}"> </form></div>
                         </div>
 
                         <br>
                         <div class="row">
                             <div class="col-md-6"></div>
-                            <div class="col-md-1"><form><input  type="text" style="background-color: #0C5BED" size="51px"  value="0 months                        36 months                         72 months"> </form></div>
+                            <div class="col-md-1"><form><input  type="text" style="background-color: #0C5BED; color: white;" size="51px"  value="0 months                    36 months                  72 months"> </form></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">Số năm hoạt động, tuổi thọ</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.02"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="3.02"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="6.02"> </form></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">Số năm kể từ lần kiểm định cuối cùng, tuổi thọ, tk</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.02"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="3.02"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="6.02"> </form></div>
+                            <div class="col-md-6">Years in Service, Age <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#age"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.age1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.age2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.age3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Tuổi thọ còn lại của vật liệu tráng phủ, tuổi_rc</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.32"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0"> </form></div>
+                            <div class="col-md-6">Years Since Last Inspection, age, tk <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#agetk"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.agetk1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.agetk2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.agetk3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Wall Loss Fraction With Cladding Material</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                            <div class="col-md-6">Remaining Life of Cladding Material, Age_rc <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#agerc"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.agerc }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.agerc }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.agerc }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Wall Loss Fraction With Cladding Material(Age_tk< Age_rc) </div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.03240"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
+                            <div class="col-md-6">Wall Loss Fraction Without Cladding Material <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ArtWithoutCladdingMaterial"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="{{ a.ArtWithout1 }}" value=""> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="{{ a.ArtWithout2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ArtWithout3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Wall Loss Fraction With Cladding Material(Age_tk>= Age_rc) </div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value=""> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="7.35771"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="14.66206"> </form></div>
+                            <div class="col-md-6">Wall Loss Fraction With Cladding Material(Age_tk< Age_rc) <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ArtWithoutCladdingMaterialWith1"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ArtWith1_1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ArtWith1_2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ArtWith1_3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Wall Loss Fraction</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="0.03240"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="7.35771"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="14.66206"> </form></div>
+                            <div class="col-md-6">Wall Loss Fraction With Cladding Material(Age_tk>= Age_rc) <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ArtWithoutCladdingMaterialWith2"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ArtWith2_1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ArtWith2_2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ArtWith2_3 }}"> </form></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">Yếu tố hư hỏng cơ bản</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="6410.25626"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="6410.11961"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="6409.87347"> </form></div>
+                            <div class="col-md-6">Wall Loss Fraction <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#WallLossFraction"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.WallLossFraction1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.WallLossFraction2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.WallLossFraction3 }}"> </form></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Base Damage Factor <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BaseDamageFactor"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BaseDamageFactor1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BaseDamageFactor2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.BaseDamageFactor3 }}"> </form></div>
                         </div>
 
                         <br>
 
                         <div class="row">
-                            <div class="col-md-6">Yếu tố hư hỏng chiều dày</div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="641.02562"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="641.01196"> </form></div>
-                            <div class="col-md-2"><form><input  type="text" size="9px" value="640.98734"> </form></div>
+                            <div class="col-md-6">Thinning Damage Factor <button style="background: white; padding: 0 0 0 0; border:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ThinningDamageFactor"><i class="fa fa-question-circle" style="color: blue;" ></i></button></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ThinningDamageFactor1 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ThinningDamageFactor2 }}"> </form></div>
+                            <div class="col-md-2"><form><input  type="text" size="9px" value="{{ a.ThinningDamageFactor3 }}"> </form></div>
                         </div>
                 </details>
             </fieldset>
         </fieldset>
-     {% endfor %}
+
     </form>
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'BaseUI/BaseFacility/baseFacility.html' %}
+{% extends 'BaseUI/BaseFacility/baseInspectionPlan.html' %}
 
 <!-------------- BLOCK MENU ---------------->
 {% block listfaci %}{% url 'facilitiesDisplay' siteID %}{% endblock %}
@@ -8,6 +8,8 @@
 {% block uploadInsp %}{% url 'upload' siteID %}{% endblock %}
 {% block uploadPlant %}{% url 'uploadPlan' siteID %}{% endblock %}
 {% block inspecPlan %}{% url 'inspectionPlan' siteID %}{% endblock %}
+{% block rbitracking %}{% url 'rbitracking' %}{% endblock %}
+{% block mitigationSite %}{% url 'mitigationSite' siteID%}{% endblock %}
 <!----------------- END BLOCK----------------->
 {% block data-content %}
         <form method="post" >

@@ -6,9 +6,10 @@
 
 {% block vertical %}
     <a class="active">Quản lý dữ liệu<br>tải lên</a>
-    <a href="{% block listfaci %}{% endblock %}" class="{% if page == 'listFacility' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;Danh sách nhà máy</i></a>
-    <a href="{% block design %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-barcode">&emsp;Code thiết kế</i></a>
-    <a href="{% block manu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-cubes">&emsp;Nhà sản xuất</i></a>
-    <a href="{% block uploadInsp %}{% endblock %}" class="{% if page == 'uploadHistory' %}activeLink{% endif %}"><i class="fa fa-file">&emsp;Lịch sử tải lên</i></a>
-    <a href="{% block uploadPlant %}{% endblock %}" class="{% if page == 'uploadPlan' %}activeLink{% endif %}"><i class="fa fa-file-excel-o">&emsp;Kế hoạch tải lên</i></a>
+    <!--<a href="{% block listfaci %}{% endblock %}" class="{% if page == 'listFacility' %}activeLink{% endif %}"><i class="fa fa-list">&emsp;List of Facilities</i></a>       -->
+    <!--<a href="{% block design %}{% endblock %}" class="{% if page == 'listDesign' %}activeLink{% endif %}"><i class="fa fa-barcode">&emsp;Design Code</i></a>-->
+    <!--<a href="{% block manu %}{% endblock %}" class="{% if page == 'listManu' %}activeLink{% endif %}"><i class="fa fa-cubes">&emsp;Manufacture</i></a>-->
+    <a href="{% block uploadPlant %}{% endblock %}" class="{% if page == 'uploadPlan' %}activeLink{% endif %}"><i class="fa fa-file-excel-o">&emsp;Tải lên kế hoạch</i></a>
+    <a href="{% block uploadInsp %}{% endblock %}" class="{% if page == 'uploadHistory' %}activeLink{% endif %}"><i class="fa fa-file">&emsp;Tải lên lịch sử</i></a>
+    <a href="{% block backfaci %}{% endblock %}"><i class="fa fa-arrow-left">&emsp; Quay lại danh sách nhà máy</i></a>
 {% endblock %}
