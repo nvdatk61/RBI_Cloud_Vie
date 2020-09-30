@@ -2,49 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f231c43-833f-45f1-9b74-18536c96b33c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/image/help/component.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/image/help/equipment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/image/help/factory.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/image/help/proposal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/image/help/sequence diagram.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/image/logo/login.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseMitigation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/FacilityUI/mitigation/damageMechanism.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/FacilityUI/mitigation/mitigationSite.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/chooseThining.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showLining.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RBI_Cloud.zip" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RbiCloud/urls.py" afterPath="$PROJECT_DIR$/RbiCloud/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/process/RBI/Detail_DM_CAL.py" afterPath="$PROJECT_DIR$/cloud/process/RBI/Detail_DM_CAL.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/views.py" afterPath="$PROJECT_DIR$/cloud/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseHelp/BaseHelp.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseHelp/BaseHelp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/VerificationBase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseMessages/BaseMessages.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html" afterPath="$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/ManagementSystems.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/ManagementSystems.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/addInspectionPlan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Home/index.html" afterPath="$PROJECT_DIR$/templates/Home/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/help/helpusesoft.html" afterPath="$PROJECT_DIR$/templates/help/helpusesoft.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -117,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadData.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="uploadData.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+            <state relative-caret-position="289">
+              <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -143,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
-              <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="103" />
+              <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="103" />
               <folding>
                 <element signature="e#1081#1087#0#HTML" expanded="true" />
               </folding>
@@ -187,11 +145,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="76" column="42" lean-forward="false" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
+            <state relative-caret-position="221">
+              <caret line="13" column="129" lean-forward="false" selection-start-line="13" selection-start-column="125" selection-end-line="13" selection-end-column="129" />
               <folding />
             </state>
           </provider>
@@ -267,7 +225,6 @@
         <option value="$PROJECT_DIR$/templates/Messages/Messages_Sent.html" />
         <option value="$PROJECT_DIR$/templates/response/complete_regiatration.html" />
         <option value="$PROJECT_DIR$/templates/help/help.html" />
-        <option value="$PROJECT_DIR$/templates/Home/index.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/equipment/ManagementSystems.html" />
         <option value="$PROJECT_DIR$/RbiCloud/urls.py" />
         <option value="$PROJECT_DIR$/cloud/process/RBI/Detail_DM_CAL.py" />
@@ -298,6 +255,7 @@
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" />
+        <option value="$PROJECT_DIR$/templates/Home/index.html" />
       </list>
     </option>
   </component>
@@ -312,7 +270,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="675" />
     <option name="y" value="-8" />
     <option name="width" value="699" />
@@ -684,7 +642,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22541603" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1046,14 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="76" column="42" lean-forward="false" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
@@ -1093,7 +1043,7 @@
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="103" />
+          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="103" />
           <folding>
             <element signature="e#1081#1087#0#HTML" expanded="true" />
           </folding>
@@ -1132,8 +1082,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+        <state relative-caret-position="289">
+          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="129" lean-forward="false" selection-start-line="13" selection-start-column="125" selection-end-line="13" selection-end-column="129" />
           <folding />
         </state>
       </provider>
