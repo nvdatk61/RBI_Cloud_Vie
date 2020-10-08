@@ -1224,8 +1224,8 @@ class Verification(models.Model):
     manager = models.TextField(db_column='manager',blank=True,null=False)
     facility = models.IntegerField(db_column='facility',blank=True,null=False)
     com = models.TextField(db_column='com',blank=True,null=False)
-    eq = models.TextField(db_column='eq',blank=True,null=False)
-
+    eq = models.TextField(db_column='eq', blank=True, null=False)
+    link = models.TextField(db_column='link', blank=True, null=False)
     class Meta:
         managed = False
         db_table = 'verification'

@@ -1415,31 +1415,37 @@ class CA_Toxic: #LEVEL 1
         try:
             C8 = 0.0929
             C4 = 2.205
-            if self.TOXIC_FLUID == "HF Acid" or self.TOXIC_FLUID == "H2S":
-                if self.ReleasetType(i)=="Continuous":
-                    return C8*math.pow(10,self.ContantC_toxic2(i)*math.log10(C4*self.Rate_tox_n(i))+self.ContantD_toxic2(i))
-                else:
-                    return C8*math.pow(10,self.ContantC_toxic2(i)*math.log10(C4*self.Mass_tox_n(i))+self.ContantD_toxic2(i))
-            elif self.TOXIC_FLUID=="Ammonia" or self.TOXIC_FLUID=="Chlorine":
-                if self.ReleasetType(i)=="Continuous":
-                    return self.ContantE_toxic2(i)*math.pow(self.Rate_tox_n(i),self.ContantF_toxic2(i))
-                else:
-                    return self.ContantE_toxic2(i)*math.pow(self.Mass_tox_n(i),self.ContantF_toxic2(i))*1000
-            elif self.TOXIC_FLUID=="AlCl3" or self.TOXIC_FLUID=="CO" or self.TOXIC_FLUID=="HCl" or self.TOXIC_FLUID=="Nitric Acid" or self.TOXIC_FLUID=="NO2" or self.TOXIC_FLUID=="Phosgene" or self.TOXIC_FLUID=="TDI" or self.TOXIC_FLUID=="EE" or self.TOXIC_FLUID=="EO" or self.TOXIC_FLUID=="PO":
-                if self.ReleasetType(i)=="Continuous":
-                    return self.ContantE_toxic2(i)*math.pow(self.Rate_tox_n(i),self.ContantF_toxic2(i))
-                else:
-                    return self.ContantE_toxic2(i)*math.pow(self.Rate_tox_n(i),self.ContantF_toxic2(i))
-            else:
+            if self.toxic_percent==0:
                 return 0
+            else:
+                if self.TOXIC_FLUID == "HF Acid" or self.TOXIC_FLUID == "H2S":
+                    if self.ReleasetType(i)=="Continuous":
+                        return C8*math.pow(10,self.ContantC_toxic2(i)*math.log10(C4*self.Rate_tox_n(i))+self.ContantD_toxic2(i))
+                    else:
+                        return C8*math.pow(10,self.ContantC_toxic2(i)*math.log10(C4*self.Mass_tox_n(i))+self.ContantD_toxic2(i))
+                elif self.TOXIC_FLUID=="Ammonia" or self.TOXIC_FLUID=="Chlorine":
+                    if self.ReleasetType(i)=="Continuous":
+                        return self.ContantE_toxic2(i)*math.pow(self.Rate_tox_n(i),self.ContantF_toxic2(i))
+                    else:
+                        return self.ContantE_toxic2(i)*math.pow(self.Mass_tox_n(i),self.ContantF_toxic2(i))*1000
+                elif self.TOXIC_FLUID=="AlCl3" or self.TOXIC_FLUID=="CO" or self.TOXIC_FLUID=="HCl" or self.TOXIC_FLUID=="Nitric Acid" or self.TOXIC_FLUID=="NO2" or self.TOXIC_FLUID=="Phosgene" or self.TOXIC_FLUID=="TDI" or self.TOXIC_FLUID=="EE" or self.TOXIC_FLUID=="EO" or self.TOXIC_FLUID=="PO":
+                    if self.ReleasetType(i)=="Continuous":
+                        return self.ContantE_toxic2(i)*math.pow(self.Rate_tox_n(i),self.ContantF_toxic2(i))
+                    else:
+                        return self.ContantE_toxic2(i)*math.pow(self.Rate_tox_n(i),self.ContantF_toxic2(i))
+                else:
+                    return 0
         except Exception as e:
             print(e)
 
 
     def CA_toxic_inj2(self):
-        obj = DAL_CAL.POSTGRESQL.GET_API_COM(self.API_COMPONENT_TYPE_NAME)
-        #print('ca_injn',(obj[0] * self.CA_injn_tox2(1) + obj[1] * self.CA_injn_tox2(2) + obj[2] * self.CA_injn_tox2(3) + obj[3] * self.CA_injn_tox2(4)) / obj[4])
-        return (obj[0] * self.CA_injn_tox2(1) + obj[1] * self.CA_injn_tox2(2) + obj[2] * self.CA_injn_tox2(3) + obj[3] * self.CA_injn_tox2(4)) / obj[4]
+        try:
+            obj = DAL_CAL.POSTGRESQL.GET_API_COM(self.API_COMPONENT_TYPE_NAME)
+            #print('ca_injn',(obj[0] * self.CA_injn_tox2(1) + obj[1] * self.CA_injn_tox2(2) + obj[2] * self.CA_injn_tox2(3) + obj[3] * self.CA_injn_tox2(4)) / obj[4])
+            return (obj[0] * self.CA_injn_tox2(1) + obj[1] * self.CA_injn_tox2(2) + obj[2] * self.CA_injn_tox2(3) + obj[3] * self.CA_injn_tox2(4)) / obj[4]
+        except Exception as e:
+            print("CA_toxic_inj2",e)
 
     def CA_injn_tox(self,i):
         try:
@@ -1467,9 +1473,11 @@ class CA_Toxic: #LEVEL 1
 
 
     def CA_toxic_inj(self):
-        obj = DAL_CAL.POSTGRESQL.GET_API_COM(self.API_COMPONENT_TYPE_NAME)
-        return (obj[0] * self.CA_injn_tox(1) + obj[1] * self.CA_injn_tox(2) + obj[2] * self.CA_injn_tox(3) + obj[3] * self.CA_injn_tox(4)) / obj[4]
-
+        try:
+            obj = DAL_CAL.POSTGRESQL.GET_API_COM(self.API_COMPONENT_TYPE_NAME)
+            return (obj[0] * self.CA_injn_tox(1) + obj[1] * self.CA_injn_tox(2) + obj[2] * self.CA_injn_tox(3) + obj[3] * self.CA_injn_tox(4)) / obj[4]
+        except Exception as e:
+            print("CA_toxic_inj",e)
 
     #None FLA and Non Toxic
 

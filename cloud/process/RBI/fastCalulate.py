@@ -624,74 +624,10 @@ def calculateNormal(proposalID):
             refullPOF.save()
         # ca level 1( CoF)
         try:
-            print("ca level 1")
-            toxic_fluid = rwinputca.toxic_fluid
-            phase_fluid_storage = rwstream.storagephase
-            api_com_type = models.ApiComponentType.objects.get(
-                                   apicomponenttypeid=comp.apicomponenttypeid).apicomponenttypename
-            toxic_fluid_percentage = rwinputca.toxic_percent
-            model_fluid = rwinputca.api_fluid
-            MATERIAL_COST = rwmaterial.costfactor
-            print("---test1")
-            store_pressure=rwstream.maxoperatingpressure
-            print("----test2")
-            caflammable = CA_Flammable.CA_Flammable(model_fluid, phase_fluid_storage,
-                                                    rwinputca.mitigation_system, proposalID,
-                                                    rwstream.maxoperatingtemperature + 273,
-                                                    api_com_type, toxic_fluid_percentage,toxic_fluid)
-            print("----test3")
-            catoxic = ToxicConsequenceArea.CA_Toxic(proposalID, rwinputca.toxic_fluid, caflammable.ReleasePhase(),
-                                                    toxic_fluid_percentage, api_com_type,model_fluid,store_pressure)
-            print("----test4")
-            CA_cmd = caflammable.CA_Flam_Cmd()
-            print("----test5")
-            CA_inj = max(caflammable.CA_Flam_inj(),caflammable.CA_Flam_inj_toxic(),catoxic.CA_toxic_inj(),catoxic.CA_toxic_inj2(),catoxic.NoneCA_leck())
-            print("----test6")
-            fullcof = FinancialCOF.FinancialCOF(proposalID, model_fluid, toxic_fluid,
-                                                toxic_fluid_percentage, api_com_type,
-                                                MATERIAL_COST, CA_cmd, CA_inj,phase_fluid_storage,rwinputca.mitigation_system,rwstream.maxoperatingtemperature + 273,store_pressure)
-            print("ok1")
             if rwcofholesize.count() != 0:
                 print('test cof level 11')
                 calv1 = models.RwCaLevel1.objects.get(id=proposalID)
                 rwholesize = models.RwFullCoFHoleSize.objects.get(id=proposalID)
-
-                if ca_cal.NominalDiametter == 0 or ca_cal.STORED_PRESSURE == 0 or ca_cal.MASS_INVERT == 0 or ca_cal.MASS_COMPONENT == 0 or ca_cal.FLUID is None:
-                    calv1.fc_total = 100000000
-                    calv1.fcof_category = "E"
-                else:
-                    print("go here")
-                    calv1.release_phase = ca_cal.GET_RELEASE_PHASE()
-                    print("1",ca_cal.GET_RELEASE_PHASE())
-                    calv1.fact_di = ca_cal.fact_di()
-                    print("2", ca_cal.ca_inj_flame())
-                    calv1.ca_inj_flame = ca_cal.ca_inj_flame()
-                    print("3", ca_cal.ca_final())
-                    calv1.ca_final = ca_cal.ca_final()
-                    print("4", ca_cal.ca_inj_tox())
-                    calv1.ca_inj_toxic = ca_cal.ca_inj_tox()
-                    calv1.ca_inj_ntnf = ca_cal.ca_inj_nfnt()
-                    calv1.fact_mit = ca_cal.fact_mit()
-                    calv1.fact_ait = ca_cal.fact_ait()
-                    calv1.ca_cmd = ca_cal.ca_cmd()
-                    calv1.fc_cmd = ca_cal.fc_cmd()
-                    calv1.fc_affa = ca_cal.fc_affa()
-                    calv1.fc_envi = ca_cal.fc_environ()
-                    calv1.fc_prod = ca_cal.fc_prod()
-                    calv1.fc_inj = ca_cal.fc_inj()
-
-                    calv1.auto_ignition = ca_cal.auto_ignition_temp()
-                    calv1.ideal_gas = ca_cal.C_P()
-                    calv1.ideal_gas_ratio = ca_cal.ideal_gas_ratio()
-                    calv1.liquid_density = ca_cal.liquid_density()
-                    calv1.ambient = ca_cal.ambient()
-                    calv1.mw = ca_cal.moleculer_weight()
-                    calv1.nbp = ca_cal.NBP()
-                    calv1.model_fluid_type = ca_cal.model_fluid_type()
-                    # calv1.toxic_fluid_type = ca_cal.toxic_fluid_type()
-                    calv1.fc_total = fullcof.FC_total()
-                    calv1.fcof_category = fullcof.FC_Category()
-                    calv1.save()
 
                 rwholesize.gff_small = ca_cal.gff(1)
                 rwholesize.gff_medium = ca_cal.gff(2)
@@ -742,61 +678,127 @@ def calculateNormal(proposalID):
                 rwholesize.eneff_n_large = ca_cal.eneff_n(3)
                 rwholesize.eneff_n_rupture = ca_cal.eneff_n(4)
                 rwholesize.factIC_n_small = ca_cal.fact_n_ic(1)
-                rwholesize.factIC_n_medium =ca_cal.fact_n_ic(2)
-                rwholesize.factIC_n_large =ca_cal.fact_n_ic(3)
-                rwholesize.factIC_n_rupture =ca_cal.fact_n_ic(4)
+                rwholesize.factIC_n_medium = ca_cal.fact_n_ic(2)
+                rwholesize.factIC_n_large = ca_cal.fact_n_ic(3)
+                rwholesize.factIC_n_rupture = ca_cal.fact_n_ic(4)
                 rwholesize.save()
+                if ca_cal.NominalDiametter == 0 or ca_cal.STORED_PRESSURE == 0 or ca_cal.MASS_INVERT == 0 or ca_cal.MASS_COMPONENT == 0 or ca_cal.FLUID is None:
+                    calv1.fc_total = 100000000
+                    calv1.fcof_category = "E"
+                else:
+                    print("go here")
+                    calv1.release_phase = ca_cal.GET_RELEASE_PHASE()
+                    print("1",ca_cal.GET_RELEASE_PHASE())
+                    calv1.fact_di = ca_cal.fact_di()
+                    print("2", ca_cal.ca_inj_flame())
+                    calv1.ca_inj_flame = ca_cal.ca_inj_flame()
+                    print("3", ca_cal.ca_final())
+                    calv1.ca_final = ca_cal.ca_final()
+                    print("4", ca_cal.ca_inj_tox())
+                    calv1.ca_inj_toxic = ca_cal.ca_inj_tox()
+                    calv1.ca_inj_ntnf = ca_cal.ca_inj_nfnt()
+                    calv1.fact_mit = ca_cal.fact_mit()
+                    calv1.fact_ait = ca_cal.fact_ait()
+                    calv1.ca_cmd = ca_cal.ca_cmd()
+                    calv1.fc_cmd = ca_cal.fc_cmd()
+                    calv1.fc_affa = ca_cal.fc_affa()
+                    calv1.fc_envi = ca_cal.fc_environ()
+                    calv1.fc_prod = ca_cal.fc_prod()
+                    calv1.fc_inj = ca_cal.fc_inj()
+
+                    calv1.auto_ignition = ca_cal.auto_ignition_temp()
+                    calv1.ideal_gas = ca_cal.C_P()
+                    calv1.ideal_gas_ratio = ca_cal.ideal_gas_ratio()
+                    calv1.liquid_density = ca_cal.liquid_density()
+                    calv1.ambient = ca_cal.ambient()
+                    calv1.mw = ca_cal.moleculer_weight()
+                    calv1.nbp = ca_cal.NBP()
+                    calv1.model_fluid_type = ca_cal.model_fluid_type()
+                    # calv1.toxic_fluid_type = ca_cal.toxic_fluid_type()
+                    calv1.fc_total = fullcof.FC_total()
+                    calv1.fcof_category = fullcof.FC_Category()
+                    calv1.save()
+
+
                 # calv1.fc_total = fullcof.FC_total()
                 # calv1.fcof_category = fullcof.FC_Category()
                 # calv1.save()
             else:
+                rwholesize = models.RwFullCoFHoleSize(id=rwassessment, gff_small=ca_cal.gff(1),
+                                                      gff_medium=ca_cal.gff(2),
+                                                      gff_large=ca_cal.gff(3), gff_rupture=ca_cal.gff(4),
+                                                      an_small=ca_cal.a_n(1),an_medium=ca_cal.a_n(2),
+                                                      an_large=ca_cal.a_n(3),an_rupture=ca_cal.a_n(4),
+                                                      wn_small=ca_cal.W_n(1),wn_medium=ca_cal.W_n(2),
+                                                      wn_large=ca_cal.W_n(3),wn_rupture=ca_cal.W_n(4),
+                                                      mass_add_n_small=ca_cal.mass_addn(1),mass_add_n_medium=ca_cal.mass_addn(2),
+                                                      mass_add_n_large=ca_cal.mass_addn(3),mass_add_n_rupture=ca_cal.mass_addn(4),
+                                                      mass_avail_n_small=ca_cal.mass_avail_n(1),
+                                                      mass_avail_n_medium=ca_cal.mass_avail_n(2),mass_avail_n_large=ca_cal.mass_avail_n(3),
+                                                      mass_avail_n_rupture=ca_cal.mass_avail_n(4),
+                                                      t_n_small=ca_cal.t_n(1),t_n_medium=ca_cal.t_n(2),
+                                                      t_n_large=ca_cal.t_n(3),t_n_rupture=ca_cal.t_n(4),
+                                                      releasetype_small=ca_cal.releaseType(1),releasetype_medium=ca_cal.releaseType(2),
+                                                      releasetype_large=ca_cal.releaseType(3),
+                                                      releasetype_rupture=ca_cal.releaseType(4),ld_max_n_small=ca_cal.ld_n_max(1),
+                                                      ld_max_n_medium=ca_cal.ld_n_max(2),ld_max_n_large=ca_cal.ld_n_max(3),
+                                                      ld_max_n_rupture=ca_cal.ld_n_max(4),rate_n_small=ca_cal.rate_n(1),
+                                                      rate_n_medium=ca_cal.rate_n(2),rate_n_large=ca_cal.rate_n(3),
+                                                      rate_n_rupture=ca_cal.rate_n(4),
+                                                      ld_n_small=ca_cal.ld_n(1),ld_n_medium=ca_cal.ld_n(2),
+                                                      ld_n_large=ca_cal.ld_n(3),ld_n_rupture=ca_cal.ld_n(4),
+                                                      mass_n_small=ca_cal.mass_n(1),mass_n_medium=ca_cal.mass_n(2),
+                                                      mass_n_large=ca_cal.mass_n(3),mass_n_rupture=ca_cal.mass_n(4),
+                                                      eneff_n_small = ca_cal.eneff_n(1),
+                                                      eneff_n_medium = ca_cal.eneff_n(2),eneff_n_large = ca_cal.eneff_n(3),
+                                                      eneff_n_rupture = ca_cal.eneff_n(4),factIC_n_small = ca_cal.fact_n_ic(1),
+                                                      factIC_n_medium = ca_cal.fact_n_ic(2),factIC_n_large = ca_cal.fact_n_ic(3),
+                                                      factIC_n_rupture = ca_cal.fact_n_ic(4))
+                rwholesize.save()
+
                 if ca_cal.NominalDiametter == 0 or ca_cal.STORED_PRESSURE == 0 or ca_cal.MASS_INVERT == 0 or ca_cal.MASS_COMPONENT == 0 or ca_cal.FLUID is None:
                     calv1 = models.RwCaLevel1(id=rwassessment,
                                                   fc_total=100000000, fcof_category="E")
 
                 else:
-                    rwholesize = models.RwFullCoFHoleSize(id=rwassessment,
-                                                          an_small=ca_cal.a_n(1),
-                                                          an_medium=ca_cal.a_n(2),
-                                                          an_large=ca_cal.a_n(3),
-                                                          an_rupture=ca_cal.a_n(4),
-                                                          wn_small=ca_cal.W_n(1),
-                                                          wn_medium=ca_cal.W_n(2),
-                                                          wn_large=ca_cal.W_n(3),
-                                                          wn_rupture=ca_cal.W_n(4),
-                                                          mass_add_n_small=ca_cal.mass_addn(1),
-                                                          mass_add_n_medium=ca_cal.mass_addn(2),
-                                                          mass_add_n_large=ca_cal.mass_addn(3),
-                                                          mass_add_n_rupture=ca_cal.mass_addn(4),
-                                                          mass_avail_n_small=ca_cal.mass_avail_n(1),
-                                                          mass_avail_n_medium=ca_cal.mass_avail_n(2),
-                                                          mass_avail_n_large=ca_cal.mass_avail_n(3),
-                                                          mass_avail_n_rupture=ca_cal.mass_avail_n(4),
-                                                          t_n_small=ca_cal.t_n(1),
-                                                          t_n_medium=ca_cal.t_n(2),
-                                                          t_n_large=ca_cal.t_n(3),
-                                                          t_n_rupture=ca_cal.t_n(4),
-                                                          releasetype_small=ca_cal.releaseType(1),
-                                                          releasetype_medium=ca_cal.releaseType(2),
-                                                          releasetype_large=ca_cal.releaseType(3),
-                                                          releasetype_rupture=ca_cal.releaseType(4),
-                                                          ld_max_n_small=ca_cal.ld_n_max(1),
-                                                          ld_max_n_medium=ca_cal.ld_n_max(2),
-                                                          ld_max_n_large=ca_cal.ld_n_max(3),
-                                                          ld_max_n_rupture=ca_cal.ld_n_max(4),
-                                                          rate_n_small=ca_cal.rate_n(1),
-                                                          rate_n_medium=ca_cal.rate_n(2),
-                                                          rate_n_large=ca_cal.rate_n(3),
-                                                          rate_n_rupture=ca_cal.rate_n(4),
-                                                          ld_n_small=ca_cal.ld_n(1),
-                                                          ld_n_medium=ca_cal.ld_n(2),
-                                                          ld_n_large=ca_cal.ld_n(3),
-                                                          ld_n_rupture=ca_cal.ld_n(4),
-                                                          mass_n_small=ca_cal.mass_n(1),
-                                                          mass_n_medium=ca_cal.mass_n(2),
-                                                          mass_n_large=ca_cal.mass_n(3),
-                                                          mass_n_rupture=ca_cal.mass_n(4))
-                    rwholesize.save()
+                    print("ca level 1")
+                    toxic_fluid = rwinputca.toxic_fluid
+                    phase_fluid_storage = rwstream.storagephase
+                    api_com_type = models.ApiComponentType.objects.get(
+                        apicomponenttypeid=comp.apicomponenttypeid).apicomponenttypename
+                    toxic_fluid_percentage = rwinputca.toxic_percent
+                    model_fluid = rwinputca.api_fluid
+                    MATERIAL_COST = rwmaterial.costfactor
+                    print("---test1")
+                    store_pressure = rwstream.maxoperatingpressure
+                    print("----test2")
+                    caflammable = CA_Flammable.CA_Flammable(model_fluid, phase_fluid_storage,
+                                                            rwinputca.mitigation_system, proposalID,
+                                                            rwstream.maxoperatingtemperature + 273,
+                                                            api_com_type, toxic_fluid_percentage, toxic_fluid)
+                    print("----test3")
+                    catoxic = ToxicConsequenceArea.CA_Toxic(proposalID, rwinputca.toxic_fluid,
+                                                            caflammable.ReleasePhase(),
+                                                            toxic_fluid_percentage, api_com_type, model_fluid,
+                                                            store_pressure)
+                    print("----test4")
+                    CA_cmd = caflammable.CA_Flam_Cmd()
+                    print("----test5")
+                    print(caflammable.CA_Flam_inj())
+                    print(caflammable.CA_Flam_inj_toxic())
+                    print(catoxic.CA_toxic_inj())
+                    print("line 790")
+                    print(catoxic.CA_toxic_inj2())
+                    print(catoxic.NoneCA_leck())
+                    CA_inj = max(caflammable.CA_Flam_inj(), caflammable.CA_Flam_inj_toxic(), catoxic.CA_toxic_inj(),
+                                 catoxic.CA_toxic_inj2(), catoxic.NoneCA_leck())
+                    print("----test6")
+                    fullcof = FinancialCOF.FinancialCOF(proposalID, model_fluid, toxic_fluid,
+                                                        toxic_fluid_percentage, api_com_type,
+                                                        MATERIAL_COST, CA_cmd, CA_inj, phase_fluid_storage,
+                                                        rwinputca.mitigation_system,
+                                                        rwstream.maxoperatingtemperature + 273, store_pressure)
+                    print("ok1")
                     calv1 = models.RwCaLevel1(id=rwassessment,release_phase=ca_cal.GET_RELEASE_PHASE(),
                                               fact_di=ca_cal.fact_di(),fact_mit=ca_cal.fact_mit(),
                                               fact_ait=ca_cal.fact_ait(),ca_cmd = ca_cal.ca_cmd(),
@@ -809,8 +811,9 @@ def calculateNormal(proposalID):
                                               ca_final=ca_cal.ca_final(),auto_ignition=ca_cal.auto_ignition_temp(),
                                               ideal_gas=ca_cal.C_P(),ideal_gas_ratio=ca_cal.ideal_gas_ratio(),
                                               liquid_density=ca_cal.liquid_density(),ambient=ca_cal.ambient(),mw=ca_cal.moleculer_weight(),
-                                              nbp=ca_cal.NBP(),model_fluid_type=ca_cal.model_fluid_type(),toxic_fluid_type=ca_cal.toxic_fluid_type())
+                                              nbp=ca_cal.NBP(),model_fluid_type=ca_cal.model_fluid_type())#bo di toxic_fluid_type=ca_cal.toxic_fluid_type()
                     calv1.save()
+
             # print('ca_final = ',ca_cal.ca_final() )
             # print('fact_di = ', calv1.fact_di, )
         except Exception as e:
@@ -1133,16 +1136,16 @@ def calculateTank(proposalID):
                 cacal = CA_CAL.CA_SHELL(FLUID=rwinputca.api_fluid, FLUID_HEIGHT=rwstream.fluidheight,
                                         SHELL_COURSE_HEIGHT=rwinputca.shell_course_height,
                                         TANK_DIAMETER=rwinputca.tank_diametter,
-                                        EnvironSensitivity=rwinputca.environmentsensitivity,
-                                        P_lvdike=rwinputca.fluidleavedikepercent,
-                                        P_onsite=rwinputca.fluidleavedikeremainonsitepercent,
-                                        P_offsite=rwinputca.fluidgooffsitepercent,
+                                        EnvironSensitivity=rwequipment.environmentsensitivity,
+                                        P_lvdike=rwstream.fluidleavedikepercent,
+                                        P_onsite=rwstream.fluidleavedikeremainonsitepercent,
+                                        P_offsite=rwstream.fluidgooffsitepercent,
                                         MATERIAL_COST=rwmaterial.costfactor,
                                         API_COMPONENT_TYPE_NAME=models.ApiComponentType.objects.get(
                                             apicomponenttypeid=comp.apicomponenttypeid).apicomponenttypename,
                                         PRODUCTION_COST=rwinputca.productioncost,
                                         Soil_type=rwinputca.soil_type,
-                                        TANK_FLUID=rwinputca.tankfluidname,
+                                        TANK_FLUID=rwstream.tankfluidname,
                                         CHT=rwcomponent.shellheight,PROD_COST=0,
                                         EQUIP_OUTAGE_MULTIPLIER=0,
                                         EQUIP_COST=0,POP_DENS=0,

@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f231c43-833f-45f1-9b74-18536c96b33c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Home/index.html" afterPath="$PROJECT_DIR$/templates/Home/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/eq1_L8ToATi.XLS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/eq1_lkvDB3Q.XLS" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RbiCloud/urls.py" afterPath="$PROJECT_DIR$/RbiCloud/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/models.py" afterPath="$PROJECT_DIR$/cloud/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/process/RBI/CA_CAL.py" afterPath="$PROJECT_DIR$/cloud/process/RBI/CA_CAL.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/process/RBI/CA_Flammable.py" afterPath="$PROJECT_DIR$/cloud/process/RBI/CA_Flammable.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/process/RBI/ToxicConsequenceArea.py" afterPath="$PROJECT_DIR$/cloud/process/RBI/ToxicConsequenceArea.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/process/RBI/fastCalulate.py" afterPath="$PROJECT_DIR$/cloud/process/RBI/fastCalulate.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/regularverification/interpolation.py" afterPath="$PROJECT_DIR$/cloud/regularverification/interpolation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/regularverification/regular.py" afterPath="$PROJECT_DIR$/cloud/regularverification/regular.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/views.py" afterPath="$PROJECT_DIR$/cloud/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" afterPath="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" afterPath="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,113 +58,106 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="componentListDisplay.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-              <folding>
-                <element signature="e#1889#1913#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cloud/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="9018" column="43" lean-forward="false" selection-start-line="9018" selection-start-column="43" selection-end-line="9018" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uploadData.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseFacility.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="19" column="95" lean-forward="false" selection-start-line="19" selection-start-column="95" selection-end-line="19" selection-end-column="95" />
+            <state relative-caret-position="418">
+              <caret line="9654" column="113" lean-forward="false" selection-start-line="9654" selection-start-column="113" selection-end-line="9654" selection-end-column="113" />
               <folding>
-                <element signature="e#1426#1432#0#HTML" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baseInspectionPlan.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="103" />
-              <folding>
-                <element signature="e#1081#1087#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseMitigation.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseMitigation.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="17" column="103" lean-forward="false" selection-start-line="17" selection-start-column="103" selection-end-line="17" selection-end-column="103" />
-              <folding>
-                <element signature="e#1085#1091#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseUpload.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseUpload.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="110" lean-forward="false" selection-start-line="13" selection-start-column="110" selection-end-line="13" selection-end-column="110" />
-              <folding>
-                <element signature="e#856#862#0#HTML" expanded="true" />
-                <element signature="e#1022#1028#0#HTML" expanded="true" />
-                <element signature="e#1129#1135#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="facilityListDisplay.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
+            <state relative-caret-position="526">
+              <caret line="1496" column="0" lean-forward="true" selection-start-line="1496" selection-start-column="0" selection-end-line="1496" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/Home/index.html">
+      <file leaf-file-name="CA_Flammable.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud/process/RBI/CA_Flammable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="129" lean-forward="false" selection-start-line="13" selection-start-column="125" selection-end-line="13" selection-end-column="129" />
+            <state relative-caret-position="526">
+              <caret line="640" column="20" lean-forward="false" selection-start-line="640" selection-start-column="20" selection-end-line="640" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interpolation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud/regularverification/interpolation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="526">
+              <caret line="1111" column="0" lean-forward="true" selection-start-line="1111" selection-start-column="0" selection-end-line="1111" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="regular.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud/regularverification/regular.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="2674" column="29" lean-forward="false" selection-start-line="2674" selection-start-column="29" selection-end-line="2674" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseManager.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1634">
+              <caret line="195" column="33" lean-forward="false" selection-start-line="195" selection-start-column="33" selection-end-line="195" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proposalListDisplay.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="184" column="54" lean-forward="false" selection-start-line="184" selection-start-column="54" selection-end-line="184" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Calculate_Function_Manager.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="741" column="177" lean-forward="false" selection-start-line="741" selection-start-column="177" selection-end-line="741" selection-end-column="177" />
+              <folding>
+                <marker date="1602129640604" expanded="false" signature="3762:3778" ph="..." />
+                <marker date="1602129640604" expanded="false" signature="3828:3834" ph=" " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerificationContent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="71" column="93" lean-forward="true" selection-start-line="71" selection-start-column="93" selection-end-line="71" selection-end-column="93" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerificationNumberFacilities.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="163" column="14" lean-forward="false" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -205,15 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/fullyShellConsequenceMana.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/RiskSummaryMana/RiskMatrixMana.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Business_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/component_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/designcode_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Equipment_List.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/facility_List.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/manufacture_List.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/proposal_List.html" />
         <option value="$PROJECT_DIR$/templates/ManagerUI/Report_Component.html" />
@@ -226,7 +225,6 @@
         <option value="$PROJECT_DIR$/templates/response/complete_regiatration.html" />
         <option value="$PROJECT_DIR$/templates/help/help.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/equipment/ManagementSystems.html" />
-        <option value="$PROJECT_DIR$/RbiCloud/urls.py" />
         <option value="$PROJECT_DIR$/cloud/process/RBI/Detail_DM_CAL.py" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseBusiness.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumhome.html" />
@@ -236,10 +234,8 @@
         <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html" />
-        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html" />
-        <option value="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
         <option value="$PROJECT_DIR$/templates/help/helpusesoft.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseForum/forumposts.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html" />
@@ -248,7 +244,6 @@
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseWeb/basedat.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/facility/facilityListDisplay.html" />
-        <option value="$PROJECT_DIR$/cloud/views.py" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html" />
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseMitigation.html" />
@@ -256,6 +251,19 @@
         <option value="$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html" />
         <option value="$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html" />
         <option value="$PROJECT_DIR$/templates/Home/index.html" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/CA_CAL.py" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/fastCalulate.py" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/ToxicConsequenceArea.py" />
+        <option value="$PROJECT_DIR$/RbiCloud/urls.py" />
+        <option value="$PROJECT_DIR$/cloud/models.py" />
+        <option value="$PROJECT_DIR$/cloud/process/RBI/CA_Flammable.py" />
+        <option value="$PROJECT_DIR$/cloud/regularverification/interpolation.py" />
+        <option value="$PROJECT_DIR$/cloud/regularverification/regular.py" />
+        <option value="$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html" />
+        <option value="$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html" />
+        <option value="$PROJECT_DIR$/cloud/views.py" />
       </list>
     </option>
   </component>
@@ -271,9 +279,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="675" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="699" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -321,6 +329,12 @@
             <path>
               <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
               <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud" type="462c0819:PsiDirectoryNode" />
+              <item name="regularverification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
               <item name="RbiCloud" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -351,6 +365,13 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
               <item name="BaseFacility" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseUI" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseManager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
@@ -431,6 +452,13 @@
               <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
               <item name="RiskSummaryMana" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RBI_Cloud_Vie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RBI_Cloud_Vie" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="ManagerUI" type="462c0819:PsiDirectoryNode" />
+              <item name="verification_requirments" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -447,11 +475,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Lab411\RBI\web_vie\RBI_Cloud_Vie\media" />
       <recent name="D:\Lab411\RBI\web_vie\RBI_Cloud_Vie\templates\FacilityUI\risk_summary" />
       <recent name="D:\Lab411\RBI\web_vie\RBI_Cloud_Vie\templates\FacilityUI" />
       <recent name="D:\Lab411\RBI\web_vie\RBI_Cloud_Vie\templates\BaseUI\BaseFacility" />
       <recent name="D:\Lab411\RBI\web_vie\RBI_Cloud_Vie\static\image\logo" />
-      <recent name="D:\Lab411\RBI\web_vie\RBI_Cloud_Vie\static\image\help" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -643,15 +671,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22541603" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22844176" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -680,105 +707,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/inspection_plan/createInspectionPlan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="72" lean-forward="false" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/inspection_plan/damageMechanism.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/inspection_plan/inspectionPlanNew.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="68" column="18" lean-forward="false" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
-          <folding>
-            <marker date="1601437473819" expanded="false" signature="2606:2612" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/mitigation/damageMechanism.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/mitigation/mitigationSite.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="90" column="15" lean-forward="true" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/equipment/equipmentListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="76" column="22" lean-forward="false" selection-start-line="67" selection-start-column="16" selection-end-line="76" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="102" column="39" lean-forward="false" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/chooseThining.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/showLining.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/showThining.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13515">
-          <caret line="795" column="14" lean-forward="false" selection-start-line="795" selection-start-column="14" selection-end-line="795" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/risk_summary/dfFull.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11152">
-          <caret line="656" column="37" lean-forward="false" selection-start-line="656" selection-start-column="37" selection-end-line="656" selection-end-column="37" />
-          <folding>
-            <marker date="1601438326493" expanded="false" signature="3762:3778" ph="..." />
-            <marker date="1601438326493" expanded="false" signature="3828:3834" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/help/helpusesoft.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
@@ -910,14 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="195" column="33" lean-forward="false" selection-start-line="195" selection-start-column="33" selection-end-line="195" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManufactureMana.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1006,7 +926,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/component/componentListDisplay.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
+        <state relative-caret-position="561">
           <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
           <folding>
             <element signature="e#1889#1913#0#HTML" expanded="true" />
@@ -1022,41 +942,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9018" column="43" lean-forward="false" selection-start-line="9018" selection-start-column="43" selection-end-line="9018" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseFacility.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="323">
           <caret line="19" column="95" lean-forward="false" selection-start-line="19" selection-start-column="95" selection-end-line="19" selection-end-column="95" />
-          <folding>
-            <element signature="e#1426#1432#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseInspectionPlan.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
+        <state relative-caret-position="289">
           <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="103" />
-          <folding>
-            <element signature="e#1081#1087#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseFacility/baseMitigation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
+        <state relative-caret-position="289">
           <caret line="17" column="103" lean-forward="false" selection-start-line="17" selection-start-column="103" selection-end-line="17" selection-end-column="103" />
-          <folding>
-            <element signature="e#1085#1091#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1064,17 +970,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="110" lean-forward="false" selection-start-line="13" selection-start-column="110" selection-end-line="13" selection-end-column="110" />
-          <folding>
-            <element signature="e#856#862#0#HTML" expanded="true" />
-            <element signature="e#1022#1028#0#HTML" expanded="true" />
-            <element signature="e#1129#1135#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseWeb/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
+        <state relative-caret-position="578">
           <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding />
         </state>
@@ -1082,7 +984,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/FacilityUI/facility/uploadData.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="442">
           <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
           <folding />
         </state>
@@ -1093,6 +995,123 @@
         <state relative-caret-position="221">
           <caret line="13" column="129" lean-forward="false" selection-start-line="13" selection-start-column="125" selection-end-line="13" selection-end-column="129" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/process/RBI/CA_CAL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="2235" column="0" lean-forward="false" selection-start-line="2235" selection-start-column="0" selection-end-line="2235" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/process/RBI/fastCalulate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="1540" column="16" lean-forward="false" selection-start-line="1540" selection-start-column="16" selection-end-line="1540" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/process/RBI/ToxicConsequenceArea.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="1553" column="22" lean-forward="false" selection-start-line="1553" selection-start-column="22" selection-end-line="1553" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RbiCloud/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="150" column="51" lean-forward="false" selection-start-line="150" selection-start-column="51" selection-end-line="150" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="1496" column="0" lean-forward="true" selection-start-line="1496" selection-start-column="0" selection-end-line="1496" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/process/RBI/CA_Flammable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="640" column="20" lean-forward="false" selection-start-line="640" selection-start-column="20" selection-end-line="640" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/regularverification/interpolation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="1111" column="0" lean-forward="true" selection-start-line="1111" selection-start-column="0" selection-end-line="1111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/regularverification/regular.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="2674" column="29" lean-forward="false" selection-start-line="2674" selection-start-column="29" selection-end-line="2674" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/BaseUI/BaseManager/baseManager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1634">
+          <caret line="195" column="33" lean-forward="false" selection-start-line="195" selection-start-column="33" selection-end-line="195" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FacilityUI/proposal/proposalListDisplay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="184" column="54" lean-forward="false" selection-start-line="184" selection-start-column="54" selection-end-line="184" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/Calculate_Function_Manager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="741" column="177" lean-forward="false" selection-start-line="741" selection-start-column="177" selection-end-line="741" selection-end-column="177" />
+          <folding>
+            <marker date="1602129640604" expanded="false" signature="3762:3778" ph="..." />
+            <marker date="1602129640604" expanded="false" signature="3828:3834" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationContent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="71" column="93" lean-forward="true" selection-start-line="71" selection-start-column="93" selection-end-line="71" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ManagerUI/verification_requirments/VerificationNumberFacilities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="163" column="14" lean-forward="false" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="9654" column="113" lean-forward="false" selection-start-line="9654" selection-start-column="113" selection-end-line="9654" selection-end-column="113" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -153,7 +153,8 @@ urlpatterns = [
     path('help/UseSoftware', views.Help_UseSoftware, name='helpUseSoftware'),
     path('proposal/viewexcel/<int:index>/<str:type>/', views.ViewExeclProposal, name='viewexcelproposal'),
     path('databasereport/',views.DatabaseReport, name='databasereport'),
-    path('rbitracking/',views.RBITracking, name='rbitracking')
+    path('rbitracking/',views.RBITracking, name='rbitracking'),
+    path('verification/<int:verifiID>/Delete',views.Verificationdelete,name='Verificationdelete')
 ]
 handler500 = 'cloud.views.handler404'
 handler404 = 'cloud.views.handler404'

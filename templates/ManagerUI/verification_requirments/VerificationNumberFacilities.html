@@ -6,13 +6,159 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
-{% block title %}Verification_requirments{% endblock %}
+{% block title %}Verification requirments{% endblock %}
+<style>
+.riskmatrix {
+    width: 530px;
+    height: 580px;
+    background: #b1b1b1;
+    float:left;
+}
+.showtable{
+    width: 600px;
+    float: right;
+}
+div.a {
+  white-space: nowrap;
+  width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.a:hover {
+  overflow: visible;
+}
+#searchs{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.city{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#search3{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#proposal
+{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#search2{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+#searchs td,#searchs th {
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+.city td, .city th{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#search2 th,#search2 td{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#search3 th,#search3 td{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#proposal th,#proposal td{
+  border: 1px solid #ddd;
+  padding: 0px;
+  text-align: center;
+}
+#searchs tr:nth-child(even){background-color: #f2f2f2;}
+.city tr:nth-child(even){background-color: white;}
+#search2 tr:nth-child(even){background-color: #f2f2f2;}
+#search3 tr:nth-child(even){background-color: #f2f2f2;}
+#proposal tr:nth-child(even){background-color: #f2f2f2;}
+#searchs tr:hover {background-color: #f2f2f2;}
+.city tr:hover {background-color: #f2f2f2;}
+#search2 tr:hover {background-color: #f2f2f2;}
+#search3 tr:hover {background-color: #f2f2f2;}
+#proposal tr:hover {background-color: #f2f2f2;}
 
+#searchs th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+.city th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+#search2 th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+#search3 th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color :#305680;
+  color: white;
+}
+#proposal th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #305680;
+  color: white;
+}
+</style>
 {% block content %}
     <form method="post" style="padding-top: 90px;padding-bottom: 90px">
         {% csrf_token %}
-        {% for faci in faci %}
-            <a href="{% url 'VerificationHome' faci.facilityid %}">{{ faci.facilityname }}</a><br>
-        {% endfor %}
+    <div class="city" style="font-size: 13px; color: #444444;background-color:white" class="showtable">
+        <div class="container">
+            <div class="table-responsive">
+                <table width=100% class="testing">
+                    <thead>
+                    <tr>
+                        <th style="background-color:#305680;font-size: 15px;font-family: 'Spartan', sans-serif; color:White" colspan="3">List of Inspection Request</th>
+                    </tr>
+                    <tr>
+                        <!------- Proposal-------->
+                        <th>Name Facilities</th>
+                        <th>Status</th>
+                        <th>Number of Inspection Request</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for faci in faci %}
+                            <tr>
+                                <th><a href="{% url 'VerificationHome' faci.facilityid %}">{{ faci.facilityname }}</a></th>
+                                <th>Working</th>
+                                {% for c in count %}
+                                    <th>{{ c }}</th>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
     </form>
 {% endblock %}

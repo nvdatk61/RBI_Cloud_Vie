@@ -14,7 +14,11 @@
         {% for veri in veri %}
             {% for faci in faci %}
 
-        <div class="container" style="width: 1000px;background-color: #d9d9d9">
+         {% if veri.Is_active %}
+            <div class="container" style="width: 1000px;background-color: #E0EEEE">
+        {% else %}
+             <div class="container" style="width: 1000px;background-color: #F08080">
+        {% endif %}
             <header>
                 <h3 style="text-align: center">YÊU CẦU KIỂM ĐỊNH</h3>
                 <br>
@@ -63,8 +67,14 @@
             <footer>
                 <div style="text-align: right;padding-bottom: 20px">
                     <button name="_check" class="btn btn-primary" type="submit" value="{{veri.id}}"><i class="fa fa-pencil">&emsp;Check Selected</i></button>
-                    <button type="submit" class="btn btn-warning" id="sub"><i class="fa fa-trash-o">&emsp;Delete Selected</i></button>
-                    {% if veri.Is_active %}<p style="float: left;padding-left: 30px;color: #9d9d9d">đã xem</p>{% endif %}
+                    <button type="submit" name="_delete" class="btn btn-warning" id="sub" value="{{ veri.id }}" onclick="return confirm('Are you sure you want to delete this request?');" ><i class="fa fa-trash-o">&emsp;Delete Selected</i></button>
+                    <button name="_view" class="btn btn-primary" type="submit" value="{{ veri.link }}" ><i class="fa fa-file">&emsp;View in Proposal</i></button>
+{#                    <p style="float: left;padding-left: 30px;color: #9d9d9d">chưa xem</p>#}
+                    {% if veri.Is_active %}
+                        <p style="float: left;padding-left: 30px;color: #000000">Đã xem</p>
+                    {% else %}
+                        <p style="float: left;padding-left: 30px;color: #000000">Chưa xem</p>
+                    {% endif %}
                 </div>
             </footer>
         </div>

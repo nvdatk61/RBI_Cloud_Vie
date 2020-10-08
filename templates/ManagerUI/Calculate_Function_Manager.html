@@ -383,6 +383,56 @@ div.a:hover {
                         <!--<button type="submit" name="_verification" style="text-align:left" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Verification</i></button>-->
                         <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-spinner">&emsp;Refresh</i></button>
                         <button type="submit" name="_detail" id="detail"style="text-align:left" class="btn btn-primary" disabled><i class="fa fa-info-circle">&emsp;View Risk Summary</i></button>
+                        <a id="#view" class="btn btn-primary" data-toggle="modal" data-target="#viewHis"><i class="fa fa-history" aria-hidden="true">&emsp;View History Inspection Request </i></a>
+                            <div class="modal" id="viewHis" style="margin-top: 10%">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content" style="width: 80%; margin: auto">
+
+                                    <!-- Modal Header -->
+                                <div class="modal-header">
+                                      <span aria-hidden="true" style="font-size: 24px;font-weight: bold;color: #444444;font-family: Calibri;font-weight: bold;">Danh sách yêu cầu kiểm định</span>
+                                      <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body" style="width: 90%;margin: auto">
+                                        <table id="searchs">
+                                            <tr>
+                                                <th>Tên nhà máy</th>
+                                                <th>Tên thiết bị</th>
+                                                <th>Tên thành phần</th>
+                                                <th>Tên bản ghi</th>
+                                                <th>Ngày</th>
+                                                <th>Nội dung kiểm định</th>
+                                                <th>Trạng thái</th>
+                                            </tr>
+                                            {% for a in veri %}
+                                                <tr>
+                                                    <td align="center">{{ a.facility }}</td>
+                                                    <td align="center">{{ a.equipment }}</td>
+                                                    <td align="center">{{ a.component }}</td>
+                                                    <td align="center">{{ a.proposal }}</td>
+                                                    <td align="center">{{ a.date }}</td>
+                                                    <td align="center">
+                                                    {% for b in vericontent %}
+                                                        {% if b.veriID == a.id %}
+                                                            {{ b.content }}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    </td>
+                                                    <td align="center">Gửi thành công</td>
+                                                </tr>
+                                                {% endfor %}
+                                        </table>
+                                </div>
+
+                                        <!-- Modal footer -->
+                                <div class="modal-footer" style="margin: auto; width: 90%">
+                                            <button type="button" class="btn btn-success"  style="background-color: #4575B7; border: 1px solid #204d74" data-dismiss="modal">Đóng</button>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
                         <script>
                             $("input[id='checkbox']").change(function (e) {
                             var isChecked = $(this).prop("checked");
@@ -644,6 +694,56 @@ div.a:hover {
                             <!--<button type="submit" name="_verification" style="text-align:left" class="btn btn-primary"><i class="fa fa-pencil">&emsp;Verification</i></button>-->
                             <button type="submit" name="_refresh" style="text-align:right" class="btn btn-primary"><i class="fa fa-spinner">&emsp;Refresh</i></button>
                             <button type="submit" name="_detail" id="detailT"style="text-align:left" class="btn btn-primary" disabled><i class="fa fa-info-circle" >&emsp;View Risk Summary</i></button>
+                            <a id="#view1" class="btn btn-primary" data-toggle="modal" data-target="#viewHis1"><i class="fa fa-history" aria-hidden="true">&emsp;View History Inspection Request </i></a>
+                            <div class="modal" id="viewHis1" style="margin-top: 10%">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content" style="width: 80%; margin: auto">
+
+                                    <!-- Modal Header -->
+                                <div class="modal-header">
+                                      <span aria-hidden="true" style="font-size: 24px;font-weight: bold;color: #444444;font-family: Calibri;font-weight: bold;">Danh sách yêu cầu kiểm định</span>
+                                      <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body" style="width: 90%;margin: auto">
+                                        <table id="searchs">
+                                            <tr>
+                                                <th>Tên nhà máy</th>
+                                                <th>Tên thiết bị</th>
+                                                <th>Tên thành phần</th>
+                                                <th>Tên bản ghi</th>
+                                                <th>Ngày</th>
+                                                <th>Nội dung kiểm định</th>
+                                                <th>Trạng thái</th>
+                                            </tr>
+                                            {% for a in veri %}
+                                            <tr>
+                                                <td align="center">{{ a.facility }}</td>
+                                                <td align="center">{{ a.equipment }}</td>
+                                                <td align="center">{{ a.component }}</td>
+                                                <td align="center">{{ a.proposal }}</td>
+                                                <td align="center">{{ a.date }}</td>
+                                                <td align="center">
+                                                {% for b in vericontent %}
+                                                    {% if b.veriID == a.id %}
+                                                        {{ b.content }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </td>
+                                                <td align="center">Gửi thành công</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </table>
+                                </div>
+
+                                        <!-- Modal footer -->
+                                <div class="modal-footer" style="margin: auto; width: 90%">
+                                            <button type="button" class="btn btn-success"  style="background-color: #4575B7; border: 1px solid #204d74" data-dismiss="modal">Đóng</button>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
                             <script>
                             $("input[id='checkboxT']").change(function (e) {
                             var isChecked = $(this).prop("checked");

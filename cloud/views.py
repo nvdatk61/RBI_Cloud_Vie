@@ -1304,10 +1304,10 @@ def ListFacilities(request, siteID):
                 i=i+1
             print(i)
             if i:
-                result['data'] = str(i) + " kết quả với từ khóa " + search
+                result['data'] = str(i) + " search results for " + search
             else:
                 print("go error")
-                error['exist'] = "Không thể tìm thấy " + "'" + search + "'" + " trong bất kỳ thư mục nào"
+                error['exist'] = "Can not find " + "'" + search + "'" + " in any document"
         else:
             for a in data:
                 dataF = {}
@@ -1746,10 +1746,10 @@ def ListEquipment(request, facilityID):
                 i = i + 1
             print(i)
             if i:
-                result['data'] = str(i) + " kết quả với từ khóa " + search
+                result['data'] = str(i) + " search results for " + search
             else:
                 print("go error")
-                error['exist'] = "Không thể tìm thấy " + "'" + search + "'" + " trong bất kỳ thư mục nào"
+                error['exist'] = "Can not find " + "'" + search + "'" + " in any document"
         else:
             for a in data:
                 equiptype = models.EquipmentType.objects.get(equipmenttypeid=a.equipmenttypeid_id)
@@ -1931,10 +1931,10 @@ def ListComponent(request, equipmentID):
                 i = i + 1
             print(i)
             if i:
-                result['data'] = str(i) + " kết quả trả về với từ khóa " + search
+                result['data'] = str(i) + " search results for " + search
             else:
                 print("go error")
-                error['exist'] = "Không thể tìm thấy " + "'" + search + "'" + " trong bất kỳ thư mục nào"
+                error['exist'] = "Can not find " + "'" + search + "'" + " in any document"
         else:
             for a in data:
                 dataF = {}
@@ -2132,10 +2132,10 @@ def ListProposal(request, componentID):
                 i = i + 1
             print(i)
             if i:
-                result['data'] = str(i) + " kết quả trả về với từ khóa " + search
+                result['data'] = str(i) + " search results for " + search
             else:
                 print("go error")
-                error['exist'] = "Không thể tìm thấy" + "'" + search + "'" + " trong bất kỳ thư mục nào"
+                error['exist'] = "Can not find " + "'" + search + "'" + " in any document"
         else:
             for a in rwass:
                 df = models.RwFullPof.objects.filter(id=a.id)
@@ -2234,6 +2234,7 @@ def ListProposal(request, componentID):
                 except Exception as e:
                     print(e)
             if '_recal' in request.POST:
+                print("recal")
                 for a in rwass:
                     if request.POST.get('%d' % a.id):
                         ReCalculate.ReCalculate(a.id)
@@ -2791,7 +2792,7 @@ def NewProposal(request, componentID):
                                            costfactor=data['materialCostFactor'],
                                            yieldstrength=data['yieldstrength'], tensilestrength=data['tensilestrength'])
             rwmaterial.save()
-            rwinputca = models.RwInputCaLevel1(id=rwassessment,
+            rwinputca = models.RwInputCaLevel1(id=rwassessment,api_fluid = data['ModelFluid'],
                                                release_duration=data['ReleaseDuration'],
                                                detection_type=data['DetectionType'],
                                                isulation_type=data['IsolationType'],
@@ -3350,6 +3351,7 @@ def EditProposal(request, proposalID):
         rwcoat = models.RwCoating.objects.get(id=proposalID)
         rwmaterial = models.RwMaterial.objects.get(id=proposalID)
         rwinputca = models.RwInputCaLevel1.objects.get(id=proposalID)
+        print(rwinputca.toxic_percent)
         assDate = rwassessment.assessmentdate.strftime('%Y-%m-%d')
         try:
             extDate = rwcoat.externalcoatingdate.strftime('%Y-%m-%d')
@@ -3740,6 +3742,7 @@ def EditProposal(request, proposalID):
             data['Systerm'] = request.POST.get('Systerm')
             data['ToxicFluid'] = request.POST.get('ToxicFluid')
             data['ToxicFluidPercent'] = request.POST.get('ToxicFluidPercent')
+            print("ToxicFluidPercent:",data['ToxicFluidPercent'])
             data['PhaseStorage'] = request.POST.get('phaseOfFluid')
             data['LiquidLevel'] = request.POST.get('LiquidLevel')
             data['MassComponent'] = request.POST.get('MassComponent')
@@ -3918,6 +3921,7 @@ def EditProposal(request, proposalID):
             rwmaterial.save()
 
             rwinputca.api_fluid = data['APIFluid']
+            # rwinputca.model_fluid = data['APIFluid'] # them vao
             rwinputca.system = data['Systerm']
             rwinputca.release_duration = data['ReleaseDuration']
             rwinputca.detection_type = data['DetectionType']
@@ -4561,76 +4565,7 @@ def RiskMatrix(request, proposalID):
                    'info': request.session, 'noti': noti, 'countnoti': countnoti, 'count': count})
 
 
-def FullyDamageFactor(request, proposalID):
-    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
-    countnoti = noti.filter(state=0).count()
-    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
-                                          Q(Is_see=0)).count()
-    try:
-        df = models.RwFullPof.objects.get(id=proposalID)
-        rwAss = models.RwAssessment.objects.get(id=proposalID)
-        data = {}
-        component = models.ComponentMaster.objects.get(componentid=rwAss.componentid_id)
-        if component.componenttypeid_id == 8 or component.componenttypeid_id == 12 or component.componenttypeid_id == 14 or component.componenttypeid_id == 15:
-            isTank = 1
-        else:
-            isTank = 0
-        if component.componenttypeid_id == 8 or component.componenttypeid_id == 14:
-            isShell = 1
-        else:
-            isShell = 0
-        data['thinningType'] = df.thinningtype
-        data['gfftotal'] = df.gfftotal
-        data['fms'] = df.fms
-        data['thinningap1'] = roundData.roundDF(df.thinningap1)
-        data['thinningap2'] = roundData.roundDF(df.thinningap2)
-        data['thinningap3'] = roundData.roundDF(df.thinningap3)
-        data['sccap1'] = roundData.roundDF(df.sccap1)
-        data['sccap2'] = roundData.roundDF(df.sccap2)
-        data['sccap3'] = roundData.roundDF(df.sccap3)
-        data['externalap1'] = roundData.roundDF(df.externalap1)
-        data['externalap2'] = roundData.roundDF(df.externalap2)
-        data['externalap3'] = roundData.roundDF(df.externalap3)
-        data['htha_ap1'] = roundData.roundDF(df.htha_ap1)
-        data['htha_ap2'] = roundData.roundDF(df.htha_ap2)
-        data['htha_ap3'] = roundData.roundDF(df.htha_ap3)
-        data['brittleap1'] = roundData.roundDF(df.brittleap1)
-        data['brittleap2'] = roundData.roundDF(df.brittleap2)
-        data['brittleap3'] = roundData.roundDF(df.brittleap3)
-        data['fatigueap1'] = roundData.roundDF(df.fatigueap1)
-        data['fatigueap2'] = roundData.roundDF(df.fatigueap2)
-        data['fatigueap3'] = roundData.roundDF(df.fatigueap3)
-        data['thinninggeneralap1'] = roundData.roundDF(df.thinninggeneralap1)
-        data['thinninggeneralap2'] = roundData.roundDF(df.thinninggeneralap2)
-        data['thinninggeneralap3'] = roundData.roundDF(df.thinninggeneralap3)
-        data['thinninglocalap1'] = roundData.roundDF(df.thinninglocalap1)
-        data['thinninglocalap2'] = roundData.roundDF(df.thinninglocalap2)
-        data['thinninglocalap3'] = roundData.roundDF(df.thinninglocalap3)
-        data['totaldfap1'] = roundData.roundDF(df.totaldfap1)
-        data['totaldfap2'] = roundData.roundDF(df.totaldfap2)
-        data['totaldfap3'] = roundData.roundDF(df.totaldfap3)
-        data['pofap1'] = roundData.roundPoF(df.pofap1)
-        data['pofap2'] = roundData.roundPoF(df.pofap2)
-        data['pofap3'] = roundData.roundPoF(df.pofap3)
-        data['pofap1category'] = df.pofap1category
-        data['pofap2category'] = df.pofap2category
-        data['pofap3category'] = df.pofap3category
-        if '_show1' in request.POST:
-            return redirect('thining', proposalID=proposalID)
-        if '_show2' in request.POST:
-            return redirect('governing', proposalID=proposalID)
-        if request.method == 'POST':
-            df.thinningtype = request.POST.get('thinningType')
-            df.save()
-            ReCalculate.ReCalculate(proposalID)
-            return redirect('damgeFactor', proposalID)
-    except Exception as e:
-        print(e)
-        raise Http404
-    return render(request, 'FacilityUI/risk_summary/dfFull.html',
-                  {'page': 'damageFactor', 'obj': data, 'assess': rwAss, 'isTank': isTank,
-                   'isShell': isShell, 'proposalID': proposalID, 'info': request.session, 'noti': noti,
-                   'countnoti': countnoti, 'count': count})
+
 
 
 def ShowThining(request, proposalID):
@@ -5605,7 +5540,6 @@ def ExportExcel(request, index, type):
         return export_data.excelExport(index, type)
     except:
         raise Http404
-
 
 def upload(request, siteID, filename=""):
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
@@ -6751,9 +6685,9 @@ def AccountManagement(request):
         if request.method == "POST":
             org_name = request.POST.get('org_name_mng')
             user = request.POST.get('username_mng')
-            # first_name = request.POST.get('first_name')
-            # last_name = request.POST.get('last_name')
-            name = request.POST.get('name')
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
+            name = last_name+" "+first_name
             password = request.POST.get('pass_mng')
             repassword = request.POST.get('repass_mng')
             phone = request.POST.get('phone_mng')
@@ -7973,7 +7907,7 @@ def VeriFullyDamageFactorMana(request, proposalID):
             print("go verifiaca")
             veri = models.Verification(proposal=rwAss.proposalname, Is_active=0, manager=request.session['name'],
                                        facility=equip.facilityid_id, com=component.componentname,
-                                       eq=equip.equipmentname)
+                                       eq=equip.equipmentname,link=rwAss.id)
             veri.save()
             some_var = request.POST.getlist('check')
             for some_var in some_var:
@@ -8139,12 +8073,11 @@ def VerificationHome(request, faciid):
     try:
         faci = models.Facility.objects.filter(facilityid=faciid)
         array = []
+
         for a in faci:
-            print("go veri")
             veri = models.Verification.objects.filter(facility=a.facilityid)
             ct = models.VeriContent.objects.all()
             for verifi in veri:
-                print(verifi.id)
                 cont = models.VeriContent.objects.filter(Verification=verifi.id)
                 array.append(cont)
                 for con in cont:
@@ -8152,18 +8085,41 @@ def VerificationHome(request, faciid):
         if '_check' in request.POST:
             veriCheck_ID = request.POST.get('_check')
             return redirect('VerificationCheck', verifiID=veriCheck_ID)
+        if '_view' in request.POST:
+            veriview_ID = request.POST.get('_view')
+            print('proposalid',veriview_ID)
+            return redirect('damgeFactor',proposalID=veriview_ID)
+        if '_delete' in request.POST:
+            veridelete_ID = request.POST.get('_delete')
+            # veri.delete()
+            return redirect('Verificationdelete', verifiID=veridelete_ID)
         return render(request, 'ManagerUI/verification_requirments/VerificationContent.html',
                       {'veri': veri, 'faci': faci, 'cont': cont, 'ct': ct, 'arr': array})
     except Exception as e:
         print(e)
         return render(request, 'ManagerUI/verification_requirments/VerificationHome.html')
 
-
+def Verificationdelete(request, verifiID):
+    veri = models.Verification.objects.get(id=verifiID)
+    veri.delete()
+    return HttpResponse("Da Xoa")
 def VerificationNumberFacilities(request):
     siteid = models.Sites.objects.filter(userID_id=request.session['id'])[0].siteid
     faci = models.Facility.objects.filter(siteid=siteid)
-    array = []
-    return render(request, 'ManagerUI/verification_requirments/VerificationNumberFacilities.html', {'faci': faci})
+    faciid=models.Facility.objects.filter(siteid_id=siteid)
+    count={}
+    facilityname=[]
+    # can bo sung cach dem
+    for i in faciid:
+        veri=models.Verification.objects.filter(facility=i.facilityid)
+        facilityname.append(i.facilityid)
+        # print('facilitynamebefore', facilityname)
+        # for i in veri:
+            # for j in facilityname:
+            #     if i.facility == j:
+            #         count=veri.count()
+            # print('count', count)
+    return render(request, 'ManagerUI/verification_requirments/VerificationNumberFacilities.html', {'faci': faci , 'count':count})
 
 
 def VerificationCheck(request, verifiID):
@@ -9092,8 +9048,8 @@ def FullyDamageFactor(request, proposalID):
         data['pofap1category'] = df.pofap1category
         data['pofap2category'] = df.pofap2category
         data['pofap3category'] = df.pofap3category
-        if '_btnGoverningExternal' in request.POST:
-            return redirect('governingExternal', proposalID=proposalID)
+        if '_btnGoverningStress' in request.POST:
+            return redirect('GoverningStressCorrosionCracking', proposalID=proposalID)
         if '_btnThinning' in request.POST:
             return redirect('choseThining', proposalID=proposalID)
         if request.method == 'POST':
@@ -9106,6 +9062,66 @@ def FullyDamageFactor(request, proposalID):
         raise Http404
     return render(request, 'FacilityUI/risk_summary/dfFull.html', {'page':'damageFactor', 'obj':data, 'assess': rwAss, 'isTank': isTank,
                                                                    'isShell': isShell, 'proposalID':proposalID,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
+def showAnime(request,proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    try:
+        obj={}
+        rwmaterial = models.RwMaterial.objects.get(id=proposalID)
+        rwstream = models.RwStream.objects.get(id=proposalID)
+        rwcomponent = models.RwComponent.objects.get(id=proposalID)
+        rwequipment = models.RwEquipment.objects.get(id=proposalID)
+        rwassessment = models.RwAssessment.objects.get(id=proposalID)
+        comp = models.ComponentMaster.objects.get(componentid=rwassessment.componentid_id)
+        COMPONENT_INSTALL_DATE = models.EquipmentMaster.objects.get(
+            equipmentid=comp.equipmentid_id).commissiondate
+
+
+        obj['AMINE_EXPOSED'] = bool(rwstream.exposedtogasamine)
+        obj['CARBON_ALLOY'] = bool(rwmaterial.carbonlowalloy)
+        obj['CRACK_PRESENT'] = bool(rwcomponent.crackspresent)
+        obj['AMINE_SOLUTION'] = rwstream.aminesolution
+        obj['MAX_OP_TEMP'] = rwstream.maxoperatingtemperature
+        obj['HEAT_TRACE'] = bool(rwequipment.heattraced)
+        obj['STEAM_OUT'] = bool(rwequipment.steamoutwaterflush)
+        obj['AMINE_INSP_EFF']='E'
+        obj['AMINE_INSP_NUM']=0
+        obj['PWHT'] = bool(rwequipment.pwht)
+        obj['assessmentDate'] = rwassessment.assessmentdate.strftime('%Y-%m-%d')
+        obj['CommissionDate'] = COMPONENT_INSTALL_DATE.strftime('%Y-%m-%d')
+        obj['ComponentNumber'] = str(comp.componentnumber)
+        anime=Detail_DM_CAL.Df_Amine(obj['AMINE_EXPOSED'],obj['CARBON_ALLOY'],obj['CRACK_PRESENT'],obj['AMINE_SOLUTION'],obj['MAX_OP_TEMP'],obj['HEAT_TRACE'],obj['STEAM_OUT'],obj['AMINE_INSP_EFF'],obj['AMINE_INSP_NUM'],obj['PWHT'],rwassessment.assessmentdate,COMPONENT_INSTALL_DATE,obj['ComponentNumber'])
+        obj['Susceptibility'] = anime.getSusceptibility_Amine()
+        obj['Severity'] = anime.SVI_AMINE()
+        obj['age1'] = anime.GET_AGE()
+        obj['age2'] = anime.GET_AGE()+3
+        obj['age3'] = anime.GET_AGE()+6
+        obj['base1']=anime.DFB_AMINE_API(0)
+        obj['base2']=anime.DFB_AMINE_API(3)
+        obj['base3']=anime.DFB_AMINE_API(6)
+        obj['amine1'] = anime.DF_AMINE_API(0)
+        obj['amine2'] = anime.DF_AMINE_API(3)
+        obj['amine3'] = anime.DF_AMINE_API(6)
+        print('amine')
+        print(anime.DF_AMINE_API(3))
+    except Exception as e:
+        print(e)
+        raise Http404
+    return render(request, 'FacilityUI/risk_summary/showAnime.html',
+                  {'page': 'anime', 'a':obj,'proposalID': proposalID, 'info': request.session, 'noti': noti,
+                   'countnoti': countnoti, 'count': count})
+def ShowGoverningStressCorrosionCracking(request,proposalID):
+    noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
+    countnoti = noti.filter(state=0).count()
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    if '_anime' in request.POST:
+        return redirect('anime', proposalID=proposalID)
+    if '_lining' in request.POST:
+        return redirect('lining', proposalID=proposalID)
+    return render(request, 'FacilityUI/risk_summary/chooseGoverningStressCorrosionCracking.html',{'page':'governingStress','proposalID':proposalID ,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def chooseThining(request,proposalID):
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
@@ -9121,9 +9137,40 @@ def showLining(request,proposalID):
     countnoti = noti.filter(state=0).count()
     count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
                                           Q(Is_see=0)).count()
+    try:
+        rwassessment = models.RwAssessment.objects.get(id=proposalID)
+        rwcoat = models.RwCoating.objects.get(id=proposalID)
+        rwequipment = models.RwEquipment.objects.get(id=proposalID)
+        comp = models.ComponentMaster.objects.get(componentid=rwassessment.componentid_id)
+        COMPONENT_INSTALL_DATE = models.EquipmentMaster.objects.get(
+            equipmentid=comp.equipmentid_id).commissiondate
+        ComponentNumber = str(comp.componentnumber)
+        lining = Detail_DM_CAL.Df_Lining(bool(rwcoat.internallining), rwcoat.internallinertype,
+                                         rwcoat.internallinercondition, bool(rwequipment.lineronlinemonitoring),
+                                         rwassessment.assessmentdate, COMPONENT_INSTALL_DATE, ComponentNumber)
+        obj = {}
+        obj['assessmentDate'] = rwassessment.assessmentdate.strftime('%Y-%m-%d')
+        obj['CommissionDate'] = COMPONENT_INSTALL_DATE.strftime('%Y-%m-%d')
+        obj['online'] = lining.LINNER_ONLINE
+        obj['LinerCondition'] = lining.LINNER_CONDITION
+        obj['LinerType'] = lining.LinningType
+        obj['FLC'] = lining.Fdl()
+        obj['FOM'] = lining.Fom()
+        obj['age1'] = lining.GET_AGE()
+        obj['age2'] = lining.GET_AGE() + 3
+        obj['age3'] = lining.GET_AGE() + 6
+        obj['baseValue1'] = lining.DF_LINING_API(0)
+        obj['baseValue2'] = lining.DF_LINING_API(3)
+        obj['baseValue3'] = lining.DF_LINING_API(6)
+        obj['lin1'] = lining.DFB_LINNING_API(0)
+        obj['lin2'] = lining.DFB_LINNING_API(3)
+        obj['lin3'] = lining.DFB_LINNING_API(6)
+    except Exception as e:
+        print(e)
+        raise Http404
     return render(request, 'FacilityUI/risk_summary/showLining.html',
                   {'page': 'lining', 'proposalID': proposalID, 'info': request.session, 'noti': noti,
-                   'countnoti': countnoti, 'count': count})
+                   'countnoti': countnoti, 'count': count, 'a': obj})
 def ShowThining(request,proposalID):
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
     countnoti = noti.filter(state=0).count()
@@ -9271,6 +9318,28 @@ def CalculateFunctionManager(request,siteID):
     rwdamAll = models.RwDamageMechanism.objects.all()
     rwassessment = models.RwAssessment.objects.all()
     datarw = []  # kiem tra id proposal co ton tai trong bang RwDamageMechanism
+    veri = []
+    vericontent=[]
+    verification=models.Verification.objects.all()
+    verificontent=models.VeriContent.objects.all()
+    for a in verification:
+        obj = {}
+        obj['id']=a.id
+        obj['proposal']=a.proposal
+        obj['date']=a.date
+        obj['is_active']=a.Is_active
+        obj['manager']=a.manager
+        obj['facility']=a.facility
+        obj['component']=a.com
+        obj['equipment']=a.eq
+        obj['link']=a.link
+        veri.append(obj)
+    for a in verificontent:
+        obj ={}
+        obj['id']=a.id
+        obj['veriID']=a.Verification_id
+        obj['content']=a.content
+        vericontent.append(obj)
     for a in rwdamAll:
         array = a.id_dm_id
         datarw.append(array)
@@ -9395,7 +9464,7 @@ def CalculateFunctionManager(request,siteID):
     except Exception as e:
         print(e)
 
-    return render(request, 'ManagerUI/Calculate_Function_Manager.html', {'page':'calculateFunctionManager','siteID':siteID,'APINormal':APINormal,'APITank':APITank,'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
+    return render(request, 'ManagerUI/Calculate_Function_Manager.html', {'page':'calculateFunctionManager','siteID':siteID,'APINormal':APINormal,'APITank':APITank, 'veri':veri,'vericontent':vericontent, 'info':request.session,'noti':noti,'countnoti':countnoti,'count':count})
 def Help_UseSoftware(request):
     countveri = 0
     noti = models.ZNotification.objects.all().filter(id_user=request.session['id'])
@@ -9580,3 +9649,7 @@ def DatabaseReport(request):
     return render(request,  'FacilityUI/showdatabase/database_report.html',{'page':'databasereport'})
 def RBITracking(request):
     return render(request,  'FacilityUI/showdatabase/RBITracking.html',{'page':'rbitracking'})
+def base_verification(request):
+    count = models.Emailto.objects.filter(Q(Emailt=models.ZUser.objects.filter(id=request.session['id'])[0].email),
+                                          Q(Is_see=0)).count()
+    return render(request, 'BaseUI/BaseManager/VerificationBase.html', {'info': request.session, 'count': count})

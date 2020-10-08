@@ -183,9 +183,8 @@ class CA_Flammable: #LEVEL 1
             x = self.RATE_N(i)
             return (self.a_cmd(select) * pow(x, self.b_cmd(select)) * (1 - self.fact_mit()))
         except Exception as e:
+            print('exception at ca_cmdn_cont',e)
             return 0
-            print(e)
-            print('exception at ca_cmdn_cont')
 
     def eneff_n(self,i):
         try:
@@ -199,7 +198,7 @@ class CA_Flammable: #LEVEL 1
             else:
                 return rwcofholesize.eneff_n_rupture
         except Exception as e:
-            print(e)
+            print('error at eneff_n',e)
             return 0
 
     def mass_n(self,i):
@@ -225,9 +224,8 @@ class CA_Flammable: #LEVEL 1
             else:
                 return self.a_cmd(select) * pow(x, self.b_cmd(select)) * (1 - self.fact_mit()/self.eneff_n(i))
         except Exception as e:
+            print('exception at ca_cmdn_inst',e)
             return 0
-            print(e)
-            print('exception at ca_cmdn_inst')
 
     def ca_injn_cont(self, select, i):#done
         x = self.RATE_N(i)
@@ -262,20 +260,21 @@ class CA_Flammable: #LEVEL 1
             else:
                 return rwcofholesize.factIC_n_rupture
         except Exception as e:
-            print(e)
+            print("fact_n_ic",e)
             return 0
 
     def CA_AINL_CMD_n(self,i):
         try:
             return self.ca_cmdn_inst(3,i)*self.fact_n_ic(i) + self.ca_cmdn_cont(1,i)*(1-self.fact_n_ic(i))
         except Exception as e:
-            print(e)
+            print("CA_AINL_CMD_n",e)
             return 0
 
     def CA_AIL_CMD_n(self,i):
         try:
             return self.ca_cmdn_inst(4,i)*self.fact_n_ic(i) + self.ca_cmdn_cont(2,i)*(1-self.fact_n_ic(i))
         except:
+            print("error at CA_AIL_CMD_n",e)
             return 0
 
     def CA_AINL_INJ_n(self,i):
@@ -309,14 +308,15 @@ class CA_Flammable: #LEVEL 1
             else:
                 return (self.STORED_TEMP - ait + 55.6) / (2 * 55.6)
         except Exception as e:
+            print('exception at fact_ait', e)
             return 0
-            print(e)
-            print('exception at fact_ait')
+
 
     def CA_Flam_Cmd_n(self,i):
         try:
             return self.CA_AIL_CMD_n(i) * self.fact_ait() + self.CA_AINL_CMD_n(i)*(1-self.fact_ait())
         except:
+            print("error CA_Flam_Cmd_n:",e)
             return 0
 
     def CA_Flam_inj_n(self,i):
@@ -326,8 +326,11 @@ class CA_Flammable: #LEVEL 1
             return 0
 
     def CA_Flam_Cmd(self):
-        obj = DAL_CAL.POSTGRESQL.GET_API_COM(self.API_COMPONENT_TYPE_NAME)
-        return (obj[0]*self.CA_Flam_Cmd_n(1)+obj[1]*self.CA_Flam_Cmd_n(2)+obj[2]*self.CA_Flam_Cmd_n(3)+obj[3]*self.CA_Flam_Cmd_n(4))/obj[4]
+        try:
+            obj = DAL_CAL.POSTGRESQL.GET_API_COM(self.API_COMPONENT_TYPE_NAME)
+            return (obj[0]*self.CA_Flam_Cmd_n(1)+obj[1]*self.CA_Flam_Cmd_n(2)+obj[2]*self.CA_Flam_Cmd_n(3)+obj[3]*self.CA_Flam_Cmd_n(4))/obj[4]
+        except Exception as e:
+            print("error at CA_Flam_Cmd",e)
 
     def CA_Flam_inj(self):
         try:
@@ -475,7 +478,6 @@ class CA_Flammable: #LEVEL 1
                 else:
                     return rwcofholesize.rate_n_rupture
         except Exception as e:
-            return 0
             print(e)
             return 0
 
